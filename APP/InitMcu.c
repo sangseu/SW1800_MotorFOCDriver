@@ -9,7 +9,7 @@ void SetupPorts()
 	GPIO_Init(GPIOC, PIN2, 0, 1, 0, 0);			//输入，上拉使能，接KEY
 	GPIO_Init(GPIOB, PIN1, 1, 0, 0, 0);			//输出， 接LED
     GPIOB->DATA |= (0x01 << PIN1);  //输出高电平，关闭LED
-    GPIO_Init(GPIOE, PIN0, 1, 0, 0, 0);			//输出， 
+    
     GPIO_Init(GPIOE, PIN3, 0, 1, 0, 0);			//输入，接IPM错误输出信号引脚
 
 	PORT_Init(PORTB, PIN4, FUNMUX_PWM2B_OUT, 0);//FUNMUX_PWM1B_OUT, 0);//

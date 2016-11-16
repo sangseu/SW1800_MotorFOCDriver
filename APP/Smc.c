@@ -359,7 +359,7 @@ __inline void CalcZalpha(SMC *s)
 
 __inline void CalcZbeta(SMC *s)
 {
-		s32 Di, Vi, Qi, Ri;
+	s32 Di, Vi, Qi, Ri;
     
     Di = s->Kslide * s->IbetaError;
     Vi = s->MaxSMCError; 
@@ -372,7 +372,7 @@ __inline void CalcZbeta(SMC *s)
 
 __inline void CalcBEMF(SMC *s)
 {
-		s32 valtemp;
+	s32 valtemp;
     s16 KslfT = s->Kslf;	//Q15
 	s16 KslfFinalT = s->KslfFinal;//Q15
 

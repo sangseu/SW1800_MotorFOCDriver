@@ -131,7 +131,7 @@ void UartInit(void)
  	
  	UART_initStruct.Baudrate = 128000;//230400;//115200;
     UART_initStruct.RXThreshold = 1;
-	UART_initStruct.RXThresholdIEn = 1;
+	UART_initStruct.RXThresholdIEn = 0;
 	UART_initStruct.TXThresholdIEn = 0;
 	UART_initStruct.TimeoutIEn = 0;
  	UART_Init(UART0, &UART_initStruct);
@@ -198,6 +198,15 @@ void Communication(int16_t data0,int16_t data1,int16_t data2, int16_t data3)
 	 pact[9] = crc[0];
 	 putstring2(pact);	
 }
+
+typedef struct
+{
+    u32 InputFreq;      //输入频率
+    u8 CountStartFlag;  //开始计数标志,0=未开始，1=开始, 2=停止
+    u32 InputFreqcnt;   //输入脉冲计数值
+    u32 Timercnt;       //定时器计数值
+}InpFreq;
+InpFreq InpFreqCnt;
 
 extern s32 Ta,Tb,Tc;
 extern s16 Pwm0A,Pwm1A,Pwm2A;;
@@ -535,7 +544,7 @@ void DoControl( void )
 // 			//velocity reference ramp begins at minimum speed
 // 			CtrlParm.qVelRef = Q15(OMEGA0);
             
-//            TIMR_Start(TIMR2);
+            TIMR_Start(TIMR2);
 
 		}  
 
@@ -783,7 +792,7 @@ void IRQ0_Handler(void)             //PWM Interrupt
 	PWMG->IRAWST = (0x01 << PWMG_IRAWST_NEWP0A_Pos);//PWMG->IRAWST |= ((0x01 << PWMG_IRAWST_HEND0A_Pos) | (0x01 << PWMG_IRAWST_HEND1A_Pos)) ;     
 }
 
-u16 speedmax = 650;
+u16 speedmax = 790;
 void IRQ1_Handler(void)         //Timer Interrupt
 {
 //    SysTick_Config(0xffffff);
@@ -891,7 +900,6 @@ void IRQ5_Handler(void)
     
 }
 
-u32 deadtime;
 bool SetupParm(void)
 {
 	u32 Ad0Sum = 0,Ad1Sum = 0,Ad2Sum = 0;	
@@ -932,7 +940,7 @@ bool SetupParm(void)
 	PWM_initStruct.mode = PWM_MODE_COMPL_CALIGN;		//A路和B路为一路互补输出，中心对齐		
 	PWM_initStruct.cycleA = PWM_per/2;				
 	PWM_initStruct.hdutyA = PWM_per/6;
-    PWM_initStruct.deadzoneA = deadtime = DDEADTIME;
+    PWM_initStruct.deadzoneA = DDEADTIME;
 	PWM_initStruct.initLevelA = 0;
 	PWM_initStruct.cycleB = PWM_per/2;		
 	PWM_initStruct.hdutyB = PWM_per/2 - PWM_per/6; 
@@ -1027,6 +1035,42 @@ bool SetupParm(void)
                   
 	return FALSE;
 }
+
+void CountInputFreq_Init(void)
+{
+    GPIO_Init(GPIOE, PIN2, 0, 0, 0, 0);			//输入    
+    EXTI_Init(GPIOE, PIN2, EXTI_FALL_EDGE);		//下降沿触发中断	
+	IRQ_Connect(IRQ0_15_GPIOE2, IRQ4_IRQ, 0);	
+	EXTI_Open(GPIOE, PIN2);
+    
+    TIMR_Init(TIMR3, TIMR_MODE_TIMER, 48000000, 0);
+}
+
+void IRQ4_Handler(void)
+{
+	EXTI_Clear(GPIOE, PIN2);
+
+    InpFreqCnt.InputFreqcnt++;
+    if( InpFreqCnt.InputFreqcnt%2 == 0 )
+    {
+        if( InpFreqCnt.CountStartFlag == 0 )        //定时器未开始计数
+        {
+            TIMR_Start(TIMR3);
+            InpFreqCnt.CountStartFlag = 1;          
+        }
+            
+    }            
+    else if( InpFreqCnt.InputFreqcnt%2 == 1 ) 
+    {
+        if( InpFreqCnt.CountStartFlag == 1 )        //定时器开始计数
+        {
+            TIMR_Stop(TIMR3);
+            InpFreqCnt.Timercnt = TIMR3->CVAL;      //获取定时器计数值
+            InpFreqCnt.CountStartFlag = 2;          //停止定时器计数
+        }
+    }
+}
+
 
 
 
@@ -1200,5 +1244,19 @@ s32 VoltRippleComp(s32 Vdq)
 		CompVdq = Vdq;
 
 	return CompVdq;
+}
+
+void CountInputFreq(void)       //计算输入频率
+{
+    s32 Di, Vi, Qi, Ri;
+    
+    if( InpFreqCnt.CountStartFlag == 2 )
+    {
+        Di = 48000000;
+        Vi = InpFreqCnt.Timercnt;      
+        DIV_Fun(Di, Vi, &Qi, &Ri);
+        
+        InpFreqCnt.InputFreq = Qi;
+    }
 }
 

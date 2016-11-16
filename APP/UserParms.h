@@ -17,14 +17,14 @@
 //************** Start-Up Parameters **************
 #define ZHIGAO_MOTOR
 
-#define LOCKTIMEINSEC  2//0.25		// Initial rotor lock time in seconds
+#define LOCKTIMEINSEC  4//0.25		// Initial rotor lock time in seconds
 								// Make sure LOCKTIMEINSEC*(1.0/LOOPTIMEINSEC)
 								// is less than 65535.
-#define OPENLOOPTIMEINSEC 7//5.0	// Open loop time in seconds. This is the time that
+#define OPENLOOPTIMEINSEC 8//5.0	// Open loop time in seconds. This is the time that
 								// will take from stand still to closed loop.
 								// Optimized to overcome the brake inertia.
 								// (Magtrol AHB-3 brake inertia = 6.89 kg x cm2).
-#define INITIALTORQUE 	0.45	//1.4 //	 1.0		// Initial Torque demand in Amps.
+#define INITIALTORQUE 	0.6	//1.4 //	 1.0		// Initial Torque demand in Amps.
 								// Enter initial torque demand in Amps using REFINAMPS() 
 								// macro. Maximum Value for reference is defined by 
 								// shunt resistor value and differential amplifier gain.
