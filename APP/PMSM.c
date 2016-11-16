@@ -14,12 +14,27 @@
 
 #include "SWM1800.h"
 
+#define calculate_frequency
+//#undef calculate_frequency 
 
 #define PinButton1	!((GPIOC->DATA >> PIN2) & 0x01)	//Low Level is press 
 // #define PinButton2	!((GPIOx->DATA >> PIN3) & 0x01)
 #define LED_ON		GPIOB->DATA &= ~(0x01 << PIN1)        //B1 
 /********************* Variables to display data using DMCI *********************************/
 
+typedef struct
+{
+    u32 InputFreq;      //输入频率
+    u8 CountStartFlag;  //开始计数标志,0=未开始，1=开始, 2=停止
+    u32 InputFreqcnt;   //输入脉冲计数值
+    u32 Timercnt;       //定时器计数值
+}InpFreq;
+InpFreq InpFreqCnt;
+
+void CountInputFreq_Init();
+void calculate_rotate_speed(InpFreq *pfreq);
+
+/********************* Variables to display data using DMCI *********************************/
 int Duty0,Duty1,Duty2;
 s16 Sector;
 s16 PWM_CLOCK_CYCLE = LOOPINTCY/2;						//----pwm_cycle,????????????????
@@ -125,47 +140,46 @@ s16 ADIb = 0;		//AD sample Ib value
 void UartInit(void)
 {	
 	UART_InitStructure UART_initStruct;
-	
+
 	PORT_Init(PORTA, PIN8, FUNMUX_UART0_RXD, 1);	//GPIOA.0配置为UART0输入引脚
 	PORT_Init(PORTA, PIN7, FUNMUX_UART0_TXD, 0);	//GPIOA.1配置为UART0输出引脚
- 	
- 	UART_initStruct.Baudrate = 128000;//230400;//115200;
-    UART_initStruct.RXThreshold = 1;
+
+	UART_initStruct.Baudrate = 128000;//230400;//115200;
+	UART_initStruct.RXThreshold = 1;
 	UART_initStruct.RXThresholdIEn = 0;
 	UART_initStruct.TXThresholdIEn = 0;
 	UART_initStruct.TimeoutIEn = 0;
- 	UART_Init(UART0, &UART_initStruct);
-    
-    IRQ_Connect(IRQ0_15_UART0, IRQ2_IRQ, 2);  
-    
-	UART_Open(UART0);
-	
+	UART_Init(UART0, &UART_initStruct);
+
+	IRQ_Connect(IRQ0_15_UART0, IRQ2_IRQ, 2);  
+
+	UART_Open(UART0);	
 }
 
 #define	putstring2(x) uart_putstring2((x))
 
 void _CRC16(char *Array, char *Rcvbuf, unsigned int Len) 
 {
-    uint16_t  IX, IY;
-    uint16_t  CRC_val;
-    CRC_val = 0xFFFF;//set all 1
-    if (Len<=0)
-        CRC_val = 0;
-    else
-    {
-        Len--;
-        for (IX=0;IX<=Len;IX++) 
-        { 
-            CRC_val=CRC_val^(uint16_t)(Array[IX]); 
-            for(IY=0;IY<=7;IY++) 
-            {
-                if ((CRC_val&1)!=0) CRC_val=(CRC_val>>1)^0xA001; 
-                else CRC_val=CRC_val>>1;    // 
-            }
-        } 
-    } 
-    Rcvbuf[0] = (CRC_val & 0xff00)>>8;  //??? 
-    Rcvbuf[1] = (CRC_val & 0x00ff);     //??? 
+	uint16_t  IX, IY;
+	uint16_t  CRC_val;
+	CRC_val = 0xFFFF;//set all 1
+	if (Len<=0)
+	CRC_val = 0;
+	else
+	{
+		Len--;
+		for (IX=0;IX<=Len;IX++) 
+		{ 
+			CRC_val=CRC_val^(uint16_t)(Array[IX]); 
+			for(IY=0;IY<=7;IY++) 
+			{
+				if ((CRC_val&1)!=0) CRC_val=(CRC_val>>1)^0xA001; 
+				else CRC_val=CRC_val>>1;    // 
+			}
+		} 
+	} 
+	Rcvbuf[0] = (CRC_val & 0xff00)>>8;  //??? 
+	Rcvbuf[1] = (CRC_val & 0x00ff);     //??? 
 }  
 
 void uart_putstring2(char buf[])
@@ -175,38 +189,28 @@ void uart_putstring2(char buf[])
 	{
 		UART_WriteByte(UART0,buf[num]);
 		while(UART_IsTXFIFOFull(UART0));	//等待发送完成
-
-	} 
-	
+	} 	
 }
 
 void Communication(int16_t data0,int16_t data1,int16_t data2, int16_t data3)
 {
-	 char pact[10]={0};
-	 char crc[2];
+	char pact[10]={0};
+	char crc[2];
 
-	 pact[0] = data0 & 0xff;
-	 pact[1] = data0>>8;
-	 pact[2] = data1 & 0xff;
-	 pact[3] = data1>>8;
-	 pact[4] = data2 & 0xff;
-	 pact[5] = data2>>8;
-	 pact[6] = data3 & 0xff;
-	 pact[7] = data3>>8;
-	 _CRC16(pact, crc, 8);
-	 pact[8] = crc[1];
-	 pact[9] = crc[0];
-	 putstring2(pact);	
+	pact[0] = data0 & 0xff;
+	pact[1] = data0>>8;
+	pact[2] = data1 & 0xff;
+	pact[3] = data1>>8;
+	pact[4] = data2 & 0xff;
+	pact[5] = data2>>8;
+	pact[6] = data3 & 0xff;
+	pact[7] = data3>>8;
+	_CRC16(pact, crc, 8);
+	pact[8] = crc[1];
+	pact[9] = crc[0];
+	putstring2(pact);	
 }
 
-typedef struct
-{
-    u32 InputFreq;      //输入频率
-    u8 CountStartFlag;  //开始计数标志,0=未开始，1=开始, 2=停止
-    u32 InputFreqcnt;   //输入脉冲计数值
-    u32 Timercnt;       //定时器计数值
-}InpFreq;
-InpFreq InpFreqCnt;
 
 extern s32 Ta,Tb,Tc;
 extern s16 Pwm0A,Pwm1A,Pwm2A;;
@@ -243,125 +247,78 @@ volatile s16 VDC_status = 0, VDC_status_tiems =0;        //直流母线电压状态
 volatile u16 SPREF=500;
 int main(void)
 {	
-    SystemInit();
-    DIV_Init(DIV);
-    CORDIC_Init(CORDIC);
-       
-    SMCInit(&smc1);
-    SetupPorts();
-    SetupControlParameters(); 
-    FWInit();
-    UartInit();
-    uGF.Word = 0;                   // clear flags
+	SystemInit();
+	DIV_Init(DIV);
+	CORDIC_Init(CORDIC);
 
-    #ifdef TORQUEMODE
-        uGF.bit.EnTorqueMod = 1;
-	#endif
+	SMCInit(&smc1);
+	SetupPorts();
+	SetupControlParameters(); 
+	FWInit();
+#ifdef calculate_frequency
+	CountInputFreq_Init();
+#else
+	UartInit();
+#endif
+	uGF.Word = 0;                   // clear flags
 
-	#ifdef ENVOLTRIPPLE
-		uGF.bit.EnVoltRipCo = 1;
-	#endif
+#ifdef TORQUEMODE
+	uGF.bit.EnTorqueMod = 1;
+#endif
 
-	#ifdef RTDM
-		DMCIFlags.StartStop = 0;
-		DMCIFlags.Recorder = 0;
-	#endif
-    
+#ifdef ENVOLTRIPPLE
+	uGF.bit.EnVoltRipCo = 1;
+#endif
+
 	while(1)
 	{
 		uGF.bit.ChangeSpeed = 0;
 		// init Mode
 		uGF.bit.OpenLoop = 1;           // start in openloop
 
-//		ADC->u32IMSK &= 0x0;	//// Make sure ADC does not generate
-							// interrupts while parameters
-							// are being initialized
+		//		ADC->u32IMSK &= 0x0;	//// Make sure ADC does not generate
+		// interrupts while parameters
+		// are being initialized
 		// init user specified parms and stop on error
 		if( SetupParm() )
 		{
-			// Error
+		// Error
 			uGF.bit.RunMotor=0;
 			return 0;
 		}
-        
 		// zero out i sums 
 		PIParmD.qdSum = 0;
 		PIParmQ.qdSum = 0;
 		PIParmW.qdSum = 0;
-     
+	     
 		if(!uGF.bit.RunMotor)
 		{	
-			#ifdef DMCI_DEMO
-				// Initialize current offset compensation
-				while(!DMCIFlags.StartStop)	// wait here until user starts motor 
-				{							// with DMCI
-					#ifdef RTDM
-						RTDM_ProcessMsgs();
-					#endif
-				}
-			#else
-				// Initialize current offset compensation
+			uGF.bit.ChangeMode = 1;	// Ensure variable initialization when open loop is
+			// executed for the first time
+			PWMG->CHEN |= 0x3f;
 
-//				while(!PinButton1)                  //wait here until button 1 is pressed 
-//				{
-//					#ifdef RTDM
-//						RTDM_ProcessMsgs();
-//					#endif
-//				}
-//				while(PinButton1);                  //when button 1 is released
-                uGF.bit.ChangeMode = 1;	// Ensure variable initialization when open loop is
-								// executed for the first time
-				PWMG->CHEN |= 0x3f;
-//                TIMR1->CTRL |= (1 << TIMR_CTRL_EN_Pos);
-			#endif
-			
-//			SetupParm();
 			uGF.bit.RunMotor = 1;               //then start motor
 			LED_ON;					//LED ON
-        }
-        
-             	// Run the motor
-        
-		//Run Motor loop
-        while(1)
-        {
-             View1 = PIParmQ.qInRef;//ParkParm.qIa;//PIParmW.qInMeas;//Pwm0A;//smc1.Ialpha;//ParkParm.qValpha;//
-             View2 = smc1.OmegaFltred;//PIParmD.qInRef;//ParkParm.qIb;//PIParmW.qInRef;//Pwm1A;//smc1.EstIalpha;//ParkParm.qVq;//ParkParm.qVbeta;//
-             View3 = PIParmW.qInRef;//ParkParm.qAngle;//smc1.Theta;//PIParmD.qInRef;//PIParmQ.qInMeas;//PIParmW.qOut;//smc1.Kslf;//ParkParm.qIa;//SPEED;//ParkParm.qIq;//PIParmD.qOut;//Pwm2A;//smc1.Zalpha;//stas*10000;//
-             View4 = Theta_error;//smc1.Ebeta;//SPREF;//PIParmQ.qOut;////0;//ParkParm.qIb;//TargetDCbus;//smc1.IalphaError;//CtrlParm.qVqRef;//sector;//
-					
-            Communication(View1, View2, View3, View4);
+		}
+		// Run the motor
+		while(1)
+		{
+			View1 = PIParmQ.qInRef;//ParkParm.qIa;//PIParmW.qInMeas;//Pwm0A;//smc1.Ialpha;//ParkParm.qValpha;//
+			View2 = smc1.OmegaFltred;//PIParmD.qInRef;//ParkParm.qIb;//PIParmW.qInRef;//Pwm1A;//smc1.EstIalpha;//ParkParm.qVq;//ParkParm.qVbeta;//
+			View3 = PIParmW.qInRef;//ParkParm.qAngle;//smc1.Theta;//PIParmD.qInRef;//PIParmQ.qInMeas;//PIParmW.qOut;//smc1.Kslf;//ParkParm.qIa;//SPEED;//ParkParm.qIq;//PIParmD.qOut;//Pwm2A;//smc1.Zalpha;//stas*10000;//
+			View4 = Theta_error;//smc1.Ebeta;//SPREF;//PIParmQ.qOut;////0;//ParkParm.qIb;//TargetDCbus;//smc1.IalphaError;//CtrlParm.qVqRef;//sector;//
 
-            
-            SPEED = smc1.OmegaFltred*60/(65535*POLEPAIRS*SPEEDLOOPTIME);
-            
-//            if( ++count >= SPEEDDELAY && gabs(Theta_error) <= 3 && Loopflag==0 ) 
-//            {
-//                speedtemp = (SpeedV*2500)>>12;
-//                Speed_REF1 = (speedtemp*40 + Speed_REF_old*88)>>7;
-//                Speed_REF_old = Speed_REF1;
-//                if( Speed_REF < Speed_REF1 )
-//                    Speed_REF += 1;
-//                else if( Speed_REF > Speed_REF1 )
-//                    Speed_REF -= 1;
-//                if( Speed_REF <500 )
-//                    Speed_REF = 500;
+			Communication(View1, View2, View3, View4);
 
-////                W_REF = Speed_REF*65535*POLEPAIRS*SPEEDLOOPTIME/60;
-//                
-//                count = 0;
-//            }
-            
-            if( SPREF > 950 )
-                SPREF = 950;
-            if( SPREF < 400 )
-                SPREF = 400;
-            W_REF = SPREF*65535*POLEPAIRS*SPEEDLOOPTIME/60;//700*65535*POLEPAIRS*SPEEDLOOPTIME/60;//
+			SPEED = smc1.OmegaFltred*60/(65535*POLEPAIRS*SPEEDLOOPTIME);
 
-        }  // end of while           
+			if( SPREF > 950 )
+			SPREF = 950;
+			if( SPREF < 400 )
+			SPREF = 400;
+			W_REF = SPREF*65535*POLEPAIRS*SPEEDLOOPTIME/60;//700*65535*POLEPAIRS*SPEEDLOOPTIME/60;//
+		}  // end of while           
 	}   // End of Run Motor loop
-
-
 }
 
 //---------------------------------------------------------------------
@@ -372,10 +329,7 @@ s16 Qref  = REFINAMPS(0.5),Dref=0;;
 s16 AccumCurrentCnt=0;      //Current loop cal times
 void DoControl( void )
 {
-//	#ifndef	DMCI_DEMO
-//		ReadSignedADC0( &ReadADCParm );
-//	#endif
-    s32 Q_err,D_err;
+	s32 Q_err,D_err;
 
 	if( uGF.bit.OpenLoop )
 	{
@@ -394,9 +348,9 @@ void DoControl( void )
 			// VqRef & VdRef not used
 			CtrlParm.qVqRef = 0;
 			CtrlParm.qVdRef = 0;
- 			CtrlParm.qVelRef = 0;
-//			Startup_Lock = 0;
- 			Startup_Ramp = 0;
+			CtrlParm.qVelRef = 0;
+			//			Startup_Lock = 0;
+			Startup_Ramp = 0;
 			// Initialize SMC
 			smc1.Valpha = 0;
 			smc1.Ealpha = 0;
@@ -415,9 +369,6 @@ void DoControl( void )
 			smc1.Theta = 0;
 			smc1.Omega = 0;
 		}
-        
-        
-
 		// Enter initial torque demand in Amps using REFINAMPS() macro.
 		// Maximum Value for reference is defined by shunt resistor value and 
 		// differential amplifier gain. Use this equation to calculate 
@@ -450,15 +401,7 @@ void DoControl( void )
 		PIParmD.qInRef  = CtrlParm.qVdRef;//speed0;//	//Q15
 
 		CalcPI(&PIParmD); //???PID
-        ParkParm.qVd    = PIParmD.qOut;//-3440;//
-        
-//         PI_DTerm.err = PIParmD.qInMeas - PIParmD.qInRef;
-// 		ParkParm.qVd   -= Cal_PID(&PI_DTerm);	////???PID 
-//         if( ParkParm.qVd > PIParmD.qOutMax)
-//             ParkParm.qVd = PIParmD.qOutMax;	//Q15
-//         else if( ParkParm.qVd < PIParmD.qOutMin)
-//             ParkParm.qVd = PIParmD.qOutMin;	//Q15
-		
+		ParkParm.qVd    = PIParmD.qOut;//-3440;//
 		// Vector limitation
 		// Vd is not limited
 		// Vq is limited so the vector Vs is less than a maximum of 95%.
@@ -475,52 +418,17 @@ void DoControl( void )
 		PIParmQ.qInRef  = CtrlParm.qVqRef;//speed0;//
 
 		CalcPI(&PIParmQ);
-        ParkParm.qVq = PIParmQ.qOut;//5500;//2300;//
-        
-        if (Startup_Lock < MotorParm.LockTime)
-        {
-//            ParkParm.qVq = 2000;
-            ParkParm.qVd = 0;
-        }
-        
-//        PI_QTerm.err = PIParmQ.qInMeas - PIParmQ.qInRef;
-// 		ParkParm.qVq -= Cal_PID(&PI_QTerm);	//Q15
-//         if( ParkParm.qVq > PIParmQ.qOutMax)
-//             ParkParm.qVq = PIParmQ.qOutMax;	//Q15
-//         else if( ParkParm.qVq < PIParmQ.qOutMin)
-//             ParkParm.qVq = PIParmQ.qOutMin;	//Q15
+		ParkParm.qVq = PIParmQ.qOut;//5500;//2300;//
+
+		if (Startup_Lock < MotorParm.LockTime)
+		{
+		//            ParkParm.qVq = 2000;
+			ParkParm.qVd = 0;
+		}
 	}
 
 	else            // Closed Loop Vector Control
-	{
-		// Pressing one of the push buttons, speed reference (or torque reference
-		// if enabled) will be doubled. This is done to test transient response
-		// of the controllers
-// 		if( ++count == SPEEDDELAY ) 
-// 		{
-// 			#ifdef DMCI_DEMO
-// //				VelReq = FracMpy(SpeedReference, DQK) + (OMEGA10 + OMEGA1)/2.0;
-// 				VelReq = SpeedReference * DQK + Q15((OMEGA10 + OMEGA1)/2.0);
-// 			#else
-// 								//?????
-// 				#ifdef FUSHIBAO_MOTOR
-// 					if(ReadADCParm.qADValue >= (short)(55040*ReadADCParm.qK))
-// 						ReadADCParm.qADValue = (short)(55040*ReadADCParm.qK);  
-// 				#endif
-// //				VelReq = ((Q15(0.5)*SpeedV)>>12) + Q15((OMEGA10 + OMEGA1)/2.0);//Q15
-//  				VelReq = speed0;//0*(SpeedV << 3)+ Q15((OMEGA10 + OMEGA1)/2.0);//Q15
-// 			#endif
-//                     
-// 			if (CtrlParm.qVelRef <= VelReq) //normal speed
-// 			{
-// 				CtrlParm.qVelRef += SPEEDDELAY; 
-// 			}
-// 			else 
-// 				CtrlParm.qVelRef -= SPEEDDELAY ; 
-// 			count = 0;
-// 		}
-        
-
+	{        
 	// When it first transition from open to closed loop, this If statement is
 	// executed
 		if( uGF.bit.ChangeMode )
@@ -537,71 +445,56 @@ void DoControl( void )
 			// First time in closed loop, CtrlParm.qVqRef = PIParmW.qdSum >> 16
 			// assuming the error is zero at time zero. This is why we set 
 			// PIParmW.qdSum = (long)CtrlParm.qVqRef << 16.
-  			PIParmW.qdSum = (long)CtrlParm.qVqRef;//(long)CtrlParm.qVqRef << 16;
-            PIParmW.qOut = CtrlParm.qVqRef;
-//			Startup_Lock = 0;
-            CtrlParm.qVqRef = REFINAMPS(INITIALTORQUE);
-// 			//velocity reference ramp begins at minimum speed
-// 			CtrlParm.qVelRef = Q15(OMEGA0);
-            
-            TIMR_Start(TIMR2);
+			PIParmW.qdSum = (long)CtrlParm.qVqRef;//(long)CtrlParm.qVqRef << 16;
+			PIParmW.qOut = CtrlParm.qVqRef;
+			//			Startup_Lock = 0;
+			CtrlParm.qVqRef = REFINAMPS(INITIALTORQUE);
+			// 			//velocity reference ramp begins at minimum speed
+			// 			CtrlParm.qVelRef = Q15(OMEGA0);
+
+			TIMR_Start(TIMR2);
 
 		}  
 
-		// Check to see if new velocity information is available by comparing
-		// the number of interrupts per velocity calculation against the
-		// number of velocity count samples taken.  If new velocity info
-		// is available, calculate the new velocity value and execute
-		// the speed control loop.
+	// Check to see if new velocity information is available by comparing
+	// the number of interrupts per velocity calculation against the
+	// number of velocity count samples taken.  If new velocity info
+	// is available, calculate the new velocity value and execute
+	// the speed control loop.
 
 		if(AccumThetaCnt == 0)
 		{
 			// Execute the velocity control loop
 			PIParmW.qInMeas = smc1.OmegaFltred;	
 			PIParmW.qInRef  = W_REF;//CtrlParm.qVelRef;//
-            
+
 			CalcPI(&PIParmW);
-            
-//            CtrlParm.qVqRef = PIParmW.qOut;
 		}
-        
-//        if (Theta_error > _0_05DEG || Theta_error < (0- _0_05DEG))
-//                CtrlParm.qVqRef = REFINAMPS(INITIALTORQUE);
-//        else
-//        {
-//            if (uGF.bit.EnTorqueMod)
-//            {
-//                if( CtrlParm.qVqRef-1>Qref )
-//                     CtrlParm.qVqRef -= 1;
-//                else if( CtrlParm.qVqRef+1<Qref )
-//                     CtrlParm.qVqRef += 1;
-//            }
-//        }
-        
-        ++AccumCurrentCnt;
-        if( AccumCurrentCnt >= IRP_CURRENT_PERCALC )
-        {
-            AccumCurrentCnt = 0;
-            
-            if (Theta_error > _0_05DEG || Theta_error < (0- _0_05DEG))
-            {
-                CtrlParm.qVqRef = REFINAMPS(INITIALTORQUE);
-                PIParmW.qdSum = (long)CtrlParm.qVqRef;//(long)CtrlParm.qVqRef << 16;
-                PIParmW.qOut = CtrlParm.qVqRef;
-            }
-            else
-            {
-                if (uGF.bit.EnTorqueMod)
-                {
-                    CtrlParm.qVqRef = Qref;
-                }
-                else
-                {
-                    CtrlParm.qVqRef = PIParmW.qOut;
-                }
-            }
-        }
-        
+
+		++AccumCurrentCnt;
+		if( AccumCurrentCnt >= IRP_CURRENT_PERCALC )
+		{
+			AccumCurrentCnt = 0;
+
+			if (Theta_error > _0_05DEG || Theta_error < (0- _0_05DEG))
+			{
+				CtrlParm.qVqRef = REFINAMPS(INITIALTORQUE);
+				PIParmW.qdSum = (long)CtrlParm.qVqRef;//(long)CtrlParm.qVqRef << 16;
+				PIParmW.qOut = CtrlParm.qVqRef;
+			}
+			else
+			{
+				if (uGF.bit.EnTorqueMod)
+				{
+					CtrlParm.qVqRef = Qref;
+				}
+				else
+				{
+					CtrlParm.qVqRef = PIParmW.qOut;
+				}
+			}
+		}
+
 		// If the application is running in torque mode, the velocity
 		// control loop is bypassed.  The velocity reference value, read
 		// from the potentiometer, is used directly as the torque 
@@ -610,22 +503,22 @@ void DoControl( void )
 		// defined, uGF.bit.EnTorqueMod bit can be set in debug mode to enable
 		// torque mode as well.
 
-// 		if (uGF.bit.EnTorqueMod)
-// 			CtrlParm.qVqRef = CtrlParm.qVelRef;
+		// 		if (uGF.bit.EnTorqueMod)
+		// 			CtrlParm.qVqRef = CtrlParm.qVelRef;
 
 		// Get Id reference from Field Weakening table. If Field weakening
 		// is not needed or user does not want to enable this feature, 
 		// let NOMINALSPEEDINRPM be equal to FIELDWEAKSPEEDRPM in
 		// UserParms.h
-//        CtrlParm.qVdRef = FieldWeakening((CtrlParm.qVelRef ? CtrlParm.qVelRef:-CtrlParm.qVelRef));
- 		CtrlParm.qVdRef = FieldWeakening((W_REF ? W_REF:-W_REF));
+		//        CtrlParm.qVdRef = FieldWeakening((CtrlParm.qVelRef ? CtrlParm.qVelRef:-CtrlParm.qVelRef));
+		CtrlParm.qVdRef = FieldWeakening((W_REF ? W_REF:-W_REF));
 
 		// PI control for D
 		PIParmD.qInMeas = ParkParm.qId;
 		PIParmD.qInRef  = 0;//CtrlParm.qVdRef;//////speed1;//
-        
+
 		CalcPI(&PIParmD);
-        ParkParm.qVd = PIParmD.qOut;
+		ParkParm.qVd = PIParmD.qOut;
 
 		// If voltage ripple compensation flag is set, adjust the output
 		// of the D controller depending on measured DC Bus voltage. This 
@@ -639,72 +532,63 @@ void DoControl( void )
 		// switch mode power supply is used, Voltage Ripple Compensation is not
 		// recommended, since it will generate spikes on Vd and Vq, which can
 		// potentially make the controllers unstable.
-        
-// 		if(uGF.bit.EnVoltRipCo)
-// 			ParkParm.qVd = VoltRippleComp(PIParmD.qOut);
-// 		else
 
-//         PI_DTerm.err = PIParmD.qInMeas - PIParmD.qInRef;
-// 		ParkParm.qVd -= Cal_PID(&PI_DTerm);
-//         
-//         if( ParkParm.qVd > PIParmD.qOutMax)
-//             ParkParm.qVd = PIParmD.qOutMax;	//Q15
-//         else if( ParkParm.qVd < PIParmD.qOutMin)
-//             ParkParm.qVd = PIParmD.qOutMin;	//Q15
-    
+		// 		if(uGF.bit.EnVoltRipCo)
+		// 			ParkParm.qVd = VoltRippleComp(PIParmD.qOut);
+		// 		else
+
+		//         PI_DTerm.err = PIParmD.qInMeas - PIParmD.qInRef;
+		// 		ParkParm.qVd -= Cal_PID(&PI_DTerm);
+		//         
+		//         if( ParkParm.qVd > PIParmD.qOutMax)
+		//             ParkParm.qVd = PIParmD.qOutMax;	//Q15
+		//         else if( ParkParm.qVd < PIParmD.qOutMin)
+		//             ParkParm.qVd = PIParmD.qOutMin;	//Q15
+
 
 		// Vector limitation
 		// Vd is not limited
 		// Vq is limited so the vector Vs is less than a maximum of 95%. 
 		// Vs = SQRT(Vd^2 + Vq^2) < 0.95
 		// Vq = SQRT(0.95^2 - Vd^2)
- 
+
 		qVdSquared = (ParkParm.qVd * ParkParm.qVd);
- 		PIParmQ.qOutMax = sqrt_16(968992850 - qVdSquared);
+		PIParmQ.qOutMax = sqrt_16(968992850 - qVdSquared);
 		PIParmQ.qOutMin = -PIParmQ.qOutMax;//1000; //Qoutmin;////8000;
 
 		// PI control for Q
 		PIParmQ.qInMeas = ParkParm.qIq;
 		PIParmQ.qInRef  = CtrlParm.qVqRef;//Qref;//
-        
+
 		CalcPI(&PIParmQ);
-        ParkParm.qVq = PIParmQ.qOut;
-//        Q_err = ParkParm.qVq - PIParmQ.qOut;
-//        if( (Q_err >-200) && (Q_err <200) )//if( ((Q_err>0)&&(Q_err <200)) || ((Q_err<0)&&(Q_err >-200)) )
-//        {
-//            if( ParkParm.qVq < PIParmQ.qOut )
-//                ParkParm.qVq += 1;
-//            else if( ParkParm.qVq > PIParmQ.qOut )
-//                ParkParm.qVq -= 1;
-//        }
-//        else
-//            ParkParm.qVq = PIParmQ.qOut;
+		ParkParm.qVq = PIParmQ.qOut;
+
 
 		// If voltage ripple compensation flag is set, adjust the output
 		// of the Q controller depending on measured DC Bus voltage
-// 		if(uGF.bit.EnVoltRipCo)
-// 			ParkParm.qVq = VoltRippleComp(PIParmQ.qOut);
-// 		else
+		// 		if(uGF.bit.EnVoltRipCo)
+		// 			ParkParm.qVq = VoltRippleComp(PIParmQ.qOut);
+		// 		else
 
-//         PI_QTerm.err = PIParmQ.qInMeas - PIParmQ.qInRef;
-// 		ParkParm.qVq -= Cal_PID(&PI_QTerm);
-//         
-//         if( ParkParm.qVq > PIParmQ.qOutMax)
-//             ParkParm.qVq = PIParmQ.qOutMax;	//Q15
-//         else if( ParkParm.qVq < PIParmQ.qOutMin)
-//             ParkParm.qVq = PIParmQ.qOutMin;	//Q15
+		//         PI_QTerm.err = PIParmQ.qInMeas - PIParmQ.qInRef;
+		// 		ParkParm.qVq -= Cal_PID(&PI_QTerm);
+		//         
+		//         if( ParkParm.qVq > PIParmQ.qOutMax)
+		//             ParkParm.qVq = PIParmQ.qOutMax;	//Q15
+		//         else if( ParkParm.qVq < PIParmQ.qOutMin)
+		//             ParkParm.qVq = PIParmQ.qOutMin;	//Q15
 
 		// Limit, if motor is stalled, stop motor commutation
 		if(smc1.OmegaFltred  < 30 )//&& (ParkParm.qIa>15000 || ParkParm.qIa<-15000) )
 		{
-//             PWMG->CHEN &= ~0x3f;
-//   			uGF.bit.RunMotor = 0;
-// //             Run_nomal = 0;
-//             
-//             TIMR_Start(TIMR2);
+		//             PWMG->CHEN &= ~0x3f;
+		//   			uGF.bit.RunMotor = 0;
+		// //             Run_nomal = 0;
+		//             
+		//             TIMR_Start(TIMR2);
 		}
-        
-//         timecout = (0xffffff - SysTick->VAL)/44;
+
+	//         timecout = (0xffffff - SysTick->VAL)/44;
 	}
 }		
 
@@ -737,125 +621,99 @@ int counum=0;
 s16 adc_flag=0;
 void IRQ0_Handler(void)             //PWM Interrupt
 {
-//    SysTick_Config(0xffffff);
-	
-//    DIV_Div((0xffffff - SysTick->VAL), 48);    
-//    SysTick_Config(0xffffff);
-//    while(DIV_Div_IsBusy());
-//    DIV_Div_Result(&timecout, &rem);
-    
-//    TIMR_Start(TIMR0);
-	
-//	iADCisrCnt++;
+	//    SysTick_Config(0xffffff);
+		
+	//    DIV_Div((0xffffff - SysTick->VAL), 48);    
+	//    SysTick_Config(0xffffff);
+	//    while(DIV_Div_IsBusy());
+	//    DIV_Div_Result(&timecout, &rem);
 
-    if( uGF.bit.RunMotor )
-    {
-//SysTick_Config(0xffffff);
-        
-//        if (Startup_Lock < MotorParm.LockTime)
-//        {
-//			Startup_Lock += 1;	// This variable is incremented until
-//            stas = 0;
-//        }
-//        else
-//        {
-            // Calculate qIa,qIb
-            MeasCompCurr(&ParkParm,&MeasCurrParm,ADIa,ADIb);   //2us
+	//    TIMR_Start(TIMR0);
 
-            // Calculate commutation angle using estimator
-            CalculateParkAngle();	//26us
+	//	iADCisrCnt++;
 
-            // Calculate qId,qIq from qSin,qCos,qIa,qIb
-            ClarkePark(&ParkParm);  //2us
+	if( uGF.bit.RunMotor )
+	{
+		//SysTick_Config(0xffffff);
 
-            // Calculate control values
-            DoControl();	   //11us->8us
+		MeasCompCurr(&ParkParm,&MeasCurrParm,ADIa,ADIb);   //2us
 
-            // Calculate qSin,qCos from qAngle
-            SinCos(&ParkParm);  //4us
+		// Calculate commutation angle using estimator
+		CalculateParkAngle();	//26us
 
-            // Calculate qValpha, qVbeta from qSin,qCos,qVd,qVq
-            InvPark(&ParkParm);   //2us  
+		// Calculate qId,qIq from qSin,qCos,qIa,qIb
+		ClarkePark(&ParkParm);  //2us
 
-            // Calculate Vr1,Vr2,Vr3 from qValpha, qVbeta 
-            CalcRefVec(&ParkParm,&SVGenParm);  //2us
+		// Calculate control values
+		DoControl();	   //11us->8us
 
-            // Calculate and set PWM duty cycles from Vr1,Vr2,Vr3
-            CalcSVGen(&SVGenParm); 	//19->4us 
-//        }
-    } 
-//    timecout = 0xffffff - SysTick->VAL;           	
-//    DIV_Div((0xffffff - SysTick->VAL), 48);  
-//    while(DIV_Div_IsBusy());
-//    DIV_Div_Result(&timecout, &rem);
-	
+		// Calculate qSin,qCos from qAngle
+		SinCos(&ParkParm);  //4us
+
+		// Calculate qValpha, qVbeta from qSin,qCos,qVd,qVq
+		InvPark(&ParkParm);   //2us  
+
+		// Calculate Vr1,Vr2,Vr3 from qValpha, qVbeta 
+		CalcRefVec(&ParkParm,&SVGenParm);  //2us
+
+		// Calculate and set PWM duty cycles from Vr1,Vr2,Vr3
+		CalcSVGen(&SVGenParm); 	//19->4us 
+	} 
+	//    timecout = 0xffffff - SysTick->VAL;           	
+	//    DIV_Div((0xffffff - SysTick->VAL), 48);  
+	//    while(DIV_Div_IsBusy());
+	//    DIV_Div_Result(&timecout, &rem);
+
 	PWMG->IRAWST = (0x01 << PWMG_IRAWST_NEWP0A_Pos);//PWMG->IRAWST |= ((0x01 << PWMG_IRAWST_HEND0A_Pos) | (0x01 << PWMG_IRAWST_HEND1A_Pos)) ;     
 }
 
 u16 speedmax = 790;
 void IRQ1_Handler(void)         //Timer Interrupt
 {
-//    SysTick_Config(0xffffff);
+	//    SysTick_Config(0xffffff);
 
-    if( TIMRG->IF & TIMRG_IF_TIMR0_Msk )    //Timer0 Interrupt      //单次模式
-    {
-//        GPIO_InvBit(GPIOE,PIN0);
-        ADC->START = (0x01 << ADC_START_GO_Pos);	//Turn on A/D module	
-        while( adc_flag==0 )
-            adc_flag = (ADC->CH[4].STAT & ADC_STAT_EOC_Msk);
-        ADC->CH[4].STAT = (1 << ADC_STAT_EOC_Pos);  //Clear status
-        
-//        GPIO_InvBit(GPIOE,PIN0);
-        
-        ADIa = ADC->CH[AD_Ia].DATA & ADC_DATA_VALUE_Msk;    //Channel 3
-        ADIb = ADC->CH[AD_Ib].DATA & ADC_DATA_VALUE_Msk;//Channel 4
+	if( TIMRG->IF & TIMRG_IF_TIMR0_Msk )    //Timer0 Interrupt      //单次模式
+	{
+		//        GPIO_InvBit(GPIOE,PIN0);
+		ADC->START = (0x01 << ADC_START_GO_Pos);	//Turn on A/D module	
+		while( adc_flag==0 )
+		adc_flag = (ADC->CH[4].STAT & ADC_STAT_EOC_Msk);
+		ADC->CH[4].STAT = (1 << ADC_STAT_EOC_Pos);  //Clear status
 
-        TIMR_Stop(TIMR0);
-        TIMR_INTClr(TIMR0);
-    }
+		//        GPIO_InvBit(GPIOE,PIN0);
+
+		ADIa = ADC->CH[AD_Ia].DATA & ADC_DATA_VALUE_Msk;    //Channel 3
+		ADIb = ADC->CH[AD_Ib].DATA & ADC_DATA_VALUE_Msk;//Channel 4
+
+		TIMR_Stop(TIMR0);
+		TIMR_INTClr(TIMR0);
+	}
     
-    if( TIMRG->IF & TIMRG_IF_TIMR1_Msk )    //Timer1 Interrupt
-    {   
-        VDC_status_tiems++;
-        if( VDC_status_tiems >= 2 )
-        {
-            VDC_status = 1;       
-            TIMR_Stop(TIMR1);
-        }
-        TIMR_INTClr(TIMR1);
-    }
+	if( TIMRG->IF & TIMRG_IF_TIMR1_Msk )    //Timer1 Interrupt
+	{   
+		VDC_status_tiems++;
+		if( VDC_status_tiems >= 2 )
+		{
+			VDC_status = 1;       
+			TIMR_Stop(TIMR1);
+		}
+		TIMR_INTClr(TIMR1);
+	}
     
-    if( TIMRG->IF & TIMRG_IF_TIMR2_Msk )    //Timer2 Interrupt
-    {
-        
-        ++reset_delaytimes;
-        if( reset_delaytimes >= 10 )
-        {
-            reset_delaytimes = 0;
-            SPREF += 50;
-            if( SPREF >=speedmax )
-                SPREF = speedmax;
-        }
-        if( SPREF >=speedmax )
-            GPIO_InvBit(GPIOB,PIN1);
-//        if( reset_delaytimes >= 3 )
-//        {
-//            ParkParm.qAngle = 0;
-//            reset_delaytimes = 0;
-//            uGF.bit.RunMotor = 1;
-//            uGF.bit.OpenLoop = 1;
-//            Startup_Ramp = 0;
-//            
-//            PIParmD.qdSum = 0;
-//            PIParmQ.qdSum = 0;
-//            PIParmW.qdSum = 0;
-//            
-//            PWMG->CHEN |= 0x3f;
-//            
-//            TIMR_Stop(TIMR2);
-//        }
-        TIMR_INTClr(TIMR2);
-    }
+	if( TIMRG->IF & TIMRG_IF_TIMR2_Msk )    //Timer2 Interrupt
+	{
+		++reset_delaytimes;
+		if( reset_delaytimes >= 10 )
+		{
+			reset_delaytimes = 0;
+			SPREF += 50;
+			if( SPREF >=speedmax )
+				SPREF = speedmax;
+		}
+		if( SPREF >=speedmax )
+			GPIO_InvBit(GPIOB,PIN1);
+		TIMR_INTClr(TIMR2);
+	}
 
 //    DIV_Div((0xffffff - SysTick->VAL), 48);  
 //    while(DIV_Div_IsBusy());
@@ -866,36 +724,35 @@ u8 SP_High,SP_Low;
 u8 s1,s2,s3;
 void IRQ2_Handler(void)
 {
-    SP_High = UART_ReadByte(UART0);
-    SP_Low = UART_ReadByte(UART0);
-    SPREF = (SP_High&0xf)*100 + (SP_Low>>4)*10 + (SP_Low&0xf);
+	SP_High = UART_ReadByte(UART0);
+	SP_Low = UART_ReadByte(UART0);
+	SPREF = (SP_High&0xf)*100 + (SP_Low>>4)*10 + (SP_Low&0xf);
 }
 
 
 void IRQ5_Handler(void)
 {	
-    SpeedTotal += ADC->CH[AD_Speed].DATA & ADC_DATA_VALUE_Msk;//Channel 2
-    Speedtimes++;
-    if( Speedtimes >= 4095 )
-    {
-        SpeedV = SpeedTotal>>12;
-        SpeedTotal = 0;
-        Speedtimes = 0;
-    }
+	SpeedTotal += ADC->CH[AD_Speed].DATA & ADC_DATA_VALUE_Msk;//Channel 2
+	Speedtimes++;
+	if( Speedtimes >= 4095 )
+	{
+		SpeedV = SpeedTotal>>12;
+		SpeedTotal = 0;
+		Speedtimes = 0;
+	}
+
+	VdcTotal += ADC->CH[AD_Vdc].DATA & ADC_DATA_VALUE_Msk;//Channel 0
+	Vdctimes++;
+	if( Vdctimes >= 4095 )
+	{
+		TargetDCbus = VdcTotal>>12;
+		VdcTotal = 0;
+		Vdctimes = 0;
+	}
     
-    VdcTotal += ADC->CH[AD_Vdc].DATA & ADC_DATA_VALUE_Msk;//Channel 0
-    Vdctimes++;
-    if( Vdctimes >= 4095 )
-    {
-        TargetDCbus = VdcTotal>>12;
-        VdcTotal = 0;
-        Vdctimes = 0;
-    }
-    
-    ADIa = ADC->CH[AD_Ia].DATA & ADC_DATA_VALUE_Msk;    //Channel 3
-    ADIb = ADC->CH[AD_Ib].DATA & ADC_DATA_VALUE_Msk;//Channel 4
-    
-	
+	ADIa = ADC->CH[AD_Ia].DATA & ADC_DATA_VALUE_Msk;    //Channel 3
+	ADIb = ADC->CH[AD_Ib].DATA & ADC_DATA_VALUE_Msk;//Channel 4
+
 	ADC_IntEOCClr(ADC, ADC_CH4);	//清除中断标志
     
 }
@@ -904,14 +761,14 @@ bool SetupParm(void)
 {
 	u32 Ad0Sum = 0,Ad1Sum = 0,Ad2Sum = 0;	
 	static u8 AdCn = 0;
-    PWM_InitStructure  PWM_initStruct;
-    ADC_InitStructure ADC_initStruct;
+	PWM_InitStructure  PWM_initStruct;
+	ADC_InitStructure ADC_initStruct;
     
 	// Setup required parameters
-    
-    PWM_per = LOOPINTCY;
-    T0_t = LOOPINTCY/2;
-    PWM_CLOCK_CYCLE = LOOPINTCY/2;						//----pwm_cycle,????????????????
+
+	PWM_per = LOOPINTCY;
+	T0_t = LOOPINTCY/2;
+	PWM_CLOCK_CYCLE = LOOPINTCY/2;						//----pwm_cycle,????????????????
 	delta_startup = DELTA_STARTUP_RAMP;
 
 	// ============= Open Loop ======================
@@ -920,8 +777,8 @@ bool SetupParm(void)
 	// Then, * 65536 which is a right shift done in "void CalculateParkAngle(void)"
 	// ParkParm.qAngle += (int)(Startup_Ramp >> 16);
 	MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS* 65536* LOOPTIMEINSEC * 65536/ 60.0;//   
-//     MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS * LOOPTIMEINSEC * 32767 * 32767 / 60.0;
-// 	MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS * LOOPTIMEINSEC  * 65536/ 60.0;
+	//     MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS * LOOPTIMEINSEC * 32767 * 32767 / 60.0;
+	// 	MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS * LOOPTIMEINSEC  * 65536/ 60.0;
 	MotorParm.LockTime = LOCKTIME;
 
 	// Scaling constants: Determined by calibration or hardware design.
@@ -935,52 +792,52 @@ bool SetupParm(void)
 	SVGenParm.iPWMPeriod = PWM_per;      
 
 	// ============= Motor PWM ======================
-    PWM_initStruct.clk_div = PWM_CLKDIV_1;		
-	
+	PWM_initStruct.clk_div = PWM_CLKDIV_1;		
+
 	PWM_initStruct.mode = PWM_MODE_COMPL_CALIGN;		//A路和B路为一路互补输出，中心对齐		
 	PWM_initStruct.cycleA = PWM_per/2;				
 	PWM_initStruct.hdutyA = PWM_per/6;
-    PWM_initStruct.deadzoneA = DDEADTIME;
+	PWM_initStruct.deadzoneA = DDEADTIME;
 	PWM_initStruct.initLevelA = 0;
 	PWM_initStruct.cycleB = PWM_per/2;		
 	PWM_initStruct.hdutyB = PWM_per/2 - PWM_per/6; 
-    PWM_initStruct.deadzoneB = DDEADTIME;
+	PWM_initStruct.deadzoneB = DDEADTIME;
 	PWM_initStruct.initLevelB = 1;
 	PWM_initStruct.HEndAIEn = 0;
 	PWM_initStruct.NCycleAIEn = 1;
 	PWM_initStruct.HEndBIEn = 0;
 	PWM_initStruct.NCycleBIEn = 0;	
 	PWM_Init(PWM0, &PWM_initStruct);
-    
-    PWM_initStruct.cycleA = PWM_per / 2;				
+
+	PWM_initStruct.cycleA = PWM_per / 2;				
 	PWM_initStruct.hdutyA = 1;
-    PWM_initStruct.cycleB = PWM_per/2;		
+	PWM_initStruct.cycleB = PWM_per/2;		
 	PWM_initStruct.hdutyB = PWM_per/2 - 1; 
-    PWM_initStruct.NCycleAIEn = 0;
-    PWM_Init(PWM1, &PWM_initStruct);
-    PWM_Init(PWM2, &PWM_initStruct);
-    
-    PWMG->ADTRG0A = 0;
-    PWMG->ADTRG0A |= (0<<16);   //1后半周期生效，0前半周期生效
-    PWMG->ADTRG0A |= (u32)(LOOPINTCY/2-100) ;    //(0x00 & 0xffff);     
-    PWMG->ADTRG0A |= (1<<17);   //使能PWM触发	
+	PWM_initStruct.NCycleAIEn = 0;
+	PWM_Init(PWM1, &PWM_initStruct);
+	PWM_Init(PWM2, &PWM_initStruct);
+
+	PWMG->ADTRG0A = 0;
+	PWMG->ADTRG0A |= (0<<16);   //1后半周期生效，0前半周期生效
+	PWMG->ADTRG0A |= (u32)(LOOPINTCY/2-100) ;    //(0x00 & 0xffff);     
+	PWMG->ADTRG0A |= (1<<17);   //使能PWM触发	
 
     
-    IRQ_Connect(IRQ0_15_PWM, IRQ0_IRQ, 1);      //set PWM IRQ priority
+	IRQ_Connect(IRQ0_15_PWM, IRQ0_IRQ, 1);      //set PWM IRQ priority
 
 	// Center aligned PWM.
 	// Note: The PWM period is set to dLoopInTcy/2 but since it counts up and 
 	// and then down => the interrupt flag is set to 1 at zero => actual 
 	// interrupt period is dLoopInTcy
 
-    TIMR_Init(TIMR0, TIMR_MODE_TIMER, T0_t, 1);
-    TIMR_Init(TIMR1, TIMR_MODE_TIMER, 48000000, 1);
-    TIMR_Init(TIMR2, TIMR_MODE_TIMER, 48000000, 1);
-    IRQ_Connect(IRQ0_15_TIMR, IRQ1_IRQ, 0);      //set TIMR IRQ priority
+	TIMR_Init(TIMR0, TIMR_MODE_TIMER, T0_t, 1);
+	TIMR_Init(TIMR1, TIMR_MODE_TIMER, 48000000, 1);
+	TIMR_Init(TIMR2, TIMR_MODE_TIMER, 48000000, 1);
+	IRQ_Connect(IRQ0_15_TIMR, IRQ1_IRQ, 0);      //set TIMR IRQ priority
 	
 
-// ============= ADC - Measure Current & Pot ======================
-    ADC_initStruct.clk_src = ADC_CLKSRC_HRC_DIV4;
+	// ============= ADC - Measure Current & Pot ======================
+	ADC_initStruct.clk_src = ADC_CLKSRC_HRC_DIV4;
 	ADC_initStruct.channels = ADC_CH0 | ADC_CH3 | ADC_CH4;
 	ADC_initStruct.trig_src = ADC_TRIGSRC_SW;
 	ADC_initStruct.Continue = 1;					//连续模式
@@ -988,13 +845,13 @@ bool SetupParm(void)
 	ADC_initStruct.OVF_IEn = 0;
 	ADC_Init(ADC, &ADC_initStruct);					//配置ADC	
 	ADC_Open(ADC);									//使能ADC
+
+	TIMR_Start(TIMR1);  //开启1s定时，待电压稳定后再检测电压
     
-    TIMR_Start(TIMR1);  //开启1s定时，待电压稳定后再检测电压
-    
-    while( VDC_status == 0 );
-    
-    ADC_Start(ADC);									//start ADC
- 
+	while( VDC_status == 0 );
+
+	ADC_Start(ADC);									//start ADC
+
 	// Initial Current offsets
 	while(1)
 	{
@@ -1007,22 +864,20 @@ bool SetupParm(void)
 				Ad1Sum += ADC->CH[AD_Ib].DATA & ADC_DATA_VALUE_Msk;
 				Ad2Sum += ADC->CH[AD_Vdc].DATA & ADC_DATA_VALUE_Msk; 
 			}
-					
+
 		}
 		else if(AdCn >= 160)
 		{
 			InitMeasCompCurr(&MeasCurrParm,Ad0Sum >> 2, Ad1Sum >> 2);
 			// Target DC Bus, without sign.
 			TargetDCbus = Ad2Sum >> 2;
-		
+
 			break;
 		}
-			
-	}	
-      
-    
 
-    ADC_initStruct.clk_src = ADC_CLKSRC_HRC_DIV4;
+	}	
+
+	ADC_initStruct.clk_src = ADC_CLKSRC_HRC_DIV4;
 	ADC_initStruct.channels = ADC_CH0| ADC_CH2| ADC_CH3 | ADC_CH4;
 	ADC_initStruct.trig_src = ADC_TRIGSRC_PWM;//ADC_TRIGSRC_SW;
 	ADC_initStruct.Continue = 0;					//单次模式
@@ -1031,8 +886,8 @@ bool SetupParm(void)
 	ADC_Init(ADC, &ADC_initStruct);					//配置ADC	
 	ADC_Open(ADC);									//使能ADC
 
-    IRQ_Connect(IRQ0_15_ADC, IRQ5_IRQ, 0);
-                  
+	IRQ_Connect(IRQ0_15_ADC, IRQ5_IRQ, 0);
+	          
 	return FALSE;
 }
 
@@ -1043,36 +898,32 @@ void CountInputFreq_Init(void)
 	IRQ_Connect(IRQ0_15_GPIOE2, IRQ4_IRQ, 0);	
 	EXTI_Open(GPIOE, PIN2);
     
-    TIMR_Init(TIMR3, TIMR_MODE_TIMER, 48000000, 0);
+    TIMR_Init(TIMR3, TIMR_MODE_TIMER, 96000000, 0);
 }
+
 
 void IRQ4_Handler(void)
 {
+	u32 Timval;
+
 	EXTI_Clear(GPIOE, PIN2);
 
-    InpFreqCnt.InputFreqcnt++;
-    if( InpFreqCnt.InputFreqcnt%2 == 0 )
-    {
-        if( InpFreqCnt.CountStartFlag == 0 )        //定时器未开始计数
-        {
-            TIMR_Start(TIMR3);
-            InpFreqCnt.CountStartFlag = 1;          
-        }
-            
-    }            
-    else if( InpFreqCnt.InputFreqcnt%2 == 1 ) 
-    {
-        if( InpFreqCnt.CountStartFlag == 1 )        //定时器开始计数
-        {
-            TIMR_Stop(TIMR3);
-            InpFreqCnt.Timercnt = TIMR3->CVAL;      //获取定时器计数值
-            InpFreqCnt.CountStartFlag = 2;          //停止定时器计数
-        }
-    }
+	if(++InpFreqCnt.InputFreqcnt >= INPFRENUM)//必须满足最低转速时的计算时间
+	{
+		Timval = TIMR3->CVAL;
+		TIMR_Stop(TIMR3);
+		InpFreqCnt.Timercnt = 96000000 - Timval;      //获取定时器计数值
+
+
+		InpFreqCnt.CountStartFlag = 2;          //停止定时器计数	
+		InpFreqCnt.InputFreqcnt = 0;
+	}
+	else if(InpFreqCnt.InputFreqcnt <= 1)
+	{	
+		TIMR3->LDVAL = 96000000; //TIMR_Init(TIMR3, TIMR_MODE_TIMER, 96000000, 0);//2S周期
+		TIMR_Start(TIMR3);
+	}
 }
-
-
-
 
 void CalculateParkAngle (void)
 {
@@ -1080,75 +931,72 @@ void CalculateParkAngle (void)
 	smc1.Ibeta = RIGHSHIFT15(ParkParm.qIbeta*175);//ParkParm.qIbeta;////RIGHSHIFT15(ParkParm.qIbeta*9929);
 	smc1.Valpha = RIGHSHIFT15(ParkParm.qValpha*32767);//ParkParm.qValpha;//
 	smc1.Vbeta = RIGHSHIFT15(ParkParm.qVbeta*32767);//ParkParm.qVbeta;//
-    
-    Loopflag = uGF.bit.OpenLoop;
-    
+
+	Loopflag = uGF.bit.OpenLoop;
+
 	SMC_Position_Estimation(&smc1);
-	
+
 	if(uGF.bit.OpenLoop)	
 	{
-        if (Startup_Lock < MotorParm.LockTime)
-        {
+		if (Startup_Lock < MotorParm.LockTime)
+		{
 			Startup_Lock += 1;	// This variable is incremented until
-            stas = 0;
-        }
-				// lock time expires, them the open loop
-				// ramp begins
+			stas = 0;
+		}
+		// lock time expires, them the open loop
+		// ramp begins
 		else if (Startup_Ramp < MotorParm.EndSpeed)
-        {
-				// Ramp starts, and increases linearly until EndSpeed is reached.
-				// After ramp, estimated theta is used to commutate motor.
-            Startup_Ramp += DELTA_STARTUP_RAMP;//delta_startup;
-            stas = 1;
-        }
+		{
+			// Ramp starts, and increases linearly until EndSpeed is reached.
+			// After ramp, estimated theta is used to commutate motor.
+			Startup_Ramp += DELTA_STARTUP_RAMP;//delta_startup;
+			stas = 1;
+		}
 		else
 		{
-            // This section enables closed loop, right after open loop ramp.
-            //?????????,?????????,??????			
-            uGF.bit.ChangeMode = 1;
-            uGF.bit.OpenLoop = 0;
+			// This section enables closed loop, right after open loop ramp.
+			//?????????,?????????,??????			
+			uGF.bit.ChangeMode = 1;
+			uGF.bit.OpenLoop = 0;
 
-            // Difference between force angle and estimated theta is saved,
-            // so a soft transition is made when entering closed loop.
-            Theta_error = ParkParm.qAngle - smc1.Theta;            
-            stas = 2;
-
+			// Difference between force angle and estimated theta is saved,
+			// so a soft transition is made when entering closed loop.
+			Theta_error = ParkParm.qAngle - smc1.Theta;            
+			stas = 2;
 		}		
 		ParkParm.qAngle += (Startup_Ramp>>16);
 	}
 	else
 	{
-	// This value is used to transition from open loop to closed looop. 
-	// At the end of open loop ramp, there is a difference between 
-	// forced angle and estimated angle. This difference is stored in 
-	// Theta_error, and added to estimated theta (smc1.Theta) so the 
-	// effective angle used for commutating the motor is the same at 
-	// the end of open loop, and at the begining of closed loop. 
-	// This Theta_error is then substracted from estimated theta 
-	// gradually in increments of 0.05 degrees until the error is less
-	// than 0.05 degrees.
+		// This value is used to transition from open loop to closed looop. 
+		// At the end of open loop ramp, there is a difference between 
+		// forced angle and estimated angle. This difference is stored in 
+		// Theta_error, and added to estimated theta (smc1.Theta) so the 
+		// effective angle used for commutating the motor is the same at 
+		// the end of open loop, and at the begining of closed loop. 
+		// This Theta_error is then substracted from estimated theta 
+		// gradually in increments of 0.05 degrees until the error is less
+		// than 0.05 degrees.
 
-        if( Run_nomal == 1 )
-        {
-            ParkParm.qAngle = smc1.Theta + Theta_error;     
-        }
+		if( Run_nomal == 1 )
+		{
+			ParkParm.qAngle = smc1.Theta + Theta_error;     
+		}
 
-        if (Theta_error > _0_05DEG ||Theta_error < (0- _0_05DEG))
-        {
-                if (Theta_error < 0)
-                        Theta_error += _0_05DEG;
-                else
-                        Theta_error -= _0_05DEG;
-        }
+		if (Theta_error > _0_05DEG ||Theta_error < (0- _0_05DEG))
+		{
+			if (Theta_error < 0)
+			Theta_error += _0_05DEG;
+			else
+			Theta_error -= _0_05DEG;
+		}
 
 	}
 	return;
 }
 
-
 void SetupControlParameters(void)
 {
-
 	// ============= PI D Term ===============      
 	PIParmD.qKp = DKP;       
 	PIParmD.qKi = DKI;              
@@ -1188,10 +1036,10 @@ void SetupControlParameters(void)
 	PI_WTerm.Kp= WKP;
 	PI_WTerm.Ki = WKI;
 	PI_WTerm.Kd= 0;
-    
-    
-//      Kself_omega0 = Q15(OMEGA0 * _PI / IRP_PERCALC); //2 * OMEGA0 * PI_INT / IRP_PERCALC;//
-     IRP_percalc = IRP_PERCALC;
+
+
+	//      Kself_omega0 = Q15(OMEGA0 * _PI / IRP_PERCALC); //2 * OMEGA0 * PI_INT / IRP_PERCALC;//
+	IRP_percalc = IRP_PERCALC;
 	return;
 }
 
@@ -1236,27 +1084,33 @@ s32 VoltRippleComp(s32 Vdq)
 	DivTemp = (TargetDCbus - DCbus)/DCbus;
 	if (TargetDCbus > DCbus)
 	//	CompVdq = Vdq + FracMpy(FracDiv(TargetDCbus - DCbus, DCbus), Vdq);
-		CompVdq = Vdq + DivTemp * Vdq;
+	CompVdq = Vdq + DivTemp * Vdq;
 	else if (DCbus > TargetDCbus)
 	// 	CompVdq = FracMpy(FracDiv(TargetDCbus, DCbus), Vdq);
-		CompVdq = DivTemp * Vdq;
+	CompVdq = DivTemp * Vdq;
 	else
-		CompVdq = Vdq;
+	CompVdq = Vdq;
 
 	return CompVdq;
 }
 
 void CountInputFreq(void)       //计算输入频率
 {
-    s32 Di, Vi, Qi, Ri;
-    
-    if( InpFreqCnt.CountStartFlag == 2 )
-    {
-        Di = 48000000;
-        Vi = InpFreqCnt.Timercnt;      
-        DIV_Fun(Di, Vi, &Qi, &Ri);
-        
-        InpFreqCnt.InputFreq = Qi;
-    }
+	s32 Di, Vi, Qi, Ri;
+
+	Di = INPFRENUM*(48000000>>10);
+	Vi = InpFreqCnt.Timercnt>>10;      
+	Qi = Di/Vi;
+	InpFreqCnt.InputFreq = Qi;
+}
+void calculate_rotate_speed(InpFreq *pfreq)
+{
+	if( InpFreqCnt.CountStartFlag == 2 )
+	{
+		InpFreqCnt.CountStartFlag = 0;
+		CountInputFreq();
+
+		SPREF = pfreq->InputFreq * 60;
+	}
 }
 

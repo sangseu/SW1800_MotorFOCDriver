@@ -18,7 +18,7 @@ typedef unsigned long ulong;
 
 typedef unsigned char  bool;
 
-//#define DIV_RATIO   32767
+#define INPFRENUM 700
 
 
 
