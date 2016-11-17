@@ -13,11 +13,11 @@
 
 typedef struct 
 {
-    s16   iPWMPeriod;
+	s16   iPWMPeriod;
 
-    s16   qVr1;		
-    s16   qVr2;		
-    s16   qVr3;		
+	s16   qVr1;		
+	s16   qVr2;		
+	s16   qVr3;		
 } tSVGenParm;
 
 void CalcRefVec(tParkParm *pParkparm,tSVGenParm *pSVGenParm);

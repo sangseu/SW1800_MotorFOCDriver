@@ -5,7 +5,6 @@ typedef struct
 {
 	u32 LockTime;
 	long EndSpeed;
-
 }tMotorParm;
 
 extern tMotorParm MotorParm;

@@ -11,23 +11,22 @@
 
 typedef struct 
 {
-    s16   qAngle;
-    s16   qSin;
-    s16   qCos;
-    s16   qIa;
-    s16   qIb;
-    s16   qIalpha;
-    s16   qIbeta;
-    s16   qId;
-    s16   qIq;
-    s16   qVd;
-    s16   qVq;
-    s16   qValpha;
-    s16   qVbeta;
-    s16   qV1;
-    s16   qV2;
-    s16   qV3;
-
+	s16   qAngle;
+	s16   qSin;
+	s16   qCos;
+	s16   qIa;
+	s16   qIb;
+	s16   qIalpha;
+	s16   qIbeta;
+	s16   qId;
+	s16   qIq;
+	s16   qVd;
+	s16   qVq;
+	s16   qValpha;
+	s16   qVbeta;
+	s16   qV1;
+	s16   qV2;
+	s16   qV3;
 } tParkParm;
 
 u32 sqrt_16(u32 radicand);
@@ -37,7 +36,4 @@ void InvPark(tParkParm *pParkparm);     // Calculate qValpha, qVbeta from qSin,q
 
 extern tParkParm ParkParm;
 #endif
-
-
-
 

@@ -7,11 +7,11 @@ tFdWeakParm	FdWeakParm;
 
 s32 FieldWeakening(s32 qMotorSpeed)
 {
-    s32 Di, Vi, Qi, Ri;
-    /* if the speed is less than one for activating the FW */
+	s32 Di, Vi, Qi, Ri;
+	/* if the speed is less than one for activating the FW */
 	if (qMotorSpeed <= FdWeakParm.qFwOnSpeed)
 	{
-		/* set Idref as first value in magnetizing curve */
+	/* set Idref as first value in magnetizing curve */
 		FdWeakParm.qIdRef = FdWeakParm.qFwCurve[0];
 	} 
 	else
@@ -20,14 +20,14 @@ s32 FieldWeakening(s32 qMotorSpeed)
 		// we have a field weakening table of 16 (4 bits) values, and the result
 		// of the division is 15 bits (16 bits, with no sign). So
 		// Result (15 bits) >> 11 -> Index (4 bits).
-//		FdWeakParm.qFWPercentage = FracDiv((qMotorSpeed-FdWeakParm.qFwOnSpeed), \
-//							   Q15(OMEGAFIELDWK-OMEGANOMINAL+1));
-        Di = qMotorSpeed-FdWeakParm.qFwOnSpeed;
-        Vi = OMEGAFIELDWK-OMEGANOMINAL;
-        DIV_Fun(Di, Vi, &Qi, &Ri);
-        FdWeakParm.qFWPercentage = Qi;
-//		FdWeakParm.qFWPercentage = \
-//		(qMotorSpeed-FdWeakParm.qFwOnSpeed)/(OMEGAFIELDWK-OMEGANOMINAL);
+		//		FdWeakParm.qFWPercentage = FracDiv((qMotorSpeed-FdWeakParm.qFwOnSpeed), \
+		//							   Q15(OMEGAFIELDWK-OMEGANOMINAL+1));
+		Di = qMotorSpeed-FdWeakParm.qFwOnSpeed;
+		Vi = OMEGAFIELDWK-OMEGANOMINAL;
+		DIV_Fun(Di, Vi, &Qi, &Ri);
+		FdWeakParm.qFWPercentage = Qi;
+		//		FdWeakParm.qFWPercentage = \
+		//		(qMotorSpeed-FdWeakParm.qFwOnSpeed)/(OMEGAFIELDWK-OMEGANOMINAL);
 
 		FdWeakParm.qIndex = FdWeakParm.qFWPercentage >> 11;
 
@@ -35,14 +35,14 @@ s32 FieldWeakening(s32 qMotorSpeed)
 		// then left shift 4 times to get 15 bits again.
 		FdWeakParm.qInterpolPortion = (FdWeakParm.qFWPercentage & 0x07FF) ;
 
-//		FdWeakParm.qIdRef = FdWeakParm.qFwCurve[FdWeakParm.qIndex] \
-//							- FracMpy(FdWeakParm.qFwCurve[FdWeakParm.qIndex] \
-//									- FdWeakParm.qFwCurve[FdWeakParm.qIndex+1] \
-//									 ,FdWeakParm.qInterpolPortion);
+		//		FdWeakParm.qIdRef = FdWeakParm.qFwCurve[FdWeakParm.qIndex] \
+		//							- FracMpy(FdWeakParm.qFwCurve[FdWeakParm.qIndex] \
+		//									- FdWeakParm.qFwCurve[FdWeakParm.qIndex+1] \
+		//									 ,FdWeakParm.qInterpolPortion);
 		FdWeakParm.qIdRef = FdWeakParm.qFwCurve[FdWeakParm.qIndex] \
-						   - (((FdWeakParm.qFwCurve[FdWeakParm.qIndex] \
-						   - FdWeakParm.qFwCurve[FdWeakParm.qIndex+1])\
-						   *FdWeakParm.qInterpolPortion)>>12);
+		- (((FdWeakParm.qFwCurve[FdWeakParm.qIndex] \
+		- FdWeakParm.qFwCurve[FdWeakParm.qIndex+1])\
+		*FdWeakParm.qInterpolPortion)>>12);
 
 	}
 	return FdWeakParm.qIdRef;

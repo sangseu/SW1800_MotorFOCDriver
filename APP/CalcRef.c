@@ -28,14 +28,13 @@
 void CalcRefVec(tParkParm *pParkparm,tSVGenParm *pSVGenParm)
 {
 	s32 valtemp1; 
-    s16 ValphaW = pParkparm->qValpha;
+	s16 ValphaW = pParkparm->qValpha;
 	s16 VbetaW = pParkparm->qVbeta;
-	
-	
+
 	pSVGenParm->qVr1 = VbetaW ;//Q15
-    valtemp1 = Sq3OV2 * ValphaW;
-    pSVGenParm->qVr2 = RIGHSHIFT10(valtemp1) - RIGHSHIFT1(VbetaW); //pSVGenParm->qVr2 = ((Sq3OV2 * ValphaW)/1024) - (VbetaW /2);     //pSVGenParm->qVr2 = ((Sq3OV2 * ValphaW)>>10) - (VbetaW>>1);// 		//Q15	
-    valtemp1 = -Sq3OV2 * ValphaW;
-    pSVGenParm->qVr3 = RIGHSHIFT10(valtemp1) - RIGHSHIFT1(VbetaW); //pSVGenParm->qVr3 = ((0-Sq3OV2 * ValphaW)/1024)  - (VbetaW /2);  //pSVGenParm->qVr3 = ((0-Sq3OV2 * ValphaW)>>10)  - (VbetaW>>1);// 		//Q15
+	valtemp1 = Sq3OV2 * ValphaW;
+	pSVGenParm->qVr2 = RIGHSHIFT10(valtemp1) - RIGHSHIFT1(VbetaW); //pSVGenParm->qVr2 = ((Sq3OV2 * ValphaW)/1024) - (VbetaW /2);     //pSVGenParm->qVr2 = ((Sq3OV2 * ValphaW)>>10) - (VbetaW>>1);// 		//Q15	
+	valtemp1 = -Sq3OV2 * ValphaW;
+	pSVGenParm->qVr3 = RIGHSHIFT10(valtemp1) - RIGHSHIFT1(VbetaW); //pSVGenParm->qVr3 = ((0-Sq3OV2 * ValphaW)/1024)  - (VbetaW /2);  //pSVGenParm->qVr3 = ((0-Sq3OV2 * ValphaW)>>10)  - (VbetaW>>1);// 		//Q15
 }
 

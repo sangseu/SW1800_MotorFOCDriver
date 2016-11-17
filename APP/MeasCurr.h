@@ -6,11 +6,11 @@
 #include "Park.h"
 typedef struct 
 {
-    s16  qKa;        
-    s16   Offseta;
+	s16  qKa;        
+	s16   Offseta;
 
-    s16  qKb;        
-    s16   Offsetb;
+	s16  qKb;        
+	s16   Offsetb;
 } tMeasCurrParm;
 
 #define AD_Vdc   0

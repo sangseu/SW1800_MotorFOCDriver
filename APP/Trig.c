@@ -148,11 +148,11 @@ void SinCos(tParkParm *pParkParm)
 	u16 index1,index2;
 
 	angle = pParkParm->qAngle;
-    if(angle < 0)
-    {
-        angle +=65536;
-//		angle = ~(0-angle) + 1;
-    }
+	if(angle < 0)
+	{
+		angle +=65536;
+		//		angle = ~(0-angle) + 1;
+	}
 
 	angletemp = ((u32)angle) << 7;				//angle*table_size
 	anglel = angletemp & 0xffff;			//
@@ -160,20 +160,19 @@ void SinCos(tParkParm *pParkParm)
 	if(anglel == 0)					//if anglel is zero,get sin and cos value in the table directly
 	{
 		pParkParm->qSin = SinTable[index1];
-        index2 = (index1 + 32)&0x7f;
+		index2 = (index1 + 32)&0x7f;
 		pParkParm->qCos = SinTable[index2];
 	}
 	else
 	{
 		index2 = (index1 + 1)&0x7f;
-        angle_delta = 	SinTable[index2] - SinTable[index1];
+		angle_delta = 	SinTable[index2] - SinTable[index1];
 		pParkParm->qSin = SinTable[index1] + ((anglel * angle_delta) >> 16);
 		index1 = (index1 + 32)&0x7f;
-        index2 = (index1 + 1)&0x7f;
+		index2 = (index1 + 1)&0x7f;
 		angle_delta = SinTable[index2] - SinTable[index1];
 		pParkParm->qCos = SinTable[index1] + ((anglel * angle_delta) >> 16);         
-	}
-	
+	}	
 }
 
 #if 0
@@ -325,58 +324,58 @@ unsigned int sqrt_16(unsigned long M)
 
 u32 sqrt_16(u32 radicand) 
 { 
-    u32 root_val;
-    
-    DIV_Root(radicand, 0);
-    while(DIV_Root_IsBusy());
-    root_val = DIV_Root_Result();
-    
-    return root_val; 
+	u32 root_val;
+
+	DIV_Root(radicand, 0);
+	while(DIV_Root_IsBusy());
+	root_val = DIV_Root_Result();
+
+	return root_val; 
 }
 
 void DIV_Fun(int Divd, int Divs, int *Quo, int *Rem)
 {
-    u32 divdend,divsor,Quot,Remain;
-    u32 Quo_sign_flag;
+	u32 divdend,divsor,Quot,Remain;
+	u32 Quo_sign_flag;
+
+	if( Divd>=0 && Divs>0 )
+	{
+		divdend = Divd;
+		divsor = Divs;
+		Quo_sign_flag = 0;
+	}
+	else if( Divd>=0 && Divs<0 )
+	{
+		divdend = Divd;
+		divsor = -Divs;
+		Quo_sign_flag = 1;
+	}
+	else if( Divd<=0 && Divs>0 )
+	{
+		divdend = -Divd;
+		divsor = Divs;
+		Quo_sign_flag = 1;
+	}
+	else if( Divd<=0 && Divs<0 )
+	{
+		divdend = -Divd;
+		divsor = -Divs;
+		Quo_sign_flag = 0;
+	}
+	else
+	{
+		divdend = 0;
+		divsor = 1;
+		Quo_sign_flag = 0;
+	}
     
-    if( Divd>=0 && Divs>0 )
-    {
-        divdend = Divd;
-        divsor = Divs;
-        Quo_sign_flag = 0;
-    }
-    else if( Divd>=0 && Divs<0 )
-    {
-        divdend = Divd;
-        divsor = -Divs;
-        Quo_sign_flag = 1;
-    }
-    else if( Divd<=0 && Divs>0 )
-    {
-        divdend = -Divd;
-        divsor = Divs;
-        Quo_sign_flag = 1;
-    }
-    else if( Divd<=0 && Divs<0 )
-    {
-        divdend = -Divd;
-        divsor = -Divs;
-        Quo_sign_flag = 0;
-    }
-    else
-    {
-        divdend = 0;
-        divsor = 1;
-        Quo_sign_flag = 0;
-    }
-    
-    DIV_Div(divdend, divsor);    
-    while(DIV_Div_IsBusy());
-    
-    *Rem = DIV->REMAIN;
-    if( Quo_sign_flag==1 )
-        *Quo = -DIV->QUO; 
-    else
-        *Quo = DIV->QUO;       
+	DIV_Div(divdend, divsor);    
+	while(DIV_Div_IsBusy());
+
+	*Rem = DIV->REMAIN;
+	if( Quo_sign_flag==1 )
+		*Quo = -DIV->QUO; 
+	else
+		*Quo = DIV->QUO;       
 }
 

@@ -24,10 +24,10 @@
 
 typedef struct
 {
-    u32 InputFreq;      //输入频率
-    u8 CountStartFlag;  //开始计数标志,0=未开始，1=开始, 2=停止
-    u32 InputFreqcnt;   //输入脉冲计数值
-    u32 Timercnt;       //定时器计数值
+	u32 InputFreq;      //输入频率
+	u8 CountStartFlag;  //开始计数标志,0=未开始，1=开始, 2=停止
+	u32 InputFreqcnt;   //输入脉冲计数值
+	u32 Timercnt;       //定时器计数值
 }InpFreq;
 InpFreq InpFreqCnt;
 
@@ -58,23 +58,23 @@ u32 Startup_Lock = 0;	/* This is a counter that is incremented in
 								motor in open loop. */
 
 union{
-		struct
-		{
-			unsigned OpenLoop:1;		// Indicates if motor is running in open or closed loop
-			unsigned RunMotor:1;		// If motor is running, or stopped.
-			unsigned EnTorqueMod:1;	// This bit enables Torque mode when running closed loop
-			unsigned EnVoltRipCo:1;	// Bit that enables Voltage Ripple Compensation
-			unsigned Btn1Pressed:1;	// Button 1 has been pressed.
-			unsigned Btn2Pressed:1;	// Button 2 has been pressed.
-			unsigned ChangeMode:1;	// This flag indicates that a transition from open to closed
-									// loop, or closed to open loop has happened. This
-									// causes DoControl subroutine to initialize some variables
-									// before executing open or closed loop for the first time
-			unsigned ChangeSpeed:1;	// This flag indicates a step command in speed reference.
-									// This is mainly used to analyze step response
-			unsigned    :8;
-		}bit;
-        unsigned int Word;
+	struct
+	{
+		unsigned OpenLoop:1;		// Indicates if motor is running in open or closed loop
+		unsigned RunMotor:1;		// If motor is running, or stopped.
+		unsigned EnTorqueMod:1;	// This bit enables Torque mode when running closed loop
+		unsigned EnVoltRipCo:1;	// Bit that enables Voltage Ripple Compensation
+		unsigned Btn1Pressed:1;	// Button 1 has been pressed.
+		unsigned Btn2Pressed:1;	// Button 2 has been pressed.
+		unsigned ChangeMode:1;	// This flag indicates that a transition from open to closed
+				// loop, or closed to open loop has happened. This
+				// causes DoControl subroutine to initialize some variables
+				// before executing open or closed loop for the first time
+		unsigned ChangeSpeed:1;	// This flag indicates a step command in speed reference.
+				// This is mainly used to analyze step response
+		unsigned    :8;
+	}bit;
+	unsigned int Word;
 } uGF;
 
 tPIParm 	PIParmD;	// Structure definition for Flux component of current, or Id

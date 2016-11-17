@@ -233,89 +233,89 @@ static __inline int atan2CORDIC(s16 x,s16 y)
 
 static __inline s16 atan2CORDIC(s16 x,s16 y)
 {
-    s16 angleSum = 0; 
-    u16 x_new, y_new;  
-    s16 quar=0;
-    u32 quot;
-    
-    if( x>0 && y>0 )
-    {
-        quar=1;
-        x_new = x;
-        y_new = y;
-    }
-    else if( x<0 && y>0 )
-    {
-        quar=2;
-        x_new = -x;
-        y_new = y;
-    }
-    else if( x<0 && y<0 )
-    {
-        quar=3;
-        x_new = -x;
-        y_new = -y;
-    }
-    else if( x>0 && y<0 )
-    {
-        quar=4;
-        x_new = x;
-        y_new = -y;
-    }
-    else
-    {
-        if( x==0 )
-        {
-            if( y>0 )
-                return 16384;
-            else if( y<0 )
-                return -16384;
-            else
-                return 0;
-        }
-        else if( y==0 )
-        {
-            if( x>0 )
-                return 0;
-            else if( x<0 )
-                return -32768;
-            else
-                return 0;
-        }
-        else 
-            return 0;
-    }
-    
-    DIV_Div(y_new*16384, x_new);    //cal Y/X
+	s16 angleSum = 0; 
+	u16 x_new, y_new;  
+	s16 quar=0;
+	u32 quot;
+
+	if( x>0 && y>0 )
+	{
+		quar=1;
+		x_new = x;
+		y_new = y;
+	}
+	else if( x<0 && y>0 )
+	{
+		quar=2;
+		x_new = -x;
+		y_new = y;
+	}
+	else if( x<0 && y<0 )
+	{
+		quar=3;
+		x_new = -x;
+		y_new = -y;
+	}
+	else if( x>0 && y<0 )
+	{
+		quar=4;
+		x_new = x;
+		y_new = -y;
+	}
+	else
+	{
+		if( x==0 )
+		{
+			if( y>0 )
+				return 16384;
+			else if( y<0 )
+				return -16384;
+			else
+				return 0;
+		}
+		else if( y==0 )
+		{
+			if( x>0 )
+				return 0;
+			else if( x<0 )
+				return -32768;
+			else
+				return 0;
+		}
+		else 
+			return 0;
+	}
+
+	DIV_Div(y_new*16384, x_new);    //cal Y/X
 	while(DIV_Div_IsBusy());        //wait for division finish
-    quot = DIV->QUO;
-    if( quot <= 820 )
-        quot = 820;
-    else if( quot > (10000*16384 - 1) )
-        quot = 10000*16384 - 1;
+	quot = DIV->QUO;
+	if( quot <= 820 )
+		quot = 820;
+	else if( quot > (10000*16384 - 1) )
+		quot = 10000*16384 - 1;
     
-    CORDIC_Arctan(quot);        //atan(Y/X)
-    while(CORDIC_Arctan_IsDone() == 0);      //wait for atan finish
+	CORDIC_Arctan(quot);        //atan(Y/X)
+	while(CORDIC_Arctan_IsDone() == 0);      //wait for atan finish
+
+	DIV_Div(CORDIC_Arctan_Result()*2*10000, 31416);   //atan()/16384/3.1415926*32767  //将弧度转换为角度,0~PI对应0~32767
+	while(DIV_Div_IsBusy());        //wait for division finish
     
-    DIV_Div(CORDIC_Arctan_Result()*2*10000, 31416);   //atan()/16384/3.1415926*32767  //将弧度转换为角度,0~PI对应0~32767
-    while(DIV_Div_IsBusy());        //wait for division finish
-    
-    angleSum = DIV->QUO;    //计算出0~16384角度
-    
-    if( quar ==2 )
-    {
-        angleSum = 32767 - angleSum; 
-    }
-    else if( quar ==3 )
-    {
-        angleSum = -32768 + angleSum;
-    }
-    else if( quar ==4 )
-    {
-        angleSum = -angleSum;
-    }
+	angleSum = DIV->QUO;    //计算出0~16384角度
+
+	if( quar ==2 )
+	{
+		angleSum = 32767 - angleSum; 
+	}
+	else if( quar ==3 )
+	{
+		angleSum = -32768 + angleSum;
+	}
+	else if( quar ==4 )
+	{
+		angleSum = -angleSum;
+	}
       
-    return angleSum;
+	return angleSum;
 }
 
 
@@ -324,15 +324,15 @@ static __inline s16 atan2CORDIC(s16 x,s16 y)
 __inline void CalcEstI(SMC *s)
 {
 	s16 Ggain = s->Gsmopos;	//Q15格式
-    s32 valtemp1,valtemp2;
+	s32 valtemp1,valtemp2;
 
-    valtemp1 = Ggain * (s->Valpha - s->Ealpha - s->Zalpha) ;
+	valtemp1 = Ggain * (s->Valpha - s->Ealpha - s->Zalpha) ;
 	valtemp2 = s->Fsmopos * s->EstIalpha;
-    s->EstIalpha = RIGHSHIFT15(valtemp1) + RIGHSHIFT15(valtemp2);//s->EstIalpha = (Ggain * (s->Valpha - s->Ealpha - s->Zalpha) + s->Fsmopos * s->EstIalpha)/DIV_RATIO;
+	s->EstIalpha = RIGHSHIFT15(valtemp1) + RIGHSHIFT15(valtemp2);//s->EstIalpha = (Ggain * (s->Valpha - s->Ealpha - s->Zalpha) + s->Fsmopos * s->EstIalpha)/DIV_RATIO;
 
-    valtemp1 = Ggain * (s->Vbeta - s->Ebeta - s->Zbeta);
-    valtemp2 = s->Fsmopos * s->EstIbeta;
-    s->EstIbeta = RIGHSHIFT15(valtemp1) + RIGHSHIFT15(valtemp2);//s->EstIbeta = (Ggain * (s->Vbeta - s->Ebeta - s->Zbeta) + s->Fsmopos * s->EstIbeta)/DIV_RATIO;
+	valtemp1 = Ggain * (s->Vbeta - s->Ebeta - s->Zbeta);
+	valtemp2 = s->Fsmopos * s->EstIbeta;
+	s->EstIbeta = RIGHSHIFT15(valtemp1) + RIGHSHIFT15(valtemp2);//s->EstIbeta = (Ggain * (s->Vbeta - s->Ebeta - s->Zbeta) + s->Fsmopos * s->EstIbeta)/DIV_RATIO;
 	
 }
 
@@ -340,62 +340,62 @@ __inline void CalcIError(SMC *s)
 {
 	s->IalphaError = s->EstIalpha - (s->Ialpha);	//Q15
 	s->IbetaError = s->EstIbeta - (s->Ibeta);		//Q15
-//     s->IalphaError = -s->EstIalpha + (s->Ialpha);	//Q15
-// 	s->IbetaError = -s->EstIbeta + (s->Ibeta);		//Q15
+	//     s->IalphaError = -s->EstIalpha + (s->Ialpha);	//Q15
+	// 	s->IbetaError = -s->EstIbeta + (s->Ibeta);		//Q15
 }
 
 
 __inline void CalcZalpha(SMC *s)
 {
-    s32 Di, Vi, Qi, Ri;
-    
-    Di = s->Kslide * s->IalphaError;
-    Vi = s->MaxSMCError;
-    
-    DIV_Fun(Di, Vi, &Qi, &Ri);
-    
-		s->Zalpha = Qi;    //s->Zalpha = ((s->Kslide * s->IalphaError))/s->MaxSMCError;	//Q15格式
+	s32 Di, Vi, Qi, Ri;
+
+	Di = s->Kslide * s->IalphaError;
+	Vi = s->MaxSMCError;
+
+	DIV_Fun(Di, Vi, &Qi, &Ri);
+
+	s->Zalpha = Qi;    //s->Zalpha = ((s->Kslide * s->IalphaError))/s->MaxSMCError;	//Q15格式
 }
 
 __inline void CalcZbeta(SMC *s)
 {
 	s32 Di, Vi, Qi, Ri;
-    
-    Di = s->Kslide * s->IbetaError;
-    Vi = s->MaxSMCError; 
-     
-    DIV_Fun(Di, Vi, &Qi, &Ri);
-    
-    s->Zbeta = Qi;    //s->Zbeta = ((s->Kslide * s->IbetaError))/s->MaxSMCError;	//Q15
+
+	Di = s->Kslide * s->IbetaError;
+	Vi = s->MaxSMCError; 
+
+	DIV_Fun(Di, Vi, &Qi, &Ri);
+
+	s->Zbeta = Qi;    //s->Zbeta = ((s->Kslide * s->IbetaError))/s->MaxSMCError;	//Q15
 }
 
 
 __inline void CalcBEMF(SMC *s)
 {
 	s32 valtemp;
-    s16 KslfT = s->Kslf;	//Q15
+	s16 KslfT = s->Kslf;	//Q15
 	s16 KslfFinalT = s->KslfFinal;//Q15
 
-    valtemp = KslfT * (s->Zalpha - s->Ealpha); 
-    s->Ealpha += RIGHSHIFT15(valtemp);//s->Ealpha = s->Ealpha + RIGHSHIFT15(valtemp);//s->Ealpha = s->Ealpha + ((KslfT * (s->Zalpha - s->Ealpha))/DIV_RATIO);
+	valtemp = KslfT * (s->Zalpha - s->Ealpha); 
+	s->Ealpha += RIGHSHIFT15(valtemp);//s->Ealpha = s->Ealpha + RIGHSHIFT15(valtemp);//s->Ealpha = s->Ealpha + ((KslfT * (s->Zalpha - s->Ealpha))/DIV_RATIO);
 
-    valtemp = KslfT * (s->Zbeta - s->Ebeta);
-    s->Ebeta += RIGHSHIFT15(valtemp);//s->Ebeta = s->Ebeta + RIGHSHIFT15(valtemp);//s->Ebeta = s->Ebeta + ((KslfT * (s->Zbeta - s->Ebeta))/DIV_RATIO);
+	valtemp = KslfT * (s->Zbeta - s->Ebeta);
+	s->Ebeta += RIGHSHIFT15(valtemp);//s->Ebeta = s->Ebeta + RIGHSHIFT15(valtemp);//s->Ebeta = s->Ebeta + ((KslfT * (s->Zbeta - s->Ebeta))/DIV_RATIO);
 
-    valtemp = KslfFinalT * (s->Ealpha - s->EalphaFinal);
-    s->EalphaFinal += RIGHSHIFT15(valtemp);//s->EalphaFinal = s->EalphaFinal + RIGHSHIFT15(valtemp);//s->EalphaFinal = s->EalphaFinal + ((KslfFinalT * (s->Ealpha -s->EalphaFinal))/DIV_RATIO);
+	valtemp = KslfFinalT * (s->Ealpha - s->EalphaFinal);
+	s->EalphaFinal += RIGHSHIFT15(valtemp);//s->EalphaFinal = s->EalphaFinal + RIGHSHIFT15(valtemp);//s->EalphaFinal = s->EalphaFinal + ((KslfFinalT * (s->Ealpha -s->EalphaFinal))/DIV_RATIO);
 
-    valtemp = KslfFinalT * (s->Ebeta - s->EbetaFinal);
-    s->EbetaFinal += RIGHSHIFT15(valtemp);//s->EbetaFinal = s->EbetaFinal + RIGHSHIFT15(valtemp);//s->EbetaFinal = s->EbetaFinal + ((KslfFinalT * (s->Ebeta - s->EbetaFinal))/DIV_RATIO);
+	valtemp = KslfFinalT * (s->Ebeta - s->EbetaFinal);
+	s->EbetaFinal += RIGHSHIFT15(valtemp);//s->EbetaFinal = s->EbetaFinal + RIGHSHIFT15(valtemp);//s->EbetaFinal = s->EbetaFinal + ((KslfFinalT * (s->Ebeta - s->EbetaFinal))/DIV_RATIO);
 }
 
 __inline void CalcOmegaFltred(SMC *s)
 {
 	s32 valtemp;
-    s16 FiltOmCoefT = s->FiltOmCoef ;//Q15
- 
-    valtemp = FiltOmCoefT * (s->Omega - s->OmegaFltred); 
-    s->OmegaFltred += RIGHSHIFT15(valtemp);//Q15// 	s->OmegaFltred = s->OmegaFltred + ((FiltOmCoefT * (s->Omega - s->OmegaFltred))/DIV_RATIO);//Q15
+	s16 FiltOmCoefT = s->FiltOmCoef ;//Q15
+
+	valtemp = FiltOmCoefT * (s->Omega - s->OmegaFltred); 
+	s->OmegaFltred += RIGHSHIFT15(valtemp);//Q15// 	s->OmegaFltred = s->OmegaFltred + ((FiltOmCoefT * (s->Omega - s->OmegaFltred))/DIV_RATIO);//Q15
 }
 
 s32 tempv;
@@ -416,42 +416,42 @@ s16 kseltemp;
 void SMC_Position_Estimation (SMC *s)
 {
 	s32 Di, Vi, Qi, Ri;
-	
-    CalcEstI(s);
 
-    CalcIError(s);
+	CalcEstI(s);
 
-    // Sliding control calculator
+	CalcIError(s);
 
-    if ( (s->IalphaError <= s->MaxSMCError) && (s->IalphaError >= (-s->MaxSMCError)) )
-    {
-    // s->Zalpha = (s->Kslide * s->IalphaError) / s->MaxSMCError
-    // If we are in the linear range of the slide mode controller,
-    // then correction factor Zalpha will be proportional to the
-    // error (Ialpha - EstIalpha) and slide mode gain, Kslide.
-            CalcZalpha(s);
-    }
-    else if ((s->IalphaError) > 0)
-    {
-            s->Zalpha = s->Kslide;
-    }
-    else
-    {
-            s->Zalpha = -s->Kslide;
-    }
+	// Sliding control calculator
 
-    if ( (s->IbetaError <= s->MaxSMCError) && (s->IbetaError >= (-s->MaxSMCError)) )
-    {
-    // s->Zbeta = (s->Kslide * s->IbetaError) / s->MaxSMCError
-    // If we are in the linear range of the slide mode controller,
-    // then correction factor Zbeta will be proportional to the
-    // error (Ibeta - EstIbeta) and slide mode gain, Kslide.
-            CalcZbeta(s);
-    }
-    else if ((s->IbetaError) > 0)
-            s->Zbeta = s->Kslide;
-    else
-            s->Zbeta = -s->Kslide;
+	if ( (s->IalphaError <= s->MaxSMCError) && (s->IalphaError >= (-s->MaxSMCError)) )
+	{
+		// s->Zalpha = (s->Kslide * s->IalphaError) / s->MaxSMCError
+		// If we are in the linear range of the slide mode controller,
+		// then correction factor Zalpha will be proportional to the
+		// error (Ialpha - EstIalpha) and slide mode gain, Kslide.
+		CalcZalpha(s);
+	}
+	else if ((s->IalphaError) > 0)
+	{
+		s->Zalpha = s->Kslide;
+	}
+	else
+	{
+		s->Zalpha = -s->Kslide;
+	}
+
+	if ( (s->IbetaError <= s->MaxSMCError) && (s->IbetaError >= (-s->MaxSMCError)) )
+	{
+		// s->Zbeta = (s->Kslide * s->IbetaError) / s->MaxSMCError
+		// If we are in the linear range of the slide mode controller,
+		// then correction factor Zbeta will be proportional to the
+		// error (Ibeta - EstIbeta) and slide mode gain, Kslide.
+		CalcZbeta(s);
+	}
+	else if ((s->IbetaError) > 0)
+		s->Zbeta = s->Kslide;
+	else
+		s->Zbeta = -s->Kslide;
 
 	// Sliding control filter -> back EMF calculator
 	// s->Ealpha = s->Ealpha + s->Kslf * s->Zalpha -
@@ -466,55 +466,55 @@ void SMC_Position_Estimation (SMC *s)
 
 	// Rotor angle calculator -> Theta = atan(-EalphaFinal,EbetaFinal)
 
-    s->Theta = atan2CORDIC(s->EbetaFinal, -s->EalphaFinal);//Q15
-    
-//    if( s->Theta == -3 )
-//    {
-//        PreOmega = -3;
-//        s->Theta = atan2CORDIC(s->EbetaFinal,0-s->EalphaFinal);//Q15
-//    }
+	s->Theta = atan2CORDIC(s->EbetaFinal, -s->EalphaFinal);//Q15
 
-    temptheta = PrevTheta - s->Theta;//temptheta = s->Theta - PrevTheta;//
-    if( temptheta < -32768 )
-        temptheta += 65536;
-    else if( temptheta > 32767 )
-        temptheta -= 65536;
+	//    if( s->Theta == -3 )
+	//    {
+	//        PreOmega = -3;
+	//        s->Theta = atan2CORDIC(s->EbetaFinal,0-s->EalphaFinal);//Q15
+	//    }
+
+	temptheta = PrevTheta - s->Theta;//temptheta = s->Theta - PrevTheta;//
+	if( temptheta < -32768 )
+		temptheta += 65536;
+	else if( temptheta > 32767 )
+		temptheta -= 65536;
 
 
-    AccumTheta += temptheta;//s->Theta - PrevTheta;//
-    PrevTheta = s->Theta;
+	AccumTheta += temptheta;//s->Theta - PrevTheta;//
+	PrevTheta = s->Theta;
 
-    AccumThetaCnt++;
+	AccumThetaCnt++;
 
-    if (AccumThetaCnt == IRP_PERCALC)
-    {
-// 				if( AccumTheta<0 )
-// 						AccumTheta = 0 - AccumTheta;
-        s->Omega = -AccumTheta;//波形为类似正弦波
-        AccumThetaCnt = 0;
-        AccumTheta = 0;
-        
-//        Di = s->OmegaFltred * PI_INT;//omg * PI_INT;//
-//        Vi = IRP_percalc * 8192;        
-//        DIV_Fun(Di, Vi, &Qi, &Ri);
+	if (AccumThetaCnt == IRP_PERCALC)
+	{
+		// 				if( AccumTheta<0 )
+		// 						AccumTheta = 0 - AccumTheta;
+		s->Omega = -AccumTheta;//波形为类似正弦波
+		AccumThetaCnt = 0;
+		AccumTheta = 0;
 
-//        s->KslfFinal =  s->Kslf = Qi;
-        
-    }
-    //                    Q15(Omega) * 60
-    // Speed RPMs = -----------------------------
-    //               SpeedLoopTime * Motor Poles
-    // For example:
-    //    Omega = 0.5
-    //    SpeedLoopTime = 0.001
-    //    Motor Poles (pole pairs * 2) = 10
-    // Then:
-    //    Speed in RPMs is 3,000 RPMs
+		//        Di = s->OmegaFltred * PI_INT;//omg * PI_INT;//
+		//        Vi = IRP_percalc * 8192;        
+		//        DIV_Fun(Di, Vi, &Qi, &Ri);
+
+		//        s->KslfFinal =  s->Kslf = Qi;
+
+	}
+	//                    Q15(Omega) * 60
+	// Speed RPMs = -----------------------------
+	//               SpeedLoopTime * Motor Poles
+	// For example:
+	//    Omega = 0.5
+	//    SpeedLoopTime = 0.001
+	//    Motor Poles (pole pairs * 2) = 10
+	// Then:
+	//    Speed in RPMs is 3,000 RPMs
 
 	// s->OmegaFltred = s->OmegaFltred + FilterCoeff * s->Omega
 	//								   - FilterCoeff * s->OmegaFltred
 
-		CalcOmegaFltred(s);
+	CalcOmegaFltred(s);
 
 	// Adaptive filter coefficients calculation
 	// Cutoff frequency is defined as 2*_PI*electrical RPS
@@ -557,43 +557,43 @@ void SMC_Position_Estimation (SMC *s)
 	// arctan(Fin/Fc), and Fin/Fc = 1 since they are equal, hence arctan(1) = 45 DEG.
 	// A total of -90 DEG after the two filters implemented (Kslf and KslfFinal).
 
-        Di = s->OmegaFltred ;//* PI_INT;//
-        Vi = IRP_percalc  ;//* 8192;//        
-        DIV_Fun(Di, Vi, &Qi, &Ri);
+	Di = s->OmegaFltred ;//* PI_INT;//
+	Vi = IRP_percalc  ;//* 8192;//        
+	DIV_Fun(Di, Vi, &Qi, &Ri);
 
-//        
-//        if( Qi - s->Kslf >1 )
-//            s->Kslf += 1;
-//        else if( s->Kslf - Qi >1 )
-//            s->Kslf -= 1;
-        s->Kslf = Qi; //s->Kslf = ( s->OmegaFltred * PI_INT / IRP_PERCALC )>>13;//        s->Kslf = ( Qi*2 + s->Kslf*126 ) >>7;  //s->Kslf = //s->Kslf = s->KslfFinal = s->OmegaFltred *  _PI / IRP_PERCALC;//   //	//Q15 IRP_percalc
-        s->KslfFinal = s->FiltOmCoef =  s->Kslf;
-        
+	//        
+	//        if( Qi - s->Kslf >1 )
+	//            s->Kslf += 1;
+	//        else if( s->Kslf - Qi >1 )
+	//            s->Kslf -= 1;
+	s->Kslf = Qi; //s->Kslf = ( s->OmegaFltred * PI_INT / IRP_PERCALC )>>13;//        s->Kslf = ( Qi*2 + s->Kslf*126 ) >>7;  //s->Kslf = //s->Kslf = s->KslfFinal = s->OmegaFltred *  _PI / IRP_PERCALC;//   //	//Q15 IRP_percalc
+	s->KslfFinal = s->FiltOmCoef =  s->Kslf;
+
 	// Since filter coefficients are dynamic, we need to make sure we have a minimum
 	// so we define the lowest operation speed as the lowest filter coefficient
 
-    if( s->Kslf < Kself_omega0 )//if (s->Kslf < Q15(OMEGA0 * _PI / IRP_PERCALC)) //
-    {
-        s->Kslf = s->KslfFinal = s->FiltOmCoef = Kself_omega0;//s->Kslf = s->KslfFinal = Q15(OMEGA0 * _PI / IRP_PERCALC);//
-//             s->FiltOmCoef = Kself_omega0;
+	if( s->Kslf < Kself_omega0 )//if (s->Kslf < Q15(OMEGA0 * _PI / IRP_PERCALC)) //
+	{
+		s->Kslf = s->KslfFinal = s->FiltOmCoef = Kself_omega0;//s->Kslf = s->KslfFinal = Q15(OMEGA0 * _PI / IRP_PERCALC);//
+		//             s->FiltOmCoef = Kself_omega0;
 
-    }
-//	s->ThetaOffset = CONSTANT_PHASE_SHIFT;
-// 		if( s->OmegaFltred < OM0_OFFSET )
-// 				s->ThetaOffset = OFFSET0;
-// 		else if( s->OmegaFltred < OM1_OFFSET )
-// 				s->ThetaOffset = OFFSET1;
-//         else if( s->OmegaFltred < OM2_OFFSET )
-// 				s->ThetaOffset = OFFSET2;
-//         else if( s->OmegaFltred < OM3_OFFSET )
-// 				s->ThetaOffset = OFFSET3;
-//         else if( s->OmegaFltred < OM4_OFFSET )
-// 				s->ThetaOffset = OFFSET4;
-//         else if( s->OmegaFltred < OM5_OFFSET )
-// 				s->ThetaOffset = OFFSET5;
-//         s->ThetaOffset = -3000;
+	}
+	//	s->ThetaOffset = CONSTANT_PHASE_SHIFT;
+	// 		if( s->OmegaFltred < OM0_OFFSET )
+	// 				s->ThetaOffset = OFFSET0;
+	// 		else if( s->OmegaFltred < OM1_OFFSET )
+	// 				s->ThetaOffset = OFFSET1;
+	//         else if( s->OmegaFltred < OM2_OFFSET )
+	// 				s->ThetaOffset = OFFSET2;
+	//         else if( s->OmegaFltred < OM3_OFFSET )
+	// 				s->ThetaOffset = OFFSET3;
+	//         else if( s->OmegaFltred < OM4_OFFSET )
+	// 				s->ThetaOffset = OFFSET4;
+	//         else if( s->OmegaFltred < OM5_OFFSET )
+	// 				s->ThetaOffset = OFFSET5;
+	//         s->ThetaOffset = -3000;
 	s->Theta +=  s->ThetaOffset;
-	
+
 	return;
 }
 
@@ -628,9 +628,9 @@ void SMCInit(SMC *s)
 	s->Kslide = Q15(SMCGAIN);
 	s->MaxSMCError = Q15(MAXLINEARSMC);
 
-    s->FiltOmCoef = 65536 * OMEGA_CUF / IRP_PERCALC;//Q15(OMEGA_CUF * _PI / IRP_PERCALC);//Q15(OMEGA0 * _PI / IRP_PERCALC);//Q15(OMEGA0 * _PI / IRP_PERCALC); // Cutoff frequency for omega filter
-													 // is minimum omega, or OMEGA0
-    Kself_omega0 = 65536 * OMEGA_CUF / IRP_PERCALC;//Q15(OMEGA_CUF * _PI / IRP_PERCALC);//Q15(OMEGA0 * _PI / IRP_PERCALC);
+	s->FiltOmCoef = 65536 * OMEGA_CUF / IRP_PERCALC;//Q15(OMEGA_CUF * _PI / IRP_PERCALC);//Q15(OMEGA0 * _PI / IRP_PERCALC);//Q15(OMEGA0 * _PI / IRP_PERCALC); // Cutoff frequency for omega filter
+						 // is minimum omega, or OMEGA0
+	Kself_omega0 = 65536 * OMEGA_CUF / IRP_PERCALC;//Q15(OMEGA_CUF * _PI / IRP_PERCALC);//Q15(OMEGA0 * _PI / IRP_PERCALC);
 	s->ThetaOffset = CONSTANT_PHASE_SHIFT;//-3000;//
 	return;
 }

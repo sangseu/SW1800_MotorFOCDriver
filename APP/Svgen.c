@@ -76,7 +76,8 @@ const int sin_dat[1024]={
 
 
 //-------------------------DUTY PID-----------------------------------------------------------------------------------
-int dutypid (int err,int *er0,int *er1) {
+int dutypid (int err,int *er0,int *er1) 
+{
 	int du;
 	du = ((Duty_KP*(err-*er0))>>10)+((Duty_KI*err)>>10)+((Duty_KD*(err-2**er0+*er1))>>10);
 	*er1 = *er0;
@@ -96,9 +97,9 @@ s16 Svpwm_Qua(s16 *angle)
 {
 	s16 qua=0;
 	if(*angle>=lock0&&*angle<lock60)
-    {
+	{
 		qua=1;        
-    }
+	}
 	else if(*angle>=lock60&&*angle<lock120)
 	{
 		qua=2;
@@ -129,7 +130,6 @@ s16 Svpwm_Qua(s16 *angle)
 		qua=1;
 		*angle=0;
 	}
-    
 	return qua;
 }
 
@@ -138,8 +138,8 @@ void math_cal_0 (s16 a,s16 *sva,s16 *sv60_a)
 {
 	s16 tem=0;
 	tem = (a*3069)>>15;//tem=a*1023/lock60;//
-	if(tem>1023)tem=1023;
-	else if(tem<0)tem=0;
+	if(tem>1023) tem=1023;
+	else if(tem<0) tem=0;
 	*sva=sin_dat[tem];
 	*sv60_a=sin_dat[1023-tem];
 }
@@ -153,9 +153,9 @@ extern s16 PWM_CLOCK_CYCLE;
 void Svpwm_Duty(s16 angle,s16 uout,int *t0,int *t1,int *t2)
 {
 	s32 Di, Vi, Qi, Ri;
-    
-    if(uout>(PWM_UOUT))uout=(PWM_UOUT);
-	else if(uout<0)uout=0;
+
+	if(uout>(PWM_UOUT)) uout=(PWM_UOUT);
+	else if(uout<0) uout=0;
 	Sector=Svpwm_Qua(&angle);
 
 	math_cal_0(angle,&sin_a_val,&sin60_a_val);
@@ -163,14 +163,14 @@ void Svpwm_Duty(s16 angle,s16 uout,int *t0,int *t1,int *t2)
 	*t1=2*uout*sin60_a_val;										//UPOWER最大：24*16384，19位，cos_val最大：4095，12位
 	*t2=2*uout*sin_a_val;	
 
-    Di = *t1;
-    Vi = Sq3Ux;
-    DIV_Fun(Di, Vi, &Qi, &Ri);
+	Di = *t1;
+	Vi = Sq3Ux;
+	DIV_Fun(Di, Vi, &Qi, &Ri);
 	*t1 = Qi;    //*t1=((*t1)/Sq3Ux);  								//t1=((2*uout*cos_val)/(sqrt(3)*Ux))*Tpwm
-    
-    Di = *t2;
-    Vi = Sq3Ux;
-    DIV_Fun(Di, Vi, &Qi, &Ri);
+
+	Di = *t2;
+	Vi = Sq3Ux;
+	DIV_Fun(Di, Vi, &Qi, &Ri);
 	*t2 = Qi;    //*t2=((*t2)/Sq3Ux);  							    //t2=((2*uout*sin_val)/(sqrt(3)*Ux))*Tpwm
 
 	*t1=((PWM_CLOCK_CYCLE)*(*t1))>>10;
@@ -190,85 +190,85 @@ int pwm_duty_0=0,pwm_duty_1=0,pwm_duty_2=0;
 #define seven_duan
 #ifdef seven_duan
 
-void Svpwm_Cal(s16 qua,int *t0,int *t1,int *t2) {
-
-// 	if( qua!=0 ) {
-       
-		switch(qua) {
-			case 1:	
-					pwm_duty_0 = *t1+*t2+((*t0)>>1);
-					pwm_duty_1 = pwm_duty_0 - *t1;
-					pwm_duty_2 = pwm_duty_1 - *t2;
-					break;
-			case 2:	
-					pwm_duty_1 = *t1+*t2+((*t0)>>1);
-					pwm_duty_0 = pwm_duty_1 - *t2;
-					pwm_duty_2 = pwm_duty_0 - *t1;
-					break;
-			case 3:	
-					pwm_duty_1 = *t1+*t2+((*t0)>>1);
-					pwm_duty_2 = pwm_duty_1 - *t1;
-					pwm_duty_0 = pwm_duty_2 - *t2;
-					break;
-			case 4:	
-					pwm_duty_2 = *t1+*t2+((*t0)>>1);
-					pwm_duty_1 = pwm_duty_2 - *t2;
-					pwm_duty_0 = pwm_duty_1 - *t1;	
-					break;
-			case 5:	
-					pwm_duty_2 = *t1+*t2+((*t0)>>1);
-					pwm_duty_0 = pwm_duty_2 - *t1;
-					pwm_duty_1 = pwm_duty_0 - *t2;
-					break;
-			case 6:	
-					pwm_duty_0 = *t1+*t2+((*t0)>>1);
-					pwm_duty_2 = pwm_duty_0 - *t2;
-					pwm_duty_1 = pwm_duty_2 - *t1;	
-					break;
-			default:break;
-		}
+void Svpwm_Cal(s16 qua,int *t0,int *t1,int *t2) 
+{     
+	switch(qua) 
+	{
+		case 1:	
+			pwm_duty_0 = *t1+*t2+((*t0)>>1);
+			pwm_duty_1 = pwm_duty_0 - *t1;
+			pwm_duty_2 = pwm_duty_1 - *t2;
+		break;
+		case 2:	
+			pwm_duty_1 = *t1+*t2+((*t0)>>1);
+			pwm_duty_0 = pwm_duty_1 - *t2;
+			pwm_duty_2 = pwm_duty_0 - *t1;
+		break;
+		case 3:	
+			pwm_duty_1 = *t1+*t2+((*t0)>>1);
+			pwm_duty_2 = pwm_duty_1 - *t1;
+			pwm_duty_0 = pwm_duty_2 - *t2;
+		break;
+		case 4:	
+			pwm_duty_2 = *t1+*t2+((*t0)>>1);
+			pwm_duty_1 = pwm_duty_2 - *t2;
+			pwm_duty_0 = pwm_duty_1 - *t1;	
+		break;
+		case 5:	
+			pwm_duty_2 = *t1+*t2+((*t0)>>1);
+			pwm_duty_0 = pwm_duty_2 - *t1;
+			pwm_duty_1 = pwm_duty_0 - *t2;
+		break;
+		case 6:	
+			pwm_duty_0 = *t1+*t2+((*t0)>>1);
+			pwm_duty_2 = pwm_duty_0 - *t2;
+			pwm_duty_1 = pwm_duty_2 - *t1;	
+		break;
+		default:break;
+	}
 // 	}					 
 	*t0 = pwm_duty_0;
 	*t1 = pwm_duty_1;
 	*t2 = pwm_duty_2;	 
 }
 #else
-void Svpwm_Cal (int qua,int *t0,int *t1,int *t2) {
+void Svpwm_Cal (int qua,int *t0,int *t1,int *t2) 
+{
 	int pwm_duty_0=0,pwm_duty_1=0,pwm_duty_2=0;	
 	if(!(qua==0)) {
-		switch(qua) {
-			case 1:	
-					pwm_duty_0 = *t1+*t2;
-					pwm_duty_1 = *t2;
-					pwm_duty_2 = 0;
-					break;
-			case 2:	
-					pwm_duty_1 = *t1+*t2;
-					pwm_duty_0 = *t1;
-					pwm_duty_2 = 0;
-					break;
-			case 3:	
-					pwm_duty_1 = *t1+*t2;
-					pwm_duty_2 = *t2;
-					pwm_duty_0 = 0;
-					break;
-			case 4:	
-					pwm_duty_2 = *t1+*t2;
-					pwm_duty_1 = *t1;
-					pwm_duty_0 = 0;	
-					break;
-			case 5:	
-					pwm_duty_2 = *t1+*t2;
-					pwm_duty_0 = *t2;
-					pwm_duty_1 = 0;
-					break;
-			case 6:	
-					pwm_duty_0 = *t1+*t2;
-					pwm_duty_2 = *t1;
-					pwm_duty_1 = 0;	
-					break;
-			default:break;
-		}
+	switch(qua) {
+	case 1:	
+	pwm_duty_0 = *t1+*t2;
+	pwm_duty_1 = *t2;
+	pwm_duty_2 = 0;
+	break;
+	case 2:	
+	pwm_duty_1 = *t1+*t2;
+	pwm_duty_0 = *t1;
+	pwm_duty_2 = 0;
+	break;
+	case 3:	
+	pwm_duty_1 = *t1+*t2;
+	pwm_duty_2 = *t2;
+	pwm_duty_0 = 0;
+	break;
+	case 4:	
+	pwm_duty_2 = *t1+*t2;
+	pwm_duty_1 = *t1;
+	pwm_duty_0 = 0;	
+	break;
+	case 5:	
+	pwm_duty_2 = *t1+*t2;
+	pwm_duty_0 = *t2;
+	pwm_duty_1 = 0;
+	break;
+	case 6:	
+	pwm_duty_0 = *t1+*t2;
+	pwm_duty_2 = *t1;
+	pwm_duty_1 = 0;	
+	break;
+	default:break;
+	}
 	}					 
 	*t0 = pwm_duty_0;
 	*t1 = pwm_duty_1;
@@ -298,172 +298,165 @@ extern s16 sector;
  **********************************************************************/
 void CalcSVGen( tSVGenParm *pSVGenParm )
 { 
- 	s16 T1,T2;
+	s16 T1,T2;
 
-    if( 1 )
+	if( 1 )
 	{
 
-        if( pSVGenParm->qVr1 >= 0 )
-        {       
-            // (xx1)
-            if( pSVGenParm->qVr2 >= 0 )
-            {
-                // (x11)
-                // Must be Sector 3 since Sector 7 not allowed
-                // Sector 3: (0,1,1)  0-60 degrees
-                sector = 3000;
-                T1 = pSVGenParm->qVr1;
-                T2 = pSVGenParm->qVr2;
-                CalcTimes(pSVGenParm,T1,T2);
-//                PWM0->HIGHA = Pwm0A = Tb;
-//                PWM1->HIGHA = Pwm1A = Ta;
-//                PWM2->HIGHA = Pwm2A = Tc;
-                PWM1->HIGHA = Pwm0A = Ta;
-                PWM2->HIGHA = Pwm1A = Tb;
-                PWM0->HIGHA = Pwm2A = Tc;
-            }
-            else
-            {            
-                // (x01)
-                if( pSVGenParm->qVr3 >= 0 )
-                {
-                    // Sector 5: (1,0,1)  120-180 degrees
-                    sector = 5000;
-                    T1 = pSVGenParm->qVr3;
-                    T2 = pSVGenParm->qVr1;
-                    CalcTimes(pSVGenParm,T1,T2);
-//                    PWM0->HIGHA = Pwm0A = Tc;
-//                    PWM1->HIGHA = Pwm1A = Tb;
-//                    PWM2->HIGHA = Pwm2A = Ta;
-                    PWM1->HIGHA = Pwm0A = Tc;
-                    PWM2->HIGHA = Pwm1A = Ta;
-                    PWM0->HIGHA = Pwm2A = Tb;
-                }
-                else
-                {
-                    // Sector 1: (0,0,1)  60-120 degrees
-                    sector = 1000;
-                    T1 = (0 - pSVGenParm->qVr3);
-                    T2 = (0 - pSVGenParm->qVr2);
-                    CalcTimes(pSVGenParm,T1,T2);
-//                    PWM0->HIGHA = Pwm0A = Ta;
-//                    PWM1->HIGHA = Pwm1A = Tb;
-//                    PWM2->HIGHA = Pwm2A = Tc;
-                    PWM1->HIGHA = Pwm0A = Tb;
-                    PWM2->HIGHA = Pwm1A = Ta;
-                    PWM0->HIGHA = Pwm2A = Tc;
-                }
-            }
-        }
-        else
-        {
-            // (xx0)
-            if( pSVGenParm->qVr2 >= 0 )
-            {
-                // (x10)
-                if( pSVGenParm->qVr3 >= 0 )
-                {
-                    // Sector 6: (1,1,0)  240-300 degrees
-                    sector = 6000;
-                    T1 = pSVGenParm->qVr2;
-                    T2 = pSVGenParm->qVr3;
-                    CalcTimes(pSVGenParm,T1,T2);
-//                    PWM0->HIGHA = Pwm0A = Ta;
-//                    PWM1->HIGHA = Pwm1A = Tc;
-//                    PWM2->HIGHA = Pwm2A = Tb;
-                    PWM1->HIGHA = Pwm0A = Tb;
-                    PWM2->HIGHA = Pwm1A = Tc;
-                    PWM0->HIGHA = Pwm2A = Ta;
-                }
-                else
-                {
-                    // Sector 2: (0,1,0)  300-0 degrees
-                    sector = 2000;
-                    T1 = (0 - pSVGenParm->qVr1);
-                    T2 = (0 - pSVGenParm->qVr3);
-                    CalcTimes(pSVGenParm,T1,T2);
-//                    PWM0->HIGHA = Pwm0A = Tb;
-//                    PWM1->HIGHA = Pwm1A = Tc;
-//                    PWM2->HIGHA = Pwm2A = Ta;
-                    PWM1->HIGHA = Pwm0A = Ta;
-                    PWM2->HIGHA = Pwm1A = Tc;
-                    PWM0->HIGHA = Pwm2A = Tb;
-                }
-            }
-            else
-            {            
-                // (x00)
-                // Must be Sector 4 since Sector 0 not allowed
-                // Sector 4: (1,0,0)  180-240 degrees
-                sector = 4000;
-                T1 = (0 - pSVGenParm->qVr2);
-                T2 = (0 - pSVGenParm->qVr1);
-                CalcTimes(pSVGenParm,T1,T2);
-//                PWM0->HIGHA = Pwm0A = Tc;
-//                PWM1->HIGHA = Pwm1A = Ta;
-//                PWM2->HIGHA = Pwm2A = Tb;
-                PWM1->HIGHA = Pwm0A = Tc;
-                PWM2->HIGHA = Pwm1A = Tb;
-                PWM0->HIGHA = Pwm2A = Ta;
-            }
-        }
-    }
-    else
-    {  
-        Elec_Angle = ParkParm.qAngle;
-    
-        Va2andVb2 = ParkParm.qValpha*ParkParm.qValpha + ParkParm.qVbeta*ParkParm.qVbeta ;
+		if( pSVGenParm->qVr1 >= 0 )
+		{       
+			// (xx1)
+			if( pSVGenParm->qVr2 >= 0 )
+			{
+				// (x11)
+				// Must be Sector 3 since Sector 7 not allowed
+				// Sector 3: (0,1,1)  0-60 degrees
+				sector = 3000;
+				T1 = pSVGenParm->qVr1;
+				T2 = pSVGenParm->qVr2;
+				CalcTimes(pSVGenParm,T1,T2);
+				//                PWM0->HIGHA = Pwm0A = Tb;
+				//                PWM1->HIGHA = Pwm1A = Ta;
+				//                PWM2->HIGHA = Pwm2A = Tc;
+				PWM1->HIGHA = Pwm0A = Ta;
+				PWM2->HIGHA = Pwm1A = Tb;
+				PWM0->HIGHA = Pwm2A = Tc;
+			}
+			else
+			{            
+				// (x01)
+				if( pSVGenParm->qVr3 >= 0 )
+				{
+					// Sector 5: (1,0,1)  120-180 degrees
+					sector = 5000;
+					T1 = pSVGenParm->qVr3;
+					T2 = pSVGenParm->qVr1;
+					CalcTimes(pSVGenParm,T1,T2);
+					//                    PWM0->HIGHA = Pwm0A = Tc;
+					//                    PWM1->HIGHA = Pwm1A = Tb;
+					//                    PWM2->HIGHA = Pwm2A = Ta;
+					PWM1->HIGHA = Pwm0A = Tc;
+					PWM2->HIGHA = Pwm1A = Ta;
+					PWM0->HIGHA = Pwm2A = Tb;
+				}
+				else
+				{
+					// Sector 1: (0,0,1)  60-120 degrees
+					sector = 1000;
+					T1 = (0 - pSVGenParm->qVr3);
+					T2 = (0 - pSVGenParm->qVr2);
+					CalcTimes(pSVGenParm,T1,T2);
+					//                    PWM0->HIGHA = Pwm0A = Ta;
+					//                    PWM1->HIGHA = Pwm1A = Tb;
+					//                    PWM2->HIGHA = Pwm2A = Tc;
+					PWM1->HIGHA = Pwm0A = Tb;
+					PWM2->HIGHA = Pwm1A = Ta;
+					PWM0->HIGHA = Pwm2A = Tc;
+				}
+			}
+		}
+		else
+		{
+			// (xx0)
+			if( pSVGenParm->qVr2 >= 0 )
+			{
+				// (x10)
+				if( pSVGenParm->qVr3 >= 0 )
+				{
+					// Sector 6: (1,1,0)  240-300 degrees
+					sector = 6000;
+					T1 = pSVGenParm->qVr2;
+					T2 = pSVGenParm->qVr3;
+					CalcTimes(pSVGenParm,T1,T2);
+					//                    PWM0->HIGHA = Pwm0A = Ta;
+					//                    PWM1->HIGHA = Pwm1A = Tc;
+					//                    PWM2->HIGHA = Pwm2A = Tb;
+					PWM1->HIGHA = Pwm0A = Tb;
+					PWM2->HIGHA = Pwm1A = Tc;
+					PWM0->HIGHA = Pwm2A = Ta;
+				}
+				else
+				{
+					// Sector 2: (0,1,0)  300-0 degrees
+					sector = 2000;
+					T1 = (0 - pSVGenParm->qVr1);
+					T2 = (0 - pSVGenParm->qVr3);
+					CalcTimes(pSVGenParm,T1,T2);
+					//                    PWM0->HIGHA = Pwm0A = Tb;
+					//                    PWM1->HIGHA = Pwm1A = Tc;
+					//                    PWM2->HIGHA = Pwm2A = Ta;
+					PWM1->HIGHA = Pwm0A = Ta;
+					PWM2->HIGHA = Pwm1A = Tc;
+					PWM0->HIGHA = Pwm2A = Tb;
+				}
+			}
+			else
+			{            
+				// (x00)
+				// Must be Sector 4 since Sector 0 not allowed
+				// Sector 4: (1,0,0)  180-240 degrees
+				sector = 4000;
+				T1 = (0 - pSVGenParm->qVr2);
+				T2 = (0 - pSVGenParm->qVr1);
+				CalcTimes(pSVGenParm,T1,T2);
+				//                PWM0->HIGHA = Pwm0A = Tc;
+				//                PWM1->HIGHA = Pwm1A = Ta;
+				//                PWM2->HIGHA = Pwm2A = Tb;
+				PWM1->HIGHA = Pwm0A = Tc;
+				PWM2->HIGHA = Pwm1A = Tb;
+				PWM0->HIGHA = Pwm2A = Ta;
+			}
+		}
+	}
+	else
+	{  
+		Elec_Angle = ParkParm.qAngle;
 
-        Va2andVb2temp = sqrt_16(Va2andVb2);
-    
-        if( stas == 0 )
-            uout =330;
-        else
-        {
-            if( Loopflag == 1 )      //开环
-            {
-                uout_ref = 600 ;
-                
-                if( uout < uout_ref )
-                    uout += 1;
-                else if( uout > uout_ref )
-                    uout -= 1;
-            }
-            else
-            {
-                if( Run_nomal )
-                {
-                    uout_ref = (PWM_UOUT*Va2andVb2temp)>>15; //uout = (PWM_UOUT*Va2andVb2temp)>>15;//  
-                    
-                    if( (uout-15 > uout_ref) || (uout+15 < uout_ref) )
-                    {
-                        if( uout < uout_ref )
-                            uout += 1;
-                        else if( uout > uout_ref )
-                            uout -= 1; 
-                                                     
-// 							uout = uout_ref;
-                    }
-                     
-//                     if( uout < UOUTMIN )
-//                        uout = UOUTMIN ;
-                }
-//                else
-//                     uout = 800;
-            }
-        }
-     
-        Svpwm_Duty(Elec_Angle,uout,&Duty0,&Duty1,&Duty2);		//根据角度，Uout算出t0,t1,t2
+		Va2andVb2 = ParkParm.qValpha*ParkParm.qValpha + ParkParm.qVbeta*ParkParm.qVbeta ;
 
-        //============================================
-        //Step5-给各路PWM的duty寄存器赋值
-        Svpwm_Cal(Sector,&Duty0,&Duty1,&Duty2);					//算出PWM0,PWM1,PWM2的作用时间	
-    
-        PWM0->HIGHA  =Pwm0A= Duty1;
-        PWM1->HIGHA  =Pwm1A= Duty2;
-        PWM2->HIGHA  =Pwm2A= Duty0;
+		Va2andVb2temp = sqrt_16(Va2andVb2);
 
-    }
+		if( stas == 0 )
+			uout =330;
+		else
+		{
+			if( Loopflag == 1 )      //开环
+			{
+				uout_ref = 600 ;
+
+				if( uout < uout_ref )
+				uout += 1;
+				else if( uout > uout_ref )
+				uout -= 1;
+			}
+			else
+			{
+				if( Run_nomal )
+				{
+					uout_ref = (PWM_UOUT*Va2andVb2temp)>>15; //uout = (PWM_UOUT*Va2andVb2temp)>>15;//  
+
+					if( (uout-15 > uout_ref) || (uout+15 < uout_ref) )
+					{
+						if( uout < uout_ref )
+							uout += 1;
+						else if( uout > uout_ref )
+							uout -= 1; 
+					}
+				}
+			}
+		}
+
+		Svpwm_Duty(Elec_Angle,uout,&Duty0,&Duty1,&Duty2);		//根据角度，Uout算出t0,t1,t2
+
+		//============================================
+		//Step5-给各路PWM的duty寄存器赋值
+		Svpwm_Cal(Sector,&Duty0,&Duty1,&Duty2);					//算出PWM0,PWM1,PWM2的作用时间	
+
+		PWM0->HIGHA  =Pwm0A= Duty1;
+		PWM1->HIGHA  =Pwm1A= Duty2;
+		PWM2->HIGHA  =Pwm2A= Duty0;
+
+	}
 }
 
 extern unsigned long Startup_Ramp;
@@ -491,33 +484,31 @@ void CalcTimes(tSVGenParm *pSVGenParm,s16 t1,s16 t2)
 //     if(Tb > 2200 ) Tb = 2200;
 //     if(Tc > 2200 ) Tc = 2200;
    
-    s32 valtemp;  
-    s16 tt1,tt2;    
-    tt1 = t1;
-    tt2 = t2;
-    if( t1+t2>= 32767 )
-    {
-       t1 = t1*(32767-0)/(tt1+tt2);
-       t2 = t2*(32767-0)/(tt1+tt2);
-    }
+	s32 valtemp;  
+	s16 tt1,tt2;    
+	tt1 = t1;
+	tt2 = t2;
+	if( t1+t2>= 32767 )
+	{
+		t1 = t1*(32767-0)/(tt1+tt2);
+		t2 = t2*(32767-0)/(tt1+tt2);
+	}
 
-    valtemp = pSVGenParm->iPWMPeriod * t1;
-    t1 = RIGHSHIFT15(valtemp);//t1 = ((pSVGenParm->iPWMPeriod) * t1)>>15;
-    valtemp = pSVGenParm->iPWMPeriod * t2;
-    t2 = RIGHSHIFT15(valtemp);//t2 = ((pSVGenParm->iPWMPeriod) * t2)>>15;
+	valtemp = pSVGenParm->iPWMPeriod * t1;
+	t1 = RIGHSHIFT15(valtemp);//t1 = ((pSVGenParm->iPWMPeriod) * t1)>>15;
+	valtemp = pSVGenParm->iPWMPeriod * t2;
+	t2 = RIGHSHIFT15(valtemp);//t2 = ((pSVGenParm->iPWMPeriod) * t2)>>15;
 
-
-    Tc = (pSVGenParm->iPWMPeriod - t1 - t2)>>2;
-    Tb = Tc + (t1>>1);
-    Ta = Tb + (t2>>1);
-    if(  (Ta<=0) || (Tb <=0) || (Tc<=0) ) 
-    {
-        if( Ta <=0 )
-            Ta = 1;
-        if( Tb <=0 )
-            Tb = 1;
-        if( Tc <=0 )
-            Tc = 1;
-    }
- 
+	Tc = (pSVGenParm->iPWMPeriod - t1 - t2)>>2;
+	Tb = Tc + (t1>>1);
+	Ta = Tb + (t2>>1);
+	if(  (Ta<=0) || (Tb <=0) || (Tc<=0) ) 
+	{
+		if( Ta <=0 )
+			Ta = 1;
+		if( Tb <=0 )
+			Tb = 1;
+		if( Tc <=0 )
+			Tc = 1;
+	} 
 }   

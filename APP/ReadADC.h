@@ -6,8 +6,8 @@
 
 typedef struct 
 {
-    s16   qK;         // 1.15 
-    s16   qADValue;   // 1.15
+	s16   qK;         // 1.15 
+	s16   qADValue;   // 1.15
 
 } tReadADCParm;
 

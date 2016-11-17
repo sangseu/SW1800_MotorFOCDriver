@@ -15,8 +15,8 @@ typedef struct {
 	s16	qIndex;
 	s16	qFWPercentage;
 	s16	qInterpolPortion;
-    s32	qFwCurve[16];	// Curve for magnetizing current
-    } tFdWeakParm;
+	s32	qFwCurve[16];	// Curve for magnetizing current
+} tFdWeakParm;
 extern tFdWeakParm FdWeakParm;
 s32 FieldWeakening( s32 qMotorSpeed );
 void FWInit (void);

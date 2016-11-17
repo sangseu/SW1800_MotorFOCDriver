@@ -22,22 +22,22 @@ void ClarkePark(tParkParm *pParkparm)
 {
 	s32 valtemp;
 	s16 SinW,CosW,IalphaW,IbetaW;
-//    s32 Di, Vi, Qi, Ri;
-	
+	//    s32 Di, Vi, Qi, Ri;
+
 	SinW = pParkparm->qSin;
 	CosW = pParkparm->qCos;
 	IalphaW = pParkparm->qIa;
-    
-    valtemp = (pParkparm->qIa  + pParkparm->qIb *2) * OneBySq3 ;
+
+	valtemp = (pParkparm->qIa  + pParkparm->qIb *2) * OneBySq3 ;
 	IbetaW = RIGHSHIFT10(valtemp); //IbetaW = ((pParkparm->qIa  + ((pParkparm->qIb) *2)) * OneBySq3 )/1024;
- 	
+
 	pParkparm->qIalpha = IalphaW;    //
 	pParkparm->qIbeta = IbetaW;	 //
 
 	valtemp = (SinW * IbetaW) + (CosW * IalphaW);
 	pParkparm->qId = RIGHSHIFT15(valtemp);//pParkparm->qId = ((SinW * IbetaW) + (CosW * IalphaW))/DIV_RATIO;	 //Q15*Q15=Q30,所以要右移15位转变为Q15
 
-    valtemp = (CosW * IbetaW) - (SinW * IalphaW);
+	valtemp = (CosW * IbetaW) - (SinW * IalphaW);
 	pParkparm->qIq = RIGHSHIFT15(valtemp);//pParkparm->qIq = ((CosW * IbetaW) - (SinW * IalphaW))/DIV_RATIO;	
 }
 
