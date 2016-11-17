@@ -1,0 +1,756 @@
+Component: ARM Compiler 5.05 update 2 (build 169) Tool: armlink [4d0f33]
+
+==============================================================================
+
+Section Cross References
+
+    smc.o(.text) refers to trig.o(.text) for DIV_Fun
+    smc.o(.text) refers to smc.o(i.CalcBEMF) for CalcBEMF
+    smc.o(.text) refers to pmsm.o(.data) for PrevTheta
+    smc.o(.text) refers to smc.o(.data) for .data
+    smc.o(.text) refers to pmsm.o(.data) for AccumTheta
+    smc.o(.text) refers to pmsm.o(.data) for AccumThetaCnt
+    smc.o(.text) refers to pmsm.o(.data) for Kself_omega0
+    initmcu.o(.text) refers to swm1800_gpio.o(.text) for GPIO_Init
+    initmcu.o(.text) refers to swm1800_port.o(.text) for PORT_Init
+    fdweak.o(.text) refers to trig.o(.text) for DIV_Fun
+    fdweak.o(.text) refers to fdweak.o(.bss) for .bss
+    meascurr.o(.text) refers to meascurr.o(.data) for .data
+    svgen.o(.text) refers to trig.o(.text) for DIV_Fun
+    svgen.o(.text) refers to svgen.o(i.__ARM_common_switch8) for __ARM_common_switch8
+    svgen.o(.text) refers to idiv.o(.text) for __aeabi_idivmod
+    svgen.o(.text) refers to svgen.o(.constdata) for .constdata
+    svgen.o(.text) refers to pmsm.o(.data) for Sector
+    svgen.o(.text) refers to svgen.o(.data) for .data
+    svgen.o(.text) refers to pmsm.o(.data) for PWM_CLOCK_CYCLE
+    svgen.o(.text) refers to pmsm.o(.data) for sector
+    trig.o(.text) refers to trig.o(.constdata) for .constdata
+    pmsm.o(.text) refers to swm1800_port.o(.text) for PORT_Init
+    pmsm.o(.text) refers to swm1800_uart.o(.text) for UART_Init
+    pmsm.o(.text) refers to swm1800_irqmux.o(.text) for IRQ_Connect
+    pmsm.o(.text) refers to swm1800_pwm.o(.text) for PWM_Init
+    pmsm.o(.text) refers to swm1800_timr.o(.text) for TIMR_Init
+    pmsm.o(.text) refers to swm1800_adc.o(.text) for ADC_Init
+    pmsm.o(.text) refers to uidiv.o(.text) for __aeabi_uidivmod
+    pmsm.o(.text) refers to meascurr.o(.text) for InitMeasCompCurr
+    pmsm.o(.text) refers to swm1800_gpio.o(.text) for GPIO_Init
+    pmsm.o(.text) refers to swm1800_exti.o(.text) for EXTI_Init
+    pmsm.o(.text) refers to pi.o(.text) for InitPI
+    pmsm.o(.text) refers to system_swm1800.o(.text) for SystemInit
+    pmsm.o(.text) refers to swm1800_div.o(.text) for DIV_Init
+    pmsm.o(.text) refers to swm1800_cordic.o(.text) for CORDIC_Init
+    pmsm.o(.text) refers to smc.o(.text) for SMCInit
+    pmsm.o(.text) refers to initmcu.o(.text) for SetupPorts
+    pmsm.o(.text) refers to fdweak.o(.text) for FWInit
+    pmsm.o(.text) refers to pmsm.o(.data) for .data
+    pmsm.o(.text) refers to pmsm.o(.bss) for .bss
+    pmsm.o(.text) refers to fflti.o(.text) for __aeabi_i2f
+    pmsm.o(.text) refers to fdiv.o(.text) for __aeabi_fdiv
+    pmsm.o(.text) refers to ffixi.o(.text) for __aeabi_f2iz
+    pmsm.o(.text) refers to fmul.o(.text) for __aeabi_fmul
+    pmsm.o(.text) refers to trig.o(.text) for sqrt_16
+    pmsm.o(.text) refers to clrkpark.o(.text) for ClarkePark
+    pmsm.o(.text) refers to invpark.o(.text) for InvPark
+    pmsm.o(.text) refers to calcref.o(.text) for CalcRefVec
+    pmsm.o(.text) refers to svgen.o(.text) for CalcSVGen
+    pmsm.o(.text) refers to idiv.o(.text) for __aeabi_idivmod
+    swm1800_can.o(.text) refers to uidiv.o(.text) for __aeabi_uidivmod
+    swm1800_can.o(.text) refers to system_swm1800.o(.data) for SystemCoreClock
+    swm1800_cordic.o(.text) refers to swm1800_div.o(.text) for DIV_Init
+    swm1800_dma.o(.text) refers to svgen.o(i.__ARM_common_switch8) for __ARM_common_switch8
+    swm1800_flash.o(.text) refers to swm1800_cache.o(.text) for CACHE_Invalid
+    swm1800_flash.o(.text) refers to swm1800_flash.o(.data) for .data
+    swm1800_gpio.o(.text) refers to swm1800_port.o(.text) for PORT_Init
+    swm1800_i2c.o(.text) refers to uidiv.o(.text) for __aeabi_uidivmod
+    swm1800_i2c.o(.text) refers to system_swm1800.o(.data) for SystemCoreClock
+    swm1800_slcd.o(.text) refers to uidiv.o(.text) for __aeabi_uidivmod
+    swm1800_slcd.o(.text) refers to system_swm1800.o(.data) for SystemCoreClock
+    swm1800_uart.o(.text) refers to uidiv.o(.text) for __aeabi_uidivmod
+    swm1800_uart.o(.text) refers to system_swm1800.o(.data) for SystemCoreClock
+    system_swm1800.o(.text) refers to system_swm1800.o(.data) for .data
+    startup_swm1800.o(RESET) refers to startup_swm1800.o(STACK) for Stack_Mem
+    startup_swm1800.o(RESET) refers to startup_swm1800.o(.text) for NMI_Handler
+    startup_swm1800.o(RESET) refers to pmsm.o(.text) for IRQ0_Handler
+    startup_swm1800.o(RESET) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry8b.o(.ARM.Collect$$$$0000000A) for _main_cpp_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry9a.o(.ARM.Collect$$$$0000000B) for _main_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry5.o(.ARM.Collect$$$$00000004) for _main_scatterload
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry2.o(.ARM.Collect$$$$00000001) for _main_stk
+    idiv.o(.text) refers to uidiv.o(.text) for __aeabi_uidivmod
+    fmul.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
+    fdiv.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
+    fdiv.o(.text) refers to fepilogue.o(.text) for _float_round
+    fflti.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
+    fflti.o(.text) refers to fepilogue.o(.text) for _float_epilogue
+    ffixi.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
+    entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
+    entry2.o(.ARM.Collect$$$$00002712) refers to startup_swm1800.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to startup_swm1800.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    entry5.o(.ARM.Collect$$$$00000004) refers to init.o(.text) for __scatterload
+    entry9a.o(.ARM.Collect$$$$0000000B) refers to pmsm.o(.text) for main
+    entry9b.o(.ARM.Collect$$$$0000000C) refers to pmsm.o(.text) for main
+    init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing smc.o(.data), (4 bytes).
+    Removing smc.o(.data), (4 bytes).
+    Removing smc.o(.data), (4 bytes).
+    Removing smc.o(.data), (4 bytes).
+    Removing smc.o(.data), (4 bytes).
+    Removing smc.o(.data), (2 bytes).
+    Removing svgen.o(.data), (2 bytes).
+    Removing svgen.o(.data), (2 bytes).
+    Removing svgen.o(.data), (4 bytes).
+    Removing svgen.o(.data), (2 bytes).
+    Removing svgen.o(.data), (2 bytes).
+    Removing svgen.o(.data), (4 bytes).
+    Removing svgen.o(.data), (4 bytes).
+    Removing pmsm.o(.constdata), (1500 bytes).
+    Removing pmsm.o(.data), (4 bytes).
+    Removing pmsm.o(.data), (4 bytes).
+    Removing pmsm.o(.data), (2 bytes).
+    Removing pmsm.o(.data), (2 bytes).
+    Removing pmsm.o(.data), (2 bytes).
+    Removing pmsm.o(.data), (2 bytes).
+    Removing pmsm.o(.data), (4 bytes).
+    Removing pmsm.o(.data), (4 bytes).
+    Removing pmsm.o(.data), (4 bytes).
+    Removing pmsm.o(.data), (4 bytes).
+    Removing pmsm.o(.data), (2 bytes).
+    Removing pmsm.o(.data), (2 bytes).
+    Removing pmsm.o(.data), (4 bytes).
+    Removing pmsm.o(.data), (2 bytes).
+    Removing pmsm.o(.data), (2 bytes).
+    Removing pmsm.o(.data), (2 bytes).
+    Removing pmsm.o(.data), (2 bytes).
+    Removing pmsm.o(.data), (4 bytes).
+    Removing pmsm.o(.data), (4 bytes).
+    Removing pmsm.o(.data), (1 bytes).
+    Removing pmsm.o(.data), (1 bytes).
+    Removing pmsm.o(.data), (1 bytes).
+    Removing swm1800_can.o(.text), (304 bytes).
+    Removing swm1800_cmp.o(.text), (444 bytes).
+    Removing swm1800_dma.o(.text), (584 bytes).
+    Removing swm1800_flash.o(.text), (120 bytes).
+    Removing swm1800_flash.o(.data), (4 bytes).
+    Removing swm1800_i2c.o(.text), (240 bytes).
+    Removing swm1800_sdadc.o(.text), (396 bytes).
+    Removing swm1800_slcd.o(.text), (144 bytes).
+    Removing swm1800_spi.o(.text), (376 bytes).
+    Removing swm1800_wdt.o(.text), (86 bytes).
+    Removing swm1800_cache.o(.text), (164 bytes).
+    Removing core_cm0.o(.emb_text), (32 bytes).
+    Removing system_swm1800.o(.data), (4 bytes).
+    Removing startup_swm1800.o(HEAP), (0 bytes).
+
+50 unused section(s) (total 4499 bytes) removed from the image.
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    RESET                                    0x00000000   Section      200  startup_swm1800.o(RESET)
+    ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
+    ../clib/microlib/division.c              0x00000000   Number         0  idiv.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
+    ../fplib/microlib/fpdiv.c                0x00000000   Number         0  fdiv.o ABSOLUTE
+    ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  fepilogue.o ABSOLUTE
+    ../fplib/microlib/fpfix.c                0x00000000   Number         0  ffixi.o ABSOLUTE
+    ../fplib/microlib/fpflt.c                0x00000000   Number         0  fflti.o ABSOLUTE
+    ../fplib/microlib/fpmul.c                0x00000000   Number         0  fmul.o ABSOLUTE
+    APP\CalcRef.c                            0x00000000   Number         0  calcref.o ABSOLUTE
+    APP\ClrkPark.c                           0x00000000   Number         0  clrkpark.o ABSOLUTE
+    APP\FdWeak.c                             0x00000000   Number         0  fdweak.o ABSOLUTE
+    APP\InitMcu.c                            0x00000000   Number         0  initmcu.o ABSOLUTE
+    APP\InvPark.c                            0x00000000   Number         0  invpark.o ABSOLUTE
+    APP\MeasCurr.c                           0x00000000   Number         0  meascurr.o ABSOLUTE
+    APP\PMSM.c                               0x00000000   Number         0  pmsm.o ABSOLUTE
+    APP\Pi.c                                 0x00000000   Number         0  pi.o ABSOLUTE
+    APP\Smc.c                                0x00000000   Number         0  smc.o ABSOLUTE
+    APP\Svgen.c                              0x00000000   Number         0  svgen.o ABSOLUTE
+    APP\Trig.c                               0x00000000   Number         0  trig.o ABSOLUTE
+    CSL\CMSIS\CoreSupport\core_cm0.c         0x00000000   Number         0  core_cm0.o ABSOLUTE
+    CSL\CMSIS\DeviceSupport\startup\arm\startup_SWM1800.s 0x00000000   Number         0  startup_swm1800.o ABSOLUTE
+    CSL\CMSIS\DeviceSupport\system_SWM1800.c 0x00000000   Number         0  system_swm1800.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.c 0x00000000   Number         0  swm1800_adc.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.c 0x00000000   Number         0  swm1800_cache.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_can.c 0x00000000   Number         0  swm1800_can.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.c 0x00000000   Number         0  swm1800_cmp.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.c 0x00000000   Number         0  swm1800_cordic.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_div.c 0x00000000   Number         0  swm1800_div.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.c 0x00000000   Number         0  swm1800_dma.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.c 0x00000000   Number         0  swm1800_exti.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.c 0x00000000   Number         0  swm1800_flash.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.c 0x00000000   Number         0  swm1800_gpio.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.c 0x00000000   Number         0  swm1800_i2c.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.c 0x00000000   Number         0  swm1800_irqmux.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_port.c 0x00000000   Number         0  swm1800_port.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.c 0x00000000   Number         0  swm1800_pwm.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.c 0x00000000   Number         0  swm1800_sdadc.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.c 0x00000000   Number         0  swm1800_slcd.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.c 0x00000000   Number         0  swm1800_spi.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.c 0x00000000   Number         0  swm1800_timr.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.c 0x00000000   Number         0  swm1800_uart.o ABSOLUTE
+    CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.c 0x00000000   Number         0  swm1800_wdt.o ABSOLUTE
+    CSL\\CMSIS\\CoreSupport\\core_cm0.c      0x00000000   Number         0  core_cm0.o ABSOLUTE
+    dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
+    handlers.s                               0x00000000   Number         0  handlers.o ABSOLUTE
+    init.s                                   0x00000000   Number         0  init.o ABSOLUTE
+    .ARM.Collect$$$$00000000                 0x000000c8   Section        0  entry.o(.ARM.Collect$$$$00000000)
+    .ARM.Collect$$$$00000001                 0x000000c8   Section        4  entry2.o(.ARM.Collect$$$$00000001)
+    .ARM.Collect$$$$00000004                 0x000000cc   Section        4  entry5.o(.ARM.Collect$$$$00000004)
+    .ARM.Collect$$$$00000008                 0x000000d0   Section        0  entry7b.o(.ARM.Collect$$$$00000008)
+    .ARM.Collect$$$$0000000A                 0x000000d0   Section        0  entry8b.o(.ARM.Collect$$$$0000000A)
+    .ARM.Collect$$$$0000000B                 0x000000d0   Section        8  entry9a.o(.ARM.Collect$$$$0000000B)
+    .ARM.Collect$$$$0000000D                 0x000000d8   Section        0  entry10a.o(.ARM.Collect$$$$0000000D)
+    .ARM.Collect$$$$0000000F                 0x000000d8   Section        0  entry11a.o(.ARM.Collect$$$$0000000F)
+    .ARM.Collect$$$$00002712                 0x000000d8   Section        4  entry2.o(.ARM.Collect$$$$00002712)
+    __lit__00000000                          0x000000d8   Data           4  entry2.o(.ARM.Collect$$$$00002712)
+    .text                                    0x000000dc   Section        0  smc.o(.text)
+    atan2CORDIC                              0x000000dd   Thumb Code   280  smc.o(.text)
+    DIV_Div                                  0x000003bb   Thumb Code    14  smc.o(.text)
+    .text                                    0x00000408   Section        0  initmcu.o(.text)
+    .text                                    0x000004e4   Section        0  fdweak.o(.text)
+    .text                                    0x00000564   Section        0  calcref.o(.text)
+    .text                                    0x000005c0   Section        0  clrkpark.o(.text)
+    .text                                    0x00000620   Section        0  invpark.o(.text)
+    .text                                    0x00000660   Section        0  meascurr.o(.text)
+    .text                                    0x000006b0   Section        0  pi.o(.text)
+    .text                                    0x00000760   Section        0  svgen.o(.text)
+    .text                                    0x00000b20   Section        0  trig.o(.text)
+    .text                                    0x00000bf8   Section        0  pmsm.o(.text)
+    .text                                    0x000015e4   Section        0  swm1800_adc.o(.text)
+    chn2idx                                  0x000016ff   Thumb Code    66  swm1800_adc.o(.text)
+    .text                                    0x00001858   Section        0  swm1800_cordic.o(.text)
+    .text                                    0x00001874   Section        0  swm1800_div.o(.text)
+    .text                                    0x00001888   Section        0  swm1800_exti.o(.text)
+    .text                                    0x000018f8   Section        0  swm1800_gpio.o(.text)
+    .text                                    0x00001a68   Section        0  swm1800_irqmux.o(.text)
+    .text                                    0x00001b44   Section        0  swm1800_port.o(.text)
+    .text                                    0x00001cc0   Section        0  swm1800_pwm.o(.text)
+    .text                                    0x00002134   Section        0  swm1800_timr.o(.text)
+    .text                                    0x00002314   Section        0  swm1800_uart.o(.text)
+    .text                                    0x00002498   Section        0  system_swm1800.o(.text)
+    switchToRC32KHz                          0x00002517   Thumb Code    26  system_swm1800.o(.text)
+    .text                                    0x00002548   Section       80  startup_swm1800.o(.text)
+    .text                                    0x00002598   Section        0  uidiv.o(.text)
+    .text                                    0x000025c4   Section        0  idiv.o(.text)
+    .text                                    0x000025ec   Section        0  fmul.o(.text)
+    .text                                    0x00002666   Section        0  fdiv.o(.text)
+    .text                                    0x000026e2   Section        0  fflti.o(.text)
+    .text                                    0x000026f8   Section        0  ffixi.o(.text)
+    .text                                    0x0000272a   Section        0  iusefp.o(.text)
+    .text                                    0x0000272a   Section        0  fepilogue.o(.text)
+    .text                                    0x000027ac   Section       36  init.o(.text)
+    i.CalcBEMF                               0x000027d0   Section        0  smc.o(i.CalcBEMF)
+    i.__ARM_common_switch8                   0x00002848   Section        0  svgen.o(i.__ARM_common_switch8)
+    i.__scatterload_copy                     0x00002862   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x00002870   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x00002872   Section       14  handlers.o(i.__scatterload_zeroinit)
+    .constdata                               0x00002880   Section     4096  svgen.o(.constdata)
+    .constdata                               0x00003880   Section      512  trig.o(.constdata)
+    .data                                    0x20000000   Section        4  smc.o(.data)
+    .data                                    0x20000004   Section        4  meascurr.o(.data)
+    .data                                    0x20000008   Section       28  svgen.o(.data)
+    .data                                    0x20000024   Section      168  pmsm.o(.data)
+    AdCn                                     0x20000024   Data           1  pmsm.o(.data)
+    .data                                    0x200000cc   Section        2  pmsm.o(.data)
+    .data                                    0x200000ce   Section        2  pmsm.o(.data)
+    .data                                    0x200000d0   Section        2  pmsm.o(.data)
+    .data                                    0x200000d2   Section        2  pmsm.o(.data)
+    .data                                    0x200000d4   Section        2  pmsm.o(.data)
+    .data                                    0x200000d8   Section        4  system_swm1800.o(.data)
+    .bss                                     0x200000dc   Section       80  fdweak.o(.bss)
+    .bss                                     0x2000012c   Section      236  pmsm.o(.bss)
+    STACK                                    0x20000218   Section     1024  startup_swm1800.o(STACK)
+    Stack_Mem                                0x20000218   Data        1024  startup_swm1800.o(STACK)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv3M$S$PE$A:L22$X:L11$S22$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OTIME$ROPI$EBA8$MICROLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __ARM_use_no_argv                        0x00000000   Number         0  pmsm.o ABSOLUTE
+    __Vectors                                0x00000000   Data           4  startup_swm1800.o(RESET)
+    __cpp_initialize__aeabi_                  - Undefined Weak Reference
+    __cxa_finalize                            - Undefined Weak Reference
+    __decompress                              - Undefined Weak Reference
+    _clock_init                               - Undefined Weak Reference
+    _microlib_exit                            - Undefined Weak Reference
+    Reset_Handler                            0x000000c1   Thumb Code     4  startup_swm1800.o(RESET)
+    __Vectors_End                            0x000000c1   Thumb Code     0  startup_swm1800.o(RESET)
+    __Vectors_Size                           0x000000c0   Number         0  startup_swm1800.o ABSOLUTE
+    __main                                   0x000000c9   Thumb Code     0  entry.o(.ARM.Collect$$$$00000000)
+    _main_stk                                0x000000c9   Thumb Code     0  entry2.o(.ARM.Collect$$$$00000001)
+    _main_scatterload                        0x000000cd   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    __main_after_scatterload                 0x000000d1   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    _main_clock                              0x000000d1   Thumb Code     0  entry7b.o(.ARM.Collect$$$$00000008)
+    _main_cpp_init                           0x000000d1   Thumb Code     0  entry8b.o(.ARM.Collect$$$$0000000A)
+    _main_init                               0x000000d1   Thumb Code     0  entry9a.o(.ARM.Collect$$$$0000000B)
+    __rt_final_cpp                           0x000000d9   Thumb Code     0  entry10a.o(.ARM.Collect$$$$0000000D)
+    __rt_final_exit                          0x000000d9   Thumb Code     0  entry11a.o(.ARM.Collect$$$$0000000F)
+    SMC_Position_Estimation                  0x000001f5   Thumb Code   416  smc.o(.text)
+    SMCInit                                  0x00000395   Thumb Code    38  smc.o(.text)
+    SetupPorts                               0x00000409   Thumb Code   204  initmcu.o(.text)
+    FieldWeakening                           0x000004e5   Thumb Code    66  fdweak.o(.text)
+    FWInit                                   0x00000527   Thumb Code    46  fdweak.o(.text)
+    CalcRefVec                               0x00000565   Thumb Code    86  calcref.o(.text)
+    ClarkePark                               0x000005c1   Thumb Code    90  clrkpark.o(.text)
+    InvPark                                  0x00000621   Thumb Code    64  invpark.o(.text)
+    InitMeasCompCurr                         0x00000661   Thumb Code     6  meascurr.o(.text)
+    MeasCompCurr                             0x00000667   Thumb Code    68  meascurr.o(.text)
+    InitPI                                   0x000006b1   Thumb Code     8  pi.o(.text)
+    CalcPI                                   0x000006b9   Thumb Code    98  pi.o(.text)
+    Cal_PID                                  0x0000071b   Thumb Code    62  pi.o(.text)
+    gabs                                     0x00000759   Thumb Code     8  pi.o(.text)
+    dutypid                                  0x00000761   Thumb Code    28  svgen.o(.text)
+    Svpwm_Qua                                0x0000077d   Thumb Code   112  svgen.o(.text)
+    math_cal_0                               0x000007ed   Thumb Code    42  svgen.o(.text)
+    Svpwm_Duty                               0x00000817   Thumb Code   142  svgen.o(.text)
+    Svpwm_Cal                                0x000008a5   Thumb Code   192  svgen.o(.text)
+    CalcTimes                                0x00000965   Thumb Code   134  svgen.o(.text)
+    CalcSVGen                                0x000009eb   Thumb Code   254  svgen.o(.text)
+    SinCos                                   0x00000b21   Thumb Code    96  trig.o(.text)
+    sqrt_16                                  0x00000b81   Thumb Code    32  trig.o(.text)
+    DIV_Fun                                  0x00000ba1   Thumb Code    82  trig.o(.text)
+    UartInit                                 0x00000bf9   Thumb Code    74  pmsm.o(.text)
+    _CRC16                                   0x00000c43   Thumb Code    62  pmsm.o(.text)
+    uart_putstring2                          0x00000c81   Thumb Code    36  pmsm.o(.text)
+    Communication                            0x00000ca5   Thumb Code    62  pmsm.o(.text)
+    SetupParm                                0x00000ce3   Thumb Code   450  pmsm.o(.text)
+    CountInputFreq_Init                      0x00000ea5   Thumb Code    66  pmsm.o(.text)
+    SetupControlParameters                   0x00000ee7   Thumb Code   128  pmsm.o(.text)
+    main                                     0x00000f67   Thumb Code   332  pmsm.o(.text)
+    DoControl                                0x000010b3   Thumb Code   396  pmsm.o(.text)
+    CalculateParkAngle                       0x0000123f   Thumb Code   246  pmsm.o(.text)
+    IRQ0_Handler                             0x00001335   Thumb Code    92  pmsm.o(.text)
+    IRQ1_Handler                             0x00001391   Thumb Code   178  pmsm.o(.text)
+    IRQ2_Handler                             0x00001443   Thumb Code   110  pmsm.o(.text)
+    IRQ5_Handler                             0x000014b1   Thumb Code    98  pmsm.o(.text)
+    IRQ4_Handler                             0x00001513   Thumb Code    66  pmsm.o(.text)
+    DebounceDelay                            0x00001555   Thumb Code    12  pmsm.o(.text)
+    VoltRippleComp                           0x00001561   Thumb Code    44  pmsm.o(.text)
+    CountInputFreq                           0x0000158d   Thumb Code    18  pmsm.o(.text)
+    calculate_rotate_speed                   0x0000159f   Thumb Code    32  pmsm.o(.text)
+    ADC_Close                                0x000015e5   Thumb Code    12  swm1800_adc.o(.text)
+    ADC_Init                                 0x000015f1   Thumb Code   242  swm1800_adc.o(.text)
+    ADC_Open                                 0x000016e3   Thumb Code    12  swm1800_adc.o(.text)
+    ADC_Start                                0x000016ef   Thumb Code     6  swm1800_adc.o(.text)
+    ADC_Stop                                 0x000016f5   Thumb Code    10  swm1800_adc.o(.text)
+    ADC_Read                                 0x00001741   Thumb Code    22  swm1800_adc.o(.text)
+    ADC_IsEOC                                0x00001757   Thumb Code    22  swm1800_adc.o(.text)
+    ADC_ChnOpen                              0x0000176d   Thumb Code     8  swm1800_adc.o(.text)
+    ADC_ChnClose                             0x00001775   Thumb Code     8  swm1800_adc.o(.text)
+    ADC_IntEOCEn                             0x0000177d   Thumb Code    24  swm1800_adc.o(.text)
+    ADC_IntEOCDis                            0x00001795   Thumb Code    24  swm1800_adc.o(.text)
+    ADC_IntEOCClr                            0x000017ad   Thumb Code    20  swm1800_adc.o(.text)
+    ADC_IntEOCStat                           0x000017c1   Thumb Code    30  swm1800_adc.o(.text)
+    ADC_IntOVFEn                             0x000017df   Thumb Code    26  swm1800_adc.o(.text)
+    ADC_IntOVFDis                            0x000017f9   Thumb Code    26  swm1800_adc.o(.text)
+    ADC_IntOVFClr                            0x00001813   Thumb Code    22  swm1800_adc.o(.text)
+    ADC_IntOVFStat                           0x00001829   Thumb Code    32  swm1800_adc.o(.text)
+    CORDIC_Init                              0x00001859   Thumb Code    28  swm1800_cordic.o(.text)
+    DIV_Init                                 0x00001875   Thumb Code    20  swm1800_div.o(.text)
+    EXTI_Clear                               0x00001889   Thumb Code     8  swm1800_exti.o(.text)
+    EXTI_Init                                0x00001891   Thumb Code    60  swm1800_exti.o(.text)
+    EXTI_Open                                0x000018cd   Thumb Code    12  swm1800_exti.o(.text)
+    EXTI_Close                               0x000018d9   Thumb Code    12  swm1800_exti.o(.text)
+    EXTI_State                               0x000018e5   Thumb Code    10  swm1800_exti.o(.text)
+    EXTI_RawState                            0x000018ef   Thumb Code    10  swm1800_exti.o(.text)
+    GPIO_Init                                0x000018f9   Thumb Code   234  swm1800_gpio.o(.text)
+    GPIO_SetBit                              0x000019e3   Thumb Code    12  swm1800_gpio.o(.text)
+    GPIO_ClrBit                              0x000019ef   Thumb Code    12  swm1800_gpio.o(.text)
+    GPIO_InvBit                              0x000019fb   Thumb Code    12  swm1800_gpio.o(.text)
+    GPIO_GetBit                              0x00001a07   Thumb Code    10  swm1800_gpio.o(.text)
+    GPIO_SetBits                             0x00001a11   Thumb Code    18  swm1800_gpio.o(.text)
+    GPIO_ClrBits                             0x00001a23   Thumb Code    18  swm1800_gpio.o(.text)
+    GPIO_InvBits                             0x00001a35   Thumb Code    18  swm1800_gpio.o(.text)
+    GPIO_GetBits                             0x00001a47   Thumb Code    16  swm1800_gpio.o(.text)
+    IRQ_Connect                              0x00001a69   Thumb Code   150  swm1800_irqmux.o(.text)
+    IRQ_Which                                0x00001aff   Thumb Code    50  swm1800_irqmux.o(.text)
+    PORT_Init                                0x00001b45   Thumb Code   372  swm1800_port.o(.text)
+    PWM_Stop                                 0x00001cc1   Thumb Code    64  swm1800_pwm.o(.text)
+    PWM_Init                                 0x00001d01   Thumb Code   194  swm1800_pwm.o(.text)
+    PWM_Start                                0x00001dc3   Thumb Code    56  swm1800_pwm.o(.text)
+    PWM_SetCycle                             0x00001dfb   Thumb Code    16  swm1800_pwm.o(.text)
+    PWM_GetCycle                             0x00001e0b   Thumb Code    22  swm1800_pwm.o(.text)
+    PWM_SetHDuty                             0x00001e21   Thumb Code    16  swm1800_pwm.o(.text)
+    PWM_GetHDuty                             0x00001e31   Thumb Code    22  swm1800_pwm.o(.text)
+    PWM_SetDeadzone                          0x00001e47   Thumb Code    16  swm1800_pwm.o(.text)
+    PWM_GetDeadzone                          0x00001e57   Thumb Code    22  swm1800_pwm.o(.text)
+    PWM_IntNCycleEn                          0x00001e6d   Thumb Code    80  swm1800_pwm.o(.text)
+    PWM_IntNCycleDis                         0x00001ebd   Thumb Code    82  swm1800_pwm.o(.text)
+    PWM_IntNCycleClr                         0x00001f0f   Thumb Code    70  swm1800_pwm.o(.text)
+    PWM_IntNCycleStat                        0x00001f55   Thumb Code    84  swm1800_pwm.o(.text)
+    PWM_IntHEndEn                            0x00001fa9   Thumb Code    96  swm1800_pwm.o(.text)
+    PWM_IntHEndDis                           0x00002009   Thumb Code    96  swm1800_pwm.o(.text)
+    PWM_IntHEndClr                           0x00002069   Thumb Code    96  swm1800_pwm.o(.text)
+    PWM_IntHEndStat                          0x000020c9   Thumb Code    98  swm1800_pwm.o(.text)
+    TIMR_INTClr                              0x00002135   Thumb Code    38  swm1800_timr.o(.text)
+    TIMR_Stop                                0x0000215b   Thumb Code    10  swm1800_timr.o(.text)
+    TIMR_Init                                0x00002165   Thumb Code   152  swm1800_timr.o(.text)
+    TIMR_Start                               0x000021fd   Thumb Code    10  swm1800_timr.o(.text)
+    TIMR_Halt                                0x00002207   Thumb Code    48  swm1800_timr.o(.text)
+    TIMR_Resume                              0x00002237   Thumb Code    50  swm1800_timr.o(.text)
+    TIMR_SetPeriod                           0x00002269   Thumb Code     4  swm1800_timr.o(.text)
+    TIMR_GetPeriod                           0x0000226d   Thumb Code     4  swm1800_timr.o(.text)
+    TIMR_GetCurValue                         0x00002271   Thumb Code     4  swm1800_timr.o(.text)
+    TIMR_INTEn                               0x00002275   Thumb Code    48  swm1800_timr.o(.text)
+    TIMR_INTDis                              0x000022a5   Thumb Code    50  swm1800_timr.o(.text)
+    TIMR_INTStat                             0x000022d7   Thumb Code    52  swm1800_timr.o(.text)
+    UART_Close                               0x00002315   Thumb Code    12  swm1800_uart.o(.text)
+    UART_Init                                0x00002321   Thumb Code   172  swm1800_uart.o(.text)
+    UART_Open                                0x000023cd   Thumb Code    12  swm1800_uart.o(.text)
+    UART_WriteByte                           0x000023d9   Thumb Code     4  swm1800_uart.o(.text)
+    UART_ReadByte                            0x000023dd   Thumb Code     6  swm1800_uart.o(.text)
+    UART_IsDataValid                         0x000023e3   Thumb Code     8  swm1800_uart.o(.text)
+    UART_IsTXBusy                            0x000023eb   Thumb Code    10  swm1800_uart.o(.text)
+    UART_IsRXFIFOEmpty                       0x000023f5   Thumb Code    10  swm1800_uart.o(.text)
+    UART_IsTXFIFOFull                        0x000023ff   Thumb Code     8  swm1800_uart.o(.text)
+    UART_SetBaudrate                         0x00002407   Thumb Code    30  swm1800_uart.o(.text)
+    UART_GetBaudrate                         0x00002425   Thumb Code     8  swm1800_uart.o(.text)
+    UART_INTRXThresholdEn                    0x0000242d   Thumb Code    10  swm1800_uart.o(.text)
+    UART_INTRXThresholdDis                   0x00002437   Thumb Code    10  swm1800_uart.o(.text)
+    UART_INTRXThresholdStat                  0x00002441   Thumb Code     8  swm1800_uart.o(.text)
+    UART_INTTXThresholdEn                    0x00002449   Thumb Code    10  swm1800_uart.o(.text)
+    UART_INTTXThresholdDis                   0x00002453   Thumb Code    10  swm1800_uart.o(.text)
+    UART_INTTXThresholdStat                  0x0000245d   Thumb Code     8  swm1800_uart.o(.text)
+    UART_INTTimeoutEn                        0x00002465   Thumb Code    12  swm1800_uart.o(.text)
+    UART_INTTimeoutDis                       0x00002471   Thumb Code    12  swm1800_uart.o(.text)
+    UART_INTTimeoutStat                      0x0000247d   Thumb Code     8  swm1800_uart.o(.text)
+    SystemCoreClockUpdate                    0x00002499   Thumb Code    64  system_swm1800.o(.text)
+    SystemInit                               0x000024d9   Thumb Code    62  system_swm1800.o(.text)
+    NMI_Handler                              0x00002549   Thumb Code     2  startup_swm1800.o(.text)
+    HardFault_Handler                        0x0000254b   Thumb Code     2  startup_swm1800.o(.text)
+    SVC_Handler                              0x0000254d   Thumb Code     2  startup_swm1800.o(.text)
+    PendSV_Handler                           0x0000254f   Thumb Code     2  startup_swm1800.o(.text)
+    SysTick_Handler                          0x00002551   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ3_Handler                             0x00002559   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ6_Handler                             0x0000255f   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ7_Handler                             0x00002561   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ8_Handler                             0x00002563   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ9_Handler                             0x00002565   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ10_Handler                            0x00002567   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ11_Handler                            0x00002569   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ12_Handler                            0x0000256b   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ13_Handler                            0x0000256d   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ14_Handler                            0x0000256f   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ15_Handler                            0x00002571   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ16_Handler                            0x00002573   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ17_Handler                            0x00002575   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ18_Handler                            0x00002577   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ19_Handler                            0x00002579   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ20_Handler                            0x0000257b   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ21_Handler                            0x0000257d   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ22_Handler                            0x0000257f   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ23_Handler                            0x00002581   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ24_Handler                            0x00002583   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ25_Handler                            0x00002585   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ26_Handler                            0x00002587   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ27_Handler                            0x00002589   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ28_Handler                            0x0000258d   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ29_Handler                            0x00002591   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ30_Handler                            0x00002593   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ31_Handler                            0x00002595   Thumb Code     2  startup_swm1800.o(.text)
+    __aeabi_uidiv                            0x00002599   Thumb Code     0  uidiv.o(.text)
+    __aeabi_uidivmod                         0x00002599   Thumb Code    44  uidiv.o(.text)
+    __aeabi_idiv                             0x000025c5   Thumb Code     0  idiv.o(.text)
+    __aeabi_idivmod                          0x000025c5   Thumb Code    40  idiv.o(.text)
+    __aeabi_fmul                             0x000025ed   Thumb Code   122  fmul.o(.text)
+    __aeabi_fdiv                             0x00002667   Thumb Code   124  fdiv.o(.text)
+    __aeabi_i2f                              0x000026e3   Thumb Code    22  fflti.o(.text)
+    __aeabi_f2iz                             0x000026f9   Thumb Code    50  ffixi.o(.text)
+    __I$use$fp                               0x0000272b   Thumb Code     0  iusefp.o(.text)
+    _float_round                             0x0000272b   Thumb Code    16  fepilogue.o(.text)
+    _float_epilogue                          0x0000273b   Thumb Code   114  fepilogue.o(.text)
+    __scatterload                            0x000027ad   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x000027ad   Thumb Code     0  init.o(.text)
+    CalcBEMF                                 0x000027d1   Thumb Code   120  smc.o(i.CalcBEMF)
+    __ARM_common_switch8                     0x00002849   Thumb Code    26  svgen.o(i.__ARM_common_switch8)
+    __scatterload_copy                       0x00002863   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x00002871   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x00002873   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    sin_dat                                  0x00002880   Data        4096  svgen.o(.constdata)
+    SinTable                                 0x00003880   Data         512  trig.o(.constdata)
+    Region$$Table$$Base                      0x00003a80   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00003aa0   Number         0  anon$$obj.o(Region$$Table)
+    temptheta                                0x20000000   Data           4  smc.o(.data)
+    CorrADC0                                 0x20000004   Data           2  meascurr.o(.data)
+    CorrADC1                                 0x20000006   Data           2  meascurr.o(.data)
+    sin_a_val                                0x20000008   Data           2  svgen.o(.data)
+    sin60_a_val                              0x2000000a   Data           2  svgen.o(.data)
+    Ta                                       0x2000000c   Data           2  svgen.o(.data)
+    Tb                                       0x2000000e   Data           2  svgen.o(.data)
+    Tc                                       0x20000010   Data           2  svgen.o(.data)
+    Pwm0A                                    0x20000012   Data           2  svgen.o(.data)
+    Pwm1A                                    0x20000014   Data           2  svgen.o(.data)
+    Pwm2A                                    0x20000016   Data           2  svgen.o(.data)
+    pwm_duty_0                               0x20000018   Data           4  svgen.o(.data)
+    pwm_duty_1                               0x2000001c   Data           4  svgen.o(.data)
+    pwm_duty_2                               0x20000020   Data           4  svgen.o(.data)
+    SP_High                                  0x20000025   Data           1  pmsm.o(.data)
+    SP_Low                                   0x20000026   Data           1  pmsm.o(.data)
+    PWM_CLOCK_CYCLE                          0x20000028   Data           2  pmsm.o(.data)
+    DCbus                                    0x2000002a   Data           2  pmsm.o(.data)
+    TargetDCbus                              0x2000002c   Data           2  pmsm.o(.data)
+    Theta_error                              0x2000002e   Data           2  pmsm.o(.data)
+    ADIa                                     0x20000030   Data           2  pmsm.o(.data)
+    ADIb                                     0x20000032   Data           2  pmsm.o(.data)
+    Loopflag                                 0x20000034   Data           2  pmsm.o(.data)
+    Run_nomal                                0x20000036   Data           2  pmsm.o(.data)
+    T0_t                                     0x20000038   Data           2  pmsm.o(.data)
+    PWM_per                                  0x2000003a   Data           2  pmsm.o(.data)
+    W_REF                                    0x2000003c   Data           2  pmsm.o(.data)
+    stas                                     0x2000003e   Data           2  pmsm.o(.data)
+    VDC_status                               0x20000040   Data           2  pmsm.o(.data)
+    VDC_status_tiems                         0x20000042   Data           2  pmsm.o(.data)
+    SPREF                                    0x20000044   Data           2  pmsm.o(.data)
+    Qref                                     0x20000046   Data           2  pmsm.o(.data)
+    AccumCurrentCnt                          0x20000048   Data           2  pmsm.o(.data)
+    adc_flag                                 0x2000004a   Data           2  pmsm.o(.data)
+    speedmax                                 0x2000004c   Data           2  pmsm.o(.data)
+    delta_startup                            0x2000004e   Data           2  pmsm.o(.data)
+    IRP_percalc                              0x20000050   Data           2  pmsm.o(.data)
+    SPEED                                    0x20000052   Data           2  pmsm.o(.data)
+    View1                                    0x20000054   Data           2  pmsm.o(.data)
+    View2                                    0x20000056   Data           2  pmsm.o(.data)
+    View3                                    0x20000058   Data           2  pmsm.o(.data)
+    View4                                    0x2000005a   Data           2  pmsm.o(.data)
+    reset_delaytimes                         0x2000005c   Data           2  pmsm.o(.data)
+    Startup_Ramp                             0x20000060   Data           4  pmsm.o(.data)
+    Startup_Lock                             0x20000064   Data           4  pmsm.o(.data)
+    AccumThetaCnt                            0x20000068   Data           4  pmsm.o(.data)
+    qVdSquared                               0x2000006c   Data           4  pmsm.o(.data)
+    uGF                                      0x20000070   Data           4  pmsm.o(.data)
+    ReadADCParm                              0x20000074   Data           4  pmsm.o(.data)
+    SpeedV                                   0x20000078   Data           4  pmsm.o(.data)
+    SpeedTotal                               0x2000007c   Data           4  pmsm.o(.data)
+    Speedtimes                               0x20000080   Data           4  pmsm.o(.data)
+    VdcTotal                                 0x20000084   Data           4  pmsm.o(.data)
+    Vdctimes                                 0x20000088   Data           4  pmsm.o(.data)
+    CtrlParm                                 0x2000008c   Data           6  pmsm.o(.data)
+    MeasCurrParm                             0x20000092   Data           8  pmsm.o(.data)
+    MotorParm                                0x2000009c   Data           8  pmsm.o(.data)
+    SVGenParm                                0x200000a4   Data           8  pmsm.o(.data)
+    ParkParm                                 0x200000ac   Data          32  pmsm.o(.data)
+    PrevTheta                                0x200000cc   Data           2  pmsm.o(.data)
+    AccumTheta                               0x200000ce   Data           2  pmsm.o(.data)
+    Sector                                   0x200000d0   Data           2  pmsm.o(.data)
+    Kself_omega0                             0x200000d2   Data           2  pmsm.o(.data)
+    sector                                   0x200000d4   Data           2  pmsm.o(.data)
+    SystemCoreClock                          0x200000d8   Data           4  system_swm1800.o(.data)
+    FdWeakParm                               0x200000dc   Data          80  fdweak.o(.bss)
+    smc1                                     0x2000012c   Data          50  pmsm.o(.bss)
+    InpFreqCnt                               0x20000160   Data          16  pmsm.o(.bss)
+    PIParmD                                  0x20000170   Data          28  pmsm.o(.bss)
+    PIParmQ                                  0x2000018c   Data          28  pmsm.o(.bss)
+    PIParmW                                  0x200001a8   Data          28  pmsm.o(.bss)
+    PI_DTerm                                 0x200001c4   Data          28  pmsm.o(.bss)
+    PI_WTerm                                 0x200001e0   Data          28  pmsm.o(.bss)
+    PI_QTerm                                 0x200001fc   Data          28  pmsm.o(.bss)
+    __initial_sp                             0x20000618   Data           0  startup_swm1800.o(STACK)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x000000c9
+
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00003b7c, Max: 0x00004000, ABSOLUTE)
+
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00003aa0, Max: 0x00004000, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000000   0x000000c8   Code   RO          674    RESET               startup_swm1800.o
+    0x000000c8   0x00000000   Code   RO          682  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
+    0x000000c8   0x00000004   Code   RO          697    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
+    0x000000cc   0x00000004   Code   RO          700    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
+    0x000000d0   0x00000000   Code   RO          702    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
+    0x000000d0   0x00000000   Code   RO          704    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
+    0x000000d0   0x00000008   Code   RO          705    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
+    0x000000d8   0x00000000   Code   RO          707    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
+    0x000000d8   0x00000000   Code   RO          709    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
+    0x000000d8   0x00000004   Code   RO          698    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
+    0x000000dc   0x0000032c   Code   RO            1    .text               smc.o
+    0x00000408   0x000000dc   Code   RO          135    .text               initmcu.o
+    0x000004e4   0x00000080   Code   RO          153    .text               fdweak.o
+    0x00000564   0x0000005c   Code   RO          171    .text               calcref.o
+    0x000005c0   0x00000060   Code   RO          191    .text               clrkpark.o
+    0x00000620   0x00000040   Code   RO          203    .text               invpark.o
+    0x00000660   0x00000050   Code   RO          215    .text               meascurr.o
+    0x000006b0   0x000000b0   Code   RO          235    .text               pi.o
+    0x00000760   0x000003c0   Code   RO          250    .text               svgen.o
+    0x00000b20   0x000000d8   Code   RO          280    .text               trig.o
+    0x00000bf8   0x000009ec   Code   RO          298    .text               pmsm.o
+    0x000015e4   0x00000274   Code   RO          381    .text               swm1800_adc.o
+    0x00001858   0x0000001c   Code   RO          419    .text               swm1800_cordic.o
+    0x00001874   0x00000014   Code   RO          431    .text               swm1800_div.o
+    0x00001888   0x00000070   Code   RO          455    .text               swm1800_exti.o
+    0x000018f8   0x00000170   Code   RO          483    .text               swm1800_gpio.o
+    0x00001a68   0x000000dc   Code   RO          508    .text               swm1800_irqmux.o
+    0x00001b44   0x0000017c   Code   RO          523    .text               swm1800_port.o
+    0x00001cc0   0x00000474   Code   RO          535    .text               swm1800_pwm.o
+    0x00002134   0x000001e0   Code   RO          585    .text               swm1800_timr.o
+    0x00002314   0x00000184   Code   RO          598    .text               swm1800_uart.o
+    0x00002498   0x000000b0   Code   RO          647    .text               system_swm1800.o
+    0x00002548   0x00000050   Code   RO          675    .text               startup_swm1800.o
+    0x00002598   0x0000002c   Code   RO          685    .text               mc_p.l(uidiv.o)
+    0x000025c4   0x00000028   Code   RO          687    .text               mc_p.l(idiv.o)
+    0x000025ec   0x0000007a   Code   RO          689    .text               mf_p.l(fmul.o)
+    0x00002666   0x0000007c   Code   RO          691    .text               mf_p.l(fdiv.o)
+    0x000026e2   0x00000016   Code   RO          693    .text               mf_p.l(fflti.o)
+    0x000026f8   0x00000032   Code   RO          695    .text               mf_p.l(ffixi.o)
+    0x0000272a   0x00000000   Code   RO          711    .text               mc_p.l(iusefp.o)
+    0x0000272a   0x00000082   Code   RO          712    .text               mf_p.l(fepilogue.o)
+    0x000027ac   0x00000024   Code   RO          714    .text               mc_p.l(init.o)
+    0x000027d0   0x00000078   Code   RO           20    i.CalcBEMF          smc.o
+    0x00002848   0x0000001a   Code   RO          270    i.__ARM_common_switch8  svgen.o
+    0x00002862   0x0000000e   Code   RO          718    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x00002870   0x00000002   Code   RO          719    i.__scatterload_null  mc_p.l(handlers.o)
+    0x00002872   0x0000000e   Code   RO          720    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x00002880   0x00001000   Data   RO          251    .constdata          svgen.o
+    0x00003880   0x00000200   Data   RO          281    .constdata          trig.o
+    0x00003a80   0x00000020   Data   RO          716    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000618, Max: 0x00002000, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x00000004   Data   RW            4    .data               smc.o
+    0x20000004   0x00000004   Data   RW          216    .data               meascurr.o
+    0x20000008   0x0000001c   Data   RW          252    .data               svgen.o
+    0x20000024   0x000000a8   Data   RW          301    .data               pmsm.o
+    0x200000cc   0x00000002   Data   RW          304    .data               pmsm.o
+    0x200000ce   0x00000002   Data   RW          305    .data               pmsm.o
+    0x200000d0   0x00000002   Data   RW          314    .data               pmsm.o
+    0x200000d2   0x00000002   Data   RW          317    .data               pmsm.o
+    0x200000d4   0x00000002   Data   RW          325    .data               pmsm.o
+    0x200000d6   0x00000002   PAD
+    0x200000d8   0x00000004   Data   RW          648    .data               system_swm1800.o
+    0x200000dc   0x00000050   Zero   RW          154    .bss                fdweak.o
+    0x2000012c   0x000000ec   Zero   RW          299    .bss                pmsm.o
+    0x20000218   0x00000400   Zero   RW          672    STACK               startup_swm1800.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+        92          6          0          0          0       1872   calcref.o
+        96          6          0          0          0        977   clrkpark.o
+         0          0          0          0          0         32   core_cm0.o
+       128         16          0          0         80       1405   fdweak.o
+       220         16          0          0          0        481   initmcu.o
+        64          0          0          0          0        930   invpark.o
+        80          6          0          4          0       1919   meascurr.o
+       176          0          0          0          0       2021   pi.o
+      2540        186          0        178        236      17152   pmsm.o
+       932         64          0          4          0      79482   smc.o
+       280        202          0          0       1024       2244   startup_swm1800.o
+       986         66       4096         28          0       4977   svgen.o
+       628         16          0          0          0       4731   swm1800_adc.o
+        28          0          0          0          0        902   swm1800_cordic.o
+        20          0          0          0          0        847   swm1800_div.o
+       112          0          0          0          0       1959   swm1800_exti.o
+       368         18          0          0          0       3044   swm1800_gpio.o
+       220         20          0          0          0       9428   swm1800_irqmux.o
+       380          8          0          0          0       1376   swm1800_port.o
+      1140         20          0          0          0       5406   swm1800_pwm.o
+       480         10          0          0          0       2928   swm1800_timr.o
+       388         20          0          0          0       4057   swm1800_uart.o
+       176         24          0          4          0       1765   system_swm1800.o
+       216          6        512          0          0       2912   trig.o
+
+    ----------------------------------------------------------------------
+      9750        710       4640        220       1340     152847   Object Totals
+         0          0         32          0          0          0   (incl. Generated)
+         0          0          0          2          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
+
+         0          0          0          0          0          0   entry.o
+         0          0          0          0          0          0   entry10a.o
+         0          0          0          0          0          0   entry11a.o
+         8          4          0          0          0          0   entry2.o
+         4          0          0          0          0          0   entry5.o
+         0          0          0          0          0          0   entry7b.o
+         0          0          0          0          0          0   entry8b.o
+         8          4          0          0          0          0   entry9a.o
+        30          0          0          0          0          0   handlers.o
+        40          0          0          0          0         72   idiv.o
+        36          8          0          0          0         68   init.o
+         0          0          0          0          0          0   iusefp.o
+        44          0          0          0          0         72   uidiv.o
+       124          0          0          0          0         72   fdiv.o
+       130          0          0          0          0        144   fepilogue.o
+        50          0          0          0          0         60   ffixi.o
+        22          0          0          0          0         68   fflti.o
+       122          0          0          0          0         72   fmul.o
+
+    ----------------------------------------------------------------------
+       618         16          0          0          0        628   Library Totals
+         0          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
+
+       170         16          0          0          0        212   mc_p.l
+       448          0          0          0          0        416   mf_p.l
+
+    ----------------------------------------------------------------------
+       618         16          0          0          0        628   Library Totals
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+     10368        726       4640        220       1340     151331   Grand Totals
+     10368        726       4640        220       1340     151331   ELF Image Totals
+     10368        726       4640        220          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                15008 (  14.66kB)
+    Total RW  Size (RW Data + ZI Data)              1560 (   1.52kB)
+    Total ROM Size (Code + RO Data + RW Data)      15228 (  14.87kB)
+
+==============================================================================
+
