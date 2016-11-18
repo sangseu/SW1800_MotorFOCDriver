@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\out\SWM1800.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\out\SWM1800.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050169: Last Updated: Wed Nov 16 17:27:00 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050169: Last Updated: Thu Nov 17 14:56:16 2016
 <BR><P>
 <H3>Maximum Stack Usage =        108 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -121,17 +121,17 @@ Global Symbols
 
 <P><STRONG><a name="[84]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
-<P><STRONG><a name="[2d]"></a>SMC_Position_Estimation</STRONG> (Thumb, 416 bytes, Stack size 32 bytes, smc.o(.text))
+<P><STRONG><a name="[2d]"></a>SMC_Position_Estimation</STRONG> (Thumb, 412 bytes, Stack size 32 bytes, smc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = SMC_Position_Estimation &rArr; atan2CORDIC
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DIV_Fun
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalcBEMF
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2CORDIC
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalculateParkAngle
+<BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalculateParkAngle
 </UL>
 
-<P><STRONG><a name="[56]"></a>SMCInit</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, smc.o(.text))
+<P><STRONG><a name="[55]"></a>SMCInit</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, smc.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -149,26 +149,26 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DIV_Fun
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoControl
+<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoControl
 </UL>
 
-<P><STRONG><a name="[57]"></a>FWInit</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, fdweak.o(.text))
+<P><STRONG><a name="[56]"></a>FWInit</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, fdweak.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[64]"></a>CalcRefVec</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, calcref.o(.text))
+<P><STRONG><a name="[63]"></a>CalcRefVec</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, calcref.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = CalcRefVec
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ0_Handler
 </UL>
 
-<P><STRONG><a name="[61]"></a>ClarkePark</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, clrkpark.o(.text))
+<P><STRONG><a name="[60]"></a>ClarkePark</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, clrkpark.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ClarkePark
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ0_Handler
 </UL>
 
-<P><STRONG><a name="[63]"></a>InvPark</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, invpark.o(.text))
+<P><STRONG><a name="[62]"></a>InvPark</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, invpark.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = InvPark
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ0_Handler
@@ -178,7 +178,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupParm
 </UL>
 
-<P><STRONG><a name="[60]"></a>MeasCompCurr</STRONG> (Thumb, 68 bytes, Stack size 12 bytes, meascurr.o(.text))
+<P><STRONG><a name="[5f]"></a>MeasCompCurr</STRONG> (Thumb, 68 bytes, Stack size 12 bytes, meascurr.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = MeasCompCurr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ0_Handler
@@ -188,10 +188,10 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupControlParameters
 </UL>
 
-<P><STRONG><a name="[5d]"></a>CalcPI</STRONG> (Thumb, 98 bytes, Stack size 8 bytes, pi.o(.text))
+<P><STRONG><a name="[5c]"></a>CalcPI</STRONG> (Thumb, 98 bytes, Stack size 8 bytes, pi.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = CalcPI
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoControl
+<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoControl
 </UL>
 
 <P><STRONG><a name="[85]"></a>Cal_PID</STRONG> (Thumb, 62 bytes, Stack size 0 bytes, pi.o(.text), UNUSED)
@@ -234,14 +234,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ0_Handler
 </UL>
 
-<P><STRONG><a name="[62]"></a>SinCos</STRONG> (Thumb, 96 bytes, Stack size 12 bytes, trig.o(.text))
+<P><STRONG><a name="[61]"></a>SinCos</STRONG> (Thumb, 96 bytes, Stack size 12 bytes, trig.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SinCos
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ0_Handler
 </UL>
 
-<P><STRONG><a name="[5e]"></a>sqrt_16</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, trig.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoControl
+<P><STRONG><a name="[5d]"></a>sqrt_16</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, trig.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoControl
 </UL>
 
 <P><STRONG><a name="[2e]"></a>DIV_Fun</STRONG> (Thumb, 82 bytes, Stack size 12 bytes, trig.o(.text))
@@ -311,7 +311,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[51]"></a>SetupControlParameters</STRONG> (Thumb, 128 bytes, Stack size 24 bytes, pmsm.o(.text))
+<P><STRONG><a name="[51]"></a>SetupControlParameters</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, pmsm.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SetupControlParameters
 </UL>
 <BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitPI
@@ -319,38 +319,37 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[27]"></a>main</STRONG> (Thumb, 332 bytes, Stack size 24 bytes, pmsm.o(.text))
+<P><STRONG><a name="[27]"></a>main</STRONG> (Thumb, 324 bytes, Stack size 24 bytes, pmsm.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = main &rArr; SetupPorts &rArr; GPIO_Init &rArr; PORT_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
+<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DIV_Init
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CORDIC_Init
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CORDIC_Init
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupControlParameters
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CountInputFreq_Init
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupParm
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Communication
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FWInit
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FWInit
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupPorts
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SMCInit
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SMCInit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[5c]"></a>DoControl</STRONG> (Thumb, 396 bytes, Stack size 24 bytes, pmsm.o(.text))
+<P><STRONG><a name="[5b]"></a>DoControl</STRONG> (Thumb, 396 bytes, Stack size 24 bytes, pmsm.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = DoControl &rArr; FieldWeakening &rArr; DIV_Fun
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMR_Start
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt_16
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalcPI
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt_16
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalcPI
 <LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FieldWeakening
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ0_Handler
 </UL>
 
-<P><STRONG><a name="[5f]"></a>CalculateParkAngle</STRONG> (Thumb, 246 bytes, Stack size 24 bytes, pmsm.o(.text))
+<P><STRONG><a name="[5e]"></a>CalculateParkAngle</STRONG> (Thumb, 246 bytes, Stack size 24 bytes, pmsm.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = CalculateParkAngle &rArr; SMC_Position_Estimation &rArr; atan2CORDIC
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SMC_Position_Estimation
@@ -361,63 +360,63 @@ Global Symbols
 <P><STRONG><a name="[6]"></a>IRQ0_Handler</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, pmsm.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = IRQ0_Handler &rArr; CalcSVGen &rArr; CalcTimes &rArr; __aeabi_idivmod &rArr; __aeabi_uidivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalculateParkAngle
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoControl
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SinCos
+<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalculateParkAngle
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoControl
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SinCos
 <LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalcSVGen
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MeasCompCurr
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InvPark
-<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClarkePark
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalcRefVec
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MeasCompCurr
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InvPark
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClarkePark
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalcRefVec
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_swm1800.o(RESET)
 </UL>
 <P><STRONG><a name="[7]"></a>IRQ1_Handler</STRONG> (Thumb, 178 bytes, Stack size 24 bytes, pmsm.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = IRQ1_Handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMR_Stop
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMR_INTClr
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_InvBit
+<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMR_Stop
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMR_INTClr
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_InvBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_swm1800.o(RESET)
 </UL>
 <P><STRONG><a name="[8]"></a>IRQ2_Handler</STRONG> (Thumb, 110 bytes, Stack size 16 bytes, pmsm.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = IRQ2_Handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_ReadByte
+<BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_ReadByte
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_swm1800.o(RESET)
 </UL>
 <P><STRONG><a name="[b]"></a>IRQ5_Handler</STRONG> (Thumb, 98 bytes, Stack size 16 bytes, pmsm.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = IRQ5_Handler &rArr; ADC_IntEOCClr
 </UL>
-<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntEOCClr
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntEOCClr
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_swm1800.o(RESET)
 </UL>
 <P><STRONG><a name="[a]"></a>IRQ4_Handler</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, pmsm.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = IRQ4_Handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMR_Stop
+<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMR_Stop
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMR_Start
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_Clear
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_Clear
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_swm1800.o(RESET)
 </UL>
 <P><STRONG><a name="[88]"></a>DebounceDelay</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, pmsm.o(.text), UNUSED)
 
-<P><STRONG><a name="[6b]"></a>VoltRippleComp</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, pmsm.o(.text), UNUSED)
+<P><STRONG><a name="[6a]"></a>VoltRippleComp</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, pmsm.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_idivmod
 </UL>
 
-<P><STRONG><a name="[6c]"></a>CountInputFreq</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, pmsm.o(.text), UNUSED)
+<P><STRONG><a name="[6b]"></a>CountInputFreq</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, pmsm.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_idivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calculate_rotate_speed
+<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calculate_rotate_speed
 </UL>
 
-<P><STRONG><a name="[6d]"></a>calculate_rotate_speed</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, pmsm.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CountInputFreq
+<P><STRONG><a name="[6c]"></a>calculate_rotate_speed</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, pmsm.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CountInputFreq
 </UL>
 
 <P><STRONG><a name="[89]"></a>ADC_Close</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, swm1800_adc.o(.text), UNUSED)
@@ -438,68 +437,67 @@ Global Symbols
 
 <P><STRONG><a name="[8a]"></a>ADC_Stop</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, swm1800_adc.o(.text), UNUSED)
 
-<P><STRONG><a name="[6e]"></a>ADC_Read</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
+<P><STRONG><a name="[6d]"></a>ADC_Read</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
 </UL>
 
-<P><STRONG><a name="[70]"></a>ADC_IsEOC</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
+<P><STRONG><a name="[6f]"></a>ADC_IsEOC</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
 </UL>
 
 <P><STRONG><a name="[8b]"></a>ADC_ChnOpen</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, swm1800_adc.o(.text), UNUSED)
 
 <P><STRONG><a name="[8c]"></a>ADC_ChnClose</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, swm1800_adc.o(.text), UNUSED)
 
-<P><STRONG><a name="[71]"></a>ADC_IntEOCEn</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
+<P><STRONG><a name="[70]"></a>ADC_IntEOCEn</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
 </UL>
 
-<P><STRONG><a name="[72]"></a>ADC_IntEOCDis</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
+<P><STRONG><a name="[71]"></a>ADC_IntEOCDis</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
 </UL>
 
-<P><STRONG><a name="[69]"></a>ADC_IntEOCClr</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, swm1800_adc.o(.text))
+<P><STRONG><a name="[68]"></a>ADC_IntEOCClr</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, swm1800_adc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ADC_IntEOCClr
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
+<BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ5_Handler
 </UL>
 
-<P><STRONG><a name="[73]"></a>ADC_IntEOCStat</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
+<P><STRONG><a name="[72]"></a>ADC_IntEOCStat</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
 </UL>
 
-<P><STRONG><a name="[74]"></a>ADC_IntOVFEn</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
+<P><STRONG><a name="[73]"></a>ADC_IntOVFEn</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
 </UL>
 
-<P><STRONG><a name="[75]"></a>ADC_IntOVFDis</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
+<P><STRONG><a name="[74]"></a>ADC_IntOVFDis</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
 </UL>
 
-<P><STRONG><a name="[76]"></a>ADC_IntOVFClr</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
+<P><STRONG><a name="[75]"></a>ADC_IntOVFClr</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
 </UL>
 
-<P><STRONG><a name="[77]"></a>ADC_IntOVFStat</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
+<P><STRONG><a name="[76]"></a>ADC_IntOVFStat</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, swm1800_adc.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chn2idx
 </UL>
 
-<P><STRONG><a name="[55]"></a>CORDIC_Init</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, swm1800_cordic.o(.text))
+<P><STRONG><a name="[54]"></a>CORDIC_Init</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, swm1800_cordic.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = CORDIC_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DIV_Init
+<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DIV_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[54]"></a>DIV_Init</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, swm1800_div.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CORDIC_Init
-<LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<P><STRONG><a name="[77]"></a>DIV_Init</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, swm1800_div.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CORDIC_Init
 </UL>
 
-<P><STRONG><a name="[6a]"></a>EXTI_Clear</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, swm1800_exti.o(.text))
+<P><STRONG><a name="[69]"></a>EXTI_Clear</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, swm1800_exti.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ4_Handler
 </UL>
 
@@ -532,7 +530,7 @@ Global Symbols
 
 <P><STRONG><a name="[91]"></a>GPIO_ClrBit</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, swm1800_gpio.o(.text), UNUSED)
 
-<P><STRONG><a name="[67]"></a>GPIO_InvBit</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, swm1800_gpio.o(.text))
+<P><STRONG><a name="[66]"></a>GPIO_InvBit</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, swm1800_gpio.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ1_Handler
 </UL>
 
@@ -606,12 +604,12 @@ Global Symbols
 
 <P><STRONG><a name="[a6]"></a>PWM_IntHEndStat</STRONG> (Thumb, 98 bytes, Stack size 0 bytes, swm1800_pwm.o(.text), UNUSED)
 
-<P><STRONG><a name="[66]"></a>TIMR_INTClr</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, swm1800_timr.o(.text))
+<P><STRONG><a name="[65]"></a>TIMR_INTClr</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, swm1800_timr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMR_Init
 <LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ1_Handler
 </UL>
 
-<P><STRONG><a name="[65]"></a>TIMR_Stop</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, swm1800_timr.o(.text))
+<P><STRONG><a name="[64]"></a>TIMR_Stop</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, swm1800_timr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ4_Handler
 <LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ1_Handler
 </UL>
@@ -619,7 +617,7 @@ Global Symbols
 <P><STRONG><a name="[47]"></a>TIMR_Init</STRONG> (Thumb, 152 bytes, Stack size 16 bytes, swm1800_timr.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIMR_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMR_INTClr
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMR_INTClr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CountInputFreq_Init
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupParm
@@ -627,7 +625,7 @@ Global Symbols
 
 <P><STRONG><a name="[4a]"></a>TIMR_Start</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, swm1800_timr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ4_Handler
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoControl
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DoControl
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetupParm
 </UL>
 
@@ -663,7 +661,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_putstring2
 </UL>
 
-<P><STRONG><a name="[68]"></a>UART_ReadByte</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, swm1800_uart.o(.text))
+<P><STRONG><a name="[67]"></a>UART_ReadByte</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, swm1800_uart.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IRQ2_Handler
 </UL>
 
@@ -958,18 +956,18 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CountInputFreq
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VoltRippleComp
+<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CountInputFreq
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VoltRippleComp
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalcTimes
 </UL>
 
-<P><STRONG><a name="[5b]"></a>__aeabi_fmul</STRONG> (Thumb, 122 bytes, Stack size 16 bytes, fmul.o(.text))
+<P><STRONG><a name="[5a]"></a>__aeabi_fmul</STRONG> (Thumb, 122 bytes, Stack size 16 bytes, fmul.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[59]"></a>__aeabi_fdiv</STRONG> (Thumb, 124 bytes, Stack size 16 bytes, fdiv.o(.text))
+<P><STRONG><a name="[58]"></a>__aeabi_fdiv</STRONG> (Thumb, 124 bytes, Stack size 16 bytes, fdiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fdiv
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_round
@@ -977,7 +975,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[58]"></a>__aeabi_i2f</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, fflti.o(.text))
+<P><STRONG><a name="[57]"></a>__aeabi_i2f</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, fflti.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = __aeabi_i2f &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
@@ -985,20 +983,20 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5a]"></a>__aeabi_f2iz</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, ffixi.o(.text))
+<P><STRONG><a name="[59]"></a>__aeabi_f2iz</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, ffixi.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[bf]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
 
 <P><STRONG><a name="[7c]"></a>_float_round</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, fepilogue.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
+<BR><BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 </UL>
 
 <P><STRONG><a name="[7d]"></a>_float_epilogue</STRONG> (Thumb, 114 bytes, Stack size 12 bytes, fepilogue.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = _float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
+<BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 </UL>
 
 <P><STRONG><a name="[2a]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
@@ -1040,17 +1038,17 @@ Local Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2CORDIC
 </UL>
 
-<P><STRONG><a name="[6f]"></a>chn2idx</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, swm1800_adc.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntOVFStat
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntOVFClr
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntOVFDis
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntOVFEn
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntEOCStat
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntEOCDis
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntEOCEn
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IsEOC
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Read
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntEOCClr
+<P><STRONG><a name="[6e]"></a>chn2idx</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, swm1800_adc.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntOVFStat
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntOVFClr
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntOVFDis
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntOVFEn
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntEOCStat
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntEOCDis
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntEOCEn
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IsEOC
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Read
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IntEOCClr
 </UL>
 
 <P><STRONG><a name="[7a]"></a>switchToRC32KHz</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, system_swm1800.o(.text))

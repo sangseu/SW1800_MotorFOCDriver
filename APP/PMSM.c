@@ -16,11 +16,13 @@
 
 #define calculate_frequency
 //#undef calculate_frequency 
+#define use_cordic_module
 
 #define PinButton1	!((GPIOC->DATA >> PIN2) & 0x01)	//Low Level is press 
 // #define PinButton2	!((GPIOx->DATA >> PIN3) & 0x01)
 #define LED_ON		GPIOB->DATA &= ~(0x01 << PIN1)        //B1 
-/********************* Variables to display data using DMCI *********************************/
+
+/********************* Variables to Calculate control board frequency *********************************/
 
 typedef struct
 {
@@ -34,13 +36,12 @@ InpFreq InpFreqCnt;
 void CountInputFreq_Init();
 void calculate_rotate_speed(InpFreq *pfreq);
 
-/********************* Variables to display data using DMCI *********************************/
+/********************* Variables to Calculate control board frequency *********************************/
 int Duty0,Duty1,Duty2;
 s16 Sector;
-s16 PWM_CLOCK_CYCLE = LOOPINTCY/2;						//----pwm_cycle,????????????????
-s16 Elec_Angle;
+s16 PWM_CLOCK_CYCLE = LOOPINTCY/2;				
 s16 LoopFlag;
-s16  delta_startup;
+
 int uout = 0;
 
 SMC smc1 = SMC_DEFAULTS;
@@ -222,7 +223,6 @@ extern s16 temptheta;
 
 u16 Loopflag=1;
 s16 Kself_omega0;
-s16 IRP_percalc;
 extern s16 Qref;
 s32 SpeedV;
 s32 SpeedTotal;
@@ -248,8 +248,10 @@ volatile u16 SPREF=500;
 int main(void)
 {	
 	SystemInit();
-	DIV_Init(DIV);
-	CORDIC_Init(CORDIC);
+#ifndef use_cordic_module
+	DIV_Init(DIV);			//div初始化过程不需要
+#endif
+	CORDIC_Init(CORDIC);	//cordic初始化时已经包含有div初始化过程
 
 	SMCInit(&smc1);
 	SetupPorts();
@@ -262,21 +264,20 @@ int main(void)
 #endif
 	uGF.Word = 0;                   // clear flags
 
-#ifdef TORQUEMODE
+#ifdef TORQUEMODE		//转矩模式
 	uGF.bit.EnTorqueMod = 1;
 #endif
 
-#ifdef ENVOLTRIPPLE
+#ifdef ENVOLTRIPPLE	//母线电压补偿
 	uGF.bit.EnVoltRipCo = 1;
 #endif
 
 	while(1)
 	{
 		uGF.bit.ChangeSpeed = 0;
-		// init Mode
 		uGF.bit.OpenLoop = 1;           // start in openloop
 
-		//		ADC->u32IMSK &= 0x0;	//// Make sure ADC does not generate
+		//		ADC->u32IMSK &= 0x0;// Make sure ADC does not generate
 		// interrupts while parameters
 		// are being initialized
 		// init user specified parms and stop on error
@@ -422,7 +423,6 @@ void DoControl( void )
 
 		if (Startup_Lock < MotorParm.LockTime)
 		{
-		//            ParkParm.qVq = 2000;
 			ParkParm.qVd = 0;
 		}
 	}
@@ -761,6 +761,7 @@ bool SetupParm(void)
 {
 	u32 Ad0Sum = 0,Ad1Sum = 0,Ad2Sum = 0;	
 	static u8 AdCn = 0;
+	
 	PWM_InitStructure  PWM_initStruct;
 	ADC_InitStructure ADC_initStruct;
     
@@ -768,17 +769,14 @@ bool SetupParm(void)
 
 	PWM_per = LOOPINTCY;
 	T0_t = LOOPINTCY/2;
-	PWM_CLOCK_CYCLE = LOOPINTCY/2;						//----pwm_cycle,????????????????
-	delta_startup = DELTA_STARTUP_RAMP;
-
+	PWM_CLOCK_CYCLE = LOOPINTCY/2;	
+	
 	// ============= Open Loop ======================
 	// Motor End Speed Calculation
 	// MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS * LOOPTIMEINSEC * 65536 * 65536 / 60.0;
 	// Then, * 65536 which is a right shift done in "void CalculateParkAngle(void)"
 	// ParkParm.qAngle += (int)(Startup_Ramp >> 16);
-	MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS* 65536* LOOPTIMEINSEC * 65536/ 60.0;//   
-	//     MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS * LOOPTIMEINSEC * 32767 * 32767 / 60.0;
-	// 	MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS * LOOPTIMEINSEC  * 65536/ 60.0;
+	MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS* 65536* LOOPTIMEINSEC * 65536/ 60.0;//角度   
 	MotorParm.LockTime = LOCKTIME;
 
 	// Scaling constants: Determined by calibration or hardware design.
@@ -893,12 +891,11 @@ bool SetupParm(void)
 
 void CountInputFreq_Init(void)
 {
-    GPIO_Init(GPIOE, PIN2, 0, 0, 0, 0);			//输入    
-    EXTI_Init(GPIOE, PIN2, EXTI_FALL_EDGE);		//下降沿触发中断	
+	GPIO_Init(GPIOE, PIN2, 0, 0, 0, 0);			//输入    
+	EXTI_Init(GPIOE, PIN2, EXTI_FALL_EDGE);		//下降沿触发中断	
 	IRQ_Connect(IRQ0_15_GPIOE2, IRQ4_IRQ, 0);	
 	EXTI_Open(GPIOE, PIN2);
-    
-    TIMR_Init(TIMR3, TIMR_MODE_TIMER, 96000000, 0);
+	TIMR_Init(TIMR3, TIMR_MODE_TIMER, 96000000, 0);// 2s定时
 }
 
 
@@ -949,7 +946,7 @@ void CalculateParkAngle (void)
 		{
 			// Ramp starts, and increases linearly until EndSpeed is reached.
 			// After ramp, estimated theta is used to commutate motor.
-			Startup_Ramp += DELTA_STARTUP_RAMP;//delta_startup;
+			Startup_Ramp += DELTA_STARTUP_RAMP;
 			stas = 1;
 		}
 		else
@@ -1020,7 +1017,7 @@ void SetupControlParameters(void)
 	PIParmW.qKi = WKI;       
 	PIParmW.qKc = WKC;       
 	PIParmW.qOutMax = WOUTMAX;   
-	PIParmW.qOutMin = 400;//0 -PIParmW.qOutMax;
+	PIParmW.qOutMin = 400;//
 
 	InitPI(&PIParmW);
 
@@ -1037,9 +1034,6 @@ void SetupControlParameters(void)
 	PI_WTerm.Ki = WKI;
 	PI_WTerm.Kd= 0;
 
-
-	//      Kself_omega0 = Q15(OMEGA0 * _PI / IRP_PERCALC); //2 * OMEGA0 * PI_INT / IRP_PERCALC;//
-	IRP_percalc = IRP_PERCALC;
 	return;
 }
 
@@ -1058,7 +1052,6 @@ void DebounceDelay(void)
 // recommended, since it will generate spikes on Vd and Vq, which can
 // potentially make the controllers unstable.
 
-//????AD??,???VDUS????
 s32 VoltRippleComp(s32 Vdq)
 {
 	s32 CompVdq,DivTemp;

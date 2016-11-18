@@ -405,7 +405,6 @@ s32 dex;
 s32 temptheta=0;
 extern s32 AdIndexA;
 extern s16 Kself_omega0;
-extern s16 IRP_percalc;
 extern s16 Run_nomal;
 long PreOmega = 0;
 extern u16 Loopflag;
@@ -488,17 +487,10 @@ void SMC_Position_Estimation (SMC *s)
 
 	if (AccumThetaCnt == IRP_PERCALC)
 	{
-		// 				if( AccumTheta<0 )
-		// 						AccumTheta = 0 - AccumTheta;
+
 		s->Omega = -AccumTheta;//波形为类似正弦波
 		AccumThetaCnt = 0;
 		AccumTheta = 0;
-
-		//        Di = s->OmegaFltred * PI_INT;//omg * PI_INT;//
-		//        Vi = IRP_percalc * 8192;        
-		//        DIV_Fun(Di, Vi, &Qi, &Ri);
-
-		//        s->KslfFinal =  s->Kslf = Qi;
 
 	}
 	//                    Q15(Omega) * 60
@@ -557,16 +549,11 @@ void SMC_Position_Estimation (SMC *s)
 	// arctan(Fin/Fc), and Fin/Fc = 1 since they are equal, hence arctan(1) = 45 DEG.
 	// A total of -90 DEG after the two filters implemented (Kslf and KslfFinal).
 
-	Di = s->OmegaFltred ;//* PI_INT;//
-	Vi = IRP_percalc  ;//* 8192;//        
+	Di = s->OmegaFltred ;//
+	Vi = IRP_PERCALC  ;//
 	DIV_Fun(Di, Vi, &Qi, &Ri);
-
-	//        
-	//        if( Qi - s->Kslf >1 )
-	//            s->Kslf += 1;
-	//        else if( s->Kslf - Qi >1 )
-	//            s->Kslf -= 1;
-	s->Kslf = Qi; //s->Kslf = ( s->OmegaFltred * PI_INT / IRP_PERCALC )>>13;//        s->Kslf = ( Qi*2 + s->Kslf*126 ) >>7;  //s->Kslf = //s->Kslf = s->KslfFinal = s->OmegaFltred *  _PI / IRP_PERCALC;//   //	//Q15 IRP_percalc
+	
+	s->Kslf = Qi; 
 	s->KslfFinal = s->FiltOmCoef =  s->Kslf;
 
 	// Since filter coefficients are dynamic, we need to make sure we have a minimum
@@ -575,23 +562,8 @@ void SMC_Position_Estimation (SMC *s)
 	if( s->Kslf < Kself_omega0 )//if (s->Kslf < Q15(OMEGA0 * _PI / IRP_PERCALC)) //
 	{
 		s->Kslf = s->KslfFinal = s->FiltOmCoef = Kself_omega0;//s->Kslf = s->KslfFinal = Q15(OMEGA0 * _PI / IRP_PERCALC);//
-		//             s->FiltOmCoef = Kself_omega0;
 
 	}
-	//	s->ThetaOffset = CONSTANT_PHASE_SHIFT;
-	// 		if( s->OmegaFltred < OM0_OFFSET )
-	// 				s->ThetaOffset = OFFSET0;
-	// 		else if( s->OmegaFltred < OM1_OFFSET )
-	// 				s->ThetaOffset = OFFSET1;
-	//         else if( s->OmegaFltred < OM2_OFFSET )
-	// 				s->ThetaOffset = OFFSET2;
-	//         else if( s->OmegaFltred < OM3_OFFSET )
-	// 				s->ThetaOffset = OFFSET3;
-	//         else if( s->OmegaFltred < OM4_OFFSET )
-	// 				s->ThetaOffset = OFFSET4;
-	//         else if( s->OmegaFltred < OM5_OFFSET )
-	// 				s->ThetaOffset = OFFSET5;
-	//         s->ThetaOffset = -3000;
 	s->Theta +=  s->ThetaOffset;
 
 	return;
@@ -628,10 +600,10 @@ void SMCInit(SMC *s)
 	s->Kslide = Q15(SMCGAIN);
 	s->MaxSMCError = Q15(MAXLINEARSMC);
 
-	s->FiltOmCoef = 65536 * OMEGA_CUF / IRP_PERCALC;//Q15(OMEGA_CUF * _PI / IRP_PERCALC);//Q15(OMEGA0 * _PI / IRP_PERCALC);//Q15(OMEGA0 * _PI / IRP_PERCALC); // Cutoff frequency for omega filter
-						 // is minimum omega, or OMEGA0
-	Kself_omega0 = 65536 * OMEGA_CUF / IRP_PERCALC;//Q15(OMEGA_CUF * _PI / IRP_PERCALC);//Q15(OMEGA0 * _PI / IRP_PERCALC);
-	s->ThetaOffset = CONSTANT_PHASE_SHIFT;//-3000;//
+	s->FiltOmCoef = 65536 * OMEGA_CUF / IRP_PERCALC;// Cutoff frequency for omega filter
+					
+	Kself_omega0 = 65536 * OMEGA_CUF / IRP_PERCALC;//
+	s->ThetaOffset = CONSTANT_PHASE_SHIFT;
 	return;
 }
 
