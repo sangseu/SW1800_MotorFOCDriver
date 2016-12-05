@@ -1,0 +1,19 @@
+---- TargetDCbus Matches (19 in 3 files) ----
+Faultprotect.c:	if(TargetDCbus >= DCbus_OVERVOLTAGE	 && ++dcbus_protect_times > 10)
+Faultprotect.c:	else if(TargetDCbus <= DCbus_UNDERVOLTAGE && ++dcbus_protect_times > 10)
+Faultprotect.c:	else if(TargetDCbus < DCbus_OVERVOLTAGE -DELTA_VALUE|| TargetDCbus > DCbus_UNDERVOLTAGE+ DELTA_VALUE)
+Faultprotect.h:extern s16 TargetDCbus;
+PMSM.c:					// while motor is running. Will be compared with TargetDCbus
+PMSM.c:					// between DCbus and TargetDCbus
+PMSM.c:s16 TargetDCbus = 0;// DC Bus is measured before running motor and stored in this
+PMSM.c:	//		View4 = Theta_error;//smc1.Ebeta;//SPREF;//PIParmQ.qOut;////0;//ParkParm.qIb;//TargetDCbus;//smc1.IalphaError;//CtrlParm.qVqRef;//sector;//
+PMSM.c:		TargetDCbus = VdcTotal>>12;
+PMSM.c:			TargetDCbus = Ad2Sum >> 2;
+PMSM.c:	//                  TargetDCbus - DCbus
+PMSM.c:	//            TargetDCbus 
+PMSM.c:	DivTemp = (TargetDCbus - DCbus)/DCbus;
+PMSM.c:	if (TargetDCbus > DCbus)
+PMSM.c:	//	CompVdq = Vdq + FracMpy(FracDiv(TargetDCbus - DCbus, DCbus), Vdq);
+PMSM.c:	else if (DCbus > TargetDCbus)
+PMSM.c:	// 	CompVdq = FracMpy(FracDiv(TargetDCbus, DCbus), Vdq);
+PMSM.c:	DCbus = TargetDCbus;

@@ -91,7 +91,7 @@
 */
 //************** PWM and Control Timing Parameters **********
 
-#define PWMFREQUENCY	15000		// PWM Frequency in Hertz
+#define PWMFREQUENCY	13000		// PWM Frequency in Hertz
 #define DEADTIMESEC		0.000001	// Deadtime in seconds, Max value(second) = 63*PWM_DIV/FOSC              
 #define	BUTPOLLOOPTIME	0.100		// Button polling loop period in sec
 #define SPEEDLOOPFREQ	1000		// Speed loop Frequency in Hertz. This value must

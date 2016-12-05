@@ -10,6 +10,7 @@
 ".\out\svgen.o"
 ".\out\trig.o"
 ".\out\pmsm.o"
+".\out\faultprotect.o"
 ".\out\swm1800_adc.o"
 ".\out\swm1800_can.o"
 ".\out\swm1800_cmp.o"

@@ -14,6 +14,7 @@ typedef struct
 } tMeasCurrParm;
 
 #define AD_Vdc   0
+#define AD_IPM_Temperature 1
 #define AD_Speed 2
 #define AD_Ia    3
 #define AD_Ib    4

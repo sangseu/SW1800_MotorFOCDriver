@@ -20,7 +20,8 @@ typedef unsigned char  bool;
 
 #define INPFRENUM 700
 
-
+#define LED_ON		GPIOB->DATA &= ~(0x01 << PIN1)        //B1 
+#define LED_OFF     GPIOB->DATA |= (0x01 << PIN1)
 
 
 #ifndef NULL
@@ -39,7 +40,6 @@ typedef unsigned char  bool;
 #define SetBit(regiset, offset)    		regiset |= 1U << offset
 #define ResetBit(regiset, offset)  		regiset &= ~(1U << offset)
 #define GetBit(regiset, offset)	   		((regiset >> offset) &0x01)
-
 
 #define Q15(Float_Value)	\
         ((Float_Value < 0.0) ? (s32)(32768 * (Float_Value) - 0.5) \

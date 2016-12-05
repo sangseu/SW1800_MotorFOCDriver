@@ -474,6 +474,7 @@ void SMC_Position_Estimation (SMC *s)
 	//    }
 
 	temptheta = PrevTheta - s->Theta;//temptheta = s->Theta - PrevTheta;//
+	
 	if( temptheta < -32768 )
 		temptheta += 65536;
 	else if( temptheta > 32767 )
@@ -489,6 +490,7 @@ void SMC_Position_Estimation (SMC *s)
 	{
 
 		s->Omega = -AccumTheta;//波形为类似正弦波
+
 		AccumThetaCnt = 0;
 		AccumTheta = 0;
 

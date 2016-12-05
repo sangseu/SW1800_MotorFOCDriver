@@ -3,6 +3,10 @@
 
 void SetupPorts()
 {
+	//电机转速反馈输出信号
+	GPIO_Init(GPIOA, PIN5, 1, 0, 0, 0);			//输出，上拉使能
+	GPIOA->DATA |= (0x01 << PIN5);  //输出高电平
+	
 	GPIO_Init(GPIOC, PIN2, 0, 1, 0, 0);			//输入，上拉使能，接KEY
 	GPIO_Init(GPIOB, PIN1, 1, 0, 0, 0);			//输出， 接LED
 	GPIOB->DATA |= (0x01 << PIN1);  //输出高电平，关闭LED
@@ -13,10 +17,13 @@ void SetupPorts()
 	PORT_Init(PORTB, PIN5, FUNMUX_PWM2A_OUT, 0);//UL
 	
 	PORT_Init(PORTB, PIN8, FUNMUX_PWM1A_OUT, 0);//VL
-	PORT_Init(PORTB, PIN7, FUNMUX_PWM0B_OUT, 0);	//VH
+	PORT_Init(PORTB, PIN6, FUNMUX_PWM1B_OUT, 0);//VH
 	
+	PORT_Init(PORTB, PIN7, FUNMUX_PWM0B_OUT, 0);	//WH	
 	PORT_Init(PORTB, PIN9, FUNMUX_PWM0A_OUT, 0);//WL	
-	PORT_Init(PORTB, PIN6, FUNMUX_PWM1B_OUT, 0);//WH
+	
+
+	PORT_Init(PORTA, PIN5, FUNMUX_PWM3A_OUT, 0);//FG frequence output
 
 	PORT_Init(PORTE, PIN4,  PORTE_PIN4_ADC_CH0, 0);	//PE.4  => ADC.CH0
 	PORT_Init(PORTA, PIN15, PORTA_PIN15_ADC_CH1, 0);//PA.15 => ADC.CH1
