@@ -353,13 +353,13 @@ static void lose_phase_detect(MOTOR_FAULT* pmotor_fault)
 	static u32 confirm_lose_phase_number = 0;
 	
 	motor_rotate_speed = fg_outfrequence * 60;
-	if((motor_rotate_speed > last_motor_rotate_speed + (motor_rotate_speed >> 3) ) \
+	if( (motor_rotate_speed > last_motor_rotate_speed + 30) || (motor_rotate_speed < last_motor_rotate_speed - 30 ) )  //(motor_rotate_speed >> 3) ) \
 		|| (motor_rotate_speed < last_motor_rotate_speed - (motor_rotate_speed >> 3) ))
 	{
-		if(confirm_lose_phase_number++ >=3)
+		if( ++confirm_lose_phase_number >=UNNORMAL_SPEED_TIMES)
 		{
 			pmotor_fault->fault_code = SYSTATUS_SPEEDUNNORMAL;
-			confirm_lose_phase_number = 0;
+//			confirm_lose_phase_number = 0;
 		}
 	}
 	else
@@ -367,6 +367,11 @@ static void lose_phase_detect(MOTOR_FAULT* pmotor_fault)
 		confirm_lose_phase_number = 0;
 		pmotor_fault->fault_code = SYSTATUS_NORMAL;
 	}	
+    last_motor_rotate_speed = motor_rotate_speed;
+    
+    View_Variable1 = last_motor_rotate_speed;
+    View_Variable2 = motor_rotate_speed;
+    View_Variable3 = confirm_lose_phase_number;
 }
 
 void Phase_current_deviation(MOTOR_FAULT* pmotor_fault)
@@ -388,15 +393,10 @@ void Phase_current_deviation(MOTOR_FAULT* pmotor_fault)
 	if( confirm_phase_current_number >= 3 )
 	{
 		pmotor_fault->fault_code = SYSTATUS_CURRENTDEVIATION;
-		confirm_phase_current_number = 0;
+		confirm_phase_current_number = 3;
 	}
 	else
 		pmotor_fault->fault_code = SYSTATUS_NORMAL;
-
-	View_Variable1 = Ia_amplitude;
-	View_Variable2 = Ib_amplitude;
-	View_Variable3 = Ia_Ib_amplitude;
-	View_Variable4 = Ia_Ib_amplitude*PHASE_CURRENT_DEVIATION_RATIO;
 }
 
 void IPM_FO_detect(MOTOR_FAULT* pmotor_fault)
@@ -411,10 +411,10 @@ void IPM_FO_detect(MOTOR_FAULT* pmotor_fault)
 	else
 		confirm_ipm_fo_number = 0;
 
-	if( confirm_ipm_fo_number >=3 )
+	if( confirm_ipm_fo_number >=IPM_FO_LOW_TIMES )
 	{
 		pmotor_fault->fault_code = SYSTATUS_IPM_FO;
-		confirm_ipm_fo_number = 0;
+		confirm_ipm_fo_number = IPM_FO_LOW_TIMES;
 	}
 	else
 		pmotor_fault->fault_code = SYSTATUS_NORMAL;  
@@ -427,8 +427,8 @@ void Phase_Current_Offset_Advalue_detect(MOTOR_FAULT* pmotor_fault)
 	Ia_offset = MeasCurrParm.Offseta;
 	Ib_offset = MeasCurrParm.Offsetb;
 
-	if( ((Ia_offset < Ib_offset)&&(gabs(Ia_offset - Ib_offset)*10 >= Ia_offset)) \
-	|| ((Ia_offset > Ib_offset)&&(gabs(Ia_offset - Ib_offset)*10 >= Ib_offset)) )
+	if( ((Ia_offset < Ib_offset)&&(gabs(Ia_offset - Ib_offset)*PHASE_CURRENT_AD_DEVIATION_RATIO >= Ia_offset)) \
+	|| ((Ia_offset > Ib_offset)&&(gabs(Ia_offset - Ib_offset)*PHASE_CURRENT_AD_DEVIATION_RATIO >= Ib_offset)) )
 		pmotor_fault->fault_code = SYSTATUS_IPM_FO;
 	else
 		pmotor_fault->fault_code = SYSTATUS_NORMAL;  
@@ -437,8 +437,12 @@ void Phase_Current_Offset_Advalue_detect(MOTOR_FAULT* pmotor_fault)
 
 void Over_temperature_detect(MOTOR_FAULT* pmotor_fault)
 {
-	if( (pmotor_fault->IPM_module->Ad_Temperature_value >0) && (pmotor_fault->IPM_module->Ad_Temperature_value < ADVALUE_OVER_TEMPERATUR) )
+	static u32 confirm_over_temp_times;
+	if( (pmotor_fault->IPM_module->Ad_Temperature_value >0) && (pmotor_fault->IPM_module->Ad_Temperature_value+200 < ADVALUE_OVER_TEMPERATUR) && (++confirm_over_temp_times>=OVER_TEMPERATURE_TIMES) )
+	{
 		pmotor_fault->fault_code = SYSTATUS_OVERTEMPERATURE;
+		confirm_over_temp_times = OVER_TEMPERATURE_TIMES;
+	}
 	else
 		pmotor_fault->fault_code = SYSTATUS_NORMAL;  
 }

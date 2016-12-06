@@ -9,6 +9,9 @@
 #include "Pi.h"
 
 #define DELTA_VALUE 20		//
+#define IPM_FO_LOW_TIMES    20  //连续检测到FO引脚输出低电平次数
+#define OVER_TEMPERATURE_TIMES  20  //连续检测到过温次数
+#define UNNORMAL_SPEED_TIMES    1   //连续检测到转速不对次数
 
 #define R_VBUS_RATIO		121     //母线电压电阻分压比例
 #define DCbus_OVERVOLTAGE 320	//单位为V
@@ -16,7 +19,8 @@
 #define DCbus_OVERVOLTAGE_ADVAL (DCbus_OVERVOLTAGE*4095/(R_VBUS_RATIO*VDD))  //4000	// 3.2v左右过压保护点，母线电压大概400V ,需要修改电路的电阻分压
 #define DCbus_UNDERVOLTAGE_ADVAL (DCbus_UNDERVOLTAGE*4095/(R_VBUS_RATIO*VDD))   //欠压AD值
 
-#define PHASE_CURRENT_DEVIATION_RATIO   20  //相电流偏差值比例
+#define PHASE_CURRENT_DEVIATION_RATIO   10  //相电流偏差值比例
+#define PHASE_CURRENT_AD_DEVIATION_RATIO   10  //相电流AD偏差值比例
 
 #define PHASE_OVERCURRENT_VALUE 0.8	//过流电流，单位为A
 #define CALCULATE_PHASE_CURRENT(x) ((x*RSHUNT*DIFFAMPGAIN*4095)/VDD)
@@ -33,9 +37,9 @@
 #define RESISTOR_DEG25		47000	    //IPM温度25度时，内阻为47k
 #define RESISTOR_DEG100	    2900		//IPM温度100度时，内阻为2.9k
 #define RESISTOR_PULLUP		8200		//IPM测温上拉电阻
-#define OVER_TEMPERATURE    70		    //设置IPM过温保护，单位为度
+#define OVER_TEMPERATURE    95		    //设置IPM过温保护，单位为度
 #define ADVALUE_DEG25		RESISTOR_DEG25*4095/(RESISTOR_DEG25+RESISTOR_PULLUP)	//25度时对应的AD值
-#define ADVALUE_DEG100		RESISTOR_DEG100*4095/(RESISTOR_DEG25+RESISTOR_PULLUP)  //100度时对应的AD值
+#define ADVALUE_DEG100		RESISTOR_DEG100*4095/(RESISTOR_DEG100+RESISTOR_PULLUP)  //100度时对应的AD值
 #define RESISTOR_DEGOVERTEMP ((OVER_TEMPERATURE-25)*(RESISTOR_DEG100-RESISTOR_DEG25)/(100-25)+RESISTOR_DEG25)	//过温时IPM内阻
 #define ADVALUE_OVER_TEMPERATUR	    RESISTOR_DEGOVERTEMP*4095/(RESISTOR_DEGOVERTEMP+RESISTOR_PULLUP)	//过温时对应的AD值
 /****************************************************************************/
@@ -58,9 +62,9 @@
 /***********************************故障LED亮灭时间*************************************************/
 #define STANDBY_ONTIME      10      //待机LED亮时间，10*100ms
 #define STANDBY_OFFTIME     (STANDBY_ONTIME+10)      //待机LED灭时间，10*100ms
-#define NORMAL_ONTIME       3       //待机LED亮时间，3*100ms
-#define NORMAL_OFFTIME      (NORMAL_ONTIME+3)       //待机LED灭时间，3*100ms
-#define FAULT_TWINKLETIME        3       //故障LED闪烁时间，3*100ms
+#define NORMAL_ONTIME       6       //待机LED亮时间，3*100ms
+#define NORMAL_OFFTIME      (NORMAL_ONTIME+6)       //待机LED灭时间，3*100ms
+#define FAULT_TWINKLETIME        2       //故障LED闪烁时间，3*100ms
 #define FAULT_OFFTIME       (15-FAULT_TWINKLETIME)      //故障LED灭时间，15*100ms
 /***************************************************************************************************/
 

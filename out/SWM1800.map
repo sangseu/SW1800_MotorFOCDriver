@@ -137,29 +137,28 @@ Adding Veneers to the image
 
     Adding TT veneer (12 bytes, Long) for call to 'PORT_Init' from initmcu.o(.text).
     Adding TT veneer (12 bytes, Long) for call to '__ARM_common_switch8' from svgen.o(.text).
-    Adding TT veneer (12 bytes, Long) for call to '__aeabi_idivmod' from svgen.o(.text).
-    Adding TT veneer (12 bytes, Long) for call to 'DIV_Init' from swm1800_cordic.o(.text).
     Adding TT veneer (12 bytes, Long) for call to '_float_round' from fdiv.o(.text).
     Adding TT veneer (12 bytes, Long) for call to '_float_epilogue' from fflti.o(.text).
+    Adding TT veneer (12 bytes, Long) for call to '__ARM_clz' from depilogue.o(.text).
     Adding TT veneer (12 bytes, Long) for call to '__aeabi_llsr' from depilogue.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'CalcEstI' from smc.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'DIV_Fun' from smc.o(.text).
+    Adding TT veneer (12 bytes, Long) for call to '__aeabi_idivmod' from pmsm.o(.text).
+    Adding TT veneer (12 bytes, Long) for call to '__aeabi_uidivmod' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'PWM_Init' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'TIMR_Init' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'TIMR_Start' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'GPIO_Init' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'SystemInit' from pmsm.o(.text).
-    Adding TT veneer (12 bytes, Long) for call to 'CORDIC_Init' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'SetupPorts' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'FWInit' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to '__aeabi_i2f' from pmsm.o(.text).
+    Adding TT veneer (12 bytes, Long) for call to '__aeabi_fmul' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to '__aeabi_fdiv' from pmsm.o(.text).
-    Adding TT veneer (12 bytes, Long) for call to '__aeabi_f2iz' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'sqrt_16' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'FieldWeakening' from pmsm.o(.text).
-    Adding TT veneer (12 bytes, Long) for call to 'ClarkePark' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'SinCos' from pmsm.o(.text).
-    Adding TT veneer (12 bytes, Long) for call to 'CalcRefVec' from pmsm.o(.text).
+    Adding TT veneer (12 bytes, Long) for call to 'InvPark' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'CalcSVGen' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'TIMR_Stop' from pmsm.o(.text).
     Adding TT veneer (12 bytes, Long) for call to 'TIMR_INTClr' from pmsm.o(.text).
@@ -167,7 +166,7 @@ Adding Veneers to the image
     Adding TT veneer (12 bytes, Long) for call to '__aeabi_i2d' from faultprotect.o(.text).
     Adding TT veneer (12 bytes, Long) for call to '__aeabi_cdrcmple' from faultprotect.o(.text).
 
-31 Veneer(s) (total 372 bytes) added to the image.
+30 Veneer(s) (total 360 bytes) added to the image.
 
 ==============================================================================
 
@@ -179,21 +178,21 @@ Image Symbol Table
 
     RESET                                    0x00000000   Section      272  startup_swm1800.o(RESET)
     ../clib/../cmprslib/zerorunl2.c          0x00000000   Number         0  __dczerorl2.o ABSOLUTE
-    ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  idiv.o ABSOLUTE
+    ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
@@ -201,8 +200,8 @@ Image Symbol Table
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  fepilogue.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  ffixi.o ABSOLUTE
-    ../fplib/microlib/fpflt.c                0x00000000   Number         0  dflti.o ABSOLUTE
     ../fplib/microlib/fpflt.c                0x00000000   Number         0  fflti.o ABSOLUTE
+    ../fplib/microlib/fpflt.c                0x00000000   Number         0  dflti.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  fmul.o ABSOLUTE
     APP\CalcRef.c                            0x00000000   Number         0  calcref.o ABSOLUTE
     APP\ClrkPark.c                           0x00000000   Number         0  clrkpark.o ABSOLUTE
@@ -257,41 +256,41 @@ Image Symbol Table
     __lit__00000000                          0x00000120   Data           4  entry2.o(.ARM.Collect$$$$00002712)
     .text                                    0x00000124   Section        0  initmcu.o(.text)
     .text                                    0x00000238   Section        0  fdweak.o(.text)
-    .text                                    0x00000308   Section        0  calcref.o(.text)
-    .text                                    0x00000370   Section        0  clrkpark.o(.text)
-    .text                                    0x000003e4   Section        0  svgen.o(.text)
-    .text                                    0x00000a08   Section        0  trig.o(.text)
-    .text                                    0x00000b94   Section        0  swm1800_cordic.o(.text)
-    .text                                    0x00000bc0   Section        0  swm1800_gpio.o(.text)
-    .text                                    0x00000db4   Section        0  swm1800_pwm.o(.text)
-    .text                                    0x0000149c   Section        0  swm1800_timr.o(.text)
-    .text                                    0x0000175c   Section        0  system_swm1800.o(.text)
-    switchToXTAL                             0x000017cb   Thumb Code    72  system_swm1800.o(.text)
-    switchToRC24MHz                          0x00001813   Thumb Code    32  system_swm1800.o(.text)
-    switchToRC32KHz                          0x00001833   Thumb Code    34  system_swm1800.o(.text)
-    switchToRC12MHz                          0x00001855   Thumb Code    34  system_swm1800.o(.text)
-    switchToRC48MHz                          0x00001877   Thumb Code    34  system_swm1800.o(.text)
-    switchToRC6MHz                           0x00001899   Thumb Code    32  system_swm1800.o(.text)
-    .text                                    0x000019a4   Section        0  fdiv.o(.text)
-    .text                                    0x00001a20   Section        0  fflti.o(.text)
-    .text                                    0x00001a38   Section        0  dflti.o(.text)
-    .text                                    0x00001a60   Section        0  ffixi.o(.text)
-    .text                                    0x00001a94   Section       40  cdrcmple.o(.text)
-    .text                                    0x00001abc   Section        0  iusefp.o(.text)
-    .text                                    0x00001abc   Section        0  depilogue.o(.text)
-    .text                                    0x00001b7c   Section       36  init.o(.text)
-    .text                                    0x00001ba0   Section        0  llshl.o(.text)
-    i.CalcEstI                               0x00001c14   Section        0  smc.o(i.CalcEstI)
-    i.__ARM_clz                              0x00001ca0   Section        0  depilogue.o(i.__ARM_clz)
-    i.__scatterload_copy                     0x00001cce   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x00001cdc   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x00001cde   Section       14  handlers.o(i.__scatterload_zeroinit)
+    .text                                    0x00000308   Section        0  invpark.o(.text)
+    .text                                    0x00000354   Section        0  svgen.o(.text)
+    .text                                    0x00000978   Section        0  trig.o(.text)
+    .text                                    0x00000b04   Section        0  swm1800_gpio.o(.text)
+    .text                                    0x00000cf8   Section        0  swm1800_pwm.o(.text)
+    .text                                    0x000013e0   Section        0  swm1800_timr.o(.text)
+    .text                                    0x000016a0   Section        0  system_swm1800.o(.text)
+    switchToXTAL                             0x0000170f   Thumb Code    72  system_swm1800.o(.text)
+    switchToRC24MHz                          0x00001757   Thumb Code    32  system_swm1800.o(.text)
+    switchToRC32KHz                          0x00001777   Thumb Code    34  system_swm1800.o(.text)
+    switchToRC12MHz                          0x00001799   Thumb Code    34  system_swm1800.o(.text)
+    switchToRC48MHz                          0x000017bb   Thumb Code    34  system_swm1800.o(.text)
+    switchToRC6MHz                           0x000017dd   Thumb Code    32  system_swm1800.o(.text)
+    .text                                    0x000018e8   Section       80  startup_swm1800.o(.text)
+    .text                                    0x00001938   Section        0  uidiv.o(.text)
+    .text                                    0x00001964   Section        0  idiv.o(.text)
+    .text                                    0x0000198c   Section        0  fmul.o(.text)
+    .text                                    0x00001a06   Section        0  fdiv.o(.text)
+    .text                                    0x00001a82   Section        0  fflti.o(.text)
+    .text                                    0x00001a98   Section        0  dflti.o(.text)
+    .text                                    0x00001ac0   Section       40  cdrcmple.o(.text)
+    .text                                    0x00001ae8   Section        0  depilogue.o(.text)
+    .text                                    0x00001ae8   Section        0  iusefp.o(.text)
+    .text                                    0x00001ba8   Section       36  init.o(.text)
+    .text                                    0x00001bcc   Section        0  llshl.o(.text)
+    i.CalcEstI                               0x00001c34   Section        0  smc.o(i.CalcEstI)
+    i.__scatterload_copy                     0x00001cc0   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x00001cce   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x00001cd0   Section       14  handlers.o(i.__scatterload_zeroinit)
     .data                                    0x00002000   Section       26  smc.o(.data)
     .data                                    0x0000201a   Section        4  meascurr.o(.data)
     .data                                    0x00002020   Section       48  svgen.o(.data)
     .data                                    0x00002050   Section      252  pmsm.o(.data)
     AdCn                                     0x0000214b   Data           1  pmsm.o(.data)
-    .data                                    0x0000214c   Section       72  faultprotect.o(.data)
+    .data                                    0x0000214c   Section       76  faultprotect.o(.data)
     dcbus_over_times                         0x0000216c   Data           4  faultprotect.o(.data)
     dcbus_under_times                        0x00002170   Data           4  faultprotect.o(.data)
     phase_protect_times                      0x00002174   Data           4  faultprotect.o(.data)
@@ -301,10 +300,11 @@ Image Symbol Table
     confirm_lose_phase_number                0x00002184   Data           4  faultprotect.o(.data)
     confirm_phase_current_number             0x00002188   Data           4  faultprotect.o(.data)
     confirm_ipm_fo_number                    0x0000218c   Data           4  faultprotect.o(.data)
-    fun_number                               0x00002190   Data           4  faultprotect.o(.data)
-    .data                                    0x00002194   Section        8  system_swm1800.o(.data)
-    .bss                                     0x0000219c   Section       80  fdweak.o(.bss)
-    .bss                                     0x000021ec   Section      184  pmsm.o(.bss)
+    confirm_over_temp_times                  0x00002190   Data           4  faultprotect.o(.data)
+    fun_number                               0x00002194   Data           4  faultprotect.o(.data)
+    .data                                    0x00002198   Section        8  system_swm1800.o(.data)
+    .bss                                     0x000021a0   Section       80  fdweak.o(.bss)
+    .bss                                     0x000021f0   Section      184  pmsm.o(.bss)
     STACK                                    0x000022a8   Section     1024  startup_swm1800.o(STACK)
     Stack_Mem                                0x000022a8   Data        1024  startup_swm1800.o(STACK)
     .text                                    0x20000000   Section        0  smc.o(.text)
@@ -312,32 +312,32 @@ Image Symbol Table
     DIV_Div                                  0x20000353   Thumb Code    18  smc.o(.text)
     DIV_Div_IsBusy                           0x20000365   Thumb Code    14  smc.o(.text)
     CORDIC_Arctan                            0x20000373   Thumb Code   114  smc.o(.text)
-    .text                                    0x20000418   Section        0  invpark.o(.text)
-    .text                                    0x20000464   Section        0  meascurr.o(.text)
-    .text                                    0x200004f8   Section        0  pi.o(.text)
-    .text                                    0x200005d0   Section        0  pmsm.o(.text)
-    .text                                    0x20001540   Section        0  faultprotect.o(.text)
-    lose_phase_detect                        0x20001bd3   Thumb Code    92  faultprotect.o(.text)
-    .text                                    0x20001e18   Section        0  swm1800_adc.o(.text)
-    chn2idx                                  0x20001f85   Thumb Code    78  swm1800_adc.o(.text)
-    .text                                    0x2000211c   Section        0  swm1800_div.o(.text)
-    .text                                    0x2000213c   Section        0  swm1800_exti.o(.text)
-    .text                                    0x20002200   Section        0  swm1800_irqmux.o(.text)
-    NVIC_SetPriority                         0x200022c9   Thumb Code   110  swm1800_irqmux.o(.text)
-    .text                                    0x20002344   Section        0  swm1800_port.o(.text)
-    .text                                    0x200025f4   Section        0  swm1800_uart.o(.text)
-    .text                                    0x200027cc   Section       80  startup_swm1800.o(.text)
-    .text                                    0x2000281c   Section        0  uidiv.o(.text)
-    .text                                    0x20002848   Section        0  idiv.o(.text)
-    .text                                    0x20002870   Section        0  fmul.o(.text)
-    .text                                    0x200028ec   Section       40  cdcmple.o(.text)
-    .text                                    0x20002914   Section        0  fepilogue.o(.text)
-    .text                                    0x20002996   Section        0  llushr.o(.text)
-    .text                                    0x200029b8   Section        0  __dczerorl2.o(.text)
-    i.CalcBEMF                               0x20002b30   Section        0  smc.o(i.CalcBEMF)
-    i.__ARM_common_switch8                   0x20002bd4   Section        0  svgen.o(i.__ARM_common_switch8)
-    .constdata                               0x20002bf0   Section     4096  svgen.o(.constdata)
-    .constdata                               0x20003bf0   Section      512  trig.o(.constdata)
+    .text                                    0x20000418   Section        0  calcref.o(.text)
+    .text                                    0x20000480   Section        0  clrkpark.o(.text)
+    .text                                    0x200004f4   Section        0  meascurr.o(.text)
+    .text                                    0x20000588   Section        0  pi.o(.text)
+    .text                                    0x20000660   Section        0  pmsm.o(.text)
+    .text                                    0x200015c8   Section        0  faultprotect.o(.text)
+    lose_phase_detect                        0x20001c5b   Thumb Code   110  faultprotect.o(.text)
+    .text                                    0x20001eb0   Section        0  swm1800_adc.o(.text)
+    chn2idx                                  0x2000201d   Thumb Code    78  swm1800_adc.o(.text)
+    .text                                    0x200021b4   Section        0  swm1800_cordic.o(.text)
+    .text                                    0x200021de   Section        0  swm1800_div.o(.text)
+    .text                                    0x200021fe   Section        0  swm1800_exti.o(.text)
+    .text                                    0x200022c0   Section        0  swm1800_irqmux.o(.text)
+    NVIC_SetPriority                         0x20002389   Thumb Code   110  swm1800_irqmux.o(.text)
+    .text                                    0x20002404   Section        0  swm1800_port.o(.text)
+    .text                                    0x200026b4   Section        0  swm1800_uart.o(.text)
+    .text                                    0x2000288c   Section        0  ffixi.o(.text)
+    .text                                    0x200028c0   Section       40  cdcmple.o(.text)
+    .text                                    0x200028e8   Section        0  fepilogue.o(.text)
+    .text                                    0x2000296a   Section        0  llushr.o(.text)
+    .text                                    0x2000298c   Section        0  __dczerorl2.o(.text)
+    i.CalcBEMF                               0x20002b04   Section        0  smc.o(i.CalcBEMF)
+    i.__ARM_clz                              0x20002ba8   Section        0  depilogue.o(i.__ARM_clz)
+    i.__ARM_common_switch8                   0x20002bd6   Section        0  svgen.o(i.__ARM_common_switch8)
+    .constdata                               0x20002bf4   Section     4096  svgen.o(.constdata)
+    .constdata                               0x20003bf4   Section      512  trig.o(.constdata)
 
     Global Symbols
 
@@ -365,85 +365,117 @@ Image Symbol Table
     SetupPorts                               0x00000125   Thumb Code   256  initmcu.o(.text)
     FieldWeakening                           0x00000239   Thumb Code   144  fdweak.o(.text)
     FWInit                                   0x000002c9   Thumb Code    48  fdweak.o(.text)
-    CalcRefVec                               0x00000309   Thumb Code   100  calcref.o(.text)
-    ClarkePark                               0x00000371   Thumb Code   110  clrkpark.o(.text)
-    dutypid                                  0x000003e5   Thumb Code    36  svgen.o(.text)
-    Svpwm_Qua                                0x00000409   Thumb Code   202  svgen.o(.text)
-    math_cal_0                               0x000004d3   Thumb Code    52  svgen.o(.text)
-    Svpwm_Duty                               0x00000507   Thumb Code   168  svgen.o(.text)
-    Svpwm_Cal                                0x000005af   Thumb Code   272  svgen.o(.text)
-    CalcTimes                                0x000006bf   Thumb Code   216  svgen.o(.text)
-    CalcSVGen                                0x00000797   Thumb Code   586  svgen.o(.text)
-    SinCos                                   0x00000a09   Thumb Code   152  trig.o(.text)
-    sqrt_16                                  0x00000aa1   Thumb Code    88  trig.o(.text)
-    DIV_Fun                                  0x00000af9   Thumb Code   150  trig.o(.text)
-    CORDIC_Init                              0x00000b95   Thumb Code    42  swm1800_cordic.o(.text)
-    GPIO_Init                                0x00000bc1   Thumb Code   342  swm1800_gpio.o(.text)
-    GPIO_SetBit                              0x00000d17   Thumb Code    12  swm1800_gpio.o(.text)
-    GPIO_ClrBit                              0x00000d23   Thumb Code    12  swm1800_gpio.o(.text)
-    GPIO_InvBit                              0x00000d2f   Thumb Code    12  swm1800_gpio.o(.text)
-    GPIO_GetBit                              0x00000d3b   Thumb Code    12  swm1800_gpio.o(.text)
-    GPIO_SetBits                             0x00000d47   Thumb Code    24  swm1800_gpio.o(.text)
-    GPIO_ClrBits                             0x00000d5f   Thumb Code    24  swm1800_gpio.o(.text)
-    GPIO_InvBits                             0x00000d77   Thumb Code    24  swm1800_gpio.o(.text)
-    GPIO_GetBits                             0x00000d8f   Thumb Code    22  swm1800_gpio.o(.text)
-    PWM_Stop                                 0x00000db5   Thumb Code    98  swm1800_pwm.o(.text)
-    PWM_Init                                 0x00000e17   Thumb Code   256  swm1800_pwm.o(.text)
-    PWM_Start                                0x00000f17   Thumb Code    98  swm1800_pwm.o(.text)
-    PWM_SetCycle                             0x00000f79   Thumb Code    16  swm1800_pwm.o(.text)
-    PWM_GetCycle                             0x00000f89   Thumb Code    24  swm1800_pwm.o(.text)
-    PWM_SetHDuty                             0x00000fa1   Thumb Code    16  swm1800_pwm.o(.text)
-    PWM_GetHDuty                             0x00000fb1   Thumb Code    24  swm1800_pwm.o(.text)
-    PWM_SetDeadzone                          0x00000fc9   Thumb Code    16  swm1800_pwm.o(.text)
-    PWM_GetDeadzone                          0x00000fd9   Thumb Code    24  swm1800_pwm.o(.text)
-    PWM_IntNCycleEn                          0x00000ff1   Thumb Code   154  swm1800_pwm.o(.text)
-    PWM_IntNCycleDis                         0x0000108b   Thumb Code   154  swm1800_pwm.o(.text)
-    PWM_IntNCycleClr                         0x00001125   Thumb Code   106  swm1800_pwm.o(.text)
-    PWM_IntNCycleStat                        0x0000118f   Thumb Code   152  swm1800_pwm.o(.text)
-    PWM_IntHEndEn                            0x00001227   Thumb Code   170  swm1800_pwm.o(.text)
-    PWM_IntHEndDis                           0x000012d1   Thumb Code   170  swm1800_pwm.o(.text)
-    PWM_IntHEndClr                           0x0000137b   Thumb Code   122  swm1800_pwm.o(.text)
-    PWM_IntHEndStat                          0x000013f5   Thumb Code   160  swm1800_pwm.o(.text)
-    TIMR_INTClr                              0x0000149d   Thumb Code    58  swm1800_timr.o(.text)
-    TIMR_Stop                                0x000014d7   Thumb Code    10  swm1800_timr.o(.text)
-    TIMR_Init                                0x000014e1   Thumb Code   204  swm1800_timr.o(.text)
-    TIMR_Start                               0x000015ad   Thumb Code    10  swm1800_timr.o(.text)
-    TIMR_Halt                                0x000015b7   Thumb Code    82  swm1800_timr.o(.text)
-    TIMR_Resume                              0x00001609   Thumb Code    82  swm1800_timr.o(.text)
-    TIMR_SetPeriod                           0x0000165b   Thumb Code     4  swm1800_timr.o(.text)
-    TIMR_GetPeriod                           0x0000165f   Thumb Code     6  swm1800_timr.o(.text)
-    TIMR_GetCurValue                         0x00001665   Thumb Code     6  swm1800_timr.o(.text)
-    TIMR_INTEn                               0x0000166b   Thumb Code    82  swm1800_timr.o(.text)
-    TIMR_INTDis                              0x000016bd   Thumb Code    82  swm1800_timr.o(.text)
-    TIMR_INTStat                             0x0000170f   Thumb Code    68  swm1800_timr.o(.text)
-    SystemCoreClockUpdate                    0x0000175d   Thumb Code   110  system_swm1800.o(.text)
-    SystemInit                               0x000018b9   Thumb Code   198  system_swm1800.o(.text)
-    __aeabi_fdiv                             0x000019a5   Thumb Code   124  fdiv.o(.text)
-    __aeabi_i2f                              0x00001a21   Thumb Code    22  fflti.o(.text)
-    __aeabi_i2d                              0x00001a39   Thumb Code    34  dflti.o(.text)
-    __aeabi_f2iz                             0x00001a61   Thumb Code    50  ffixi.o(.text)
-    __aeabi_cdrcmple                         0x00001a95   Thumb Code    38  cdrcmple.o(.text)
-    __I$use$fp                               0x00001abd   Thumb Code     0  iusefp.o(.text)
-    _double_round                            0x00001abd   Thumb Code    26  depilogue.o(.text)
-    _double_epilogue                         0x00001ad7   Thumb Code   164  depilogue.o(.text)
-    __scatterload                            0x00001b7d   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x00001b7d   Thumb Code     0  init.o(.text)
-    __aeabi_llsl                             0x00001ba1   Thumb Code    32  llshl.o(.text)
-    _ll_shift_l                              0x00001ba1   Thumb Code     0  llshl.o(.text)
-    Long Thumb to Thumb Veneer to PORT_Init  0x00001bc1   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to __ARM_common_switch8 0x00001bcd   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to __aeabi_idivmod 0x00001bd9   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to DIV_Init   0x00001be5   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to _float_round 0x00001bf1   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to _float_epilogue 0x00001bfd   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to __aeabi_llsr 0x00001c09   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    CalcEstI                                 0x00001c15   Thumb Code   140  smc.o(i.CalcEstI)
-    __ARM_clz                                0x00001ca1   Thumb Code    46  depilogue.o(i.__ARM_clz)
-    __scatterload_copy                       0x00001ccf   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x00001cdd   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x00001cdf   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    Region$$Table$$Base                      0x00001cec   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00001d0c   Number         0  anon$$obj.o(Region$$Table)
+    InvPark                                  0x00000309   Thumb Code    76  invpark.o(.text)
+    dutypid                                  0x00000355   Thumb Code    36  svgen.o(.text)
+    Svpwm_Qua                                0x00000379   Thumb Code   202  svgen.o(.text)
+    math_cal_0                               0x00000443   Thumb Code    52  svgen.o(.text)
+    Svpwm_Duty                               0x00000477   Thumb Code   168  svgen.o(.text)
+    Svpwm_Cal                                0x0000051f   Thumb Code   272  svgen.o(.text)
+    CalcTimes                                0x0000062f   Thumb Code   216  svgen.o(.text)
+    CalcSVGen                                0x00000707   Thumb Code   586  svgen.o(.text)
+    SinCos                                   0x00000979   Thumb Code   152  trig.o(.text)
+    sqrt_16                                  0x00000a11   Thumb Code    88  trig.o(.text)
+    DIV_Fun                                  0x00000a69   Thumb Code   150  trig.o(.text)
+    GPIO_Init                                0x00000b05   Thumb Code   342  swm1800_gpio.o(.text)
+    GPIO_SetBit                              0x00000c5b   Thumb Code    12  swm1800_gpio.o(.text)
+    GPIO_ClrBit                              0x00000c67   Thumb Code    12  swm1800_gpio.o(.text)
+    GPIO_InvBit                              0x00000c73   Thumb Code    12  swm1800_gpio.o(.text)
+    GPIO_GetBit                              0x00000c7f   Thumb Code    12  swm1800_gpio.o(.text)
+    GPIO_SetBits                             0x00000c8b   Thumb Code    24  swm1800_gpio.o(.text)
+    GPIO_ClrBits                             0x00000ca3   Thumb Code    24  swm1800_gpio.o(.text)
+    GPIO_InvBits                             0x00000cbb   Thumb Code    24  swm1800_gpio.o(.text)
+    GPIO_GetBits                             0x00000cd3   Thumb Code    22  swm1800_gpio.o(.text)
+    PWM_Stop                                 0x00000cf9   Thumb Code    98  swm1800_pwm.o(.text)
+    PWM_Init                                 0x00000d5b   Thumb Code   256  swm1800_pwm.o(.text)
+    PWM_Start                                0x00000e5b   Thumb Code    98  swm1800_pwm.o(.text)
+    PWM_SetCycle                             0x00000ebd   Thumb Code    16  swm1800_pwm.o(.text)
+    PWM_GetCycle                             0x00000ecd   Thumb Code    24  swm1800_pwm.o(.text)
+    PWM_SetHDuty                             0x00000ee5   Thumb Code    16  swm1800_pwm.o(.text)
+    PWM_GetHDuty                             0x00000ef5   Thumb Code    24  swm1800_pwm.o(.text)
+    PWM_SetDeadzone                          0x00000f0d   Thumb Code    16  swm1800_pwm.o(.text)
+    PWM_GetDeadzone                          0x00000f1d   Thumb Code    24  swm1800_pwm.o(.text)
+    PWM_IntNCycleEn                          0x00000f35   Thumb Code   154  swm1800_pwm.o(.text)
+    PWM_IntNCycleDis                         0x00000fcf   Thumb Code   154  swm1800_pwm.o(.text)
+    PWM_IntNCycleClr                         0x00001069   Thumb Code   106  swm1800_pwm.o(.text)
+    PWM_IntNCycleStat                        0x000010d3   Thumb Code   152  swm1800_pwm.o(.text)
+    PWM_IntHEndEn                            0x0000116b   Thumb Code   170  swm1800_pwm.o(.text)
+    PWM_IntHEndDis                           0x00001215   Thumb Code   170  swm1800_pwm.o(.text)
+    PWM_IntHEndClr                           0x000012bf   Thumb Code   122  swm1800_pwm.o(.text)
+    PWM_IntHEndStat                          0x00001339   Thumb Code   160  swm1800_pwm.o(.text)
+    TIMR_INTClr                              0x000013e1   Thumb Code    58  swm1800_timr.o(.text)
+    TIMR_Stop                                0x0000141b   Thumb Code    10  swm1800_timr.o(.text)
+    TIMR_Init                                0x00001425   Thumb Code   204  swm1800_timr.o(.text)
+    TIMR_Start                               0x000014f1   Thumb Code    10  swm1800_timr.o(.text)
+    TIMR_Halt                                0x000014fb   Thumb Code    82  swm1800_timr.o(.text)
+    TIMR_Resume                              0x0000154d   Thumb Code    82  swm1800_timr.o(.text)
+    TIMR_SetPeriod                           0x0000159f   Thumb Code     4  swm1800_timr.o(.text)
+    TIMR_GetPeriod                           0x000015a3   Thumb Code     6  swm1800_timr.o(.text)
+    TIMR_GetCurValue                         0x000015a9   Thumb Code     6  swm1800_timr.o(.text)
+    TIMR_INTEn                               0x000015af   Thumb Code    82  swm1800_timr.o(.text)
+    TIMR_INTDis                              0x00001601   Thumb Code    82  swm1800_timr.o(.text)
+    TIMR_INTStat                             0x00001653   Thumb Code    68  swm1800_timr.o(.text)
+    SystemCoreClockUpdate                    0x000016a1   Thumb Code   110  system_swm1800.o(.text)
+    SystemInit                               0x000017fd   Thumb Code   198  system_swm1800.o(.text)
+    NMI_Handler                              0x000018e9   Thumb Code     2  startup_swm1800.o(.text)
+    HardFault_Handler                        0x000018eb   Thumb Code     2  startup_swm1800.o(.text)
+    SVC_Handler                              0x000018ed   Thumb Code     2  startup_swm1800.o(.text)
+    PendSV_Handler                           0x000018ef   Thumb Code     2  startup_swm1800.o(.text)
+    SysTick_Handler                          0x000018f1   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ3_Handler                             0x000018f9   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ6_Handler                             0x000018ff   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ7_Handler                             0x00001901   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ8_Handler                             0x00001903   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ9_Handler                             0x00001905   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ10_Handler                            0x00001907   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ11_Handler                            0x00001909   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ12_Handler                            0x0000190b   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ13_Handler                            0x0000190d   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ14_Handler                            0x0000190f   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ15_Handler                            0x00001911   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ16_Handler                            0x00001913   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ17_Handler                            0x00001915   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ18_Handler                            0x00001917   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ19_Handler                            0x00001919   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ20_Handler                            0x0000191b   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ21_Handler                            0x0000191d   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ22_Handler                            0x0000191f   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ23_Handler                            0x00001921   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ24_Handler                            0x00001923   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ25_Handler                            0x00001925   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ26_Handler                            0x00001927   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ27_Handler                            0x00001929   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ28_Handler                            0x0000192d   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ29_Handler                            0x00001931   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ30_Handler                            0x00001933   Thumb Code     2  startup_swm1800.o(.text)
+    IRQ31_Handler                            0x00001935   Thumb Code     2  startup_swm1800.o(.text)
+    __aeabi_uidiv                            0x00001939   Thumb Code     0  uidiv.o(.text)
+    __aeabi_uidivmod                         0x00001939   Thumb Code    44  uidiv.o(.text)
+    __aeabi_idiv                             0x00001965   Thumb Code     0  idiv.o(.text)
+    __aeabi_idivmod                          0x00001965   Thumb Code    40  idiv.o(.text)
+    __aeabi_fmul                             0x0000198d   Thumb Code   122  fmul.o(.text)
+    __aeabi_fdiv                             0x00001a07   Thumb Code   124  fdiv.o(.text)
+    __aeabi_i2f                              0x00001a83   Thumb Code    22  fflti.o(.text)
+    __aeabi_i2d                              0x00001a99   Thumb Code    34  dflti.o(.text)
+    __aeabi_cdrcmple                         0x00001ac1   Thumb Code    38  cdrcmple.o(.text)
+    __I$use$fp                               0x00001ae9   Thumb Code     0  iusefp.o(.text)
+    _double_round                            0x00001ae9   Thumb Code    26  depilogue.o(.text)
+    _double_epilogue                         0x00001b03   Thumb Code   164  depilogue.o(.text)
+    __scatterload                            0x00001ba9   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x00001ba9   Thumb Code     0  init.o(.text)
+    __aeabi_llsl                             0x00001bcd   Thumb Code    32  llshl.o(.text)
+    _ll_shift_l                              0x00001bcd   Thumb Code     0  llshl.o(.text)
+    Long Thumb to Thumb Veneer to PORT_Init  0x00001bed   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to __ARM_common_switch8 0x00001bf9   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to _float_round 0x00001c05   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to _float_epilogue 0x00001c11   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to __ARM_clz  0x00001c1d   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to __aeabi_llsr 0x00001c29   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    CalcEstI                                 0x00001c35   Thumb Code   140  smc.o(i.CalcEstI)
+    __scatterload_copy                       0x00001cc1   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x00001ccf   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x00001cd1   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    Region$$Table$$Base                      0x00001ce0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00001d00   Number         0  anon$$obj.o(Region$$Table)
     tempv                                    0x00002000   Data           4  smc.o(.data)
     start                                    0x00002004   Data           4  smc.o(.data)
     IndPre                                   0x00002008   Data           4  smc.o(.data)
@@ -547,176 +579,143 @@ Image Symbol Table
     s2                                       0x00002149   Data           1  pmsm.o(.data)
     s3                                       0x0000214a   Data           1  pmsm.o(.data)
     pfn                                      0x0000214c   Data          32  faultprotect.o(.data)
-    SystemCoreClock                          0x00002194   Data           4  system_swm1800.o(.data)
-    CyclesPerUs                              0x00002198   Data           4  system_swm1800.o(.data)
-    FdWeakParm                               0x0000219c   Data          80  fdweak.o(.bss)
-    InpFreqCnt                               0x000021ec   Data          16  pmsm.o(.bss)
-    motor_fault                              0x000021fc   Data          16  pmsm.o(.bss)
-    Phase_current_detect                     0x0000220c   Data          16  pmsm.o(.bss)
-    smc1                                     0x0000221c   Data          50  pmsm.o(.bss)
-    PIParmD                                  0x00002250   Data          28  pmsm.o(.bss)
-    PIParmQ                                  0x0000226c   Data          28  pmsm.o(.bss)
-    PIParmW                                  0x00002288   Data          28  pmsm.o(.bss)
+    SystemCoreClock                          0x00002198   Data           4  system_swm1800.o(.data)
+    CyclesPerUs                              0x0000219c   Data           4  system_swm1800.o(.data)
+    FdWeakParm                               0x000021a0   Data          80  fdweak.o(.bss)
+    InpFreqCnt                               0x000021f0   Data          16  pmsm.o(.bss)
+    motor_fault                              0x00002200   Data          16  pmsm.o(.bss)
+    Phase_current_detect                     0x00002210   Data          16  pmsm.o(.bss)
+    smc1                                     0x00002220   Data          50  pmsm.o(.bss)
+    PIParmD                                  0x00002254   Data          28  pmsm.o(.bss)
+    PIParmQ                                  0x00002270   Data          28  pmsm.o(.bss)
+    PIParmW                                  0x0000228c   Data          28  pmsm.o(.bss)
     __initial_sp                             0x000026a8   Data           0  startup_swm1800.o(STACK)
     SMC_Position_Estimation                  0x2000014f   Thumb Code   480  smc.o(.text)
     SMCInit                                  0x2000032f   Thumb Code    36  smc.o(.text)
-    InvPark                                  0x20000419   Thumb Code    76  invpark.o(.text)
-    InitMeasCompCurr                         0x20000465   Thumb Code     6  meascurr.o(.text)
-    MeasCompCurr                             0x2000046b   Thumb Code   128  meascurr.o(.text)
-    InitPI                                   0x200004f9   Thumb Code     8  pi.o(.text)
-    CalcPI                                   0x20000501   Thumb Code   118  pi.o(.text)
-    Cal_PID                                  0x20000577   Thumb Code    80  pi.o(.text)
-    gabs                                     0x200005c7   Thumb Code     8  pi.o(.text)
-    UartInit                                 0x200005d1   Thumb Code    72  pmsm.o(.text)
-    _CRC16                                   0x20000619   Thumb Code    80  pmsm.o(.text)
-    uart_putstring2                          0x20000669   Thumb Code    40  pmsm.o(.text)
-    Communication                            0x20000691   Thumb Code    92  pmsm.o(.text)
-    SetupControlParameters                   0x200006ed   Thumb Code   108  pmsm.o(.text)
-    CountInputFreq                           0x20000759   Thumb Code    34  pmsm.o(.text)
-    calculate_rotate_speed                   0x2000077b   Thumb Code   100  pmsm.o(.text)
-    SetupParm                                0x200007df   Thumb Code   774  pmsm.o(.text)
-    CountInputFreq_Init                      0x20000ae5   Thumb Code    62  pmsm.o(.text)
-    main                                     0x20000b23   Thumb Code   400  pmsm.o(.text)
-    DoControl                                0x20000cb3   Thumb Code   690  pmsm.o(.text)
-    CalculateParkAngle                       0x20000f65   Thumb Code   438  pmsm.o(.text)
-    IRQ0_Handler                             0x2000111b   Thumb Code    88  pmsm.o(.text)
-    IRQ4_Handler                             0x20001173   Thumb Code    44  pmsm.o(.text)
-    IRQ1_Handler                             0x2000119f   Thumb Code   462  pmsm.o(.text)
-    IRQ2_Handler                             0x2000136d   Thumb Code    62  pmsm.o(.text)
-    IRQ5_Handler                             0x200013ab   Thumb Code   234  pmsm.o(.text)
-    DebounceDelay                            0x20001495   Thumb Code    14  pmsm.o(.text)
-    VoltRippleComp                           0x200014a3   Thumb Code    90  pmsm.o(.text)
-    SysLed_Twinkle                           0x20001541   Thumb Code  1136  faultprotect.o(.text)
-    dcbus_voltage_protect                    0x200019b1   Thumb Code   156  faultprotect.o(.text)
-    phase_current_max_check                  0x20001a4d   Thumb Code   136  faultprotect.o(.text)
-    phase_current_protect                    0x20001ad5   Thumb Code   124  faultprotect.o(.text)
-    motor_lose_step_detect                   0x20001b51   Thumb Code   130  faultprotect.o(.text)
-    Phase_current_deviation                  0x20001c2f   Thumb Code   142  faultprotect.o(.text)
-    IPM_FO_detect                            0x20001cbd   Thumb Code    56  faultprotect.o(.text)
-    Phase_Current_Offset_Advalue_detect      0x20001cf5   Thumb Code   192  faultprotect.o(.text)
-    Over_temperature_detect                  0x20001db5   Thumb Code    30  faultprotect.o(.text)
-    motor_fault_init                         0x20001dd3   Thumb Code    12  faultprotect.o(.text)
-    motor_fault_detect                       0x20001ddf   Thumb Code    42  faultprotect.o(.text)
-    ADC_Close                                0x20001e19   Thumb Code    12  swm1800_adc.o(.text)
-    ADC_Init                                 0x20001e25   Thumb Code   324  swm1800_adc.o(.text)
-    ADC_Open                                 0x20001f69   Thumb Code    12  swm1800_adc.o(.text)
-    ADC_Start                                0x20001f75   Thumb Code     6  swm1800_adc.o(.text)
-    ADC_Stop                                 0x20001f7b   Thumb Code    10  swm1800_adc.o(.text)
-    ADC_Read                                 0x20001fd3   Thumb Code    30  swm1800_adc.o(.text)
-    ADC_IsEOC                                0x20001ff1   Thumb Code    28  swm1800_adc.o(.text)
-    ADC_ChnOpen                              0x2000200d   Thumb Code     8  swm1800_adc.o(.text)
-    ADC_ChnClose                             0x20002015   Thumb Code     8  swm1800_adc.o(.text)
-    ADC_IntEOCEn                             0x2000201d   Thumb Code    28  swm1800_adc.o(.text)
-    ADC_IntEOCDis                            0x20002039   Thumb Code    28  swm1800_adc.o(.text)
-    ADC_IntEOCClr                            0x20002055   Thumb Code    24  swm1800_adc.o(.text)
-    ADC_IntEOCStat                           0x2000206d   Thumb Code    36  swm1800_adc.o(.text)
-    ADC_IntOVFEn                             0x20002091   Thumb Code    30  swm1800_adc.o(.text)
-    ADC_IntOVFDis                            0x200020af   Thumb Code    30  swm1800_adc.o(.text)
-    ADC_IntOVFClr                            0x200020cd   Thumb Code    26  swm1800_adc.o(.text)
-    ADC_IntOVFStat                           0x200020e7   Thumb Code    38  swm1800_adc.o(.text)
-    DIV_Init                                 0x2000211d   Thumb Code    32  swm1800_div.o(.text)
-    EXTI_Clear                               0x2000213d   Thumb Code     8  swm1800_exti.o(.text)
-    EXTI_Init                                0x20002145   Thumb Code   138  swm1800_exti.o(.text)
-    EXTI_Open                                0x200021cf   Thumb Code    12  swm1800_exti.o(.text)
-    EXTI_Close                               0x200021db   Thumb Code    12  swm1800_exti.o(.text)
-    EXTI_State                               0x200021e7   Thumb Code    12  swm1800_exti.o(.text)
-    EXTI_RawState                            0x200021f3   Thumb Code    12  swm1800_exti.o(.text)
-    IRQ_Connect                              0x20002201   Thumb Code   130  swm1800_irqmux.o(.text)
-    IRQ_Which                                0x20002283   Thumb Code    70  swm1800_irqmux.o(.text)
-    PORT_Init                                0x20002345   Thumb Code   678  swm1800_port.o(.text)
-    UART_Close                               0x200025f5   Thumb Code    12  swm1800_uart.o(.text)
-    UART_Init                                0x20002601   Thumb Code   222  swm1800_uart.o(.text)
-    UART_Open                                0x200026df   Thumb Code    12  swm1800_uart.o(.text)
-    UART_WriteByte                           0x200026eb   Thumb Code     4  swm1800_uart.o(.text)
-    UART_ReadByte                            0x200026ef   Thumb Code     8  swm1800_uart.o(.text)
-    UART_IsDataValid                         0x200026f7   Thumb Code    14  swm1800_uart.o(.text)
-    UART_IsTXBusy                            0x20002705   Thumb Code    14  swm1800_uart.o(.text)
-    UART_IsRXFIFOEmpty                       0x20002713   Thumb Code    12  swm1800_uart.o(.text)
-    UART_IsTXFIFOFull                        0x2000271f   Thumb Code    12  swm1800_uart.o(.text)
-    UART_SetBaudrate                         0x2000272b   Thumb Code    34  swm1800_uart.o(.text)
-    UART_GetBaudrate                         0x2000274d   Thumb Code    10  swm1800_uart.o(.text)
-    UART_INTRXThresholdEn                    0x20002757   Thumb Code    10  swm1800_uart.o(.text)
-    UART_INTRXThresholdDis                   0x20002761   Thumb Code    10  swm1800_uart.o(.text)
-    UART_INTRXThresholdStat                  0x2000276b   Thumb Code    14  swm1800_uart.o(.text)
-    UART_INTTXThresholdEn                    0x20002779   Thumb Code    10  swm1800_uart.o(.text)
-    UART_INTTXThresholdDis                   0x20002783   Thumb Code    10  swm1800_uart.o(.text)
-    UART_INTTXThresholdStat                  0x2000278d   Thumb Code    14  swm1800_uart.o(.text)
-    UART_INTTimeoutEn                        0x2000279b   Thumb Code    12  swm1800_uart.o(.text)
-    UART_INTTimeoutDis                       0x200027a7   Thumb Code    12  swm1800_uart.o(.text)
-    UART_INTTimeoutStat                      0x200027b3   Thumb Code    14  swm1800_uart.o(.text)
-    NMI_Handler                              0x200027cd   Thumb Code     2  startup_swm1800.o(.text)
-    HardFault_Handler                        0x200027cf   Thumb Code     2  startup_swm1800.o(.text)
-    SVC_Handler                              0x200027d1   Thumb Code     2  startup_swm1800.o(.text)
-    PendSV_Handler                           0x200027d3   Thumb Code     2  startup_swm1800.o(.text)
-    SysTick_Handler                          0x200027d5   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ3_Handler                             0x200027dd   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ6_Handler                             0x200027e3   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ7_Handler                             0x200027e5   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ8_Handler                             0x200027e7   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ9_Handler                             0x200027e9   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ10_Handler                            0x200027eb   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ11_Handler                            0x200027ed   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ12_Handler                            0x200027ef   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ13_Handler                            0x200027f1   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ14_Handler                            0x200027f3   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ15_Handler                            0x200027f5   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ16_Handler                            0x200027f7   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ17_Handler                            0x200027f9   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ18_Handler                            0x200027fb   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ19_Handler                            0x200027fd   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ20_Handler                            0x200027ff   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ21_Handler                            0x20002801   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ22_Handler                            0x20002803   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ23_Handler                            0x20002805   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ24_Handler                            0x20002807   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ25_Handler                            0x20002809   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ26_Handler                            0x2000280b   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ27_Handler                            0x2000280d   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ28_Handler                            0x20002811   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ29_Handler                            0x20002815   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ30_Handler                            0x20002817   Thumb Code     2  startup_swm1800.o(.text)
-    IRQ31_Handler                            0x20002819   Thumb Code     2  startup_swm1800.o(.text)
-    __aeabi_uidiv                            0x2000281d   Thumb Code     0  uidiv.o(.text)
-    __aeabi_uidivmod                         0x2000281d   Thumb Code    44  uidiv.o(.text)
-    __aeabi_idiv                             0x20002849   Thumb Code     0  idiv.o(.text)
-    __aeabi_idivmod                          0x20002849   Thumb Code    40  idiv.o(.text)
-    __aeabi_fmul                             0x20002871   Thumb Code   122  fmul.o(.text)
-    __aeabi_cdcmpeq                          0x200028ed   Thumb Code     0  cdcmple.o(.text)
-    __aeabi_cdcmple                          0x200028ed   Thumb Code    38  cdcmple.o(.text)
-    _float_round                             0x20002915   Thumb Code    16  fepilogue.o(.text)
-    _float_epilogue                          0x20002925   Thumb Code   114  fepilogue.o(.text)
-    __aeabi_llsr                             0x20002997   Thumb Code    34  llushr.o(.text)
-    _ll_ushift_r                             0x20002997   Thumb Code     0  llushr.o(.text)
-    __decompress                             0x200029b9   Thumb Code     0  __dczerorl2.o(.text)
-    __decompress1                            0x200029b9   Thumb Code    86  __dczerorl2.o(.text)
-    Long Thumb to Thumb Veneer to CalcEstI   0x20002a11   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to DIV_Fun    0x20002a1d   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to PWM_Init   0x20002a29   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to TIMR_Init  0x20002a35   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to TIMR_Start 0x20002a41   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to GPIO_Init  0x20002a4d   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to SystemInit 0x20002a59   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to CORDIC_Init 0x20002a65   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to SetupPorts 0x20002a71   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to FWInit     0x20002a7d   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to __aeabi_i2f 0x20002a89   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to __aeabi_fdiv 0x20002a95   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to __aeabi_f2iz 0x20002aa1   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to sqrt_16    0x20002aad   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to FieldWeakening 0x20002ab9   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to ClarkePark 0x20002ac5   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to SinCos     0x20002ad1   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to CalcRefVec 0x20002add   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to CalcSVGen  0x20002ae9   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to TIMR_Stop  0x20002af5   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to TIMR_INTClr 0x20002b01   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to GPIO_InvBit 0x20002b0d   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to __aeabi_i2d 0x20002b19   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    Long Thumb to Thumb Veneer to __aeabi_cdrcmple 0x20002b25   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    CalcBEMF                                 0x20002b31   Thumb Code   164  smc.o(i.CalcBEMF)
-    __ARM_common_switch8                     0x20002bd5   Thumb Code    28  svgen.o(i.__ARM_common_switch8)
-    sin_dat                                  0x20002bf0   Data        4096  svgen.o(.constdata)
-    SinTable                                 0x20003bf0   Data         512  trig.o(.constdata)
+    CalcRefVec                               0x20000419   Thumb Code   100  calcref.o(.text)
+    ClarkePark                               0x20000481   Thumb Code   110  clrkpark.o(.text)
+    InitMeasCompCurr                         0x200004f5   Thumb Code     6  meascurr.o(.text)
+    MeasCompCurr                             0x200004fb   Thumb Code   128  meascurr.o(.text)
+    InitPI                                   0x20000589   Thumb Code     8  pi.o(.text)
+    CalcPI                                   0x20000591   Thumb Code   118  pi.o(.text)
+    Cal_PID                                  0x20000607   Thumb Code    80  pi.o(.text)
+    gabs                                     0x20000657   Thumb Code     8  pi.o(.text)
+    UartInit                                 0x20000661   Thumb Code    72  pmsm.o(.text)
+    _CRC16                                   0x200006a9   Thumb Code    80  pmsm.o(.text)
+    uart_putstring2                          0x200006f9   Thumb Code    40  pmsm.o(.text)
+    Communication                            0x20000721   Thumb Code    92  pmsm.o(.text)
+    SetupControlParameters                   0x2000077d   Thumb Code   108  pmsm.o(.text)
+    CountInputFreq                           0x200007e9   Thumb Code    34  pmsm.o(.text)
+    calculate_rotate_speed                   0x2000080b   Thumb Code   100  pmsm.o(.text)
+    SetupParm                                0x2000086f   Thumb Code   774  pmsm.o(.text)
+    CountInputFreq_Init                      0x20000b75   Thumb Code    62  pmsm.o(.text)
+    main                                     0x20000bb3   Thumb Code   392  pmsm.o(.text)
+    DoControl                                0x20000d3b   Thumb Code   692  pmsm.o(.text)
+    CalculateParkAngle                       0x20000fef   Thumb Code   438  pmsm.o(.text)
+    IRQ0_Handler                             0x200011a5   Thumb Code    88  pmsm.o(.text)
+    IRQ4_Handler                             0x200011fd   Thumb Code    44  pmsm.o(.text)
+    IRQ1_Handler                             0x20001229   Thumb Code   320  pmsm.o(.text)
+    IRQ2_Handler                             0x20001369   Thumb Code   212  pmsm.o(.text)
+    IRQ5_Handler                             0x2000143d   Thumb Code   234  pmsm.o(.text)
+    DebounceDelay                            0x20001527   Thumb Code    14  pmsm.o(.text)
+    VoltRippleComp                           0x20001535   Thumb Code    90  pmsm.o(.text)
+    SysLed_Twinkle                           0x200015c9   Thumb Code  1136  faultprotect.o(.text)
+    dcbus_voltage_protect                    0x20001a39   Thumb Code   156  faultprotect.o(.text)
+    phase_current_max_check                  0x20001ad5   Thumb Code   136  faultprotect.o(.text)
+    phase_current_protect                    0x20001b5d   Thumb Code   124  faultprotect.o(.text)
+    motor_lose_step_detect                   0x20001bd9   Thumb Code   130  faultprotect.o(.text)
+    Phase_current_deviation                  0x20001cc9   Thumb Code   120  faultprotect.o(.text)
+    IPM_FO_detect                            0x20001d41   Thumb Code    56  faultprotect.o(.text)
+    Phase_Current_Offset_Advalue_detect      0x20001d79   Thumb Code    62  faultprotect.o(.text)
+    Over_temperature_detect                  0x20001db7   Thumb Code   184  faultprotect.o(.text)
+    motor_fault_init                         0x20001e6f   Thumb Code    12  faultprotect.o(.text)
+    motor_fault_detect                       0x20001e7b   Thumb Code    42  faultprotect.o(.text)
+    ADC_Close                                0x20001eb1   Thumb Code    12  swm1800_adc.o(.text)
+    ADC_Init                                 0x20001ebd   Thumb Code   324  swm1800_adc.o(.text)
+    ADC_Open                                 0x20002001   Thumb Code    12  swm1800_adc.o(.text)
+    ADC_Start                                0x2000200d   Thumb Code     6  swm1800_adc.o(.text)
+    ADC_Stop                                 0x20002013   Thumb Code    10  swm1800_adc.o(.text)
+    ADC_Read                                 0x2000206b   Thumb Code    30  swm1800_adc.o(.text)
+    ADC_IsEOC                                0x20002089   Thumb Code    28  swm1800_adc.o(.text)
+    ADC_ChnOpen                              0x200020a5   Thumb Code     8  swm1800_adc.o(.text)
+    ADC_ChnClose                             0x200020ad   Thumb Code     8  swm1800_adc.o(.text)
+    ADC_IntEOCEn                             0x200020b5   Thumb Code    28  swm1800_adc.o(.text)
+    ADC_IntEOCDis                            0x200020d1   Thumb Code    28  swm1800_adc.o(.text)
+    ADC_IntEOCClr                            0x200020ed   Thumb Code    24  swm1800_adc.o(.text)
+    ADC_IntEOCStat                           0x20002105   Thumb Code    36  swm1800_adc.o(.text)
+    ADC_IntOVFEn                             0x20002129   Thumb Code    30  swm1800_adc.o(.text)
+    ADC_IntOVFDis                            0x20002147   Thumb Code    30  swm1800_adc.o(.text)
+    ADC_IntOVFClr                            0x20002165   Thumb Code    26  swm1800_adc.o(.text)
+    ADC_IntOVFStat                           0x2000217f   Thumb Code    38  swm1800_adc.o(.text)
+    CORDIC_Init                              0x200021b5   Thumb Code    42  swm1800_cordic.o(.text)
+    DIV_Init                                 0x200021df   Thumb Code    32  swm1800_div.o(.text)
+    EXTI_Clear                               0x200021ff   Thumb Code     8  swm1800_exti.o(.text)
+    EXTI_Init                                0x20002207   Thumb Code   138  swm1800_exti.o(.text)
+    EXTI_Open                                0x20002291   Thumb Code    12  swm1800_exti.o(.text)
+    EXTI_Close                               0x2000229d   Thumb Code    12  swm1800_exti.o(.text)
+    EXTI_State                               0x200022a9   Thumb Code    12  swm1800_exti.o(.text)
+    EXTI_RawState                            0x200022b5   Thumb Code    12  swm1800_exti.o(.text)
+    IRQ_Connect                              0x200022c1   Thumb Code   130  swm1800_irqmux.o(.text)
+    IRQ_Which                                0x20002343   Thumb Code    70  swm1800_irqmux.o(.text)
+    PORT_Init                                0x20002405   Thumb Code   678  swm1800_port.o(.text)
+    UART_Close                               0x200026b5   Thumb Code    12  swm1800_uart.o(.text)
+    UART_Init                                0x200026c1   Thumb Code   222  swm1800_uart.o(.text)
+    UART_Open                                0x2000279f   Thumb Code    12  swm1800_uart.o(.text)
+    UART_WriteByte                           0x200027ab   Thumb Code     4  swm1800_uart.o(.text)
+    UART_ReadByte                            0x200027af   Thumb Code     8  swm1800_uart.o(.text)
+    UART_IsDataValid                         0x200027b7   Thumb Code    14  swm1800_uart.o(.text)
+    UART_IsTXBusy                            0x200027c5   Thumb Code    14  swm1800_uart.o(.text)
+    UART_IsRXFIFOEmpty                       0x200027d3   Thumb Code    12  swm1800_uart.o(.text)
+    UART_IsTXFIFOFull                        0x200027df   Thumb Code    12  swm1800_uart.o(.text)
+    UART_SetBaudrate                         0x200027eb   Thumb Code    34  swm1800_uart.o(.text)
+    UART_GetBaudrate                         0x2000280d   Thumb Code    10  swm1800_uart.o(.text)
+    UART_INTRXThresholdEn                    0x20002817   Thumb Code    10  swm1800_uart.o(.text)
+    UART_INTRXThresholdDis                   0x20002821   Thumb Code    10  swm1800_uart.o(.text)
+    UART_INTRXThresholdStat                  0x2000282b   Thumb Code    14  swm1800_uart.o(.text)
+    UART_INTTXThresholdEn                    0x20002839   Thumb Code    10  swm1800_uart.o(.text)
+    UART_INTTXThresholdDis                   0x20002843   Thumb Code    10  swm1800_uart.o(.text)
+    UART_INTTXThresholdStat                  0x2000284d   Thumb Code    14  swm1800_uart.o(.text)
+    UART_INTTimeoutEn                        0x2000285b   Thumb Code    12  swm1800_uart.o(.text)
+    UART_INTTimeoutDis                       0x20002867   Thumb Code    12  swm1800_uart.o(.text)
+    UART_INTTimeoutStat                      0x20002873   Thumb Code    14  swm1800_uart.o(.text)
+    __aeabi_f2iz                             0x2000288d   Thumb Code    50  ffixi.o(.text)
+    __aeabi_cdcmpeq                          0x200028c1   Thumb Code     0  cdcmple.o(.text)
+    __aeabi_cdcmple                          0x200028c1   Thumb Code    38  cdcmple.o(.text)
+    _float_round                             0x200028e9   Thumb Code    16  fepilogue.o(.text)
+    _float_epilogue                          0x200028f9   Thumb Code   114  fepilogue.o(.text)
+    __aeabi_llsr                             0x2000296b   Thumb Code    34  llushr.o(.text)
+    _ll_ushift_r                             0x2000296b   Thumb Code     0  llushr.o(.text)
+    __decompress                             0x2000298d   Thumb Code     0  __dczerorl2.o(.text)
+    __decompress1                            0x2000298d   Thumb Code    86  __dczerorl2.o(.text)
+    Long Thumb to Thumb Veneer to CalcEstI   0x200029e5   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to DIV_Fun    0x200029f1   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to __aeabi_idivmod 0x200029fd   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to __aeabi_uidivmod 0x20002a09   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to PWM_Init   0x20002a15   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to TIMR_Init  0x20002a21   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to TIMR_Start 0x20002a2d   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to GPIO_Init  0x20002a39   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to SystemInit 0x20002a45   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to SetupPorts 0x20002a51   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to FWInit     0x20002a5d   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to __aeabi_i2f 0x20002a69   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to __aeabi_fmul 0x20002a75   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to __aeabi_fdiv 0x20002a81   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to sqrt_16    0x20002a8d   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to FieldWeakening 0x20002a99   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to SinCos     0x20002aa5   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to InvPark    0x20002ab1   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to CalcSVGen  0x20002abd   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to TIMR_Stop  0x20002ac9   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to TIMR_INTClr 0x20002ad5   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to GPIO_InvBit 0x20002ae1   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to __aeabi_i2d 0x20002aed   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    Long Thumb to Thumb Veneer to __aeabi_cdrcmple 0x20002af9   Thumb Code    12  anon$$obj.o(Veneer$$Code)
+    CalcBEMF                                 0x20002b05   Thumb Code   164  smc.o(i.CalcBEMF)
+    __ARM_clz                                0x20002ba9   Thumb Code    46  depilogue.o(i.__ARM_clz)
+    __ARM_common_switch8                     0x20002bd7   Thumb Code    28  svgen.o(i.__ARM_common_switch8)
+    sin_dat                                  0x20002bf4   Data        4096  svgen.o(.constdata)
+    SinTable                                 0x20003bf4   Data         512  trig.o(.constdata)
 
 
 
@@ -726,9 +725,9 @@ Memory Map of the image
 
   Image Entry point : 0x00000111
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00001ea8, Max: 0x00002000, ABSOLUTE, COMPRESSED[0x00001d58])
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00001ea0, Max: 0x00002000, ABSOLUTE, COMPRESSED[0x00001d48])
 
-    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00001d0c, Max: 0x00002000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00001d00, Max: 0x00002000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -744,44 +743,41 @@ Memory Map of the image
     0x00000120   0x00000004   Code   RO          679    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
     0x00000124   0x00000114   Code   RO          132    .text               initmcu.o
     0x00000238   0x000000d0   Code   RO          150    .text               fdweak.o
-    0x00000308   0x00000068   Code   RO          168    .text               calcref.o
-    0x00000370   0x00000074   Code   RO          188    .text               clrkpark.o
-    0x000003e4   0x00000624   Code   RO          247    .text               svgen.o
-    0x00000a08   0x0000018c   Code   RO          270    .text               trig.o
-    0x00000b94   0x0000002a   Code   RO          402    .text               swm1800_cordic.o
-    0x00000bbe   0x00000002   PAD
-    0x00000bc0   0x000001f4   Code   RO          465    .text               swm1800_gpio.o
-    0x00000db4   0x000006e8   Code   RO          516    .text               swm1800_pwm.o
-    0x0000149c   0x000002c0   Code   RO          564    .text               swm1800_timr.o
-    0x0000175c   0x00000248   Code   RO          623    .text               system_swm1800.o
-    0x000019a4   0x0000007c   Code   RO          666    .text               mf_p.l(fdiv.o)
-    0x00001a20   0x00000016   Code   RO          668    .text               mf_p.l(fflti.o)
-    0x00001a36   0x00000002   PAD
-    0x00001a38   0x00000028   Code   RO          670    .text               mf_p.l(dflti.o)
-    0x00001a60   0x00000032   Code   RO          672    .text               mf_p.l(ffixi.o)
-    0x00001a92   0x00000002   PAD
-    0x00001a94   0x00000028   Code   RO          676    .text               mf_p.l(cdrcmple.o)
-    0x00001abc   0x00000000   Code   RO          692    .text               mc_p.l(iusefp.o)
-    0x00001abc   0x000000be   Code   RO          695    .text               mf_p.l(depilogue.o)
-    0x00001b7a   0x00000002   PAD
-    0x00001b7c   0x00000024   Code   RO          699    .text               mc_p.l(init.o)
-    0x00001ba0   0x00000020   Code   RO          701    .text               mc_p.l(llshl.o)
-    0x00001bc0   0x0000000c   Ven    RO          715    Veneer$$Code        anon$$obj.o
-    0x00001bcc   0x0000000c   Ven    RO          716    Veneer$$Code        anon$$obj.o
-    0x00001bd8   0x0000000c   Ven    RO          717    Veneer$$Code        anon$$obj.o
-    0x00001be4   0x0000000c   Ven    RO          718    Veneer$$Code        anon$$obj.o
-    0x00001bf0   0x0000000c   Ven    RO          719    Veneer$$Code        anon$$obj.o
-    0x00001bfc   0x0000000c   Ven    RO          720    Veneer$$Code        anon$$obj.o
-    0x00001c08   0x0000000c   Ven    RO          721    Veneer$$Code        anon$$obj.o
-    0x00001c14   0x0000008c   Code   RO           20    i.CalcEstI          smc.o
-    0x00001ca0   0x0000002e   Code   RO          697    i.__ARM_clz         mf_p.l(depilogue.o)
-    0x00001cce   0x0000000e   Code   RO          707    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x00001cdc   0x00000002   Code   RO          708    i.__scatterload_null  mc_p.l(handlers.o)
-    0x00001cde   0x0000000e   Code   RO          709    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x00001cec   0x00000020   Data   RO          705    Region$$Table       anon$$obj.o
+    0x00000308   0x0000004c   Code   RO          200    .text               invpark.o
+    0x00000354   0x00000624   Code   RO          247    .text               svgen.o
+    0x00000978   0x0000018c   Code   RO          270    .text               trig.o
+    0x00000b04   0x000001f4   Code   RO          465    .text               swm1800_gpio.o
+    0x00000cf8   0x000006e8   Code   RO          516    .text               swm1800_pwm.o
+    0x000013e0   0x000002c0   Code   RO          564    .text               swm1800_timr.o
+    0x000016a0   0x00000248   Code   RO          623    .text               system_swm1800.o
+    0x000018e8   0x00000050   Code   RO          650    .text               startup_swm1800.o
+    0x00001938   0x0000002c   Code   RO          660    .text               mc_p.l(uidiv.o)
+    0x00001964   0x00000028   Code   RO          662    .text               mc_p.l(idiv.o)
+    0x0000198c   0x0000007a   Code   RO          664    .text               mf_p.l(fmul.o)
+    0x00001a06   0x0000007c   Code   RO          666    .text               mf_p.l(fdiv.o)
+    0x00001a82   0x00000016   Code   RO          668    .text               mf_p.l(fflti.o)
+    0x00001a98   0x00000028   Code   RO          670    .text               mf_p.l(dflti.o)
+    0x00001ac0   0x00000028   Code   RO          676    .text               mf_p.l(cdrcmple.o)
+    0x00001ae8   0x00000000   Code   RO          692    .text               mc_p.l(iusefp.o)
+    0x00001ae8   0x000000be   Code   RO          695    .text               mf_p.l(depilogue.o)
+    0x00001ba6   0x00000002   PAD
+    0x00001ba8   0x00000024   Code   RO          699    .text               mc_p.l(init.o)
+    0x00001bcc   0x00000020   Code   RO          701    .text               mc_p.l(llshl.o)
+    0x00001bec   0x0000000c   Ven    RO          715    Veneer$$Code        anon$$obj.o
+    0x00001bf8   0x0000000c   Ven    RO          716    Veneer$$Code        anon$$obj.o
+    0x00001c04   0x0000000c   Ven    RO          717    Veneer$$Code        anon$$obj.o
+    0x00001c10   0x0000000c   Ven    RO          718    Veneer$$Code        anon$$obj.o
+    0x00001c1c   0x0000000c   Ven    RO          719    Veneer$$Code        anon$$obj.o
+    0x00001c28   0x0000000c   Ven    RO          720    Veneer$$Code        anon$$obj.o
+    0x00001c34   0x0000008c   Code   RO           20    i.CalcEstI          smc.o
+    0x00001cc0   0x0000000e   Code   RO          707    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x00001cce   0x00000002   Code   RO          708    i.__scatterload_null  mc_p.l(handlers.o)
+    0x00001cd0   0x0000000e   Code   RO          709    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x00001cde   0x00000002   PAD
+    0x00001ce0   0x00000020   Data   RO          705    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Base: 0x00002000, Size: 0x000006a8, Max: 0x00002000, ABSOLUTE, COMPRESSED[0x0000004c])
+    Execution Region RW_IRAM1 (Base: 0x00002000, Size: 0x000006a8, Max: 0x00002000, ABSOLUTE, COMPRESSED[0x00000048])
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -790,73 +786,72 @@ Memory Map of the image
     0x0000201e   0x00000002   PAD
     0x00002020   0x00000030   Data   RW          249    .data               svgen.o
     0x00002050   0x000000fc   Data   RW          290    .data               pmsm.o
-    0x0000214c   0x00000048   Data   RW          348    .data               faultprotect.o
-    0x00002194   0x00000008   Data   RW          624    .data               system_swm1800.o
-    0x0000219c   0x00000050   Zero   RW          151    .bss                fdweak.o
-    0x000021ec   0x000000b8   Zero   RW          289    .bss                pmsm.o
-    0x000022a4   0x00000004   PAD
+    0x0000214c   0x0000004c   Data   RW          348    .data               faultprotect.o
+    0x00002198   0x00000008   Data   RW          624    .data               system_swm1800.o
+    0x000021a0   0x00000050   Zero   RW          151    .bss                fdweak.o
+    0x000021f0   0x000000b8   Zero   RW          289    .bss                pmsm.o
     0x000022a8   0x00000400   Zero   RW          647    STACK               startup_swm1800.o
 
 
 
-  Load Region LR_IROM2 (Base: 0x20000000, Size: 0x00003df0, Max: 0x00004000, ABSOLUTE)
+  Load Region LR_IROM2 (Base: 0x20000000, Size: 0x00003df4, Max: 0x00004000, ABSOLUTE)
 
-    Execution Region ER_IROM2 (Base: 0x20000000, Size: 0x00003df0, Max: 0x00004000, ABSOLUTE)
+    Execution Region ER_IROM2 (Base: 0x20000000, Size: 0x00003df4, Max: 0x00004000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000   0x00000418   Code   RO            1    .text               smc.o
-    0x20000418   0x0000004c   Code   RO          200    .text               invpark.o
-    0x20000464   0x00000094   Code   RO          212    .text               meascurr.o
-    0x200004f8   0x000000d6   Code   RO          232    .text               pi.o
-    0x200005ce   0x00000002   PAD
-    0x200005d0   0x00000f70   Code   RO          288    .text               pmsm.o
-    0x20001540   0x000008d8   Code   RO          347    .text               faultprotect.o
-    0x20001e18   0x00000304   Code   RO          366    .text               swm1800_adc.o
-    0x2000211c   0x00000020   Code   RO          414    .text               swm1800_div.o
-    0x2000213c   0x000000c2   Code   RO          438    .text               swm1800_exti.o
-    0x200021fe   0x00000002   PAD
-    0x20002200   0x00000144   Code   RO          489    .text               swm1800_irqmux.o
-    0x20002344   0x000002b0   Code   RO          504    .text               swm1800_port.o
-    0x200025f4   0x000001d8   Code   RO          576    .text               swm1800_uart.o
-    0x200027cc   0x00000050   Code   RO          650    .text               startup_swm1800.o
-    0x2000281c   0x0000002c   Code   RO          660    .text               mc_p.l(uidiv.o)
-    0x20002848   0x00000028   Code   RO          662    .text               mc_p.l(idiv.o)
-    0x20002870   0x0000007a   Code   RO          664    .text               mf_p.l(fmul.o)
-    0x200028ea   0x00000002   PAD
-    0x200028ec   0x00000028   Code   RO          674    .text               mf_p.l(cdcmple.o)
-    0x20002914   0x00000082   Code   RO          693    .text               mf_p.l(fepilogue.o)
-    0x20002996   0x00000022   Code   RO          703    .text               mc_p.l(llushr.o)
-    0x200029b8   0x00000056   Code   RO          713    .text               mc_p.l(__dczerorl2.o)
-    0x20002a0e   0x00000002   PAD
-    0x20002a10   0x0000000c   Ven    RO          722    Veneer$$Code        anon$$obj.o
-    0x20002a1c   0x0000000c   Ven    RO          723    Veneer$$Code        anon$$obj.o
-    0x20002a28   0x0000000c   Ven    RO          724    Veneer$$Code        anon$$obj.o
-    0x20002a34   0x0000000c   Ven    RO          725    Veneer$$Code        anon$$obj.o
-    0x20002a40   0x0000000c   Ven    RO          726    Veneer$$Code        anon$$obj.o
-    0x20002a4c   0x0000000c   Ven    RO          727    Veneer$$Code        anon$$obj.o
-    0x20002a58   0x0000000c   Ven    RO          728    Veneer$$Code        anon$$obj.o
-    0x20002a64   0x0000000c   Ven    RO          729    Veneer$$Code        anon$$obj.o
-    0x20002a70   0x0000000c   Ven    RO          730    Veneer$$Code        anon$$obj.o
-    0x20002a7c   0x0000000c   Ven    RO          731    Veneer$$Code        anon$$obj.o
-    0x20002a88   0x0000000c   Ven    RO          732    Veneer$$Code        anon$$obj.o
-    0x20002a94   0x0000000c   Ven    RO          733    Veneer$$Code        anon$$obj.o
-    0x20002aa0   0x0000000c   Ven    RO          734    Veneer$$Code        anon$$obj.o
-    0x20002aac   0x0000000c   Ven    RO          735    Veneer$$Code        anon$$obj.o
-    0x20002ab8   0x0000000c   Ven    RO          736    Veneer$$Code        anon$$obj.o
-    0x20002ac4   0x0000000c   Ven    RO          737    Veneer$$Code        anon$$obj.o
-    0x20002ad0   0x0000000c   Ven    RO          738    Veneer$$Code        anon$$obj.o
-    0x20002adc   0x0000000c   Ven    RO          739    Veneer$$Code        anon$$obj.o
-    0x20002ae8   0x0000000c   Ven    RO          740    Veneer$$Code        anon$$obj.o
-    0x20002af4   0x0000000c   Ven    RO          741    Veneer$$Code        anon$$obj.o
-    0x20002b00   0x0000000c   Ven    RO          742    Veneer$$Code        anon$$obj.o
-    0x20002b0c   0x0000000c   Ven    RO          743    Veneer$$Code        anon$$obj.o
-    0x20002b18   0x0000000c   Ven    RO          744    Veneer$$Code        anon$$obj.o
-    0x20002b24   0x0000000c   Ven    RO          745    Veneer$$Code        anon$$obj.o
-    0x20002b30   0x000000a4   Code   RO           14    i.CalcBEMF          smc.o
-    0x20002bd4   0x0000001c   Code   RO          260    i.__ARM_common_switch8  svgen.o
-    0x20002bf0   0x00001000   Data   RO          248    .constdata          svgen.o
-    0x20003bf0   0x00000200   Data   RO          271    .constdata          trig.o
+    0x20000418   0x00000068   Code   RO          168    .text               calcref.o
+    0x20000480   0x00000074   Code   RO          188    .text               clrkpark.o
+    0x200004f4   0x00000094   Code   RO          212    .text               meascurr.o
+    0x20000588   0x000000d6   Code   RO          232    .text               pi.o
+    0x2000065e   0x00000002   PAD
+    0x20000660   0x00000f68   Code   RO          288    .text               pmsm.o
+    0x200015c8   0x000008e8   Code   RO          347    .text               faultprotect.o
+    0x20001eb0   0x00000304   Code   RO          366    .text               swm1800_adc.o
+    0x200021b4   0x0000002a   Code   RO          402    .text               swm1800_cordic.o
+    0x200021de   0x00000020   Code   RO          414    .text               swm1800_div.o
+    0x200021fe   0x000000c2   Code   RO          438    .text               swm1800_exti.o
+    0x200022c0   0x00000144   Code   RO          489    .text               swm1800_irqmux.o
+    0x20002404   0x000002b0   Code   RO          504    .text               swm1800_port.o
+    0x200026b4   0x000001d8   Code   RO          576    .text               swm1800_uart.o
+    0x2000288c   0x00000032   Code   RO          672    .text               mf_p.l(ffixi.o)
+    0x200028be   0x00000002   PAD
+    0x200028c0   0x00000028   Code   RO          674    .text               mf_p.l(cdcmple.o)
+    0x200028e8   0x00000082   Code   RO          693    .text               mf_p.l(fepilogue.o)
+    0x2000296a   0x00000022   Code   RO          703    .text               mc_p.l(llushr.o)
+    0x2000298c   0x00000056   Code   RO          713    .text               mc_p.l(__dczerorl2.o)
+    0x200029e2   0x00000002   PAD
+    0x200029e4   0x0000000c   Ven    RO          721    Veneer$$Code        anon$$obj.o
+    0x200029f0   0x0000000c   Ven    RO          722    Veneer$$Code        anon$$obj.o
+    0x200029fc   0x0000000c   Ven    RO          723    Veneer$$Code        anon$$obj.o
+    0x20002a08   0x0000000c   Ven    RO          724    Veneer$$Code        anon$$obj.o
+    0x20002a14   0x0000000c   Ven    RO          725    Veneer$$Code        anon$$obj.o
+    0x20002a20   0x0000000c   Ven    RO          726    Veneer$$Code        anon$$obj.o
+    0x20002a2c   0x0000000c   Ven    RO          727    Veneer$$Code        anon$$obj.o
+    0x20002a38   0x0000000c   Ven    RO          728    Veneer$$Code        anon$$obj.o
+    0x20002a44   0x0000000c   Ven    RO          729    Veneer$$Code        anon$$obj.o
+    0x20002a50   0x0000000c   Ven    RO          730    Veneer$$Code        anon$$obj.o
+    0x20002a5c   0x0000000c   Ven    RO          731    Veneer$$Code        anon$$obj.o
+    0x20002a68   0x0000000c   Ven    RO          732    Veneer$$Code        anon$$obj.o
+    0x20002a74   0x0000000c   Ven    RO          733    Veneer$$Code        anon$$obj.o
+    0x20002a80   0x0000000c   Ven    RO          734    Veneer$$Code        anon$$obj.o
+    0x20002a8c   0x0000000c   Ven    RO          735    Veneer$$Code        anon$$obj.o
+    0x20002a98   0x0000000c   Ven    RO          736    Veneer$$Code        anon$$obj.o
+    0x20002aa4   0x0000000c   Ven    RO          737    Veneer$$Code        anon$$obj.o
+    0x20002ab0   0x0000000c   Ven    RO          738    Veneer$$Code        anon$$obj.o
+    0x20002abc   0x0000000c   Ven    RO          739    Veneer$$Code        anon$$obj.o
+    0x20002ac8   0x0000000c   Ven    RO          740    Veneer$$Code        anon$$obj.o
+    0x20002ad4   0x0000000c   Ven    RO          741    Veneer$$Code        anon$$obj.o
+    0x20002ae0   0x0000000c   Ven    RO          742    Veneer$$Code        anon$$obj.o
+    0x20002aec   0x0000000c   Ven    RO          743    Veneer$$Code        anon$$obj.o
+    0x20002af8   0x0000000c   Ven    RO          744    Veneer$$Code        anon$$obj.o
+    0x20002b04   0x000000a4   Code   RO           14    i.CalcBEMF          smc.o
+    0x20002ba8   0x0000002e   Code   RO          697    i.__ARM_clz         mf_p.l(depilogue.o)
+    0x20002bd6   0x0000001c   Code   RO          260    i.__ARM_common_switch8  svgen.o
+    0x20002bf2   0x00000002   PAD
+    0x20002bf4   0x00001000   Data   RO          248    .constdata          svgen.o
+    0x20003bf4   0x00000200   Data   RO          271    .constdata          trig.o
 
 
 ==============================================================================
@@ -869,13 +864,13 @@ Image component sizes
        104          4          0          0          0       1860   calcref.o
        116          6          0          0          0        869   clrkpark.o
          0          0          0          0          0         32   core_cm0.o
-      2264        166          0         72          0       7600   faultprotect.o
+      2280        164          0         76          0       7808   faultprotect.o
        208         16          0          0         80       1405   fdweak.o
        276         20          0          0          0        473   initmcu.o
         76          0          0          0          0        842   invpark.o
        148         14          0          4          0       1939   meascurr.o
        214          0          0          0          0       1877   pi.o
-      3952        522          0        252        184      19685   pmsm.o
+      3944        518          0        252        184      19793   pmsm.o
       1352         52          0         26          0      79598   smc.o
        352        206          0          0       1024       2280   startup_swm1800.o
       1600        148       4096         48          0       4989   svgen.o
@@ -893,9 +888,9 @@ Image component sizes
        396          6        512          0          0       3084   trig.o
 
     ----------------------------------------------------------------------
-     17516       1426       4640        412       1292     162148   Object Totals
-       372        124         32          0          0          0   (incl. Generated)
-         6          0          0          2          4          0   (incl. Padding)
+     17510       1416       4640        416       1288     162464   Object Totals
+       360        120         32          0          0          0   (incl. Generated)
+         4          0          0          2          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -928,8 +923,8 @@ Image component sizes
        122          0          0          0          0         72   fmul.o
 
     ----------------------------------------------------------------------
-      1136         26          0          0          0       1184   Library Totals
-        10          0          0          0          0          0   (incl. Padding)
+      1134         26          0          0          0       1184   Library Totals
+         8          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -939,7 +934,7 @@ Image component sizes
        804         10          0          0          0        836   mf_p.l
 
     ----------------------------------------------------------------------
-      1136         26          0          0          0       1184   Library Totals
+      1134         26          0          0          0       1184   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -948,15 +943,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     18652       1452       4640        412       1292     161156   Grand Totals
-     18652       1452       4640         76       1292     161156   ELF Image Totals (compressed)
-     18652       1452       4640         76          0          0   ROM Totals
+     18644       1442       4640        416       1288     161472   Grand Totals
+     18644       1442       4640         72       1288     161472   ELF Image Totals (compressed)
+     18644       1442       4640         72          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                23292 (  22.75kB)
+    Total RO  Size (Code + RO Data)                23284 (  22.74kB)
     Total RW  Size (RW Data + ZI Data)              1704 (   1.66kB)
-    Total ROM Size (Code + RO Data + RW Data)      23368 (  22.82kB)
+    Total ROM Size (Code + RO Data + RW Data)      23356 (  22.81kB)
 
 ==============================================================================
 

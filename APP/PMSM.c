@@ -299,7 +299,7 @@ int main(void)
         
         motor_fault.Led_indicate->Systemstatus = motor_fault.fault_code;
         
-        SPREF =600;
+ //       SPREF =600;
         
                 
 		if(SPREF >360)
