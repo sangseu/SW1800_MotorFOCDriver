@@ -136,6 +136,6 @@ s16 FracDiv(s16 num_1, s16 den_1);
 extern s16 PrevTheta;
 extern s16 AccumTheta;
 extern u32 AccumThetaCnt;
-
+extern u32 fg_outfrequence;
 #endif
 

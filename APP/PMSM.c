@@ -11,17 +11,18 @@
 #include "UserParms.h"
 #include "Smc.h"
 #include "FdWeak.h"
+#include "faultprotect.h"
 
 #include "SWM1800.h"
 
 #define calculate_frequency
 //#undef calculate_frequency 
+#define use_cordic_module
 
 #define PinButton1	!((GPIOC->DATA >> PIN2) & 0x01)	//Low Level is press 
-// #define PinButton2	!((GPIOx->DATA >> PIN3) & 0x01)
-#define LED_ON		GPIOB->DATA &= ~(0x01 << PIN1)        //B1 
-/********************* Variables to display data using DMCI *********************************/
 
+/********************* Variables to Calculate control board frequency *********************************/
+u32 fg_outfrequence;
 typedef struct
 {
 	u32 InputFreq;      //输入频率
@@ -34,13 +35,16 @@ InpFreq InpFreqCnt;
 void CountInputFreq_Init();
 void calculate_rotate_speed(InpFreq *pfreq);
 
-/********************* Variables to display data using DMCI *********************************/
+MOTOR_FAULT motor_fault;
+
+PHASE_CURRENT Phase_current_detect;
+
+/********************* Variables to Calculate control board frequency *********************************/
 int Duty0,Duty1,Duty2;
 s16 Sector;
-s16 PWM_CLOCK_CYCLE = LOOPINTCY/2;						//----pwm_cycle,????????????????
-s16 Elec_Angle;
+s16 PWM_CLOCK_CYCLE = LOOPINTCY/2;				
 s16 LoopFlag;
-s16  delta_startup;
+
 int uout = 0;
 
 SMC smc1 = SMC_DEFAULTS;
@@ -82,15 +86,11 @@ tPIParm 	PIParmQ;	// Structure definition for Torque component of current, or Iq
 tPIParm 	PIParmW;	// Structure definition for Speed, or Omega
 tReadADCParm ReadADCParm;	// Struct used to read ADC values.
 
-PID     PI_DTerm,PI_WTerm,PI_QTerm;
-
-
 tMeasCurrParm MeasCurrParm;
 
 tMotorParm MotorParm;
 
 tParkParm ParkParm={-16384,0,0}; 
-
 
 tSVGenParm SVGenParm;
 
@@ -215,14 +215,13 @@ void Communication(int16_t data0,int16_t data1,int16_t data2, int16_t data3)
 extern s32 Ta,Tb,Tc;
 extern s16 Pwm0A,Pwm1A,Pwm2A;;
 extern s32 t1temp,t2temp;
-extern int CorrADC0,CorrADC1;
+extern s16 CorrADC0,CorrADC1;
 extern s32 tempv;
 
 extern s16 temptheta;
 
 u16 Loopflag=1;
 s16 Kself_omega0;
-s16 IRP_percalc;
 extern s16 Qref;
 s32 SpeedV;
 s32 SpeedTotal;
@@ -244,12 +243,15 @@ s16 sector;
 s16 stas = 0;
 s16 reset_delaytimes;
 volatile s16 VDC_status = 0, VDC_status_tiems =0;        //直流母线电压状态
-volatile u16 SPREF=500;
+volatile u16 SPREF=300;
+s16 View_Variable1,View_Variable2,View_Variable3,View_Variable4;
 int main(void)
 {	
 	SystemInit();
-	DIV_Init(DIV);
-	CORDIC_Init(CORDIC);
+//#ifndef use_cordic_module
+	DIV_Init(DIV);			//div初始化过程不需要
+//#endif
+	CORDIC_Init(CORDIC);	//cordic初始化时已经包含有div初始化过程
 
 	SMCInit(&smc1);
 	SetupPorts();
@@ -257,67 +259,81 @@ int main(void)
 	FWInit();
 #ifdef calculate_frequency
 	CountInputFreq_Init();
-#else
+//#else
 	UartInit();
 #endif
 	uGF.Word = 0;                   // clear flags
 
-#ifdef TORQUEMODE
+#ifdef TORQUEMODE		//转矩模式
 	uGF.bit.EnTorqueMod = 1;
 #endif
 
-#ifdef ENVOLTRIPPLE
+#ifdef ENVOLTRIPPLE	//母线电压补偿
 	uGF.bit.EnVoltRipCo = 1;
 #endif
 
+	uGF.bit.OpenLoop = 1;			// start in openloop
+	uGF.bit.RunMotor=0;
+	PIParmD.qdSum = 0;
+	PIParmQ.qdSum = 0;
+	PIParmW.qdSum = 0;
+	
+	motor_fault_init(&motor_fault);
+	
+	SetupParm(); 
+		
+	// Run the motor
 	while(1)
 	{
-		uGF.bit.ChangeSpeed = 0;
-		// init Mode
-		uGF.bit.OpenLoop = 1;           // start in openloop
+		View1 = View_Variable1;//PIParmQ.qInRef;//ParkParm.qIa;//PIParmW.qInMeas;//Pwm0A;//smc1.Ialpha;//ParkParm.qValpha;//
+		View2 = View_Variable2;//smc1.OmegaFltred;//PIParmD.qInRef;//ParkParm.qIb;//PIParmW.qInRef;//Pwm1A;//smc1.EstIalpha;//ParkParm.qVq;//ParkParm.qVbeta;//
+		View3 = View_Variable3;//PIParmW.qInRef;//ParkParm.qAngle;//smc1.Theta;//PIParmD.qInRef;//PIParmQ.qInMeas;//PIParmW.qOut;//smc1.Kslf;//ParkParm.qIa;//SPEED;//ParkParm.qIq;//PIParmD.qOut;//Pwm2A;//smc1.Zalpha;//stas*10000;//
+		View4 = View_Variable4;//smc1.Ebeta;//SPREF;//PIParmQ.qOut;////0;//ParkParm.qIb;//TargetDCbus;//smc1.IalphaError;//CtrlParm.qVqRef;//sector;//
 
-		//		ADC->u32IMSK &= 0x0;	//// Make sure ADC does not generate
-		// interrupts while parameters
-		// are being initialized
-		// init user specified parms and stop on error
-		if( SetupParm() )
-		{
-		// Error
-			uGF.bit.RunMotor=0;
-			return 0;
-		}
-		// zero out i sums 
-		PIParmD.qdSum = 0;
-		PIParmQ.qdSum = 0;
-		PIParmW.qdSum = 0;
-	     
-		if(!uGF.bit.RunMotor)
-		{	
-			uGF.bit.ChangeMode = 1;	// Ensure variable initialization when open loop is
-			// executed for the first time
-			PWMG->CHEN |= 0x3f;
+		Communication(View1, View2, View3, View4);
 
-			uGF.bit.RunMotor = 1;               //then start motor
-			LED_ON;					//LED ON
-		}
-		// Run the motor
-		while(1)
-		{
-			View1 = PIParmQ.qInRef;//ParkParm.qIa;//PIParmW.qInMeas;//Pwm0A;//smc1.Ialpha;//ParkParm.qValpha;//
-			View2 = smc1.OmegaFltred;//PIParmD.qInRef;//ParkParm.qIb;//PIParmW.qInRef;//Pwm1A;//smc1.EstIalpha;//ParkParm.qVq;//ParkParm.qVbeta;//
-			View3 = PIParmW.qInRef;//ParkParm.qAngle;//smc1.Theta;//PIParmD.qInRef;//PIParmQ.qInMeas;//PIParmW.qOut;//smc1.Kslf;//ParkParm.qIa;//SPEED;//ParkParm.qIq;//PIParmD.qOut;//Pwm2A;//smc1.Zalpha;//stas*10000;//
-			View4 = Theta_error;//smc1.Ebeta;//SPREF;//PIParmQ.qOut;////0;//ParkParm.qIb;//TargetDCbus;//smc1.IalphaError;//CtrlParm.qVqRef;//sector;//
+	//		SPEED = smc1.OmegaFltred*60/(65535*POLEPAIRS*SPEEDLOOPTIME);
 
-			Communication(View1, View2, View3, View4);
-
-			SPEED = smc1.OmegaFltred*60/(65535*POLEPAIRS*SPEEDLOOPTIME);
-
+		motor_fault_detect(&motor_fault);
+		calculate_rotate_speed(&InpFreqCnt);
+        
+        motor_fault.Led_indicate->Systemstatus = motor_fault.fault_code;
+        
+ //       SPREF =600;
+        
+                
+		if(SPREF >360)
+		{				
 			if( SPREF > 950 )
-			SPREF = 950;
-			if( SPREF < 400 )
-			SPREF = 400;
-			W_REF = SPREF*65535*POLEPAIRS*SPEEDLOOPTIME/60;//700*65535*POLEPAIRS*SPEEDLOOPTIME/60;//
-		}  // end of while           
+                SPREF = 950;
+			W_REF = SPREF*65535*POLEPAIRS*SPEEDLOOPTIME/60;//700*65535*POLEPAIRS*SPEEDLOOPTIME/60;
+
+			if(!uGF.bit.RunMotor)
+			{
+				PWMG->CHEN |= 0x7f;	
+				// executed for the first time
+				uGF.bit.ChangeMode = 1;	// Ensure variable initialization when open loop is
+				uGF.bit.RunMotor = 1;               //then start motor
+			}
+		}
+		else
+		{
+			PWMG->CHEN &= ~0x7f;	//pwm0a,0b,pwm1a,1b,pwm2a,2b,pwm3a off
+			
+			uGF.bit.OpenLoop = 1;	
+			uGF.bit.RunMotor=0;
+
+			Startup_Lock = 0;
+			Startup_Ramp = 0;
+		
+			SetupControlParameters(); 
+			PIParmD.qdSum = 0;
+			PIParmQ.qdSum = 0;
+			PIParmW.qdSum = 0;
+			ParkParm.qAngle = -16384;			
+		}
+			
+
 	}   // End of Run Motor loop
 }
 
@@ -422,7 +438,6 @@ void DoControl( void )
 
 		if (Startup_Lock < MotorParm.LockTime)
 		{
-		//            ParkParm.qVq = 2000;
 			ParkParm.qVd = 0;
 		}
 	}
@@ -452,7 +467,8 @@ void DoControl( void )
 			// 			//velocity reference ramp begins at minimum speed
 			// 			CtrlParm.qVelRef = Q15(OMEGA0);
 
-			TIMR_Start(TIMR2);
+//			TIMR_Start(TIMR2);
+            
 
 		}  
 
@@ -592,28 +608,28 @@ void DoControl( void )
 	}
 }		
 
-const u32 ADSinValue[375] = 
-{
-2048,2051,2054,2058,2061,2064,2068,2071,2074,2078,2081,2084,2087,2091,2094,2097,2100,2104,2107,2110,
-2113,2116,2120,2123,2126,2129,2132,2135,2138,2141,2144,2147,2150,2153,2155,2158,2161,2164,2166,2169,
-2172,2174,2177,2179,2182,2184,2187,2189,2192,2194,2196,2198,2201,2203,2205,2207,2209,2211,2213,2215,
-2216,2218,2220,2222,2223,2225,2226,2228,2229,2231,2232,2233,2234,2236,2237,2238,2239,2240,2241,2241,
-2242,2243,2244,2244,2245,2245,2246,2246,2247,2247,2247,2247,2247,2247,2247,2247,2247,2247,2247,2247,
-2246,2246,2246,2245,2245,2244,2243,2243,2242,2241,2240,2239,2238,2237,2236,2235,2234,2233,2231,2230,
-2228,2227,2226,2224,2222,2221,2219,2217,2215,2214,2212,2210,2208,2206,2204,2202,2199,2197,2195,2193,
-2190,2188,2186,2183,2181,2178,2176,2173,2170,2168,2165,2162,2160,2157,2154,2151,2148,2145,2142,2139,
-2136,2133,2130,2127,2124,2121,2118,2115,2112,2109,2105,2102,2099,2096,2092,2089,2086,2083,2079,2076,
-2073,2069,2066,2063,2059,2056,2053,2049,2046,2042,2039,2036,2032,2029,2026,2022,2019,2016,2012,2009,
-2006,2003,1999,1996,1993,1990,1986,1983,1980,1977,1974,1971,1968,1965,1962,1959,1956,1953,1950,1947,
-1944,1941,1938,1935,1933,1930,1927,1925,1922,1919,1917,1914,1912,1909,1907,1905,1902,1900,1898,1896,
-1893,1891,1889,1887,1885,1883,1881,1880,1878,1876,1874,1873,1871,1869,1868,1867,1865,1864,1862,1861,
-1860,1859,1858,1857,1856,1855,1854,1853,1852,1852,1851,1850,1850,1849,1849,1849,1848,1848,1848,1848,
-1848,1848,1848,1848,1848,1848,1848,1848,1849,1849,1850,1850,1851,1851,1852,1853,1854,1854,1855,1856,
-1857,1858,1859,1861,1862,1863,1864,1866,1867,1869,1870,1872,1873,1875,1877,1879,1880,1882,1884,1886,
-1888,1890,1892,1894,1897,1899,1901,1903,1906,1908,1911,1913,1916,1918,1921,1923,1926,1929,1931,1934,
-1937,1940,1942,1945,1948,1951,1954,1957,1960,1963,1966,1969,1972,1975,1979,1982,1985,1988,1991,1995,
-1998,2001,2004,2008,2011,2014,2017,2021,2024,2027,2031,2034,2037,2041,2044
- };
+//const u32 ADSinValue[375] = 
+//{
+//2048,2051,2054,2058,2061,2064,2068,2071,2074,2078,2081,2084,2087,2091,2094,2097,2100,2104,2107,2110,
+//2113,2116,2120,2123,2126,2129,2132,2135,2138,2141,2144,2147,2150,2153,2155,2158,2161,2164,2166,2169,
+//2172,2174,2177,2179,2182,2184,2187,2189,2192,2194,2196,2198,2201,2203,2205,2207,2209,2211,2213,2215,
+//2216,2218,2220,2222,2223,2225,2226,2228,2229,2231,2232,2233,2234,2236,2237,2238,2239,2240,2241,2241,
+//2242,2243,2244,2244,2245,2245,2246,2246,2247,2247,2247,2247,2247,2247,2247,2247,2247,2247,2247,2247,
+//2246,2246,2246,2245,2245,2244,2243,2243,2242,2241,2240,2239,2238,2237,2236,2235,2234,2233,2231,2230,
+//2228,2227,2226,2224,2222,2221,2219,2217,2215,2214,2212,2210,2208,2206,2204,2202,2199,2197,2195,2193,
+//2190,2188,2186,2183,2181,2178,2176,2173,2170,2168,2165,2162,2160,2157,2154,2151,2148,2145,2142,2139,
+//2136,2133,2130,2127,2124,2121,2118,2115,2112,2109,2105,2102,2099,2096,2092,2089,2086,2083,2079,2076,
+//2073,2069,2066,2063,2059,2056,2053,2049,2046,2042,2039,2036,2032,2029,2026,2022,2019,2016,2012,2009,
+//2006,2003,1999,1996,1993,1990,1986,1983,1980,1977,1974,1971,1968,1965,1962,1959,1956,1953,1950,1947,
+//1944,1941,1938,1935,1933,1930,1927,1925,1922,1919,1917,1914,1912,1909,1907,1905,1902,1900,1898,1896,
+//1893,1891,1889,1887,1885,1883,1881,1880,1878,1876,1874,1873,1871,1869,1868,1867,1865,1864,1862,1861,
+//1860,1859,1858,1857,1856,1855,1854,1853,1852,1852,1851,1850,1850,1849,1849,1849,1848,1848,1848,1848,
+//1848,1848,1848,1848,1848,1848,1848,1848,1849,1849,1850,1850,1851,1851,1852,1853,1854,1854,1855,1856,
+//1857,1858,1859,1861,1862,1863,1864,1866,1867,1869,1870,1872,1873,1875,1877,1879,1880,1882,1884,1886,
+//1888,1890,1892,1894,1897,1899,1901,1903,1906,1908,1911,1913,1916,1918,1921,1923,1926,1929,1931,1934,
+//1937,1940,1942,1945,1948,1951,1954,1957,1960,1963,1966,1969,1972,1975,1979,1982,1985,1988,1991,1995,
+//1998,2001,2004,2008,2011,2014,2017,2021,2024,2027,2031,2034,2037,2041,2044
+// };
 
 
 int counum=0;
@@ -621,7 +637,7 @@ int counum=0;
 s16 adc_flag=0;
 void IRQ0_Handler(void)             //PWM Interrupt
 {
-	//    SysTick_Config(0xffffff);
+//   SysTick_Config(0xffffff);
 		
 	//    DIV_Div((0xffffff - SysTick->VAL), 48);    
 	//    SysTick_Config(0xffffff);
@@ -658,13 +674,54 @@ void IRQ0_Handler(void)             //PWM Interrupt
 
 		// Calculate and set PWM duty cycles from Vr1,Vr2,Vr3
 		CalcSVGen(&SVGenParm); 	//19->4us 
+        
+        phase_current_max_check(&motor_fault);
+        //Phase_current_deviation(1);
 	} 
-	//    timecout = 0xffffff - SysTick->VAL;           	
-	//    DIV_Div((0xffffff - SysTick->VAL), 48);  
-	//    while(DIV_Div_IsBusy());
-	//    DIV_Div_Result(&timecout, &rem);
+//    timecout = 0xffffff - SysTick->VAL;           	
+//    DIV_Div((0xffffff - SysTick->VAL), 48);  
+//    while(DIV_Div_IsBusy());
+//    DIV_Div_Result(&timecout, &rem);
 
 	PWMG->IRAWST = (0x01 << PWMG_IRAWST_NEWP0A_Pos);//PWMG->IRAWST |= ((0x01 << PWMG_IRAWST_HEND0A_Pos) | (0x01 << PWMG_IRAWST_HEND1A_Pos)) ;     
+}
+
+#define timer3_times	96000000	// 2秒
+u32 inputfreqcnt = 0;
+void IRQ4_Handler(void)
+{
+	u32 Timval;
+	
+#if 0
+	EXTI_Clear(GPIOE, PIN2);
+	
+	if(++InpFreqCnt.InputFreqcnt >= INPFRENUM)//必须满足最低转速时的计算时间
+	{
+		Timval = TIMR3->CVAL;
+		TIMR_Stop(TIMR3);
+		InpFreqCnt.Timercnt = 96000000 - Timval;      //获取定时器计数值
+
+
+		InpFreqCnt.CountStartFlag = 2;          //停止定时器计数	
+		InpFreqCnt.InputFreqcnt = 0;
+	}
+	else if(InpFreqCnt.InputFreqcnt <= 1)
+	{	
+		TIMR3->LDVAL = 96000000; //TIMR_Init(TIMR3, TIMR_MODE_TIMER, 96000000, 0);//2S周期
+		TIMR_Start(TIMR3);
+	}
+#endif	
+
+#if 1 
+    
+	++inputfreqcnt;
+	if(inputfreqcnt <= 1)
+	{	
+		TIMR3->LDVAL = timer3_times; //TIMR_Init(TIMR3, TIMR_MODE_TIMER, 96000000, 0);//2S周期
+		TIMR_Start(TIMR3);
+	}
+    EXTI_Clear(GPIOE, PIN2);
+#endif
 }
 
 u16 speedmax = 790;
@@ -691,12 +748,13 @@ void IRQ1_Handler(void)         //Timer Interrupt
     
 	if( TIMRG->IF & TIMRG_IF_TIMR1_Msk )    //Timer1 Interrupt
 	{   
-		VDC_status_tiems++;
-		if( VDC_status_tiems >= 2 )
-		{
-			VDC_status = 1;       
-			TIMR_Stop(TIMR1);
-		}
+        if( VDC_status_tiems++ >=10 )   //1s定时
+        {
+            VDC_status_tiems = 10;
+            VDC_status = 1;     //母线电压稳定
+        }
+        if( VDC_status )
+            SysLed_Twinkle(&motor_fault);
 		TIMR_INTClr(TIMR1);
 	}
     
@@ -714,6 +772,20 @@ void IRQ1_Handler(void)         //Timer Interrupt
 			GPIO_InvBit(GPIOB,PIN1);
 		TIMR_INTClr(TIMR2);
 	}
+    
+    if( TIMRG->IF & TIMRG_IF_TIMR3_Msk )    //Timer3 Interrupt
+	{
+        TIMR_Stop(TIMR3);
+        EXTI_Clear(GPIOE, PIN2);
+        EXTI_Close(GPIOE, PIN2);
+        
+		InpFreqCnt.Timercnt = timer3_times;
+		InpFreqCnt.InputFreqcnt = inputfreqcnt;
+		InpFreqCnt.CountStartFlag = 2;			//停止定时器计数	
+		inputfreqcnt = 0;
+        
+        TIMR_INTClr(TIMR3);
+    }
 
 //    DIV_Div((0xffffff - SysTick->VAL), 48);  
 //    while(DIV_Div_IsBusy());
@@ -734,7 +806,7 @@ void IRQ5_Handler(void)
 {	
 	SpeedTotal += ADC->CH[AD_Speed].DATA & ADC_DATA_VALUE_Msk;//Channel 2
 	Speedtimes++;
-	if( Speedtimes >= 4095 )
+	if( Speedtimes >= 4096 )
 	{
 		SpeedV = SpeedTotal>>12;
 		SpeedTotal = 0;
@@ -750,6 +822,16 @@ void IRQ5_Handler(void)
 		Vdctimes = 0;
 	}
     
+    motor_fault.IPM_module->Ad_Temperature_total += ADC->CH[AD_IPM_Temperature].DATA & ADC_DATA_VALUE_Msk;//Channel 1
+    motor_fault.IPM_module->Ad_Temperature_times++;
+    if( motor_fault.IPM_module->Ad_Temperature_times >=1024 )
+    {
+        motor_fault.IPM_module->Ad_Temperature_value = motor_fault.IPM_module->Ad_Temperature_total>>10;
+        motor_fault.IPM_module->Ad_Temperature_total = 0;
+        motor_fault.IPM_module->Ad_Temperature_times = 0;
+    }
+         
+    
 	ADIa = ADC->CH[AD_Ia].DATA & ADC_DATA_VALUE_Msk;    //Channel 3
 	ADIb = ADC->CH[AD_Ib].DATA & ADC_DATA_VALUE_Msk;//Channel 4
 
@@ -760,7 +842,9 @@ void IRQ5_Handler(void)
 bool SetupParm(void)
 {
 	u32 Ad0Sum = 0,Ad1Sum = 0,Ad2Sum = 0;	
+    u32 i = 0;
 	static u8 AdCn = 0;
+	
 	PWM_InitStructure  PWM_initStruct;
 	ADC_InitStructure ADC_initStruct;
     
@@ -768,17 +852,14 @@ bool SetupParm(void)
 
 	PWM_per = LOOPINTCY;
 	T0_t = LOOPINTCY/2;
-	PWM_CLOCK_CYCLE = LOOPINTCY/2;						//----pwm_cycle,????????????????
-	delta_startup = DELTA_STARTUP_RAMP;
-
+	PWM_CLOCK_CYCLE = LOOPINTCY/2;	
+	
 	// ============= Open Loop ======================
 	// Motor End Speed Calculation
 	// MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS * LOOPTIMEINSEC * 65536 * 65536 / 60.0;
 	// Then, * 65536 which is a right shift done in "void CalculateParkAngle(void)"
 	// ParkParm.qAngle += (int)(Startup_Ramp >> 16);
-	MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS* 65536* LOOPTIMEINSEC * 65536/ 60.0;//   
-	//     MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS * LOOPTIMEINSEC * 32767 * 32767 / 60.0;
-	// 	MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS * LOOPTIMEINSEC  * 65536/ 60.0;
+	MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS* 65536* LOOPTIMEINSEC * 65536/ 60.0;//角度   
 	MotorParm.LockTime = LOCKTIME;
 
 	// Scaling constants: Determined by calibration or hardware design.
@@ -818,20 +899,32 @@ bool SetupParm(void)
 	PWM_Init(PWM2, &PWM_initStruct);
 
 	PWMG->ADTRG0A = 0;
-	PWMG->ADTRG0A |= (0<<16);   //1后半周期生效，0前半周期生效
+	PWMG->ADTRG0A |= (0<<16); // 后 半周期生效，0前半周期生效
 	PWMG->ADTRG0A |= (u32)(LOOPINTCY/2-100) ;    //(0x00 & 0xffff);     
 	PWMG->ADTRG0A |= (1<<17);   //使能PWM触发	
 
-    
 	IRQ_Connect(IRQ0_15_PWM, IRQ0_IRQ, 1);      //set PWM IRQ priority
+	
+	/*****FG frequence output PWM init start*****/
+	
+	PWM_initStruct.clk_div = PWM_CLKDIV_1;			//分频后为3M	
+	PWM_initStruct.mode = PWM_MODE_INDEP;		//A路和B路为独立输出		
+	PWM_initStruct.cycleA = LOOPINTCY;				
+	PWM_initStruct.hdutyA = LOOPINTCY;
+	PWM_initStruct.initLevelA = 1;
+	PWM_initStruct.HEndAIEn = 0;
+	PWM_initStruct.NCycleAIEn = 0;
+	PWM_Init(PWM3, &PWM_initStruct);
 
+	/******FG frequence output PWM init end*****/
+	
 	// Center aligned PWM.
 	// Note: The PWM period is set to dLoopInTcy/2 but since it counts up and 
 	// and then down => the interrupt flag is set to 1 at zero => actual 
 	// interrupt period is dLoopInTcy
 
 	TIMR_Init(TIMR0, TIMR_MODE_TIMER, T0_t, 1);
-	TIMR_Init(TIMR1, TIMR_MODE_TIMER, 48000000, 1);
+	TIMR_Init(TIMR1, TIMR_MODE_TIMER, 4800000, 1);  //100ms，用于LED指示
 	TIMR_Init(TIMR2, TIMR_MODE_TIMER, 48000000, 1);
 	IRQ_Connect(IRQ0_15_TIMR, IRQ1_IRQ, 0);      //set TIMR IRQ priority
 	
@@ -846,9 +939,8 @@ bool SetupParm(void)
 	ADC_Init(ADC, &ADC_initStruct);					//配置ADC	
 	ADC_Open(ADC);									//使能ADC
 
-	TIMR_Start(TIMR1);  //开启1s定时，待电压稳定后再检测电压
-    
-	while( VDC_status == 0 );
+    TIMR_Start(TIMR1);      //开启定时器，指示系统状态
+	while( VDC_status == 0 );   //待电压稳定后再检测电压
 
 	ADC_Start(ADC);									//start ADC
 
@@ -878,52 +970,32 @@ bool SetupParm(void)
 	}	
 
 	ADC_initStruct.clk_src = ADC_CLKSRC_HRC_DIV4;
-	ADC_initStruct.channels = ADC_CH0| ADC_CH2| ADC_CH3 | ADC_CH4;
+	ADC_initStruct.channels = ADC_CH0| ADC_CH1| ADC_CH2| ADC_CH3 | ADC_CH4;
 	ADC_initStruct.trig_src = ADC_TRIGSRC_PWM;//ADC_TRIGSRC_SW;
 	ADC_initStruct.Continue = 0;					//单次模式
 	ADC_initStruct.EOC_IEn = ADC_CH4;	
 	ADC_initStruct.OVF_IEn = 0;
 	ADC_Init(ADC, &ADC_initStruct);					//配置ADC	
 	ADC_Open(ADC);									//使能ADC
-
 	IRQ_Connect(IRQ0_15_ADC, IRQ5_IRQ, 0);
+    
 	          
 	return FALSE;
 }
 
+
 void CountInputFreq_Init(void)
 {
-    GPIO_Init(GPIOE, PIN2, 0, 0, 0, 0);			//输入    
-    EXTI_Init(GPIOE, PIN2, EXTI_FALL_EDGE);		//下降沿触发中断	
+
+	GPIO_Init(GPIOE, PIN2, 0, 0, 0, 0);			//输入    
+	EXTI_Init(GPIOE, PIN2, EXTI_FALL_EDGE);		//下降沿触发中断	
 	IRQ_Connect(IRQ0_15_GPIOE2, IRQ4_IRQ, 0);	
 	EXTI_Open(GPIOE, PIN2);
-    
-    TIMR_Init(TIMR3, TIMR_MODE_TIMER, 96000000, 0);
+	TIMR_Init(TIMR3, TIMR_MODE_TIMER, timer3_times, 1);// 2s定时,开中断
 }
 
 
-void IRQ4_Handler(void)
-{
-	u32 Timval;
 
-	EXTI_Clear(GPIOE, PIN2);
-
-	if(++InpFreqCnt.InputFreqcnt >= INPFRENUM)//必须满足最低转速时的计算时间
-	{
-		Timval = TIMR3->CVAL;
-		TIMR_Stop(TIMR3);
-		InpFreqCnt.Timercnt = 96000000 - Timval;      //获取定时器计数值
-
-
-		InpFreqCnt.CountStartFlag = 2;          //停止定时器计数	
-		InpFreqCnt.InputFreqcnt = 0;
-	}
-	else if(InpFreqCnt.InputFreqcnt <= 1)
-	{	
-		TIMR3->LDVAL = 96000000; //TIMR_Init(TIMR3, TIMR_MODE_TIMER, 96000000, 0);//2S周期
-		TIMR_Start(TIMR3);
-	}
-}
 
 void CalculateParkAngle (void)
 {
@@ -949,7 +1021,7 @@ void CalculateParkAngle (void)
 		{
 			// Ramp starts, and increases linearly until EndSpeed is reached.
 			// After ramp, estimated theta is used to commutate motor.
-			Startup_Ramp += DELTA_STARTUP_RAMP;//delta_startup;
+			Startup_Ramp += DELTA_STARTUP_RAMP;
 			stas = 1;
 		}
 		else
@@ -1020,26 +1092,10 @@ void SetupControlParameters(void)
 	PIParmW.qKi = WKI;       
 	PIParmW.qKc = WKC;       
 	PIParmW.qOutMax = WOUTMAX;   
-	PIParmW.qOutMin = 400;//0 -PIParmW.qOutMax;
+	PIParmW.qOutMin = 400;//
 
 	InitPI(&PIParmW);
 
-
-	PI_DTerm.Kp= DKP;
-	PI_DTerm.Ki = DKI;
-	PI_DTerm.Kd= 0;
-
-	PI_QTerm.Kp= QKP;
-	PI_QTerm.Ki = QKI;
-	PI_QTerm.Kd= 0;
-
-	PI_WTerm.Kp= WKP;
-	PI_WTerm.Ki = WKI;
-	PI_WTerm.Kd= 0;
-
-
-	//      Kself_omega0 = Q15(OMEGA0 * _PI / IRP_PERCALC); //2 * OMEGA0 * PI_INT / IRP_PERCALC;//
-	IRP_percalc = IRP_PERCALC;
 	return;
 }
 
@@ -1058,7 +1114,6 @@ void DebounceDelay(void)
 // recommended, since it will generate spikes on Vd and Vq, which can
 // potentially make the controllers unstable.
 
-//????AD??,???VDUS????
 s32 VoltRippleComp(s32 Vdq)
 {
 	s32 CompVdq,DivTemp;
@@ -1091,6 +1146,8 @@ s32 VoltRippleComp(s32 Vdq)
 	else
 	CompVdq = Vdq;
 
+	DCbus = TargetDCbus;
+
 	return CompVdq;
 }
 
@@ -1098,11 +1155,12 @@ void CountInputFreq(void)       //计算输入频率
 {
 	s32 Di, Vi, Qi, Ri;
 
-	Di = INPFRENUM*(48000000>>10);
+	Di = InpFreqCnt.InputFreqcnt * (48000000>>10);
 	Vi = InpFreqCnt.Timercnt>>10;      
 	Qi = Di/Vi;
 	InpFreqCnt.InputFreq = Qi;
 }
+
 void calculate_rotate_speed(InpFreq *pfreq)
 {
 	if( InpFreqCnt.CountStartFlag == 2 )
@@ -1111,6 +1169,16 @@ void calculate_rotate_speed(InpFreq *pfreq)
 		CountInputFreq();
 
 		SPREF = pfreq->InputFreq * 60;
+
+		if(smc1.OmegaFltred > 0)
+		{
+			fg_outfrequence = (smc1.OmegaFltred*SPEEDLOOPFREQ/POLEPAIRS)>>16;
+			
+			PWM3->PERA = 48000000/fg_outfrequence;
+			PWM3->HIGHA = PWM3->PERA >> 1;
+		}
+        
+       EXTI_Open(GPIOE, PIN2);  //再次打开外部中断 
 	}
 }
 

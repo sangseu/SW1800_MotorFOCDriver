@@ -14,6 +14,7 @@
 .\out\pmsm.o: APP\UserParms.h
 .\out\pmsm.o: APP\Smc.h
 .\out\pmsm.o: APP\FdWeak.h
+.\out\pmsm.o: APP\faultprotect.h
 .\out\pmsm.o: .\CSL\CMSIS\DeviceSupport\SWM1800.h
 .\out\pmsm.o: .\CSL\CMSIS\CoreSupport\core_cm0.h
 .\out\pmsm.o: .\CSL\CMSIS\DeviceSupport\system_SWM1800.h

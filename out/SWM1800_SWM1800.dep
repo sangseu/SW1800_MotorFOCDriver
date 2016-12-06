@@ -1,737 +1,770 @@
 Dependencies for Project 'SWM1800', Target 'SWM1800': (DO NOT MODIFY !)
-F (.\APP\Smc.c)(0x58202BCE)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\smc.o --omf_browse .\out\smc.crf --depend .\out\smc.d)
-I (APP\general.h)(0x582C2519)
-I (APP\smc.h)(0x581FD75C)
-I (APP\UserParms.h)(0x582BFDED)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+F (.\APP\Smc.c)(0x583CF2E6)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\smc.o --omf_browse .\out\smc.crf --depend .\out\smc.d)
+I (APP\general.h)(0x5844FFBB)
+I (APP\smc.h)(0x583BDD7A)
+I (APP\UserParms.h)(0x584508DF)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\APP\InitMcu.c)(0x58201B32)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\initmcu.o --omf_browse .\out\initmcu.crf --depend .\out\initmcu.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\APP\InitMcu.c)(0x583BC74A)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\initmcu.o --omf_browse .\out\initmcu.crf --depend .\out\initmcu.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\APP\FdWeak.c)(0x57ECF056)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\fdweak.o --omf_browse .\out\fdweak.crf --depend .\out\fdweak.d)
-I (APP\FdWeak.h)(0x56556263)
-I (APP\UserParms.h)(0x582BFDED)
-I (APP\general.h)(0x582C2519)
-I (APP\smc.h)(0x581FD75C)
-F (.\APP\CalcRef.c)(0x577339AB)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\calcref.o --omf_browse .\out\calcref.crf --depend .\out\calcref.d)
-I (APP\Park.h)(0x5748041A)
-I (APP\general.h)(0x582C2519)
-I (APP\Svgen.h)(0x56C2D979)
-F (.\APP\ClrkPark.c)(0x5770D0D8)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\clrkpark.o --omf_browse .\out\clrkpark.crf --depend .\out\clrkpark.d)
-I (APP\Park.h)(0x5748041A)
-I (APP\general.h)(0x582C2519)
-F (.\APP\InvPark.c)(0x57EE651C)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\invpark.o --omf_browse .\out\invpark.crf --depend .\out\invpark.d)
-I (APP\Park.h)(0x5748041A)
-I (APP\general.h)(0x582C2519)
-F (.\APP\MeasCurr.c)(0x57EE62A3)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\meascurr.o --omf_browse .\out\meascurr.crf --depend .\out\meascurr.d)
-I (APP\MeasCurr.h)(0x57C7D128)
-I (APP\Park.h)(0x5748041A)
-I (APP\general.h)(0x582C2519)
-F (.\APP\Pi.c)(0x5770E74A)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\pi.o --omf_browse .\out\pi.crf --depend .\out\pi.d)
-I (APP\Pi.h)(0x5714709C)
-I (APP\general.h)(0x582C2519)
-F (.\APP\Svgen.c)(0x581FD7A2)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\svgen.o --omf_browse .\out\svgen.crf --depend .\out\svgen.d)
-I (APP\svgen.h)(0x56C2D979)
-I (APP\Park.h)(0x5748041A)
-I (APP\general.h)(0x582C2519)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\APP\FdWeak.c)(0x582D0788)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\fdweak.o --omf_browse .\out\fdweak.crf --depend .\out\fdweak.d)
+I (APP\FdWeak.h)(0x582D079A)
+I (APP\UserParms.h)(0x584508DF)
+I (APP\general.h)(0x5844FFBB)
+I (APP\smc.h)(0x583BDD7A)
+F (.\APP\CalcRef.c)(0x582D072A)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\calcref.o --omf_browse .\out\calcref.crf --depend .\out\calcref.d)
+I (APP\Park.h)(0x582D0800)
+I (APP\general.h)(0x5844FFBB)
+I (APP\Svgen.h)(0x582D0C36)
+F (.\APP\ClrkPark.c)(0x582D073C)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\clrkpark.o --omf_browse .\out\clrkpark.crf --depend .\out\clrkpark.d)
+I (APP\Park.h)(0x582D0800)
+I (APP\general.h)(0x5844FFBB)
+F (.\APP\InvPark.c)(0x582D07C2)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\invpark.o --omf_browse .\out\invpark.crf --depend .\out\invpark.d)
+I (APP\Park.h)(0x582D0800)
+I (APP\general.h)(0x5844FFBB)
+F (.\APP\MeasCurr.c)(0x582D07DE)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\meascurr.o --omf_browse .\out\meascurr.crf --depend .\out\meascurr.d)
+I (APP\MeasCurr.h)(0x583E6E2E)
+I (APP\Park.h)(0x582D0800)
+I (APP\general.h)(0x5844FFBB)
+F (.\APP\Pi.c)(0x582D0860)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\pi.o --omf_browse .\out\pi.crf --depend .\out\pi.d)
+I (APP\Pi.h)(0x582D087A)
+I (APP\general.h)(0x5844FFBB)
+F (.\APP\Svgen.c)(0x582D0C2C)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\svgen.o --omf_browse .\out\svgen.crf --depend .\out\svgen.d)
+I (APP\svgen.h)(0x582D0C36)
+I (APP\Park.h)(0x582D0800)
+I (APP\general.h)(0x5844FFBB)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-I (APP\UserParms.h)(0x582BFDED)
-F (.\APP\Trig.c)(0x581FD7C2)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\trig.o --omf_browse .\out\trig.crf --depend .\out\trig.d)
-I (APP\Park.h)(0x5748041A)
-I (APP\general.h)(0x582C2519)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+I (APP\UserParms.h)(0x584508DF)
+F (.\APP\Trig.c)(0x582D0CA8)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\trig.o --omf_browse .\out\trig.crf --depend .\out\trig.d)
+I (APP\Park.h)(0x582D0800)
+I (APP\general.h)(0x5844FFBB)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\APP\PMSM.c)(0x582C2659)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\pmsm.o --omf_browse .\out\pmsm.crf --depend .\out\pmsm.d)
-I (APP\typedef.h)(0x51E3A6B8)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\APP\PMSM.c)(0x58461C72)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\pmsm.o --omf_browse .\out\pmsm.crf --depend .\out\pmsm.d)
+I (APP\typedef.h)(0x51E3A6BA)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x54C245B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (APP\General.h)(0x582C2519)
-I (APP\Parms.h)(0x568F763E)
-I (APP\SVGen.h)(0x56C2D979)
-I (APP\Park.h)(0x5748041A)
-I (APP\ReadADC.h)(0x56555F91)
-I (APP\MeasCurr.h)(0x57C7D128)
-I (APP\Control.h)(0x57062C04)
-I (APP\PI.h)(0x5714709C)
-I (APP\UserParms.h)(0x582BFDED)
-I (APP\Smc.h)(0x581FD75C)
-I (APP\FdWeak.h)(0x56556263)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.c)(0x5722EF1D)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_adc.o --omf_browse .\out\swm1800_adc.crf --depend .\out\swm1800_adc.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (APP\General.h)(0x5844FFBB)
+I (APP\Parms.h)(0x582D080E)
+I (APP\SVGen.h)(0x582D0C36)
+I (APP\Park.h)(0x582D0800)
+I (APP\ReadADC.h)(0x582D0884)
+I (APP\MeasCurr.h)(0x583E6E2E)
+I (APP\Control.h)(0x582D0746)
+I (APP\PI.h)(0x582D087A)
+I (APP\UserParms.h)(0x584508DF)
+I (APP\Smc.h)(0x583BDD7A)
+I (APP\FdWeak.h)(0x582D079A)
+I (APP\faultprotect.h)(0x58461C11)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\APP\faultprotect.c)(0x58461D11)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\faultprotect.o --omf_browse .\out\faultprotect.crf --depend .\out\faultprotect.d)
+I (APP\faultprotect.h)(0x58461C11)
+I (APP\general.h)(0x5844FFBB)
+I (APP\UserParms.h)(0x584508DF)
+I (APP\Park.h)(0x582D0800)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.c)(0x571ED9CB)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_can.o --omf_browse .\out\swm1800_can.crf --depend .\out\swm1800_can.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+I (APP\MeasCurr.h)(0x583E6E2E)
+I (APP\Pi.h)(0x582D087A)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.c)(0x5722EF1E)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_adc.o --omf_browse .\out\swm1800_adc.crf --depend .\out\swm1800_adc.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.c)(0x574F855E)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_cmp.o --omf_browse .\out\swm1800_cmp.crf --depend .\out\swm1800_cmp.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.c)(0x571ED9CC)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_can.o --omf_browse .\out\swm1800_can.crf --depend .\out\swm1800_can.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.c)(0x5747A86E)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_cordic.o --omf_browse .\out\swm1800_cordic.crf --depend .\out\swm1800_cordic.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.c)(0x574F8560)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_cmp.o --omf_browse .\out\swm1800_cmp.crf --depend .\out\swm1800_cmp.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.c)(0x571DC25F)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_div.o --omf_browse .\out\swm1800_div.crf --depend .\out\swm1800_div.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.c)(0x5747A870)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_cordic.o --omf_browse .\out\swm1800_cordic.crf --depend .\out\swm1800_cordic.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.c)(0x5721A104)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_dma.o --omf_browse .\out\swm1800_dma.crf --depend .\out\swm1800_dma.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.c)(0x571DC260)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_div.o --omf_browse .\out\swm1800_div.crf --depend .\out\swm1800_div.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.c)(0x572990C5)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_exti.o --omf_browse .\out\swm1800_exti.crf --depend .\out\swm1800_exti.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.c)(0x5721A106)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_dma.o --omf_browse .\out\swm1800_dma.crf --depend .\out\swm1800_dma.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.c)(0x57B51ED3)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_flash.o --omf_browse .\out\swm1800_flash.crf --depend .\out\swm1800_flash.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.c)(0x572990C6)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_exti.o --omf_browse .\out\swm1800_exti.crf --depend .\out\swm1800_exti.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.c)(0x56DF87E7)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_gpio.o --omf_browse .\out\swm1800_gpio.crf --depend .\out\swm1800_gpio.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.c)(0x57B51ED4)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_flash.o --omf_browse .\out\swm1800_flash.crf --depend .\out\swm1800_flash.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.c)(0x570E1A82)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_i2c.o --omf_browse .\out\swm1800_i2c.crf --depend .\out\swm1800_i2c.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.c)(0x56DF87E8)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_gpio.o --omf_browse .\out\swm1800_gpio.crf --depend .\out\swm1800_gpio.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.c)(0x569F37C8)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_irqmux.o --omf_browse .\out\swm1800_irqmux.crf --depend .\out\swm1800_irqmux.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.c)(0x570E1A84)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_i2c.o --omf_browse .\out\swm1800_i2c.crf --depend .\out\swm1800_i2c.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.c)(0x57060100)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_port.o --omf_browse .\out\swm1800_port.crf --depend .\out\swm1800_port.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.c)(0x569F37CA)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_irqmux.o --omf_browse .\out\swm1800_irqmux.crf --depend .\out\swm1800_irqmux.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.c)(0x5754F230)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_pwm.o --omf_browse .\out\swm1800_pwm.crf --depend .\out\swm1800_pwm.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.c)(0x57060102)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_port.o --omf_browse .\out\swm1800_port.crf --depend .\out\swm1800_port.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.c)(0x5727FFD5)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_sdadc.o --omf_browse .\out\swm1800_sdadc.crf --depend .\out\swm1800_sdadc.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.c)(0x5754F232)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_pwm.o --omf_browse .\out\swm1800_pwm.crf --depend .\out\swm1800_pwm.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.c)(0x571DFF33)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_slcd.o --omf_browse .\out\swm1800_slcd.crf --depend .\out\swm1800_slcd.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.c)(0x5727FFD6)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_sdadc.o --omf_browse .\out\swm1800_sdadc.crf --depend .\out\swm1800_sdadc.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.c)(0x576BA0CF)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_spi.o --omf_browse .\out\swm1800_spi.crf --depend .\out\swm1800_spi.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.c)(0x571DFF34)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_slcd.o --omf_browse .\out\swm1800_slcd.crf --depend .\out\swm1800_slcd.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.c)(0x570DFB7A)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_timr.o --omf_browse .\out\swm1800_timr.crf --depend .\out\swm1800_timr.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.c)(0x576BA0D0)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_spi.o --omf_browse .\out\swm1800_spi.crf --depend .\out\swm1800_spi.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.c)(0x57C53BF1)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_uart.o --omf_browse .\out\swm1800_uart.crf --depend .\out\swm1800_uart.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.c)(0x570DFB7C)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_timr.o --omf_browse .\out\swm1800_timr.crf --depend .\out\swm1800_timr.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.c)(0x571072A7)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_wdt.o --omf_browse .\out\swm1800_wdt.crf --depend .\out\swm1800_wdt.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.c)(0x57C53BF2)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_uart.o --omf_browse .\out\swm1800_uart.crf --depend .\out\swm1800_uart.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.c)(0x5746B87C)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_cache.o --omf_browse .\out\swm1800_cache.crf --depend .\out\swm1800_cache.d)
-I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.c)(0x571072A8)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_wdt.o --omf_browse .\out\swm1800_wdt.crf --depend .\out\swm1800_wdt.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\CMSIS\CoreSupport\core_cm0.c)(0x50AAF774)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\core_cm0.o --omf_browse .\out\core_cm0.crf --depend .\out\core_cm0.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-F (.\CSL\CMSIS\DeviceSupport\system_SWM1800.c)(0x57C53747)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\system_swm1800.o --omf_browse .\out\system_swm1800.crf --depend .\out\system_swm1800.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
-I (CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF4)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.c)(0x5746B87E)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\swm1800_cache.o --omf_browse .\out\swm1800_cache.crf --depend .\out\swm1800_cache.d)
+I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF774)
-I (CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACB)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01D9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DA)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C539FF)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBA9)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E534)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCD)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC1)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BC)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF2)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D9379)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E0008)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396A)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC3)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC926)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B100)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D5)
-I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2F9)
-F (.\CSL\CMSIS\DeviceSupport\startup\arm\startup_SWM1800.s)(0x57BAA335)(--cpu Cortex-M0 --li -g --apcs=interwork --pd "__MICROLIB SETA 1"-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 515"--list .\out\startup_swm1800.lst --xref -o .\out\startup_swm1800.o --depend .\out\startup_swm1800.d)
-F (.\APP\Control.h)(0x57062C04)()
-F (.\APP\FdWeak.h)(0x56556263)()
-F (.\APP\General.h)(0x582C2519)()
-F (.\APP\MeasCurr.h)(0x57C7D128)()
-F (.\APP\Park.h)(0x5748041A)()
-F (.\APP\Parms.h)(0x568F763E)()
-F (.\APP\Pi.h)(0x5714709C)()
-F (.\APP\ReadADC.h)(0x56555F91)()
-F (.\APP\Smc.h)(0x581FD75C)()
-F (.\APP\SVGen.h)(0x56C2D979)()
-F (.\APP\swm1500_uart.h)(0x55D6810D)()
-F (.\APP\typedef.h)(0x51E3A6B8)()
-F (.\APP\UserParms.h)(0x582BFDED)()
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
+I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\CMSIS\CoreSupport\core_cm0.c)(0x50AAF776)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\core_cm0.o --omf_browse .\out\core_cm0.crf --depend .\out\core_cm0.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
+F (.\CSL\CMSIS\DeviceSupport\system_SWM1800.c)(0x57C53748)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\system_swm1800.o --omf_browse .\out\system_swm1800.crf --depend .\out\system_swm1800.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C245B8)
+I (CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
+I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
+I (CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_port.h)(0x5719C9A2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_gpio.h)(0x569EEACC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_exti.h)(0x569F01DA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_timr.h)(0x570DF9DC)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_uart.h)(0x57C53A00)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_spi.h)(0x576BA0CE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_i2c.h)(0x56E7DBAA)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_pwm.h)(0x56A4E536)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cmp.h)(0x56A58CCE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_adc.h)(0x57206DC2)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_sdadc.h)(0x570B26BE)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_dma.h)(0x57075EF4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_can.h)(0x571D937A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_slcd.h)(0x571E000A)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_flash.h)(0x57B4396C)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.h)(0x57106FC4)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
+I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
+F (.\CSL\CMSIS\DeviceSupport\startup\arm\startup_SWM1800.s)(0x583FD7E8)(--cpu Cortex-M0 --li -g --apcs=interwork --pd "__MICROLIB SETA 1"-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 515" --pd "FLASH_24K SETA 1"--list .\out\startup_swm1800.lst --xref -o .\out\startup_swm1800.o --depend .\out\startup_swm1800.d)
+F (.\APP\Control.h)(0x582D0746)()
+F (.\APP\FdWeak.h)(0x582D079A)()
+F (.\APP\General.h)(0x5844FFBB)()
+F (.\APP\MeasCurr.h)(0x583E6E2E)()
+F (.\APP\Park.h)(0x582D0800)()
+F (.\APP\Parms.h)(0x582D080E)()
+F (.\APP\Pi.h)(0x582D087A)()
+F (.\APP\ReadADC.h)(0x582D0884)()
+F (.\APP\Smc.h)(0x583BDD7A)()
+F (.\APP\SVGen.h)(0x582D0C36)()
+F (.\APP\swm1500_uart.h)(0x55D6810E)()
+F (.\APP\typedef.h)(0x51E3A6BA)()
+F (.\APP\UserParms.h)(0x584508DF)()

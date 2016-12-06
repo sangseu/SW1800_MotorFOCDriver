@@ -462,6 +462,11 @@
               <FileType>1</FileType>
               <FilePath>.\APP\PMSM.c</FilePath>
             </File>
+            <File>
+              <FileName>faultprotect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\APP\faultprotect.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -561,6 +566,11 @@
               <FileName>SWM1800_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\CSL\SWM1800_StdPeriph_Driver\SWM1800_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>SWM1800_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.c</FilePath>
             </File>
           </Files>
         </Group>

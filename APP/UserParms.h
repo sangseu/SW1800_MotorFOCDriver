@@ -24,7 +24,7 @@
 								// will take from stand still to closed loop.
 								// Optimized to overcome the brake inertia.
 								// (Magtrol AHB-3 brake inertia = 6.89 kg x cm2).
-#define INITIALTORQUE 	0.6	//1.4 //	 1.0		// Initial Torque demand in Amps.
+#define INITIALTORQUE 	0.6       	//0.4 //	 1.0		// Initial Torque demand in Amps.
 								// Enter initial torque demand in Amps using REFINAMPS() 
 								// macro. Maximum Value for reference is defined by 
 								// shunt resistor value and differential amplifier gain.
@@ -91,7 +91,7 @@
 */
 //************** PWM and Control Timing Parameters **********
 
-#define PWMFREQUENCY	15000		// PWM Frequency in Hertz
+#define PWMFREQUENCY	13000		// PWM Frequency in Hertz
 #define DEADTIMESEC		0.000001	// Deadtime in seconds, Max value(second) = 63*PWM_DIV/FOSC              
 #define	BUTPOLLOOPTIME	0.100		// Button polling loop period in sec
 #define SPEEDLOOPFREQ	1000		// Speed loop Frequency in Hertz. This value must
@@ -110,28 +110,6 @@
 #define DIFFAMPGAIN		4.4//5.1		// Gain of differential amplifier.
 #define VDD				3.3		// VDD voltage, only used to convert torque
 								// reference from Amps to internal variables
-
-//************** Real Time Data Monitor, RTDM *******************
-
-//#define RTDM		// This definition enabled Real Time Data Monitor, UART interrupts
-					// to handle RTDM protocol, and array declarations for buffering
-					// information in real time
-//#define DMCI_DEMO
-#undef DMCI_DEMO	// Define this if a demo with DMCI is done. Start/stop of motor
-					// and speed variation is done with DMCI instead of push button
-					// and POT. Undefine "DMCI_DEMO" is user requires operating
-					// this application with no DMCI
-
-#ifdef RTDM
-#define DATA_BUFFER_SIZE 150  //Size in 16-bit Words
-#define SNAPDELAY	8 // In number of PWM Interrupts
-#define SNAP1		smc1.Ialpha		//ParkParm.qIa
-#define SNAP2		smc1.Ibeta	//ParkParm.qIq
-#define SNAP3	    smc1.EstIalpha	//smc1.OmegaFltred
-#define SNAP4	    smc1.EstIbeta	//smc1.Theta
-#endif
-
-
 #define SPEEDDELAY 6 // Delay for the speed ramp.
 					  // Necessary for the PI control to work properly at high speeds.
 
@@ -169,9 +147,6 @@
 #define     DQKA       Q15(0.5)	// Current feedback software gain
 #define     DQKB       Q15(0.85)	// Current feedback software gain
 #endif
-
-// #define     DQKA       Q15(1)	// Current feedback software gain  扩大65536倍
-// #define     DQKB       Q15(1)	// Current feedback software gain
 
 //************** Field Weakening **************
 // Enter flux demand Amperes using REFINAMPS() macro. Maximum Value for
@@ -242,18 +217,16 @@
 #define CURRENTLOOPTIME (float)(1.0/CURRENTLOOPFREQ) // Current Control Period
 #define IRP_CURRENT_PERCALC (unsigned int)(CURRENTLOOPTIME/LOOPTIMEINSEC)	// PWM loops per current calculation
 
-// Time it takes to ramp from zero to MINSPEEDINRPM. Time represented in seconds
-// #define DELTA_STARTUP_RAMP	(unsigned int)(MINSPEEDINRPM*POLEPAIRS*65536*LOOPTIMEINSEC* \
-// 							65536*LOOPTIMEINSEC/(60*OPENLOOPTIMEINSEC))
+/* Time it takes to ramp from zero to MINSPEEDINRPM. Time represented in seconds
+DELTA_STARTUP_RAMP(角度增量△θ)定义原理:
+在开环时间内将电机速度增加到给定的速度值MINSPEEDINRPM,
+首先将速度值转换成角度值θ,假设MINSPEEDINRPM转速对应的角度
+值为θn,则有θn=θn-1+△θ，由此推导出θn=θ0+n△θ，由于计算周期是
+Tpwm，所以在Topen时间内，就有n=Topen/Tpwn,同时初始值θ0=0，所以有
+θn=Topen/Tpwn*△θ,又因为θn=ωn*Tpwn，所以得出△θ的值定义如下
+*/
 #define DELTA_STARTUP_RAMP	(unsigned int)(MINSPEEDINRPM*POLEPAIRS*LOOPTIMEINSEC* \
 							LOOPTIMEINSEC*65536*65536/(60*OPENLOOPTIMEINSEC))
-
-// #define DELTA_STARTUP_RAMP	(unsigned int)(MINSPEEDINRPM*POLEPAIRS*LOOPTIMEINSEC* \
-// 							LOOPTIMEINSEC*65536*32768*6/OPENLOOPTIMEINSEC)
-// #define DELTA_STARTUP_RAMP	 MINSPEEDINRPM*POLEPAIRS*LOOPTIMEINSEC*65536/(60*OPENLOOPTIMEINSEC)
-
-
-
 
 // Number of control loops that must execute before the button routine is executed.
 #define	BUTPOLLOOPCNT	(unsigned int)(BUTPOLLOOPTIME/LOOPTIMEINSEC)
