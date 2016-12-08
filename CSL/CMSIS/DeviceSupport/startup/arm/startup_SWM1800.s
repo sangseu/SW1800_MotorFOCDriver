@@ -26,7 +26,7 @@
 ;	1		8k				24k				CacheÊ¹ÄÜ£¬³ÌÐò´æ´¢Æ÷240K
 ;	4		16k		  		16k
 
-SRAM_SWITCH	  EQU    4;
+SRAM_SWITCH	  EQU    0;
 
 
 ; <h> Stack Configuration

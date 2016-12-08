@@ -2,7 +2,7 @@ Dependencies for Project 'SWM1800', Target 'SWM1800': (DO NOT MODIFY !)
 F (.\APP\Smc.c)(0x583CF2E6)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\smc.o --omf_browse .\out\smc.crf --depend .\out\smc.d)
 I (APP\general.h)(0x5844FFBB)
 I (APP\smc.h)(0x583BDD7A)
-I (APP\UserParms.h)(0x584508DF)
+I (APP\UserParms.h)(0x5848E3BB)
 I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
 I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
@@ -56,7 +56,7 @@ I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
 I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
 F (.\APP\FdWeak.c)(0x582D0788)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\fdweak.o --omf_browse .\out\fdweak.crf --depend .\out\fdweak.d)
 I (APP\FdWeak.h)(0x582D079A)
-I (APP\UserParms.h)(0x584508DF)
+I (APP\UserParms.h)(0x5848E3BB)
 I (APP\general.h)(0x5844FFBB)
 I (APP\smc.h)(0x583BDD7A)
 F (.\APP\CalcRef.c)(0x582D072A)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\calcref.o --omf_browse .\out\calcref.crf --depend .\out\calcref.d)
@@ -105,7 +105,7 @@ I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
 I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
 I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
 I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
-I (APP\UserParms.h)(0x584508DF)
+I (APP\UserParms.h)(0x5848E3BB)
 F (.\APP\Trig.c)(0x582D0CA8)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\trig.o --omf_browse .\out\trig.crf --depend .\out\trig.d)
 I (APP\Park.h)(0x582D0800)
 I (APP\general.h)(0x5844FFBB)
@@ -134,7 +134,7 @@ I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
 I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
 I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
 I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
-F (.\APP\PMSM.c)(0x58461C72)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\pmsm.o --omf_browse .\out\pmsm.crf --depend .\out\pmsm.d)
+F (.\APP\PMSM.c)(0x5848E3AA)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\pmsm.o --omf_browse .\out\pmsm.crf --depend .\out\pmsm.d)
 I (APP\typedef.h)(0x51E3A6BA)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x54C245B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
@@ -147,10 +147,10 @@ I (APP\ReadADC.h)(0x582D0884)
 I (APP\MeasCurr.h)(0x583E6E2E)
 I (APP\Control.h)(0x582D0746)
 I (APP\PI.h)(0x582D087A)
-I (APP\UserParms.h)(0x584508DF)
+I (APP\UserParms.h)(0x5848E3BB)
 I (APP\Smc.h)(0x583BDD7A)
 I (APP\FdWeak.h)(0x582D079A)
-I (APP\faultprotect.h)(0x58461C11)
+I (APP\faultprotect.h)(0x5848E3DD)
 I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (.\CSL\CMSIS\CoreSupport\core_cm0.h)(0x50AAF776)
 I (.\CSL\CMSIS\DeviceSupport\system_SWM1800.h)(0x57C7EADC)
@@ -174,10 +174,10 @@ I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
 I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
 I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
 I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
-F (.\APP\faultprotect.c)(0x58461D11)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\faultprotect.o --omf_browse .\out\faultprotect.crf --depend .\out\faultprotect.d)
-I (APP\faultprotect.h)(0x58461C11)
+F (.\APP\faultprotect.c)(0x5848E308)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork -I.\CSL\CMSIS\CoreSupport -I.\CSL\CMSIS\DeviceSupport -I.\CSL\SWM1800_StdPeriph_Driver -I.\APP-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515"-o .\out\faultprotect.o --omf_browse .\out\faultprotect.crf --depend .\out\faultprotect.d)
+I (APP\faultprotect.h)(0x5848E3DD)
 I (APP\general.h)(0x5844FFBB)
-I (APP\UserParms.h)(0x584508DF)
+I (APP\UserParms.h)(0x5848E3BB)
 I (APP\Park.h)(0x582D0800)
 I (.\CSL\CMSIS\DeviceSupport\SWM1800.h)(0x57BFDAF6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C245B8)
@@ -754,7 +754,7 @@ I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_div.h)(0x571DC928)
 I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cordic.h)(0x5747B102)
 I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_irqmux.h)(0x5719C8D6)
 I (.\CSL\SWM1800_StdPeriph_Driver\SWM1800_cache.h)(0x5746B2FA)
-F (.\CSL\CMSIS\DeviceSupport\startup\arm\startup_SWM1800.s)(0x583FD7E8)(--cpu Cortex-M0 --li -g --apcs=interwork --pd "__MICROLIB SETA 1"-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 515" --pd "FLASH_24K SETA 1"--list .\out\startup_swm1800.lst --xref -o .\out\startup_swm1800.o --depend .\out\startup_swm1800.d)
+F (.\CSL\CMSIS\DeviceSupport\startup\arm\startup_SWM1800.s)(0x5848BCB3)(--cpu Cortex-M0 --li -g --apcs=interwork --pd "__MICROLIB SETA 1"-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 515"--list .\out\startup_swm1800.lst --xref -o .\out\startup_swm1800.o --depend .\out\startup_swm1800.d)
 F (.\APP\Control.h)(0x582D0746)()
 F (.\APP\FdWeak.h)(0x582D079A)()
 F (.\APP\General.h)(0x5844FFBB)()
@@ -767,4 +767,4 @@ F (.\APP\Smc.h)(0x583BDD7A)()
 F (.\APP\SVGen.h)(0x582D0C36)()
 F (.\APP\swm1500_uart.h)(0x55D6810E)()
 F (.\APP\typedef.h)(0x51E3A6BA)()
-F (.\APP\UserParms.h)(0x584508DF)()
+F (.\APP\UserParms.h)(0x5848E3BB)()
