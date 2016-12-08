@@ -258,5 +258,7 @@ Tpwm，所以在Topen时间内，就有n=Topen/Tpwn,同时初始值θ0=0，所以有
 
 #define UOUTMIN 800
 
+#define UBUS_TIMES  1000    //母线稳定时间
+
 #endif
 

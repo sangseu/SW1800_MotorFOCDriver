@@ -12,6 +12,11 @@
 #define IPM_FO_LOW_TIMES    20  //连续检测到FO引脚输出低电平次数
 #define OVER_TEMPERATURE_TIMES  20  //连续检测到过温次数
 #define UNNORMAL_SPEED_TIMES    1   //连续检测到转速不对次数
+#define DCbus_OVER_LOW_TIMES    10      //连续检测到过压、欠压次数
+#define PHASE_CURRENT_DEVIATION_TIMES   10  //连续检测到相电流偏差次数
+#define PHASE_OVERCURRENT_TIMES 10      //连续检测到过流次数
+#define PHASE_CURRENT_NEAR_ZERO_TIMES   10  //连续检测到无电机次数
+
 
 #define R_VBUS_RATIO		121     //母线电压电阻分压比例
 #define DCbus_OVERVOLTAGE 320	//单位为V
@@ -20,7 +25,7 @@
 #define DCbus_UNDERVOLTAGE_ADVAL (DCbus_UNDERVOLTAGE*4095/(R_VBUS_RATIO*VDD))   //欠压AD值
 
 #define PHASE_CURRENT_DEVIATION_RATIO   10  //相电流偏差值比例
-#define PHASE_CURRENT_AD_DEVIATION_RATIO   10  //相电流AD偏差值比例
+#define PHASE_CURRENT_AD_DEVIATION_RATIO   10  //相电流检测点偏差值比例
 
 #define PHASE_OVERCURRENT_VALUE 0.8	//过流电流，单位为A
 #define CALCULATE_PHASE_CURRENT(x) ((x*RSHUNT*DIFFAMPGAIN*4095)/VDD)
@@ -60,12 +65,12 @@
 /***************************************************************************************************/
 
 /***********************************故障LED亮灭时间*************************************************/
-#define STANDBY_ONTIME      10      //待机LED亮时间，10*100ms
-#define STANDBY_OFFTIME     (STANDBY_ONTIME+10)      //待机LED灭时间，10*100ms
-#define NORMAL_ONTIME       6       //待机LED亮时间，3*100ms
-#define NORMAL_OFFTIME      (NORMAL_ONTIME+6)       //待机LED灭时间，3*100ms
-#define FAULT_TWINKLETIME        2       //故障LED闪烁时间，3*100ms
-#define FAULT_OFFTIME       (15-FAULT_TWINKLETIME)      //故障LED灭时间，15*100ms
+#define STANDBY_ONTIME      1000      //待机LED亮时间，1000*1ms
+#define STANDBY_OFFTIME     (STANDBY_ONTIME+1000)      //待机LED灭时间，1000*1ms
+#define NORMAL_ONTIME       600       //待机LED亮时间，600*1ms
+#define NORMAL_OFFTIME      (NORMAL_ONTIME+600)       //待机LED灭时间，600*1ms
+#define FAULT_TWINKLETIME        300       //故障LED闪烁时间，300*1ms
+#define FAULT_OFFTIME       (1500-FAULT_TWINKLETIME)      //故障LED灭时间，1500*1ms
 /***************************************************************************************************/
 
 /***********************************故障LED闪烁次数*************************************************/
@@ -91,7 +96,7 @@ typedef struct
 
 typedef struct
 {
-	u8 Systemstatus;	//系统状态，1=待机，2=正常运转，>=3故障
+	u32 Systemstatus;	//系统状态，1=待机，2=正常运转，>=3故障
 	u32 Timernumcount;	//定时器时间累加器
 	u32 Twinkletimes;	//闪烁次数
 }LED_INDICATE;
@@ -113,11 +118,11 @@ typedef struct
 
 	u32 fault_code;
 
-	IPM *IPM_module;
+	IPM IPM_module;
 
-	LED_INDICATE *Led_indicate;
+	LED_INDICATE Led_indicate;
 
-	PHASE_CURRENT *Phase_current_detect;
+	PHASE_CURRENT Phase_current_detect;
 	
 }MOTOR_FAULT;
 
@@ -126,6 +131,7 @@ extern s16 CorrADC0;
 extern s16 CorrADC1;
 extern u32 fg_outfrequence;
 extern s16 View_Variable1,View_Variable2,View_Variable3,View_Variable4;
+extern s16 stas;
 
 
 void phase_current_max_check(MOTOR_FAULT*pmotor_fault);

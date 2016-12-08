@@ -22,7 +22,7 @@
 #define PinButton1	!((GPIOC->DATA >> PIN2) & 0x01)	//Low Level is press 
 
 /********************* Variables to Calculate control board frequency *********************************/
-u32 fg_outfrequence;
+u32 fg_outfrequence,fg_out_time;
 typedef struct
 {
 	u32 InputFreq;      //输入频率
@@ -245,6 +245,7 @@ s16 reset_delaytimes;
 volatile s16 VDC_status = 0, VDC_status_tiems =0;        //直流母线电压状态
 volatile u16 SPREF=300;
 s16 View_Variable1,View_Variable2,View_Variable3,View_Variable4;
+u32 InputFreqcnt_index = 0;
 int main(void)
 {	
 	SystemInit();
@@ -257,11 +258,7 @@ int main(void)
 	SetupPorts();
 	SetupControlParameters(); 
 	FWInit();
-#ifdef calculate_frequency
-	CountInputFreq_Init();
-//#else
-	UartInit();
-#endif
+
 	uGF.Word = 0;                   // clear flags
 
 #ifdef TORQUEMODE		//转矩模式
@@ -281,14 +278,22 @@ int main(void)
 	motor_fault_init(&motor_fault);
 	
 	SetupParm(); 
+    
+#ifdef calculate_frequency
+	CountInputFreq_Init();
+//#else
+	UartInit();
+#endif
+    
 		
 	// Run the motor
+
 	while(1)
 	{
 		View1 = View_Variable1;//PIParmQ.qInRef;//ParkParm.qIa;//PIParmW.qInMeas;//Pwm0A;//smc1.Ialpha;//ParkParm.qValpha;//
 		View2 = View_Variable2;//smc1.OmegaFltred;//PIParmD.qInRef;//ParkParm.qIb;//PIParmW.qInRef;//Pwm1A;//smc1.EstIalpha;//ParkParm.qVq;//ParkParm.qVbeta;//
 		View3 = View_Variable3;//PIParmW.qInRef;//ParkParm.qAngle;//smc1.Theta;//PIParmD.qInRef;//PIParmQ.qInMeas;//PIParmW.qOut;//smc1.Kslf;//ParkParm.qIa;//SPEED;//ParkParm.qIq;//PIParmD.qOut;//Pwm2A;//smc1.Zalpha;//stas*10000;//
-		View4 = View_Variable4;//smc1.Ebeta;//SPREF;//PIParmQ.qOut;////0;//ParkParm.qIb;//TargetDCbus;//smc1.IalphaError;//CtrlParm.qVqRef;//sector;//
+		View4 = motor_fault.fault_code;//smc1.Ebeta;//SPREF;//PIParmQ.qOut;////0;//ParkParm.qIb;//TargetDCbus;//smc1.IalphaError;//CtrlParm.qVqRef;//sector;//
 
 		Communication(View1, View2, View3, View4);
 
@@ -297,7 +302,7 @@ int main(void)
 		motor_fault_detect(&motor_fault);
 		calculate_rotate_speed(&InpFreqCnt);
         
-        motor_fault.Led_indicate->Systemstatus = motor_fault.fault_code;
+        motor_fault.Led_indicate.Systemstatus = motor_fault.fault_code;
         
  //       SPREF =600;
         
@@ -310,7 +315,7 @@ int main(void)
 
 			if(!uGF.bit.RunMotor)
 			{
-				PWMG->CHEN |= 0x7f;	
+				PWMG->CHEN |= 0x3f;	
 				// executed for the first time
 				uGF.bit.ChangeMode = 1;	// Ensure variable initialization when open loop is
 				uGF.bit.RunMotor = 1;               //then start motor
@@ -318,7 +323,9 @@ int main(void)
 		}
 		else
 		{
-			PWMG->CHEN &= ~0x7f;	//pwm0a,0b,pwm1a,1b,pwm2a,2b,pwm3a off
+			PWMG->CHEN &= ~0x3f;	//pwm0a,0b,pwm1a,1b,pwm2a,2b,pwm3a off
+            
+//            InputFreqcnt_index = 0;
 			
 			uGF.bit.OpenLoop = 1;	
 			uGF.bit.RunMotor=0;
@@ -332,8 +339,6 @@ int main(void)
 			PIParmW.qdSum = 0;
 			ParkParm.qAngle = -16384;			
 		}
-			
-
 	}   // End of Run Motor loop
 }
 
@@ -699,7 +704,7 @@ void IRQ4_Handler(void)
 	{
 		Timval = TIMR3->CVAL;
 		TIMR_Stop(TIMR3);
-		InpFreqCnt.Timercnt = 96000000 - Timval;      //获取定时器计数值
+		InpFreqCnt.Timercnt = timer3_times - Timval;      //获取定时器计数值
 
 
 		InpFreqCnt.CountStartFlag = 2;          //停止定时器计数	
@@ -707,20 +712,20 @@ void IRQ4_Handler(void)
 	}
 	else if(InpFreqCnt.InputFreqcnt <= 1)
 	{	
-		TIMR3->LDVAL = 96000000; //TIMR_Init(TIMR3, TIMR_MODE_TIMER, 96000000, 0);//2S周期
+		TIMR3->LDVAL = timer3_times; //TIMR_Init(TIMR3, TIMR_MODE_TIMER, 96000000, 0);//2S周期
 		TIMR_Start(TIMR3);
 	}
 #endif	
 
-#if 1 
-    
+#if 1
+    EXTI_Clear(GPIOE, PIN2);
 	++inputfreqcnt;
 	if(inputfreqcnt <= 1)
 	{	
 		TIMR3->LDVAL = timer3_times; //TIMR_Init(TIMR3, TIMR_MODE_TIMER, 96000000, 0);//2S周期
 		TIMR_Start(TIMR3);
 	}
-    EXTI_Clear(GPIOE, PIN2);
+    
 #endif
 }
 
@@ -728,6 +733,13 @@ u16 speedmax = 790;
 void IRQ1_Handler(void)         //Timer Interrupt
 {
 	//    SysTick_Config(0xffffff);
+    static u32 fg_out_time_num =0;
+    static u32 InputFreqcnt_sum = 0;
+    static u32 last_inputfreqcnt = 0;
+    
+//    static u32 pre_last_inputfreqcnt = 0;
+//    static u32 InputFreqcnt_group[2];
+//    static u32 InputFreqcnt_group_index = 0;
 
 	if( TIMRG->IF & TIMRG_IF_TIMR0_Msk )    //Timer0 Interrupt      //单次模式
 	{
@@ -748,13 +760,18 @@ void IRQ1_Handler(void)         //Timer Interrupt
     
 	if( TIMRG->IF & TIMRG_IF_TIMR1_Msk )    //Timer1 Interrupt
 	{   
-        if( VDC_status_tiems++ >=10 )   //1s定时
+        if( VDC_status_tiems++ >=UBUS_TIMES )   //1s定时
         {
-            VDC_status_tiems = 10;
+            VDC_status_tiems = UBUS_TIMES;
             VDC_status = 1;     //母线电压稳定
         }
         if( VDC_status )
             SysLed_Twinkle(&motor_fault);
+		if( uGF.bit.RunMotor && (uGF.bit.OpenLoop==0) && (++fg_out_time_num >= fg_out_time) )    
+        {
+            fg_out_time_num = 0;
+            GPIOA->DATA ^= (0x01 << PIN5);
+        }
 		TIMR_INTClr(TIMR1);
 	}
     
@@ -776,11 +793,20 @@ void IRQ1_Handler(void)         //Timer Interrupt
     if( TIMRG->IF & TIMRG_IF_TIMR3_Msk )    //Timer3 Interrupt
 	{
         TIMR_Stop(TIMR3);
-        EXTI_Clear(GPIOE, PIN2);
-        EXTI_Close(GPIOE, PIN2);
+//        EXTI_Clear(GPIOE, PIN2);
+//        EXTI_Close(GPIOE, PIN2);
         
 		InpFreqCnt.Timercnt = timer3_times;
-		InpFreqCnt.InputFreqcnt = inputfreqcnt;
+//		InpFreqCnt.InputFreqcnt = inputfreqcnt;
+		InputFreqcnt_sum += inputfreqcnt;
+
+        InpFreqCnt.InputFreqcnt = InputFreqcnt_sum >> 1;
+        if( ++InputFreqcnt_index > 1)
+        {
+            InputFreqcnt_index = 2;
+            InputFreqcnt_sum -= last_inputfreqcnt;
+        }
+        last_inputfreqcnt = inputfreqcnt;
 		InpFreqCnt.CountStartFlag = 2;			//停止定时器计数	
 		inputfreqcnt = 0;
         
@@ -822,13 +848,13 @@ void IRQ5_Handler(void)
 		Vdctimes = 0;
 	}
     
-    motor_fault.IPM_module->Ad_Temperature_total += ADC->CH[AD_IPM_Temperature].DATA & ADC_DATA_VALUE_Msk;//Channel 1
-    motor_fault.IPM_module->Ad_Temperature_times++;
-    if( motor_fault.IPM_module->Ad_Temperature_times >=1024 )
+    motor_fault.IPM_module.Ad_Temperature_total += ADC->CH[AD_IPM_Temperature].DATA & ADC_DATA_VALUE_Msk;//Channel 1
+    motor_fault.IPM_module.Ad_Temperature_times++;
+    if( motor_fault.IPM_module.Ad_Temperature_times >=1024 )
     {
-        motor_fault.IPM_module->Ad_Temperature_value = motor_fault.IPM_module->Ad_Temperature_total>>10;
-        motor_fault.IPM_module->Ad_Temperature_total = 0;
-        motor_fault.IPM_module->Ad_Temperature_times = 0;
+        motor_fault.IPM_module.Ad_Temperature_value = motor_fault.IPM_module.Ad_Temperature_total>>10;
+        motor_fault.IPM_module.Ad_Temperature_total = 0;
+        motor_fault.IPM_module.Ad_Temperature_times = 0;
     }
          
     
@@ -905,26 +931,13 @@ bool SetupParm(void)
 
 	IRQ_Connect(IRQ0_15_PWM, IRQ0_IRQ, 1);      //set PWM IRQ priority
 	
-	/*****FG frequence output PWM init start*****/
-	
-	PWM_initStruct.clk_div = PWM_CLKDIV_1;			//分频后为3M	
-	PWM_initStruct.mode = PWM_MODE_INDEP;		//A路和B路为独立输出		
-	PWM_initStruct.cycleA = LOOPINTCY;				
-	PWM_initStruct.hdutyA = LOOPINTCY;
-	PWM_initStruct.initLevelA = 1;
-	PWM_initStruct.HEndAIEn = 0;
-	PWM_initStruct.NCycleAIEn = 0;
-	PWM_Init(PWM3, &PWM_initStruct);
-
-	/******FG frequence output PWM init end*****/
-	
 	// Center aligned PWM.
 	// Note: The PWM period is set to dLoopInTcy/2 but since it counts up and 
 	// and then down => the interrupt flag is set to 1 at zero => actual 
 	// interrupt period is dLoopInTcy
 
 	TIMR_Init(TIMR0, TIMR_MODE_TIMER, T0_t, 1);
-	TIMR_Init(TIMR1, TIMR_MODE_TIMER, 4800000, 1);  //100ms，用于LED指示
+	TIMR_Init(TIMR1, TIMR_MODE_TIMER, 48000, 1);  //1ms，用于LED指示
 	TIMR_Init(TIMR2, TIMR_MODE_TIMER, 48000000, 1);
 	IRQ_Connect(IRQ0_15_TIMR, IRQ1_IRQ, 0);      //set TIMR IRQ priority
 	
@@ -990,7 +1003,7 @@ void CountInputFreq_Init(void)
 	GPIO_Init(GPIOE, PIN2, 0, 0, 0, 0);			//输入    
 	EXTI_Init(GPIOE, PIN2, EXTI_FALL_EDGE);		//下降沿触发中断	
 	IRQ_Connect(IRQ0_15_GPIOE2, IRQ4_IRQ, 0);	
-	EXTI_Open(GPIOE, PIN2);
+    EXTI_Open(GPIOE, PIN2); //打开RPM中断测频率
 	TIMR_Init(TIMR3, TIMR_MODE_TIMER, timer3_times, 1);// 2s定时,开中断
 }
 
@@ -1163,7 +1176,8 @@ void CountInputFreq(void)       //计算输入频率
 
 void calculate_rotate_speed(InpFreq *pfreq)
 {
-	if( InpFreqCnt.CountStartFlag == 2 )
+	static u32 last_fg_out_time = 0;
+    if( InpFreqCnt.CountStartFlag == 2 )
 	{
 		InpFreqCnt.CountStartFlag = 0;
 		CountInputFreq();
@@ -1173,12 +1187,12 @@ void calculate_rotate_speed(InpFreq *pfreq)
 		if(smc1.OmegaFltred > 0)
 		{
 			fg_outfrequence = (smc1.OmegaFltred*SPEEDLOOPFREQ/POLEPAIRS)>>16;
-			
-			PWM3->PERA = 48000000/fg_outfrequence;
-			PWM3->HIGHA = PWM3->PERA >> 1;
+            fg_out_time = 500/fg_outfrequence;      //1000ms/fg_outfrequence/2=输出频率占空比
+            fg_out_time = (fg_out_time * 5 + last_fg_out_time * 5)/10;
+            last_fg_out_time = fg_out_time;
 		}
         
-       EXTI_Open(GPIOE, PIN2);  //再次打开外部中断 
+//       EXTI_Open(GPIOE, PIN2);  //再次打开外部中断 
 	}
 }
 
