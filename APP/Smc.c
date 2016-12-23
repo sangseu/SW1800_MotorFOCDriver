@@ -420,7 +420,11 @@ void SMC_Position_Estimation (SMC *s)
 
 	CalcIError(s);
 
-	// Sliding control calculator
+/* ***********Sliding control calculator********************/
+/*******************
+滑模控制也叫变结构控制，
+将被控量往稳定却换面上逼近。
+********************/
 
 	if ( (s->IalphaError <= s->MaxSMCError) && (s->IalphaError >= (-s->MaxSMCError)) )
 	{
@@ -451,30 +455,29 @@ void SMC_Position_Estimation (SMC *s)
 		s->Zbeta = s->Kslide;
 	else
 		s->Zbeta = -s->Kslide;
-
-	// Sliding control filter -> back EMF calculator
-	// s->Ealpha = s->Ealpha + s->Kslf * s->Zalpha -
-	//						   s->Kslf * s->Ealpha
-	// s->Ebeta = s->Ebeta + s->Kslf * s->Zbeta -
-	//						 s->Kslf * s->Ebeta
-	// s->EalphaFinal = s->EalphaFinal + s->KslfFinal * s->Ealpha
-	//								   - s->KslfFinal * s->EalphaFinal
-	// s->EbetaFinal = s->EbetaFinal + s->KslfFinal * s->Ebeta
-	//								 - s->KslfFinal * s->EbetaFinal
+/************Sliding control calculator end**********************/
+	
+/*************************************************
+对滑模控制器的输出一阶低通滤波得
+到反电动势，由于一阶滤波后输出的
+反电动势波动比较大，影响角度的计
+算，因此，用于计算角度的电压矢量
+再进行一次低通滤波。原理可以参考
+电路的RC低通滤波电路。
+s->Ealpha = s->Ealpha + s->Kslf * s->Zalpha -s->Kslf * s->Ealpha
+s->Ebeta = s->Ebeta + s->Kslf * s->Zbeta -s->Kslf * s->Ebeta
+s->EalphaFinal = s->EalphaFinal + s->KslfFinal * s->Ealpha- s->KslfFinal * s->EalphaFinal
+s->EbetaFinal = s->EbetaFinal + s->KslfFinal * s->Ebeta- s->KslfFinal * s->EbetaFinal
+*************************************************/
 	CalcBEMF(s);
 
 	// Rotor angle calculator -> Theta = atan(-EalphaFinal,EbetaFinal)
 
 	s->Theta = atan2CORDIC(s->EbetaFinal, -s->EalphaFinal);//Q15
 
-	//    if( s->Theta == -3 )
-	//    {
-	//        PreOmega = -3;
-	//        s->Theta = atan2CORDIC(s->EbetaFinal,0-s->EalphaFinal);//Q15
-	//    }
-
 	temptheta = PrevTheta - s->Theta;//temptheta = s->Theta - PrevTheta;//
 	
+	/*转换成到(-32768,32767)这个量化角度范围，也就是(-PI,PI)*/
 	if( temptheta < -32768 )
 		temptheta += 65536;
 	else if( temptheta > 32767 )
@@ -489,7 +492,7 @@ void SMC_Position_Estimation (SMC *s)
 	if (AccumThetaCnt == IRP_PERCALC)
 	{
 
-		s->Omega = -AccumTheta;//波形为类似正弦波
+		s->Omega = -AccumTheta;
 
 		AccumThetaCnt = 0;
 		AccumTheta = 0;
@@ -507,7 +510,8 @@ void SMC_Position_Estimation (SMC *s)
 
 	// s->OmegaFltred = s->OmegaFltred + FilterCoeff * s->Omega
 	//								   - FilterCoeff * s->OmegaFltred
-
+	
+/*******角度一阶滤波后来计算截止频率*********/
 	CalcOmegaFltred(s);
 
 	// Adaptive filter coefficients calculation
@@ -551,12 +555,14 @@ void SMC_Position_Estimation (SMC *s)
 	// arctan(Fin/Fc), and Fin/Fc = 1 since they are equal, hence arctan(1) = 45 DEG.
 	// A total of -90 DEG after the two filters implemented (Kslf and KslfFinal).
 
+/***计算截止频率，用于反电动势的计算****/
 	Di = s->OmegaFltred ;//
 	Vi = IRP_PERCALC  ;//
 	DIV_Fun(Di, Vi, &Qi, &Ri);
 	
 	s->Kslf = Qi; 
 	s->KslfFinal = s->FiltOmCoef =  s->Kslf;
+/***********END***************/
 
 	// Since filter coefficients are dynamic, we need to make sure we have a minimum
 	// so we define the lowest operation speed as the lowest filter coefficient

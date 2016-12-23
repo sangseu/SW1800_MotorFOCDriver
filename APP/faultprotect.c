@@ -535,23 +535,5 @@ void motor_fault_detect(MOTOR_FAULT*pmotor_fault)
             }	
         }
     } 	
-    
-//    dcbus_voltage_protect(pmotor_fault);    //过压、欠压检测
-//    lose_phase_detect(pmotor_fault);    //转速不对
-//    Phase_Current_Offset_Advalue_detect(pmotor_fault);  //电流检测点电平偏差过大
-//    IPM_FO_detect(pmotor_fault);   //IPM_FO检测
-//    
-//    if( pmotor_fault->Phase_current_detect.Phase_current_check_flag == 1 )
-//    {
-//        phase_current_protect(pmotor_fault);    //过流检测
-//        motor_lose_step_detect(pmotor_fault);   //无电机检测
-//        Phase_current_deviation(pmotor_fault);     //相电流偏差
-//        
-//        pmotor_fault->Phase_current_detect.Ia_max = 0;
-//        pmotor_fault->Phase_current_detect.Ia_min = 0;
-//        pmotor_fault->Phase_current_detect.Ib_max = 0;
-//        pmotor_fault->Phase_current_detect.Ib_min = 0;
-//        pmotor_fault->Phase_current_detect.Phase_current_check_flag = 0;
-//    }
 }
 

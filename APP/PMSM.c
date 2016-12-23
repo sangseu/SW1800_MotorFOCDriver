@@ -281,13 +281,10 @@ int main(void)
     
 #ifdef calculate_frequency
 	CountInputFreq_Init();
-//#else
+#else
 	UartInit();
-#endif
-    
-		
+#endif		
 	// Run the motor
-
 	while(1)
 	{
 		View1 = View_Variable1;//PIParmQ.qInRef;//ParkParm.qIa;//PIParmW.qInMeas;//Pwm0A;//smc1.Ialpha;//ParkParm.qValpha;//
@@ -298,11 +295,10 @@ int main(void)
 		Communication(View1, View2, View3, View4);
 
 	//		SPEED = smc1.OmegaFltred*60/(65535*POLEPAIRS*SPEEDLOOPTIME);
-
-		motor_fault_detect(&motor_fault);
+		
 		calculate_rotate_speed(&InpFreqCnt);
-        
-        motor_fault.Led_indicate.Systemstatus = motor_fault.fault_code;
+		motor_fault_detect(&motor_fault);
+		motor_fault.Led_indicate.Systemstatus = motor_fault.fault_code;
         
  //       SPREF =600;
         
@@ -310,7 +306,7 @@ int main(void)
 		if(SPREF >360)
 		{				
 			if( SPREF > 950 )
-                SPREF = 950;
+                		SPREF = 950;
 			W_REF = SPREF*65535*POLEPAIRS*SPEEDLOOPTIME/60;//700*65535*POLEPAIRS*SPEEDLOOPTIME/60;
 
 			if(!uGF.bit.RunMotor)
@@ -329,6 +325,7 @@ int main(void)
 			
 			uGF.bit.OpenLoop = 1;	
 			uGF.bit.RunMotor=0;
+			uGF.bit.ChangeMode = 0;	// Ensure variable initialization when open loop is
 
 			Startup_Lock = 0;
 			Startup_Ramp = 0;
@@ -414,7 +411,7 @@ void DoControl( void )
 		CtrlParm.qVqRef = REFINAMPS(INITIALTORQUE);//3971;//Refinamps;//REFINAMPS(TORQ);//	//Q15
 		if(AccumThetaCnt == 0)//??????
 		{
-			PIParmW.qInMeas = smc1.Omega;	//Q15,???????????
+			PIParmW.qInMeas = smc1.Omega;//Q15,???????????
 		}									//???????????
 
 		// PI control for D		
@@ -491,7 +488,14 @@ void DoControl( void )
 
 			CalcPI(&PIParmW);
 		}
+		
+		CtrlParm.qVqRef = PIParmW.qOut;
+		if (uGF.bit.EnTorqueMod)
+			CtrlParm.qVqRef = Qref;
 
+/*************************************
+下面这部分作用不大，可以去掉
+**************************************/	
 		++AccumCurrentCnt;
 		if( AccumCurrentCnt >= IRP_CURRENT_PERCALC )
 		{
@@ -503,6 +507,7 @@ void DoControl( void )
 				PIParmW.qdSum = (long)CtrlParm.qVqRef;//(long)CtrlParm.qVqRef << 16;
 				PIParmW.qOut = CtrlParm.qVqRef;
 			}
+
 			else
 			{
 				if (uGF.bit.EnTorqueMod)
@@ -515,6 +520,7 @@ void DoControl( void )
 				}
 			}
 		}
+/*******************************************************************/
 
 		// If the application is running in torque mode, the velocity
 		// control loop is bypassed.  The velocity reference value, read
@@ -680,7 +686,7 @@ void IRQ0_Handler(void)             //PWM Interrupt
 		// Calculate and set PWM duty cycles from Vr1,Vr2,Vr3
 		CalcSVGen(&SVGenParm); 	//19->4us 
         
-        phase_current_max_check(&motor_fault);
+        	phase_current_max_check(&motor_fault);
         //Phase_current_deviation(1);
 	} 
 //    timecout = 0xffffff - SysTick->VAL;           	
@@ -718,7 +724,7 @@ void IRQ4_Handler(void)
 #endif	
 
 #if 1
-    EXTI_Clear(GPIOE, PIN2);
+    	EXTI_Clear(GPIOE, PIN2);
 	++inputfreqcnt;
 	if(inputfreqcnt <= 1)
 	{	
@@ -760,18 +766,18 @@ void IRQ1_Handler(void)         //Timer Interrupt
     
 	if( TIMRG->IF & TIMRG_IF_TIMR1_Msk )    //Timer1 Interrupt
 	{   
-        if( VDC_status_tiems++ >=UBUS_TIMES )   //1s定时
-        {
-            VDC_status_tiems = UBUS_TIMES;
-            VDC_status = 1;     //母线电压稳定
-        }
-        if( VDC_status )
-            SysLed_Twinkle(&motor_fault);
+		if( VDC_status_tiems++ >=UBUS_TIMES )   //1s定时
+		{
+			VDC_status_tiems = UBUS_TIMES;
+			VDC_status = 1;     //母线电压稳定
+		}
+		if( VDC_status )
+			SysLed_Twinkle(&motor_fault);
 		if( uGF.bit.RunMotor && (uGF.bit.OpenLoop==0) && (++fg_out_time_num >= fg_out_time) )    
-        {
-            fg_out_time_num = 0;
-            GPIOA->DATA ^= (0x01 << PIN5);
-        }
+		{
+			fg_out_time_num = 0;
+			GPIOA->DATA ^= (0x01 << PIN5);
+		}
 		TIMR_INTClr(TIMR1);
 	}
     
@@ -790,28 +796,28 @@ void IRQ1_Handler(void)         //Timer Interrupt
 		TIMR_INTClr(TIMR2);
 	}
     
-    if( TIMRG->IF & TIMRG_IF_TIMR3_Msk )    //Timer3 Interrupt
+	if( TIMRG->IF & TIMRG_IF_TIMR3_Msk )    //Timer3 Interrupt
 	{
-        TIMR_Stop(TIMR3);
-//        EXTI_Clear(GPIOE, PIN2);
-//        EXTI_Close(GPIOE, PIN2);
-        
+		TIMR_Stop(TIMR3);
+		//        EXTI_Clear(GPIOE, PIN2);
+		//        EXTI_Close(GPIOE, PIN2);
+
 		InpFreqCnt.Timercnt = timer3_times;
-//		InpFreqCnt.InputFreqcnt = inputfreqcnt;
+		//		InpFreqCnt.InputFreqcnt = inputfreqcnt;
 		InputFreqcnt_sum += inputfreqcnt;
 
-        InpFreqCnt.InputFreqcnt = InputFreqcnt_sum >> 1;
-        if( ++InputFreqcnt_index > 1)
-        {
-            InputFreqcnt_index = 2;
-            InputFreqcnt_sum -= last_inputfreqcnt;
-        }
-        last_inputfreqcnt = inputfreqcnt;
+		InpFreqCnt.InputFreqcnt = InputFreqcnt_sum >> 1;
+		if( ++InputFreqcnt_index > 1)
+		{
+			InputFreqcnt_index = 2;
+			InputFreqcnt_sum -= last_inputfreqcnt;
+		}
+		last_inputfreqcnt = inputfreqcnt;
 		InpFreqCnt.CountStartFlag = 2;			//停止定时器计数	
 		inputfreqcnt = 0;
-        
-        TIMR_INTClr(TIMR3);
-    }
+
+		TIMR_INTClr(TIMR3);
+	}
 
 //    DIV_Div((0xffffff - SysTick->VAL), 48);  
 //    while(DIV_Div_IsBusy());
@@ -868,7 +874,7 @@ void IRQ5_Handler(void)
 bool SetupParm(void)
 {
 	u32 Ad0Sum = 0,Ad1Sum = 0,Ad2Sum = 0;	
-    u32 i = 0;
+    	u32 i = 0;
 	static u8 AdCn = 0;
 	
 	PWM_InitStructure  PWM_initStruct;
@@ -885,7 +891,7 @@ bool SetupParm(void)
 	// MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS * LOOPTIMEINSEC * 65536 * 65536 / 60.0;
 	// Then, * 65536 which is a right shift done in "void CalculateParkAngle(void)"
 	// ParkParm.qAngle += (int)(Startup_Ramp >> 16);
-	MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS* 65536* LOOPTIMEINSEC * 65536/ 60.0;//角度   
+	MotorParm.EndSpeed = ENDSPEEDOPENLOOP * POLEPAIRS* 65536* LOOPTIMEINSEC * 65536/ 60.0;//每个PWM周期的电角度   
 	MotorParm.LockTime = LOCKTIME;
 
 	// Scaling constants: Determined by calibration or hardware design.
@@ -936,7 +942,7 @@ bool SetupParm(void)
 	// and then down => the interrupt flag is set to 1 at zero => actual 
 	// interrupt period is dLoopInTcy
 
-	TIMR_Init(TIMR0, TIMR_MODE_TIMER, T0_t, 1);
+//	TIMR_Init(TIMR0, TIMR_MODE_TIMER, T0_t, 1);
 	TIMR_Init(TIMR1, TIMR_MODE_TIMER, 48000, 1);  //1ms，用于LED指示
 	TIMR_Init(TIMR2, TIMR_MODE_TIMER, 48000000, 1);
 	IRQ_Connect(IRQ0_15_TIMR, IRQ1_IRQ, 0);      //set TIMR IRQ priority
@@ -952,7 +958,7 @@ bool SetupParm(void)
 	ADC_Init(ADC, &ADC_initStruct);					//配置ADC	
 	ADC_Open(ADC);									//使能ADC
 
-    TIMR_Start(TIMR1);      //开启定时器，指示系统状态
+    	TIMR_Start(TIMR1);      //开启定时器，指示系统状态
 	while( VDC_status == 0 );   //待电压稳定后再检测电压
 
 	ADC_Start(ADC);									//start ADC
@@ -1012,8 +1018,13 @@ void CountInputFreq_Init(void)
 
 void CalculateParkAngle (void)
 {
-	smc1.Ialpha = RIGHSHIFT15(ParkParm.qIalpha*175);//ParkParm.qIalpha;//////RIGHSHIFT15(ParkParm.qIalpha*9929);	//Q15
-	smc1.Ibeta = RIGHSHIFT15(ParkParm.qIbeta*175);//ParkParm.qIbeta;////RIGHSHIFT15(ParkParm.qIbeta*9929);
+/*进入滑模算法时，要将Ialpha,Ibeta,Valpha,Vbeta的单位统一，
+由于母线电压为310V，相电流为[-1.65,1.65]，幅值为1.65，
+因此有(32767/310)*1.65=174.4，因此将Ialpha,Ibeta的值乘上此系数
+转换为统一的单位。
+*/
+	smc1.Ialpha = RIGHSHIFT15(ParkParm.qIalpha*175);//Q15
+	smc1.Ibeta = RIGHSHIFT15(ParkParm.qIbeta*175);//
 	smc1.Valpha = RIGHSHIFT15(ParkParm.qValpha*32767);//ParkParm.qValpha;//
 	smc1.Vbeta = RIGHSHIFT15(ParkParm.qVbeta*32767);//ParkParm.qVbeta;//
 
@@ -1067,7 +1078,14 @@ void CalculateParkAngle (void)
 		{
 			ParkParm.qAngle = smc1.Theta + Theta_error;     
 		}
-
+		
+/*******
+Theta_error值的处理主要是由于在开环却换到闭环时，
+为了保证角度不突变，需要加上角度误差值，原理
+上，只需要加上一次就可以了。但不做这种处理，
+在程序的整个运行过程中都加上角度差值，所以下面
+就要对这个角度差值做处理，让这个值慢慢变化到最小的值。
+********/
 		if (Theta_error > _0_05DEG ||Theta_error < (0- _0_05DEG))
 		{
 			if (Theta_error < 0)
