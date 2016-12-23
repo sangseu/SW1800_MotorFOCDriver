@@ -126,11 +126,6 @@
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>DLGUARM</Key>
-          <Name></Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
           <Key>DLGTARM</Key>
           <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
@@ -150,7 +145,7 @@
           <Number>0</Number>
           <Type>0</Type>
           <LineNumber>173</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
+          <EnabledFlag>0</EnabledFlag>
           <Address>192</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
@@ -166,8 +161,8 @@
           <Number>1</Number>
           <Type>0</Type>
           <LineNumber>467</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>10554</Address>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>10420</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -181,9 +176,9 @@
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>302</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>5928</Address>
+          <LineNumber>278</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>5820</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -192,7 +187,39 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>D:\椤圭洰\蹇楅珮\鏌滄満椹卞姩\SW1580鏃犻湇灏旀寮︽尝\APP\PMSM.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\SWM1800\APP/PMSM.c\302</Expression>
+          <Expression>\\SWM1800\APP/PMSM.c\278</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>305</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>5920</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>D:\椤圭洰\蹇楅珮\鏌滄満椹卞姩\SW1580鏃犻湇灏旀寮︽尝\APP\PMSM.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\SWM1800\APP/PMSM.c\305</Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>509</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>10666</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>D:\椤圭洰\蹇楅珮\鏌滄満椹卞姩\SW1580鏃犻湇灏旀寮︽尝\APP\faultprotect.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\SWM1800\APP/faultprotect.c\509</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -474,27 +501,7 @@
         <Ww>
           <count>55</count>
           <WinNumber>1</WinNumber>
-          <ItemText>addr1,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>56</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>addr2,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>57</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>pipm,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>58</count>
-          <WinNumber>1</WinNumber>
           <ItemText>pmotor_fault,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>59</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>pm,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
