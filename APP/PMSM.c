@@ -487,11 +487,11 @@ void DoControl( void )
 			PIParmW.qInRef  = W_REF;//CtrlParm.qVelRef;//
 
 			CalcPI(&PIParmW);
+			CtrlParm.qVqRef = PIParmW.qOut;
 		}
-		
-		CtrlParm.qVqRef = PIParmW.qOut;
+				
 		if (uGF.bit.EnTorqueMod)
-			CtrlParm.qVqRef = Qref;
+			CtrlParm.qVqRef = W_REF;//Qref;
 
 /*************************************
 下面这部分作用不大，可以去掉
